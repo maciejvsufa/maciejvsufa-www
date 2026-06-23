@@ -1,0 +1,25 @@
+# Maciej Sufa — AI-native developer
+
+> Buduję z AI aplikacje, strony i automatyzacje, które zdejmują z ludzi powtarzalną robotę — żeby został im czas i energia na kreatywność, wyobraźnię i trafne decyzje. Współtwórca Asistel. Otwarty na pracę zdalną (B2B lub etat), PL + zagranica.
+
+## Profil / Profile
+
+- [Strona / Portfolio](https://maciejvsufa.pl/): projekty, kompetencje, kontakt
+- [CV (PDF)](https://maciejvsufa.pl/cv/Maciej_Sufa_CV.pdf): do pobrania / downloadable CV
+- [GitHub](https://github.com/maciejvsufa): kod open-source / source code
+- [LinkedIn](https://www.linkedin.com/in/maciej-sufa): profil zawodowy / professional profile
+
+## O mnie / About
+
+AI-native developer z Łodzi. Tworzę aplikacje i strony (React / Next.js, no-code + AI), automatyzacje procesów (n8n, MCP, integracje API, Python) oraz systemy z agentami AI. Współtwórca Asistel — głosowego asystenta AI dla aptek.
+
+English: AI-native developer based in Łódź, Poland. I build apps and websites (React / Next.js, no-code + AI), process automations (n8n, MCP, API integrations, Python) and AI-agent systems. Co-creator of Asistel, an AI voice agent for pharmacies. Open to remote roles across PL and the EU. English: communicative, AI-assisted.
+
+## Projekty / Projects
+
+- [Asistel](https://asistel.pl): głosowy asystent AI dla aptek (współtwórca) / AI voice agent for pharmacies
+- [Metoda Sufy](https://metodasufy.pl): autorski system decyzyjny zbudowany z AI / an AI-built decision-support system
+
+## Kontakt / Contact
+
+- [E-mail](mailto:sufamaciej@gmail.com): najszybszy kontakt / fastest way to reach me
