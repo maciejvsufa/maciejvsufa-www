@@ -1,4 +1,4 @@
-# Maciej Sufa — AI-native developer
+# Maciej Sufa — automatyzacja i usprawnianie procesów z AI
 
 > Buduję z AI aplikacje, strony i automatyzacje, które zdejmują z ludzi powtarzalną robotę — żeby został im czas i energia na kreatywność, wyobraźnię i trafne decyzje. Współtwórca Asistel. Otwarty na pracę zdalną (B2B lub etat), PL + zagranica.
 
@@ -11,9 +11,9 @@
 
 ## O mnie / About
 
-AI-native developer z Łodzi. Tworzę aplikacje i strony (React / Next.js, no-code + AI), automatyzacje procesów (n8n, MCP, integracje API, Python) oraz systemy z agentami AI. Współtwórca Asistel — głosowego asystenta AI dla aptek.
+Usprawniam i automatyzuję procesy w firmach z AI, z Łodzi. Audytuję procesy, tworzę aplikacje i strony (React / Next.js, no-code + AI), automatyzacje procesów (n8n, MCP, integracje API, Python) oraz systemy z agentami AI. Współtwórca Asistel — głosowego asystenta AI dla aptek. Certyfikat „Umiejętności Jutra: AI" (Google & SGH).
 
-English: AI-native developer based in Łódź, Poland. I build apps and websites (React / Next.js, no-code + AI), process automations (n8n, MCP, API integrations, Python) and AI-agent systems. Co-creator of Asistel, an AI voice agent for pharmacies. Open to remote roles across PL and the EU. English: communicative, AI-assisted.
+English: I audit, automate and streamline company processes with AI, based in Łódź, Poland. Apps and websites (React / Next.js, no-code + AI), process automations (n8n, MCP, API integrations, Python) and AI-agent systems. Co-creator of Asistel, an AI voice agent for pharmacies. Open to remote work across PL and the EU. English: communicative, AI-assisted.
 
 ## Projekty / Projects
 

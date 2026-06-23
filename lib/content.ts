@@ -4,10 +4,10 @@
  */
 
 export const hero = {
-  badge: "Buduję z AI — dla ludzi i firm",
-  h1: "AI-native developer",
+  badge: "Pomagam firmom usprawniać procesy z AI",
+  h1: "Usprawniam i automatyzuję procesy w firmach z AI",
   subhead:
-    "Buduję z AI aplikacje, strony i systemy automatyzacji, które zdejmują z ludzi powtarzalną robotę — żeby został im czas i energia na to, czego AI nie potrafi: kreatywność, wyobraźnię i trafne decyzje.",
+    "Audytuję i automatyzuję procesy w firmach — aplikacje, integracje i rozwiązania AI, które zdejmują z ludzi powtarzalną robotę, żeby został im czas i energia na to, czego AI nie potrafi: kreatywność, wyobraźnię i trafne decyzje.",
   en: "Współpraca zdalna · PL / EU · English: communicative, AI-assisted.",
 };
 
@@ -117,5 +117,5 @@ export const oMnie = {
 export const kontakt = {
   title: "Porozmawiajmy",
   kicker: "06",
-  lead: "Szukam pracy zdalnej (B2B lub etat) jako AI developer — frontend, automatyzacje, systemy. Otwarty na PL i zagranicę.",
+  lead: "Pomagam firmom usprawniać i automatyzować procesy z AI — audyt, automatyzacje, aplikacje i rozwiązania AI. Współpraca zdalna (B2B lub etat), PL i zagranica.",
 };

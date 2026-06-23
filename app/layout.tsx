@@ -19,12 +19,12 @@ export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: site.title,
   description:
-    "Buduję z AI aplikacje, strony i automatyzacje, które zdejmują z ludzi powtarzalną robotę. Współtwórca Asistel. Otwarty na pracę zdalną (B2B/etat).",
+    "Usprawniam i automatyzuję procesy w firmach z AI — audyt, automatyzacje, aplikacje i rozwiązania AI. Współtwórca Asistel. Współpraca zdalna (B2B/etat), PL/EU.",
   alternates: { canonical: "/" },
   openGraph: {
     title: site.title,
     description:
-      "AI-native developer — apps, websites & automations built with AI. Co-creator of Asistel. Open to remote roles (PL/EU).",
+      "I audit, automate and streamline company processes with AI — automations, apps and AI solutions. Co-creator of Asistel. Open to remote work (PL/EU).",
     url: site.url,
     siteName: site.name,
     locale: "pl_PL",

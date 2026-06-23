@@ -1,9 +1,9 @@
 /** Stałe witryny — jedno miejsce na URL, kontakt, social. */
 export const site = {
   name: "Maciej Sufa",
-  title: "Maciej Sufa — AI-native developer",
+  title: "Maciej Sufa — automatyzacja i usprawnianie procesów z AI",
   url: "https://maciejvsufa.pl",
-  jobTitle: "AI-native developer",
+  jobTitle: "Specjalista ds. automatyzacji procesów z AI",
   email: "sufamaciej@gmail.com",
   location: "Łódź, PL",
   socials: {

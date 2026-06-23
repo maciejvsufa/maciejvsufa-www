@@ -1,6 +1,6 @@
 # maciejvsufa.pl
 
-Portfolio / strona „zatrudnij mnie" — **Maciej Sufa, AI-native developer**.
+Portfolio / strona „zatrudnij mnie" — **Maciej Sufa — automatyzacja i usprawnianie procesów z AI**.
 Next.js 16 (App Router, static export) · React 19 · Tailwind v4 · three.js.
 
 > Wzorzec techniczny zainspirowany publicznym repo brata (`MarcinSufa/marcin-sufa-portfolio`)
