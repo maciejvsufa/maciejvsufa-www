@@ -4,6 +4,12 @@ import { site } from "@/lib/site";
 
 const PORTRAIT = "/portrait.png";
 
+/** Wiąże jednoliterowe słowa (i, w, z, a, o, u) twardą spacją z następnym —
+ * polska typografia: nie zostawiamy sierot na końcu linii. */
+function bindOrphans(s: string): string {
+  return s.replace(/ ([aiouwzAIOUWZ]) /g, " $1 ");
+}
+
 export function Hero() {
   return (
     <section aria-label="Wprowadzenie" className="relative overflow-hidden">
@@ -34,9 +40,13 @@ export function Hero() {
             {hero.badge}
           </div>
 
-          <h1 className="mt-5 max-w-[16ch] font-display text-[clamp(40px,6vw,76px)] font-semibold leading-[0.98] tracking-[-0.03em] text-text">
-            {hero.h1}
+          <h1 className="mt-5 max-w-[18ch] font-display text-[clamp(40px,6vw,76px)] font-semibold leading-[0.98] tracking-[-0.03em] text-text">
+            {bindOrphans(hero.h1)}
           </h1>
+
+          <p className="mt-3 font-mono text-[12px] uppercase tracking-[0.2em] text-accent">
+            {hero.enTitle}
+          </p>
 
           <p className="mt-6 max-w-[52ch] rounded-[14px] border border-border bg-surface/80 px-[18px] py-[14px] text-[clamp(15px,1.4vw,18px)] leading-[1.6] text-text2">
             {hero.subhead}
