@@ -5,11 +5,11 @@ import * as THREE from "three";
 import { clampDpr, watchVisibility } from "@/lib/browser";
 
 /**
- * Materiał rzeźby: jeden akcent (biały pył-sól) cieniowany GŁĘBIĄ, nie kolorem
- * zdjęcia. Front bryły jasny, w głębi ciemny → czyta się jak rzeźba z pyłu.
+ * Materiał: KOLOROWY pył ze zdjęcia — każde ziarno ma barwę swojego piksela
+ * (skóra, marynarka, koszula), a głębia daje światłocień 3D (front jaśniejszy,
+ * tył ciemniejszy). Efekt = zdjęcie 3D złożone z punktów, nie monochromatyczna
+ * rzeźba. Brak płaskiego zdjęcia pod spodem — pył ZASTĘPUJE zdjęcie.
  */
-const SHADE_BACK: [number, number, number] = [0.12, 0.12, 0.13];
-const SHADE_FRONT: [number, number, number] = [0.96, 0.94, 0.88];
 
 /**
  * PORTRET CAŁY Z KROPEK (wymaga WYCINANKI — przezroczyste PNG, public/portrait-cutout.png).
@@ -39,8 +39,8 @@ export function ParticlePortrait({ src }: { src: string }) {
     img.onload = () => {
       if (disposed) return;
 
-      const maxCols = 200;
-      const step = Math.max(2, Math.round(img.width / maxCols));
+      const maxCols = 440; // bardzo gęsto → ostra, wyraźna postać z pyłu
+      const step = Math.max(1, Math.round(img.width / maxCols));
       const oc = document.createElement("canvas");
       oc.width = img.width;
       oc.height = img.height;
@@ -92,7 +92,11 @@ export function ParticlePortrait({ src }: { src: string }) {
       for (let y = 0; y < img.height; y += step) {
         for (let x = 0; x < img.width; x += step) {
           const i = (y * img.width + x) * 4;
-          if (data[i + 3] < 128) continue; // poza sylwetką (tło) — pomiń
+          const a = data[i + 3] / 255;
+          if (a < 0.16) continue; // poza sylwetką (tło) — pomiń
+          // miękka krawędź: ziarna na brzegu gasną do czerni → postać WTAPIA się
+          // w tło zamiast ostrego wycięcia
+          const edge = Math.min(1, (a - 0.16) / 0.5);
 
           const r = data[i] / 255;
           const g = data[i + 1] / 255;
@@ -106,12 +110,13 @@ export function ParticlePortrait({ src }: { src: string }) {
           const z = dome + relief;
 
           positions.push((x - img.width / 2) * scale, (img.height / 2 - y) * scale, z);
+          // KOLOR = piksel zdjęcia; głębia → światłocień (front jaśniejszy)
           const zNorm = Math.min(1, Math.max(0, (z + 1) / 6.2));
-          const tl = Math.min(1, zNorm * 0.82 + Math.pow(lum, 1.4) * 0.18);
+          const shade = (0.62 + 0.6 * zNorm) * edge; // światłocień 3D × miękka krawędź
           colors.push(
-            SHADE_BACK[0] + (SHADE_FRONT[0] - SHADE_BACK[0]) * tl,
-            SHADE_BACK[1] + (SHADE_FRONT[1] - SHADE_BACK[1]) * tl,
-            SHADE_BACK[2] + (SHADE_FRONT[2] - SHADE_BACK[2]) * tl,
+            Math.min(1, r * shade),
+            Math.min(1, g * shade),
+            Math.min(1, b * shade),
           );
         }
       }
@@ -129,7 +134,7 @@ export function ParticlePortrait({ src }: { src: string }) {
       geometry.setAttribute("color", new THREE.BufferAttribute(colArr, 3));
 
       const material = new THREE.PointsMaterial({
-        size: 0.07,
+        size: 0.05,
         vertexColors: true,
         transparent: true,
         opacity: 1,
@@ -187,7 +192,7 @@ export function ParticlePortrait({ src }: { src: string }) {
       ro?.observe(host);
 
       const pos = geometry.attributes.position.array as Float32Array;
-      const scatterR = 2.4; // zasięg dłoni rozsypującej piasek
+      const scatterR = 1.1; // mała strefa przy kursorze (wielkości kursora)
       let raf = 0;
       let t = 0;
       let last = 0;
@@ -228,20 +233,22 @@ export function ParticlePortrait({ src }: { src: string }) {
             const d2 = dx * dx + dy * dy;
             if (d2 < scatterR * scatterR) {
               const d = Math.sqrt(d2) || 0.0001;
-              const f = (1 - d / scatterR) * 0.5;
-              vx += (dx / d) * f + (Math.random() - 0.5) * 0.12;
-              vy += (dy / d) * f + Math.random() * 0.1; // lekko w górę (poderwany piasek)
-              vz += f * 0.6 + (Math.random() - 0.5) * 0.1;
+              const f = (1 - d / scatterR) * 1.8; // mocny odrzut (wyraźne rozsypanie)
+              vx += (dx / d) * f + (Math.random() - 0.5) * 0.4;
+              vy += (dy / d) * f + (Math.random() - 0.2) * 0.4;
+              vz += f * 1.4 + (Math.random() - 0.5) * 0.4;
             }
           }
 
-          // całkowanie + grawitacja ku bazie (sprężyna) + tłumienie
+          // całkowanie + SILNA sprężyna ku bazie (szybki powrót na miejsce,
+          // bez czekania na ruch myszy) + tłumienie. Brak grawitacji → wraca
+          // dokładnie tam, gdzie było.
           ox += vx;
           oy += vy;
           oz += vz;
-          vx = vx * 0.9 - ox * 0.03;
-          vy = vy * 0.9 - oy * 0.03 - 0.004; // delikatne opadanie ziarna
-          vz = vz * 0.9 - oz * 0.03;
+          vx = vx * 0.78 - ox * 0.16;
+          vy = vy * 0.78 - oy * 0.16;
+          vz = vz * 0.78 - oz * 0.16;
 
           off[k * 3] = ox;
           off[k * 3 + 1] = oy;

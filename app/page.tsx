@@ -7,12 +7,14 @@ import { JakPracuje } from "@/components/sections/jak-pracuje";
 import { Stack } from "@/components/sections/stack";
 import { OMnie } from "@/components/sections/o-mnie";
 import { Kontakt } from "@/components/sections/kontakt";
+import { SiteEffects } from "@/components/fx/site-effects";
 
 export default function Home() {
   return (
     <>
       <SiteNav />
-      <main id="main">
+      <SiteEffects />
+      <main className="sheet" id="top">
         <Hero />
         <CoRobie />
         <Projekty />
@@ -20,8 +22,8 @@ export default function Home() {
         <Stack />
         <OMnie />
         <Kontakt />
+        <SiteFooter />
       </main>
-      <SiteFooter />
     </>
   );
 }

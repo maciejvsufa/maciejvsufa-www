@@ -1,12 +1,19 @@
 import type { Metadata, Viewport } from "next";
-import { Fraunces, DM_Sans } from "next/font/google";
+import { Fraunces, DM_Sans, DM_Mono } from "next/font/google";
 import "./globals.css";
 import { site } from "@/lib/site";
-import { SaltField } from "@/components/fx/salt-field";
+import { CosmosLayer } from "@/components/fx/cosmos-layer";
+import { RunesDefs } from "@/components/ui/runes-defs";
 
 const dmSans = DM_Sans({
   variable: "--font-dm-sans",
   subsets: ["latin", "latin-ext"],
+  display: "swap",
+});
+const dmMono = DM_Mono({
+  variable: "--font-dm-mono",
+  subsets: ["latin", "latin-ext"],
+  weight: ["400", "500"],
   display: "swap",
 });
 const fraunces = Fraunces({
@@ -35,7 +42,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#12141a",
+  themeColor: "#08080a",
   width: "device-width",
   initialScale: 1,
 };
@@ -58,22 +65,14 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html
       lang="pl"
-      className={`${dmSans.variable} ${fraunces.variable} h-full antialiased`}
+      className={`${dmSans.variable} ${dmMono.variable} ${fraunces.variable} h-full antialiased`}
     >
       <body className="min-h-full">
-        <a href="#main" className="skip-link">
+        <a href="#top" className="skip-link">
           Przejdź do treści
         </a>
-        {/* żywe tło pył-sól (globalne) + miękka centralna poświata */}
-        <SaltField />
-        <div
-          aria-hidden
-          className="pointer-events-none fixed inset-0 -z-10"
-          style={{
-            background:
-              "radial-gradient(60% 50% at 50% 38%, rgba(201,192,173,0.07), transparent 70%)",
-          }}
-        />
+        <RunesDefs />
+        <CosmosLayer />
         {children}
         <script
           type="application/ld+json"

@@ -4,7 +4,7 @@
  */
 
 export const hero = {
-  badge: "Pomagam firmom usprawniać procesy z AI",
+  badge: "Usprawniam i automatyzuję procesy w firmach z AI",
   // twarde spacje ( ) po jednoliterowych „i/w/z" — żeby nie zostawały sierotami na końcu linii
   h1: "Usprawniam i automatyzuję procesy w firmach z AI",
   enTitle: "AI Process & Automation Specialist",
@@ -16,6 +16,7 @@ export const hero = {
 export const coRobie = {
   title: "Co robię",
   kicker: "01",
+  lead: "Aplikacje, automatyzacje, systemy z agentami AI — od pierwszego ekranu po wdrożenie.",
   items: [
     {
       h: "Aplikacje i strony",
@@ -83,11 +84,11 @@ export const jakPracuje = {
       p: "Najpierw zrozumieć problem z wielu stron, potem zdecydować. Audyt zanim kod.",
     },
     {
-      h: "Sprawna komunikacja w grupie",
+      h: "Sprawna komunikacja",
       p: "Jasny podział, wspólne zatwierdzanie, code-review, jeden wspólny stan projektu.",
     },
     {
-      h: "Duża efektywność małym nakładem",
+      h: "Efektywność małym nakładem",
       p: "Orkiestracja agentów AI: plan → build → cross-review → ship. Robotę robotom, myślenie człowiekowi.",
     },
   ],
@@ -110,7 +111,23 @@ export const oMnie = {
   motto:
     "Najcenniejszy zasób to nie pieniądze — to czas życia. Buduję rozwiązania, dzięki którym to, co nazywamy robotą, robią roboty, a to, co nazywamy życiem, zostaje człowiekowi. Największa mądrość to nie wiedzieć wszystko — a użyć tego, co już się wie, tu, gdzie się jest, dla swojego dobra. To mnie napędza: dawać ludziom i firmom narzędzia na dobre, satysfakcjonujące życie i pracę.",
   background:
-    "Wcześniej 17 lat na scenie i przed kamerą — stąd umiejętność tłumaczenia technologii na ludzki język i przeprowadzania ludzi przez zmianę. Dziś buduję z AI. Nie sam — pracuję w zespole (m.in. z bratem Marcinem, twórcą ExoVault), bo dobre rzeczy powstają we współpracy.",
+    "Wcześniej 17 lat na scenie i przed kamerą — stąd umiejętność tłumaczenia technologii na ludzki język i przeprowadzania ludzi przez zmianę. Dziś buduję z AI.",
+  teamIntro:
+    "Nie sam — współpracuję z niewielkim zespołem o uzupełniających się rolach. Dobre rzeczy powstają we współpracy, zwłaszcza tam, gdzie technologia spotyka realne procesy:",
+  teamRoles: [
+    {
+      role: "Infrastruktura i operacje IT",
+      note: "Koordynacja techniczna i wdrożenia w organizacjach wielooddziałowych — m.in. doświadczenie w sieciach aptecznych, telefonia i utrzymanie systemów na co dzień.",
+    },
+    {
+      role: "Architektura platform i automatyzacja",
+      note: "Projektowanie systemów wiedzy, narzędzi dla developerów i pipeline’ów pod agentów AI — od koncepcji po utrzymanie.",
+    },
+    {
+      role: "Produkt, AI i wdrożenia",
+      note: "Aplikacje, agenci AI, warstwa biznesowa, komunikacja z klientem i dowiezienie do produkcji — mój zakres w zespole.",
+    },
+  ],
   cert: 'Certyfikat „Umiejętności Jutra: AI" (Google & SGH).',
   english:
     "Angielski: komunikatywny, async-first, wspierany narzędziami AI — spotkania online i pisemna komunikacja bez przeszkód.",
@@ -119,5 +136,6 @@ export const oMnie = {
 export const kontakt = {
   title: "Porozmawiajmy",
   kicker: "06",
+  headline: "Masz proces, który pochłania czas? Porozmawiajmy.",
   lead: "Pomagam firmom usprawniać i automatyzować procesy z AI — audyt, automatyzacje, aplikacje i rozwiązania AI. Współpraca zdalna (B2B lub etat), PL i zagranica.",
 };

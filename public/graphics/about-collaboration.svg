@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 480" fill="none">
+  <defs>
+    <linearGradient id="g1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#c9c0ad" stop-opacity="0.22"/>
+      <stop offset="100%" stop-color="#e8e2d4" stop-opacity="0.06"/>
+    </linearGradient>
+  </defs>
+  <rect width="480" height="480" rx="32" fill="url(#g1)"/>
+  <circle cx="240" cy="240" r="118" stroke="#c9c0ad" stroke-opacity="0.18" stroke-width="1" stroke-dasharray="4 8"/>
+  <circle cx="240" cy="240" r="78" stroke="#c9c0ad" stroke-opacity="0.12" stroke-width="1"/>
+  <path d="M240 122 L240 358 M122 240 L358 240" stroke="#c9c0ad" stroke-opacity="0.1" stroke-width="1"/>
+  <path d="M168 168 L312 312 M312 168 L168 312" stroke="#c9c0ad" stroke-opacity="0.08" stroke-width="1"/>
+  <circle cx="240" cy="128" r="10" fill="#c9c0ad" fill-opacity="0.55"/>
+  <circle cx="352" cy="240" r="10" fill="#e8e2d4" fill-opacity="0.45"/>
+  <circle cx="240" cy="352" r="10" fill="#c9c0ad" fill-opacity="0.4"/>
+  <circle cx="128" cy="240" r="10" fill="#e8e2d4" fill-opacity="0.45"/>
+  <circle cx="304" cy="176" r="7" fill="#c9c0ad" fill-opacity="0.35"/>
+  <circle cx="176" cy="304" r="7" fill="#c9c0ad" fill-opacity="0.35"/>
+  <circle cx="304" cy="304" r="7" fill="#c9c0ad" fill-opacity="0.3"/>
+  <circle cx="176" cy="176" r="7" fill="#c9c0ad" fill-opacity="0.3"/>
+  <circle cx="240" cy="240" r="16" stroke="#e8e2d4" stroke-opacity="0.7" stroke-width="1.6"/>
+  <circle cx="240" cy="240" r="5" fill="#e8e2d4" fill-opacity="0.85"/>
+  <path d="M240 128 L352 240 L240 352 L128 240 Z" stroke="#c9c0ad" stroke-opacity="0.22" stroke-width="1.2"/>
+  <path d="M240 128 L240 352 M128 240 L352 240" stroke="#c9c0ad" stroke-opacity="0.15" stroke-width="1"/>
+  <path d="M168 168 L312 312 M312 168 L168 312" stroke="#c9c0ad" stroke-opacity="0.12" stroke-width="1"/>
+</svg>

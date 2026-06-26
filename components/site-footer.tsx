@@ -2,21 +2,17 @@ import { site } from "@/lib/site";
 
 export function SiteFooter() {
   return (
-    <footer className="border-t border-border/60">
-      <div className="pad-x mx-auto flex max-w-[1180px] flex-col gap-3 py-8 text-[13px] text-text3 sm:flex-row sm:items-center sm:justify-between">
-        <span>© 2026 {site.name} · {site.location}</span>
-        <nav aria-label="Stopka" className="flex gap-5 font-mono">
-          <a className="transition-colors hover:text-accent" href={site.socials.github} target="_blank" rel="noopener noreferrer">
-            GitHub
-          </a>
-          <a className="transition-colors hover:text-accent" href={site.socials.linkedin} target="_blank" rel="noopener noreferrer">
-            LinkedIn
-          </a>
-          <a className="transition-colors hover:text-accent" href="/privacy/">
-            Polityka prywatności
-          </a>
-        </nav>
-      </div>
+    <footer className="flex flex-wrap items-center justify-between gap-4 border-t border-border px-[clamp(28px,6vw,80px)] py-[26px] text-[12.5px] text-text3">
+      <span className="font-mono">© 2026 {site.name}</span>
+      <span className="font-mono">
+        <a className="transition-colors hover:text-accent" href={`mailto:${site.email}`}>
+          {site.email}
+        </a>
+        {" · PL / EU · "}
+        <a className="transition-colors hover:text-accent" href="/privacy/">
+          Polityka prywatności
+        </a>
+      </span>
     </footer>
   );
 }

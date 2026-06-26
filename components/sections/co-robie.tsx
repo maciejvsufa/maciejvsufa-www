@@ -1,25 +1,31 @@
-import { Reveal } from "@/components/ui/reveal";
 import { coRobie } from "@/lib/content";
 
 export function CoRobie() {
   return (
-    <section id="co-robie" aria-labelledby="co-robie-title" className="pad-x mx-auto max-w-[1180px] py-20">
-      <Reveal>
-        <p className="font-mono text-[13px] text-accent">{coRobie.kicker} — kompetencje</p>
-        <h2 id="co-robie-title" className="mt-2 font-display text-[clamp(28px,3.6vw,44px)] font-semibold tracking-[-0.02em] text-text">
-          {coRobie.title}
+    <section id="co-robie" aria-labelledby="co-robie-title" className="sheet-section">
+      <span className="eyebrow font-mono">{coRobie.kicker} · Co robię</span>
+      <div className="mt-[18px] flex max-w-[60ch] flex-col gap-3.5">
+        <h2
+          id="co-robie-title"
+          className="font-display text-[clamp(30px,3.6vw,46px)] font-semibold leading-[1.04] tracking-[-0.02em]"
+        >
+          Mniej powtarzalnej roboty.
+          <br />
+          Więcej miejsca na człowieka.
         </h2>
-      </Reveal>
+        <p className="max-w-[54ch] text-[clamp(15px,1.3vw,17px)] leading-[1.6] text-text2">{coRobie.lead}</p>
+      </div>
 
-      <div className="mt-10 grid gap-5 sm:grid-cols-2">
+      <div className="mt-[46px] grid grid-cols-1 gap-[18px] sm:grid-cols-2">
         {coRobie.items.map((it, idx) => (
-          <Reveal key={it.h} as="article" delay={idx * 70}>
-            <div className="h-full rounded-2xl border border-border bg-surface p-6 transition-colors hover:border-accent/50">
-              <h3 className="font-display text-xl font-semibold text-text">{it.h}</h3>
-              <p className="mt-3 leading-[1.6] text-text2">{it.p}</p>
-              {it.note && <p className="mt-3 font-mono text-[12px] text-text3">{it.note}</p>}
-            </div>
-          </Reveal>
+          <article key={it.h} className="design-card">
+            <span className="absolute right-[22px] top-5 font-mono text-[12px] text-text3">
+              {String(idx + 1).padStart(2, "0")}
+            </span>
+            <h3 className="text-[19px] font-semibold tracking-[-0.01em]">{it.h}</h3>
+            <p className="mt-2.5 text-[14.5px] leading-[1.6] text-text2">{it.p}</p>
+            {it.note && <p className="mt-3 font-mono text-[12.5px] text-text3">{it.note}</p>}
+          </article>
         ))}
       </div>
     </section>
