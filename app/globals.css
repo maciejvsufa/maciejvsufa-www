@@ -214,6 +214,15 @@ body {
     0 0 40px 10px rgba(232, 226, 212, 0.35);
   animation: cometBreath 13s ease-in-out infinite;
 }
+@media (max-width: 720px) {
+  .cosmos-glow,
+  .cosmos-glow-b,
+  .comet-haze,
+  .comet-trail,
+  .comet-head {
+    display: none;
+  }
+}
 
 /* — tafla treści — */
 .sheet {
@@ -231,9 +240,20 @@ body {
     0 40px 120px -30px rgba(0, 0, 0, 0.8);
   overflow: hidden;
 }
+@media (max-width: 720px) {
+  .sheet {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    background: linear-gradient(180deg, rgba(10, 10, 12, 0.92), rgba(8, 8, 10, 0.96));
+  }
+}
 .sheet-section {
   position: relative;
   padding: clamp(64px, 8vw, 120px) clamp(28px, 6vw, 80px);
+}
+.sheet-section:not(.hero) {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 640px;
 }
 .sheet-section + .sheet-section {
   border-top: 1px solid rgba(43, 43, 49, 0.6);
@@ -265,6 +285,14 @@ body {
   backdrop-filter: blur(10px);
   text-decoration: none;
   color: inherit;
+}
+@media (max-width: 720px) {
+  .nav-brand,
+  .nav-menu {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    background: rgba(12, 12, 14, 0.92);
+  }
 }
 .nav-brand .gem {
   width: 9px;

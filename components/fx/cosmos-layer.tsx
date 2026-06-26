@@ -1,11 +1,18 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { SaltField } from "@/components/fx/salt-field";
 
 /** Warstwa dolna „kosmos” — kropki, poświaty, kometa + plexus (SaltField). Parallax przy scrollu. */
 export function CosmosLayer() {
   const rootRef = useRef<HTMLDivElement>(null);
+  const [showPlexus, setShowPlexus] = useState(false);
+
+  useEffect(() => {
+    const small = window.matchMedia("(max-width: 720px)").matches;
+    if (small) return;
+    setShowPlexus(true);
+  }, []);
 
   useEffect(() => {
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -34,7 +41,7 @@ export function CosmosLayer() {
       <div className="cosmos-dots" />
       <div className="cosmos-glow" />
       <div className="cosmos-glow cosmos-glow-b" />
-      <SaltField />
+      {showPlexus ? <SaltField /> : null}
       <div className="comet-haze" />
       <div className="comet-trail" />
       <div className="comet-head" />

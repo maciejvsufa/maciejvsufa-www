@@ -1,9 +1,6 @@
-import Image from "next/image";
 import { hero } from "@/lib/content";
 import { site } from "@/lib/site";
 import { Rune } from "@/components/ui/rune";
-
-const PORTRAIT = "/portrait-cutout.png";
 
 export function Hero() {
   return (
@@ -52,14 +49,23 @@ export function Hero() {
       </div>
 
       <div className="portrait-wrap relative mx-auto aspect-[4/5] w-full max-w-[660px] overflow-hidden">
-        <Image
-          src={PORTRAIT}
-          alt="Maciej Sufa"
-          fill
-          sizes="(max-width: 720px) 85vw, 660px"
-          priority
-          className="object-contain object-bottom [filter:contrast(1.04)_saturate(0.94)]"
-        />
+        <picture className="absolute inset-0">
+          <source
+            media="(max-width: 720px)"
+            srcSet="/portrait-cutout-480.webp"
+            type="image/webp"
+          />
+          <source srcSet="/portrait-cutout.webp" type="image/webp" />
+          <img
+            src="/portrait-cutout-800.png"
+            alt="Maciej Sufa"
+            width={800}
+            height={995}
+            decoding="async"
+            fetchPriority="high"
+            className="h-full w-full object-contain object-bottom [filter:contrast(1.04)_saturate(0.94)]"
+          />
+        </picture>
         <div
           aria-hidden
           className="pointer-events-none absolute inset-0"

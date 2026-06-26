@@ -7,13 +7,13 @@ import { JakPracuje } from "@/components/sections/jak-pracuje";
 import { Stack } from "@/components/sections/stack";
 import { OMnie } from "@/components/sections/o-mnie";
 import { Kontakt } from "@/components/sections/kontakt";
-import { SiteEffects } from "@/components/fx/site-effects";
+import { SiteEffectsLazy } from "@/components/fx/site-effects-lazy";
 
 export default function Home() {
   return (
     <>
       <SiteNav />
-      <SiteEffects />
+      <SiteEffectsLazy />
       <main className="sheet" id="top">
         <Hero />
         <CoRobie />
