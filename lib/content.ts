@@ -26,9 +26,9 @@ const pl = {
   },
   hero: {
     aria: "Wprowadzenie",
-    badge: "Usprawniam i automatyzuję procesy w firmach z AI",
+    badge: "Usprawniam, automatyzuję procesy w firmach z AI",
     // twarde spacje ( ) po jednoliterowych „i/w/z" — żeby nie zostawały sierotami na końcu linii
-    h1: "Usprawniam i automatyzuję procesy w firmach z AI",
+    h1: "Usprawniam, automatyzuję procesy w firmach z AI",
     enTitle: "AI Process & Automation Specialist",
     subhead:
       "Audytuję i automatyzuję procesy w firmach — aplikacje, integracje i rozwiązania AI, które zdejmują z ludzi powtarzalną robotę, żeby został im czas i energia na to, czego AI nie potrafi: kreatywność, wyobraźnię i trafne decyzje.",
