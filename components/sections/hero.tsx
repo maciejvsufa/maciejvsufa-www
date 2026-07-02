@@ -1,11 +1,12 @@
-import { hero } from "@/lib/content";
+import type { SiteContent } from "@/lib/content";
 import { site } from "@/lib/site";
 import { Rune } from "@/components/ui/rune";
 
-export function Hero() {
+export function Hero({ t }: { t: SiteContent }) {
+  const hero = t.hero;
   return (
     <section
-      aria-label="Wprowadzenie"
+      aria-label={hero.aria}
       className="sheet-section hero grid min-h-[88vh] grid-cols-1 items-center gap-8 pt-[clamp(120px,14vw,180px)] md:grid-cols-[0.84fr_1.16fr] md:gap-[34px]"
     >
       <div>
@@ -28,10 +29,10 @@ export function Hero() {
 
         <div className="mt-[30px] flex flex-wrap items-center gap-3.5">
           <a className="btn btn-primary btn-sound" href="#co-robie">
-            Zobacz, co robię <span className="arr">↓</span>
+            {t.ui.heroCtaPrimary} <span className="arr">↓</span>
           </a>
-          <a className="btn btn-ghost btn-sound" href="/cv/Maciej_Sufa_CV.pdf">
-            Pobierz CV <span className="arr">↗</span>
+          <a className="btn btn-ghost btn-sound" href={t.ui.cvHref}>
+            {t.ui.heroCtaCv} <span className="arr">↗</span>
           </a>
         </div>
 

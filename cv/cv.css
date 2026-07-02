@@ -1,0 +1,379 @@
+/* maciejvsufa.pl CV — print-ready, charcoal + platinum */
+@page {
+  size: A4;
+  margin: 0;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+body {
+  font-family: "DM Sans", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  font-size: 10pt;
+  line-height: 1.45;
+  color: #1a1a1e;
+  background: #fff;
+}
+
+.cv {
+  display: grid;
+  grid-template-columns: 68mm 1fr;
+  width: 210mm;
+  height: 297mm;
+  max-height: 297mm;
+  overflow: hidden;
+  margin: 0 auto;
+  align-items: stretch;
+}
+
+.sidebar {
+  background: #0f1a2e;
+  color: #f3f1ec;
+  padding: 11mm 8mm 10mm;
+  display: flex;
+  flex-direction: column;
+  height: 297mm;
+  max-height: 297mm;
+  overflow: hidden;
+}
+
+.main {
+  background: #faf9f7;
+  padding: 11mm 10mm 9mm 9mm;
+  display: flex;
+  flex-direction: column;
+  height: 297mm;
+  max-height: 297mm;
+  overflow: hidden;
+}
+
+.sidebar-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar-body .section--skills {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin-bottom: 0;
+}
+
+.main-body {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2.2mm;
+}
+
+.main .col-footer {
+  color: #6b6558;
+  border-top-color: #d8d4cb;
+  text-align: right;
+  margin-top: auto;
+  flex-shrink: 0;
+  padding-top: 3mm;
+  margin-bottom: 0;
+}
+
+.col-footer {
+  flex-shrink: 0;
+  margin-top: 5mm;
+  padding-top: 3.5mm;
+  border-top: 1px solid rgba(201, 192, 173, 0.35);
+  font-size: 8pt;
+  line-height: 1.35;
+  color: #7c7a74;
+}
+
+.sidebar .col-footer {
+  font-size: 8.5pt;
+  color: #b8b5ad;
+  border-top-color: #1e2d4a;
+  margin-top: auto;
+}
+
+.photo-wrap {
+  width: 100%;
+  height: 52mm;
+  flex-shrink: 0;
+  overflow: hidden;
+  border-radius: 3px;
+  border: 1px solid rgba(201, 192, 173, 0.35);
+  margin-bottom: 5mm;
+}
+
+.photo-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 28%;
+  display: block;
+}
+
+.sidebar h1 {
+  font-size: 18pt;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin: 0 0 3px;
+  line-height: 1.1;
+  color: #f3f1ec;
+}
+
+.sidebar .title {
+  font-size: 10pt;
+  color: #c9c0ad;
+  line-height: 1.35;
+  margin: 0 0 5mm;
+  font-weight: 500;
+}
+
+.contact-block {
+  margin-bottom: 5mm;
+  font-size: 9.5pt;
+  line-height: 1.45;
+}
+
+.contact-block a {
+  color: #e8e2d4;
+  text-decoration: none;
+}
+
+.contact-block .label {
+  display: block;
+  font-size: 7.5pt;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #7c7a74;
+  margin-top: 4px;
+  margin-bottom: 1px;
+}
+
+.remote-note {
+  font-size: 8.8pt;
+  color: #b8b5ad;
+  margin-top: 4px;
+  padding-top: 4px;
+  border-top: 1px solid #1e2d4a;
+  margin-bottom: 0;
+}
+
+.cooperation-note {
+  font-size: 8.2pt;
+  color: #c9c0ad;
+  margin: 3px 0 0;
+  line-height: 1.35;
+}
+
+.section {
+  margin-bottom: 0;
+}
+
+.section-title {
+  font-size: 8pt;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.11em;
+  color: #c9c0ad;
+  margin: 0 0 2.5mm;
+  padding-bottom: 1.5mm;
+  border-bottom: 1px solid #1e2d4a;
+}
+
+.sidebar .section-title {
+  font-size: 8.5pt;
+}
+
+.skill-group {
+  margin-bottom: 3mm;
+}
+
+.skill-group h3 {
+  font-size: 9pt;
+  font-weight: 600;
+  color: #e8e2d4;
+  margin: 0 0 2px;
+}
+
+.skill-group ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.skill-group li {
+  font-size: 9pt;
+  color: #b8b5ad;
+  line-height: 1.4;
+  padding-left: 8px;
+  position: relative;
+}
+
+.skill-group li::before {
+  content: "·";
+  position: absolute;
+  left: 0;
+  color: #c9c0ad;
+}
+
+.cert-name {
+  font-size: 7pt;
+  font-weight: 600;
+  color: #f3f1ec;
+  margin: 0 0 1px;
+  line-height: 1.25;
+}
+
+.cert-issuer {
+  font-size: 6.8pt;
+  color: #c9c0ad;
+  margin: 0 0 1px;
+}
+
+.cert-desc {
+  font-size: 6.5pt;
+  color: #b8b5ad;
+  margin: 0;
+  line-height: 1.3;
+}
+
+.sidebar .section:last-child {
+  margin-bottom: 0;
+}
+
+.main .section-title {
+  color: #5c5648;
+  border-bottom-color: #d8d4cb;
+  font-size: 8pt;
+}
+
+.main {
+  font-size: 9pt;
+  line-height: 1.38;
+}
+
+.summary {
+  font-size: 8.8pt;
+  line-height: 1.4;
+  color: #2a2a2e;
+  margin: 0;
+}
+
+.job {
+  margin-bottom: 2mm;
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+
+.job-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 8px;
+  margin-bottom: 1px;
+}
+
+.job-period {
+  font-size: 7.5pt;
+  color: #6b6558;
+  white-space: nowrap;
+  font-weight: 500;
+}
+
+.job-role {
+  font-size: 9.2pt;
+  font-weight: 700;
+  color: #1a1a1e;
+  margin: 0;
+}
+
+.job-context {
+  font-size: 7.8pt;
+  color: #6b6558;
+  font-style: italic;
+  margin: 0 0 1px;
+}
+
+.job ul {
+  margin: 0;
+  padding-left: 12px;
+}
+
+.job li {
+  font-size: 8.5pt;
+  color: #2a2a2e;
+  margin-bottom: 1px;
+  line-height: 1.35;
+}
+
+.project {
+  margin-bottom: 1.2mm;
+  break-inside: avoid;
+}
+
+.project-name,
+.project-link {
+  font-size: 8.5pt;
+}
+
+.project-desc {
+  font-size: 8.2pt;
+  color: #3a3a3e;
+}
+
+.edu-line {
+  font-size: 8.5pt;
+  color: #3a3a3e;
+  margin: 0 0 1.5mm;
+  line-height: 1.35;
+}
+
+.project-link {
+  font-weight: 700;
+  color: #1a1a1e;
+  text-decoration: none;
+}
+
+.main .section:last-child {
+  margin-bottom: 0;
+}
+
+.main-cert {
+  margin-top: 1.5mm;
+}
+
+.main .cert-name {
+  font-size: 8.5pt;
+  font-weight: 700;
+  color: #1a1a1e;
+}
+
+.main .cert-issuer {
+  font-size: 8pt;
+  color: #6b6558;
+  font-style: normal;
+  line-height: 1.35;
+}
+
+@media print {
+  .cv {
+    width: 210mm;
+    height: 297mm;
+    max-height: 297mm;
+    overflow: hidden;
+  }
+}

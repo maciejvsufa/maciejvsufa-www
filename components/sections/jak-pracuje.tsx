@@ -1,11 +1,14 @@
-import { jakPracuje } from "@/lib/content";
+import type { SiteContent } from "@/lib/content";
 
 const markers = ["①", "②", "③"];
 
-export function JakPracuje() {
+export function JakPracuje({ t }: { t: SiteContent }) {
+  const jakPracuje = t.jakPracuje;
   return (
     <section id="jak-pracuje" aria-labelledby="jak-pracuje-title" className="sheet-section">
-      <span className="eyebrow font-mono">{jakPracuje.kicker} · Jak pracuję</span>
+      <span className="eyebrow font-mono">
+        {jakPracuje.kicker} · {jakPracuje.title}
+      </span>
       <div className="mt-[18px] flex max-w-[60ch] flex-col gap-3.5">
         <h2
           id="jak-pracuje-title"

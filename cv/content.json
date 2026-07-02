@@ -1,0 +1,200 @@
+{
+  "pl": {
+    "lang": "pl",
+    "labels": {
+      "profile": "Profil zawodowy",
+      "experience": "Doświadczenie",
+      "projects": "Wybrane projekty",
+      "education": "Wykształcenie",
+      "skills": "Kompetencje",
+      "certificate": "Certyfikat",
+      "born": "ur.",
+      "address": "Adres",
+      "remote": "Etat lub B2B · zdalnie PL / EU",
+      "cooperation": "Działalność gospodarcza — gotowość do B2B (atut dla firm)"
+    },
+    "header": {
+      "name": "Maciej Sufa",
+      "title": "Specjalista ds. automatyzacji procesów z AI",
+      "phone": "+48 504 003 019",
+      "email": "sufamaciej@gmail.com",
+      "website": "maciejvsufa.pl",
+      "websiteUrl": "https://maciejvsufa.pl",
+      "github": "github.com/maciejvsufa",
+      "githubUrl": "https://github.com/maciejvsufa",
+      "address": "Łódź, ul. Milionowa 243",
+      "born": "24.04.1988, Warszawa"
+    },
+    "summary": "Audytuję i automatyzuję procesy w firmach — aplikacje, integracje i rozwiązania AI zdejmujące powtarzalną robotę. Projektuję systemy z agentami AI, automatyzacje (n8n, Python, MCP) i pipeline'y social media. Audyt → prototyp → wdrożenie. Tło biznesowe: 3 lata obsługi klienta premium (salon Domoteka) i doświadczenie sceniczne (teatr, film, warsztaty) pomagają tłumaczyć technologię na język biznesu. Otwarty na etat lub B2B — posiadam działalność gospodarczą. Zdalnie · PL/EU.",
+    "skills": [
+      {
+        "group": "AI i automatyzacja",
+        "items": ["Agenci AI", "Prompt engineering", "n8n · ExoVault · MCP · API", "Audyt AI", "Multi-agent"]
+      },
+      {
+        "group": "Development",
+        "items": ["React · Next.js · TypeScript", "Python · Tailwind", "No-code + AI", "Docker · Git"]
+      },
+      {
+        "group": "Produkcja · miękkie",
+        "items": ["Social media automation", "Pipeline wideo", "Komunikacja z klientem", "Wdrożenia · szkolenia"]
+      },
+      {
+        "group": "Języki",
+        "items": ["Polski — ojczysty", "Angielski — B1/B2 (biegle dokumentacja techniczna, komunikatywnie w mowie)"]
+      }
+    ],
+    "experience": [
+      {
+        "period": "2026 – obecnie",
+        "role": "Współtwórca",
+        "company": "Asistel",
+        "context": "Platforma AI dla aptek i firm wielooddziałowych (asistel.pl) — współpraca w 3-osobowym, doświadczonym zespole",
+        "bullets": [
+          "Produkt, warstwa AI (dialog, tickety) i komunikacja z klientem; panel zarządzania zespołem i procesami w firmie",
+          "PWA Asistel: notatki głosowe speech-to-text — farmaceuta nagrywa jednym dotknięciem, system zapisuje tekst; praca bez odrywania rąk",
+          "Głosowy agent odbierający połączenia — code-review i wspólne zatwierdzanie w zespole"
+        ]
+      },
+      {
+        "period": "2025 – obecnie",
+        "role": "Założyciel & AI Solutions Builder",
+        "company": "LEV",
+        "context": "Własna praktyka — rozwiązania AI dla firm",
+        "bullets": [
+          "Audyt → prototyp → wdrożenie: automatyzacje, aplikacje, strony, integracje API",
+          "ExoVault (exovault.co) jako narzędzie pracy: szyfrowana pamięć agenta AI, organizacja zadań i komunikacja zespołu",
+          "Automatyzacja social media, szkolenia zespołów"
+        ]
+      }
+    ],
+    "projects": [
+      {
+        "name": "Asistel",
+        "url": "https://asistel.pl",
+        "desc": "Platforma AI dla aptek i firm wielooddziałowych, współtworzona w 3-osobowym zespole: głosowy agent AI odbierający połączenia, PWA z notatkami speech-to-text, panel zarządzania zespołem i procesami"
+      },
+      {
+        "name": "Studio AI",
+        "desc": "Autorski pipeline produkcji wideo end-to-end: scenariusz → lektor (TTS, forced alignment) → ilustracje → montaż i publikacja (Python, ffmpeg, agenci Claude, n8n; ExoVault jako pamięć i tablica zadań zespołu agentów)"
+      },
+      {
+        "name": "Organizacja Myśląca",
+        "desc": "System wspierania podejmowania decyzji oparty o myślenie systemowe (Senge): drabina wnioskowania, dialog i dyskusja, archetypy systemowe — prototypowanie narzędzia z agentami AI"
+      },
+      {
+        "name": "maciejvsufa.pl",
+        "url": "https://maciejvsufa.pl",
+        "desc": "Portfolio Next.js (PL/EN), Lighthouse 99+"
+      }
+    ],
+    "education": {
+      "line": "Warszawska Szkoła Filmowa (WSF) — aktorstwo (2008–2010), kształcenie wyższe"
+    },
+    "certificate": {
+      "name": "Umiejętności Jutra: AI — Wykorzystanie AI w rozwoju firmy",
+      "issuer": "Google & SGH (Szkoła Główna Handlowa)",
+      "year": "2025",
+      "desc": "Program praktyczny Google i SGH: AI w produktywności, marketingu, sprzedaży, analityce i agentach AI; przygotowanie do roli lidera wdrożeń AI"
+    }
+  },
+  "en": {
+    "lang": "en",
+    "labels": {
+      "profile": "Professional Profile",
+      "experience": "Experience",
+      "projects": "Selected Projects",
+      "education": "Education",
+      "skills": "Skills",
+      "certificate": "Certificate",
+      "born": "b.",
+      "address": "Address",
+      "remote": "Employment or B2B · remote PL / EU",
+      "cooperation": "Registered sole proprietorship — B2B-ready (often preferred by companies)"
+    },
+    "header": {
+      "name": "Maciej Sufa",
+      "title": "AI Process & Automation Specialist",
+      "phone": "+48 504 003 019",
+      "email": "sufamaciej@gmail.com",
+      "website": "maciejvsufa.pl",
+      "websiteUrl": "https://maciejvsufa.pl",
+      "github": "github.com/maciejvsufa",
+      "githubUrl": "https://github.com/maciejvsufa",
+      "address": "Łódź, ul. Milionowa 243, Poland",
+      "born": "24 April 1988, Warsaw"
+    },
+    "summary": "I audit and automate business processes with AI — apps, integrations and solutions that remove repetitive work. I design AI-agent systems, automations (n8n, Python, MCP) and social media pipelines. Audit → prototype → deployment. Business background: 3 years in premium customer service (Domoteka showroom) plus stage experience (theatre, film, workshops) help me translate technology into business language. Open to employment or B2B — registered sole proprietorship. Remote · PL/EU.",
+    "skills": [
+      {
+        "group": "AI & automation",
+        "items": ["AI agents", "Prompt engineering", "n8n · ExoVault · MCP · API", "AI audits", "Multi-agent"]
+      },
+      {
+        "group": "Development",
+        "items": ["React · Next.js · TypeScript", "Python · Tailwind", "No-code + AI", "Docker · Git"]
+      },
+      {
+        "group": "Production · soft",
+        "items": ["Social media automation", "Video pipeline", "Client communication", "Deployments · training"]
+      },
+      {
+        "group": "Languages",
+        "items": ["Polish — native", "English — B1/B2 (fluent with technical documentation, conversational spoken)"]
+      }
+    ],
+    "experience": [
+      {
+        "period": "2026 – present",
+        "role": "Co-founder",
+        "company": "Asistel",
+        "context": "AI platform for pharmacies and multi-branch companies (asistel.pl) — 3-person experienced team",
+        "bullets": [
+          "Product, AI layer (dialog, tickets) and client communication; team and process management panel",
+          "Asistel PWA: speech-to-text voice notes — one-tap recording, saved as text; pharmacists work hands-free",
+          "Voice agent handling calls — code review and shared approval in the team"
+        ]
+      },
+      {
+        "period": "2025 – present",
+        "role": "Founder & AI Solutions Builder",
+        "company": "LEV",
+        "context": "Independent practice — AI solutions for business",
+        "bullets": [
+          "Audit → prototype → deployment: automations, apps, websites, API integrations",
+          "ExoVault (exovault.co) as a work tool: encrypted AI agent memory, task organization and team communication",
+          "Social media automation, team training"
+        ]
+      }
+    ],
+    "projects": [
+      {
+        "name": "Asistel",
+        "url": "https://asistel.pl",
+        "desc": "AI platform for pharmacies and multi-branch companies, co-created in a 3-person team: AI voice agent handling calls, PWA with speech-to-text notes, team & process management panel"
+      },
+      {
+        "name": "Studio AI",
+        "desc": "End-to-end video production pipeline: script → voiceover (TTS, forced alignment) → illustrations → editing and publishing (Python, ffmpeg, Claude agents, n8n; ExoVault as agent-team memory and task board)"
+      },
+      {
+        "name": "Organizacja Myśląca (Thinking Organization)",
+        "desc": "Decision-support system based on systems thinking (Senge): ladder of inference, dialogue vs. discussion, system archetypes — prototyping the tool with AI agents"
+      },
+      {
+        "name": "maciejvsufa.pl",
+        "url": "https://maciejvsufa.pl",
+        "desc": "Next.js portfolio (PL/EN), Lighthouse 99+"
+      }
+    ],
+    "education": {
+      "line": "Warsaw Film School (WSF) — acting (2008–2010), higher education"
+    },
+    "certificate": {
+      "name": "AI Skills for Tomorrow — Using AI in Business Development",
+      "issuer": "Google & SGH (Warsaw School of Economics)",
+      "year": "2025",
+      "desc": "Practical Google & SGH program: AI in productivity, marketing, sales, analytics and AI agents; AI implementation leadership"
+    }
+  }
+}

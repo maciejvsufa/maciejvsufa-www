@@ -1,15 +1,18 @@
-import { projekty } from "@/lib/content";
+import type { SiteContent } from "@/lib/content";
 
-export function Projekty() {
+export function Projekty({ t }: { t: SiteContent }) {
+  const projekty = t.projekty;
   return (
     <section id="projekty" aria-labelledby="projekty-title" className="sheet-section">
-      <span className="eyebrow font-mono">{projekty.kicker} · Wybrane projekty</span>
+      <span className="eyebrow font-mono">
+        {projekty.kicker} · {projekty.title}
+      </span>
       <div className="mt-[18px] max-w-[60ch]">
         <h2
           id="projekty-title"
           className="font-display text-[clamp(30px,3.6vw,46px)] font-semibold leading-[1.04] tracking-[-0.02em]"
         >
-          Rzeczy, które zbudowałem.
+          {projekty.h2}
         </h2>
       </div>
 
@@ -28,7 +31,7 @@ export function Projekty() {
                 ))}
               </div>
             )}
-            {p.link && (
+            {"link" in p && p.link && (
               <a
                 href={p.link}
                 target="_blank"

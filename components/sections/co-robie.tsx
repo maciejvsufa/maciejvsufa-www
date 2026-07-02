@@ -1,17 +1,20 @@
-import { coRobie } from "@/lib/content";
+import type { SiteContent } from "@/lib/content";
 
-export function CoRobie() {
+export function CoRobie({ t }: { t: SiteContent }) {
+  const coRobie = t.coRobie;
   return (
     <section id="co-robie" aria-labelledby="co-robie-title" className="sheet-section">
-      <span className="eyebrow font-mono">{coRobie.kicker} · Co robię</span>
+      <span className="eyebrow font-mono">
+        {coRobie.kicker} · {coRobie.title}
+      </span>
       <div className="mt-[18px] flex max-w-[60ch] flex-col gap-3.5">
         <h2
           id="co-robie-title"
           className="font-display text-[clamp(30px,3.6vw,46px)] font-semibold leading-[1.04] tracking-[-0.02em]"
         >
-          Mniej powtarzalnej roboty.
+          {coRobie.h2a}
           <br />
-          Więcej miejsca na człowieka.
+          {coRobie.h2b}
         </h2>
         <p className="max-w-[54ch] text-[clamp(15px,1.3vw,17px)] leading-[1.6] text-text2">{coRobie.lead}</p>
       </div>

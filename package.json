@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "optimize-images": "node scripts/optimize-images.mjs"
+    "optimize-images": "node scripts/optimize-images.mjs",
+    "build:cv": "node scripts/build-cv.mjs"
   },
   "dependencies": {
     "next": "16.2.9",
@@ -25,6 +26,8 @@
     "eslint-config-next": "16.2.9",
     "sharp": "^0.35.2",
     "tailwindcss": "^4",
-    "typescript": "^5"
+    "typescript": "^5",
+    "docx": "^9.5.0",
+    "puppeteer": "^24.6.1"
   }
 }

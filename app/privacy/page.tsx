@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { SiteNav } from "@/components/site-nav";
 import { SiteFooter } from "@/components/site-footer";
 import { site } from "@/lib/site";
+import { content } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "Polityka prywatności — Maciej Sufa",
@@ -11,7 +12,7 @@ export const metadata: Metadata = {
 export default function Privacy() {
   return (
     <>
-      <SiteNav />
+      <SiteNav t={content.pl} />
       <main id="main" className="pad-x mx-auto max-w-[760px] py-20">
         <h1 className="font-display text-[clamp(28px,4vw,40px)] font-semibold text-text">
           Polityka prywatności
@@ -44,7 +45,7 @@ export default function Privacy() {
           </p>
         </div>
       </main>
-      <SiteFooter />
+      <SiteFooter t={content.pl} />
     </>
   );
 }

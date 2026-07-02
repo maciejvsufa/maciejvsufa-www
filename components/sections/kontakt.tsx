@@ -1,10 +1,13 @@
-import { kontakt } from "@/lib/content";
+import type { SiteContent } from "@/lib/content";
 import { site } from "@/lib/site";
 
-export function Kontakt() {
+export function Kontakt({ t }: { t: SiteContent }) {
+  const kontakt = t.kontakt;
   return (
     <section id="kontakt" aria-labelledby="kontakt-title" className="sheet-section pb-[clamp(80px,9vw,130px)] text-center">
-      <span className="eyebrow mx-auto justify-center font-mono">{kontakt.kicker} · Porozmawiajmy</span>
+      <span className="eyebrow mx-auto justify-center font-mono">
+        {kontakt.kicker} · {kontakt.title}
+      </span>
       <h2
         id="kontakt-title"
         className="mx-auto mt-[18px] max-w-[18ch] font-display text-[clamp(34px,5vw,64px)] font-semibold leading-[1.02] tracking-[-0.025em]"

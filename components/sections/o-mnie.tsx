@@ -1,19 +1,23 @@
 import Image from "next/image";
-import { oMnie } from "@/lib/content";
+import type { SiteContent } from "@/lib/content";
 import { CertBadge } from "@/components/ui/cert-badge";
 
-export function OMnie() {
+export function OMnie({ t }: { t: SiteContent }) {
+  const oMnie = t.oMnie;
   return (
     <section id="o-mnie" aria-labelledby="o-mnie-title" className="sheet-section">
       <div className="grid grid-cols-1 items-center gap-12 md:grid-cols-[1.1fr_0.9fr] md:gap-12">
         <div>
-          <span className="eyebrow font-mono">{oMnie.kicker} · O mnie</span>
+          <span className="eyebrow font-mono">
+            {oMnie.kicker} · {oMnie.title}
+          </span>
           <p
             id="o-mnie-title"
             className="mt-[18px] font-display text-[clamp(22px,2.8vw,34px)] font-medium leading-[1.32] tracking-[-0.015em]"
           >
-            Najcenniejszy zasób to nie&nbsp;pieniądze — to <em className="text-accent2">czas życia</em>. Buduję rozwiązania,
-            dzięki którym robotę robią roboty, a&nbsp;życie zostaje człowiekowi.
+            {oMnie.mottoParts.before}
+            <em className="text-accent2">{oMnie.mottoParts.em}</em>
+            {oMnie.mottoParts.after}
           </p>
           <p className="mt-[22px] max-w-[46ch] text-[15.5px] leading-[1.7] text-text2">{oMnie.background}</p>
           <p className="mt-[18px] max-w-[52ch] text-[15.5px] leading-[1.7] text-text2">{oMnie.teamIntro}</p>

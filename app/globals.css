@@ -332,6 +332,33 @@ body {
   background: var(--accent2) !important;
 }
 
+/* — przełącznik języka PL / EN (prawy górny róg, w pigułce nav) — */
+.lang-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  margin-left: 2px;
+  padding: 0 4px;
+  letter-spacing: 0.06em;
+}
+.nav-menu .lang-switch a.lang-lnk {
+  padding: 8px 7px;
+  font-size: 12px;
+  color: var(--text3);
+}
+.nav-menu .lang-switch a.lang-lnk:hover {
+  color: var(--text);
+  background: rgba(var(--accent-rgb), 0.1);
+}
+.nav-menu .lang-switch a.lang-active {
+  color: var(--accent);
+  font-weight: 500;
+}
+.lang-sep {
+  color: var(--text3);
+  opacity: 0.6;
+}
+
 /* — eyebrow sekcji — */
 .eyebrow {
   display: inline-flex;

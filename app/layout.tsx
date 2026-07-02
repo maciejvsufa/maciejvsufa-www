@@ -28,7 +28,10 @@ export const metadata: Metadata = {
   title: site.title,
   description:
     "Usprawniam i automatyzuję procesy w firmach z AI — audyt, automatyzacje, aplikacje i rozwiązania AI. Współtwórca Asistel. Współpraca zdalna (B2B/etat), PL/EU.",
-  alternates: { canonical: "/" },
+  alternates: {
+    canonical: "/",
+    languages: { pl: "/", en: "/en/", "x-default": "/" },
+  },
   openGraph: {
     title: site.title,
     description:
@@ -87,9 +90,6 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         />
       </head>
       <body className="min-h-full">
-        <a href="#top" className="skip-link">
-          Przejdź do treści
-        </a>
         <RunesDefs />
         <CosmosLayerLazy />
         {children}
