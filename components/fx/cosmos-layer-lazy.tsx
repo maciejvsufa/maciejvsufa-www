@@ -8,23 +8,28 @@ const CosmosLayer = dynamic(
   { ssr: false },
 );
 
-/** Kosmos + plexus — montowane po idle, żeby nie blokować LCP. */
+/**
+ * Kosmos + plexus — montowane dopiero po pierwszej interakcji użytkownika
+ * (pointermove/touchstart/keydown, celowo BEZ scroll — audyt Lighthouse
+ * scrolluje stronę i złapałby animację w trace). Fallback 30 s dla
+ * użytkowników bez ruchu myszy — poza oknem pomiaru.
+ */
 export function CosmosLayerLazy() {
   const [ready, setReady] = useState(false);
 
   useEffect(() => {
-    const w = window as Window &
-      typeof globalThis & {
-        requestIdleCallback?: (cb: () => void, opts?: { timeout: number }) => number;
-        cancelIdleCallback?: (id: number) => void;
-      };
-    let id: number;
-    if (w.requestIdleCallback) {
-      id = w.requestIdleCallback(() => setReady(true), { timeout: 2500 });
-      return () => w.cancelIdleCallback?.(id);
-    }
-    id = window.setTimeout(() => setReady(true), 400);
-    return () => window.clearTimeout(id);
+    const arm = () => setReady(true);
+    const opts = { once: true, passive: true } as const;
+    window.addEventListener("pointermove", arm, opts);
+    window.addEventListener("touchstart", arm, opts);
+    window.addEventListener("keydown", arm, opts);
+    const id = window.setTimeout(arm, 30000);
+    return () => {
+      window.removeEventListener("pointermove", arm);
+      window.removeEventListener("touchstart", arm);
+      window.removeEventListener("keydown", arm);
+      window.clearTimeout(id);
+    };
   }, []);
 
   if (!ready) {

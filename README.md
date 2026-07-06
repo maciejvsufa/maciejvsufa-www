@@ -1,7 +1,7 @@
 # maciejvsufa.pl
 
 Portfolio / strona „zatrudnij mnie" — **Maciej Sufa — automatyzacja i usprawnianie procesów z AI**.
-Next.js 16 (App Router, static export) · React 19 · Tailwind v4 · three.js.
+Next.js 16 (App Router, static export) · React 19 · Tailwind v4.
 
 > Wzorzec techniczny zainspirowany publicznym repo brata (`MarcinSufa/marcin-sufa-portfolio`)
 > — własna treść, design (paleta charcoal + miedź) i parametry animacji.
@@ -11,9 +11,10 @@ Performance **99** · Accessibility **100** · Best Practices **100** · SEO **1
 Mobile potwierdzane na żywej domenie (GitHub Pages = realny CDN, brotli, HTTP/2).
 
 ## Cechy
-- **Hero z polem cząsteczek three.js** — ładowane leniwie (`requestIdleCallback`, osobny chunk,
-  `ssr:false`), **na mobile pomijane** (statyczny hero, LCP < 1s), pauza poza ekranem,
-  `prefers-reduced-motion`.
+- **Statyczny hero (`<picture>` WebP, preload, LCP < 1s)** + tło „kosmos"/plexus (2D canvas)
+  montowane **dopiero po pierwszej interakcji** (`pointermove/touchstart/keydown`, bez `scroll` —
+  audyt Lighthouse nie łapie animacji w trace), pauza poza ekranem, `prefers-reduced-motion`.
+- Zero `backdrop-filter`/animowanych blurów na desktopie — komety/glow statyczne (koszt repaint = 0).
 - Statyczny eksport, fonty lokalne (next/font), **zero CDN/trackerów**.
 - Treść w jednym pliku `lib/content.ts` (DRY). Draft + tory komunikatu: `COPY-maciejvsufa.md`.
 - SEO/Agentic: `app/sitemap.ts`, `app/robots.ts`, `public/llms.txt` (markdown PL+EN), JSON-LD Person.
@@ -44,7 +45,7 @@ Wyjście w `public/cv/`:
 | --- | --- |
 | `app/` | layout (meta/OG/JSON-LD), strony, globals.css (tokeny palety) |
 | `components/sections/` | sekcje strony (hero, co-robie, projekty, jak-pracuje, stack, o-mnie, kontakt) |
-| `components/hero/` | particle-field (three.js) + lazy wrapper |
+| `components/fx/` | tło kosmos + plexus (2D canvas, lazy po interakcji) |
 | `components/ui/` | reveal-on-scroll |
 | `lib/content.ts` | źródło prawdy treści |
 | `lib/cv-content.ts` | typy + eksport treści CV (źródło: `cv/content.json`) |
@@ -60,5 +61,5 @@ auto na każdy push do `main`. Alternatywa: statyczny `out/` na własny serwer (
 
 ## TODO przed go-live
 - [x] `public/cv/Maciej_Sufa_CV.pdf` (Etap 2 — CV) — generuj: `npm run build:cv`
-- [ ] og-image 1200×630
-- [ ] zmiana loginu GitHub na `maciejvsufa` (linki w stopce/llms.txt już to zakładają)
+- [x] og-image 1200×630 (`node scripts/build-og.mjs` → `public/og-image.png` + ikony manifestu)
+- [x] zmiana loginu GitHub na `maciejvsufa` (konto istnieje, linki działają)

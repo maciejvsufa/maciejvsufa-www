@@ -7,6 +7,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import puppeteer from "puppeteer";
+import sharp from "sharp";
 import {
   Document,
   Packer,
@@ -30,9 +31,14 @@ const OUT_DIR = path.join(ROOT, "public", "cv");
 
 const content = JSON.parse(fs.readFileSync(path.join(CV_DIR, "content.json"), "utf8"));
 const css = fs.readFileSync(path.join(CV_DIR, "cv.css"), "utf8");
-const photoPath = path.join(OUT_DIR, "maciej-garnitur.png");
-const photoBase64 = fs.readFileSync(photoPath).toString("base64");
-const photoDataUrl = `data:image/png;base64,${photoBase64}`;
+// Zdjęcie kompresowane przed osadzeniem (2 MB PNG → ~100 KB JPEG),
+// inaczej base64 wielokrotnie puchnie w HTML/PDF/DOCX.
+const photoSrcPath = path.join(CV_DIR, "maciej-garnitur.png");
+const photoBuffer = await sharp(photoSrcPath)
+  .resize({ width: 600 })
+  .jpeg({ quality: 82, mozjpeg: true })
+  .toBuffer();
+const photoDataUrl = `data:image/jpeg;base64,${photoBuffer.toString("base64")}`;
 
 function esc(s) {
   return String(s)
@@ -208,7 +214,6 @@ function bodyText(text, opts = {}) {
 async function buildDocx(locale, outPath) {
   const d = content[locale];
   const { header, labels, education, certificate } = d;
-  const photoBuffer = fs.readFileSync(photoPath);
 
   const sidebarChildren = [
     new Paragraph({
@@ -217,7 +222,7 @@ async function buildDocx(locale, outPath) {
         new ImageRun({
           data: photoBuffer,
           transformation: { width: 130, height: 165 },
-          type: "png",
+          type: "jpg",
         }),
       ],
       spacing: { after: 200 },

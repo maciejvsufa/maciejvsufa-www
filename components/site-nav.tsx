@@ -1,4 +1,5 @@
 import type { SiteContent } from "@/lib/content";
+import { SiteNavMobile } from "@/components/site-nav-mobile";
 
 export function SiteNav({ t }: { t: SiteContent }) {
   const isEn = t.lang === "en";
@@ -29,6 +30,12 @@ export function SiteNav({ t }: { t: SiteContent }) {
             EN
           </a>
         </span>
+        <SiteNavMobile
+          links={t.ui.nav}
+          cta={{ href: "#kontakt", label: t.ui.navCta }}
+          menuOpen={t.ui.menuOpen}
+          menuClose={t.ui.menuClose}
+        />
       </div>
     </nav>
   );

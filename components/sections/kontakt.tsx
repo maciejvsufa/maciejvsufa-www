@@ -1,5 +1,6 @@
 import type { SiteContent } from "@/lib/content";
 import { site } from "@/lib/site";
+import { CopyEmail } from "@/components/ui/copy-email";
 
 export function Kontakt({ t }: { t: SiteContent }) {
   const kontakt = t.kontakt;
@@ -20,6 +21,7 @@ export function Kontakt({ t }: { t: SiteContent }) {
         <a className="btn btn-primary btn-sound" href={`mailto:${site.email}`}>
           ↗ {site.email}
         </a>
+        <CopyEmail email={site.email} label={t.ui.copyEmail} copied={t.ui.emailCopied} />
         <a
           className="btn btn-ghost btn-sound"
           href={site.socials.linkedin}

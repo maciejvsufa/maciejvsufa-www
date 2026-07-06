@@ -40,8 +40,13 @@ export const metadata: Metadata = {
     siteName: site.name,
     locale: "pl_PL",
     type: "website",
+    images: [{ url: "/og-image.png", width: 1200, height: 630, alt: site.title }],
   },
-  twitter: { card: "summary_large_image", title: site.title },
+  twitter: { card: "summary_large_image", title: site.title, images: ["/og-image.png"] },
+  icons: {
+    icon: [{ url: "/icon-192.png", sizes: "192x192", type: "image/png" }],
+    apple: "/apple-touch-icon.png",
+  },
   robots: { index: true, follow: true },
 };
 

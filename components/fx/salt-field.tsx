@@ -40,8 +40,8 @@ export function SaltField() {
     resize();
 
     type N = { x: number; y: number; vx: number; vy: number };
-    const COUNT = small ? 38 : 92;
-    const LINK = small ? 150 : 168; // dystans łączenia węzłów
+    const COUNT = small ? 38 : 48;
+    const LINK = small ? 150 : 200; // dystans łączenia węzłów (dłuższy przy mniejszym COUNT)
     const nodes: N[] = [];
     for (let i = 0; i < COUNT; i++) {
       nodes.push({

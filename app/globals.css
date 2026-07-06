@@ -100,15 +100,6 @@ body {
     opacity: 1;
   }
 }
-@keyframes floatGlow {
-  0%,
-  100% {
-    transform: translate(0, 0);
-  }
-  50% {
-    transform: translate(-18px, 22px);
-  }
-}
 @keyframes pulseDot {
   0%,
   100% {
@@ -118,17 +109,9 @@ body {
     opacity: 0.35;
   }
 }
-@keyframes cometBreath {
-  0%,
-  100% {
-    opacity: 0.7;
-  }
-  50% {
-    opacity: 1;
-  }
-}
-
-/* — kosmos (warstwa dolna) — */
+/* — kosmos (warstwa dolna) —
+   Statyczne (bez animation/filter) — animowany blur+blend kosztował
+   ciągły repaint na desktopie (PageSpeed 75). */
 .cosmos-dots {
   position: absolute;
   inset: -10% -10%;
@@ -146,7 +129,6 @@ body {
   pointer-events: none;
   border-radius: 50%;
   background: radial-gradient(circle, rgba(var(--accent-rgb), 0.14), transparent 68%);
-  animation: floatGlow 14s ease-in-out infinite;
 }
 .cosmos-glow-b {
   left: 2%;
@@ -154,7 +136,6 @@ body {
   bottom: -6%;
   width: 520px;
   height: 520px;
-  animation-duration: 18s;
   opacity: 0.7;
 }
 .comet-haze {
@@ -165,17 +146,19 @@ body {
   width: 130%;
   height: 360px;
   transform: rotate(-14deg);
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    rgba(232, 226, 212, 0.06) 28%,
-    rgba(240, 236, 224, 0.13) 62%,
-    rgba(232, 226, 212, 0.05) 82%,
-    transparent 100%
-  );
-  filter: blur(46px);
+  /* miękka smuga bez filter:blur — warstwowe gradienty imitują rozmycie */
+  background:
+    radial-gradient(60% 120% at 62% 50%, rgba(240, 236, 224, 0.1), transparent 75%),
+    radial-gradient(85% 160% at 45% 50%, rgba(232, 226, 212, 0.05), transparent 80%),
+    linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(232, 226, 212, 0.04) 28%,
+      rgba(240, 236, 224, 0.08) 62%,
+      rgba(232, 226, 212, 0.03) 82%,
+      transparent 100%
+    );
   mix-blend-mode: screen;
-  animation: cometBreath 13s ease-in-out infinite;
 }
 .comet-trail {
   position: absolute;
@@ -197,7 +180,6 @@ body {
   );
   filter: blur(0.6px);
   mix-blend-mode: screen;
-  animation: cometBreath 13s ease-in-out infinite;
 }
 .comet-head {
   position: absolute;
@@ -212,7 +194,6 @@ body {
   box-shadow:
     0 0 14px 4px rgba(248, 244, 236, 0.7),
     0 0 40px 10px rgba(232, 226, 212, 0.35);
-  animation: cometBreath 13s ease-in-out infinite;
 }
 @media (max-width: 720px) {
   .cosmos-glow,
@@ -230,22 +211,14 @@ body {
   z-index: 1;
   width: min(1180px, calc(100% - clamp(28px, 8vw, 128px)));
   margin: clamp(16px, 2.2vw, 28px) auto;
-  background: linear-gradient(180deg, rgba(10, 10, 12, 0.74), rgba(8, 8, 10, 0.86));
+  /* bez backdrop-filter — blur nad animującym tłem = stały koszt compositingu */
+  background: linear-gradient(180deg, rgba(10, 10, 12, 0.9), rgba(8, 8, 10, 0.95));
   border: 1px solid var(--border);
   border-radius: 30px;
-  backdrop-filter: blur(12px) saturate(1.05);
-  -webkit-backdrop-filter: blur(12px) saturate(1.05);
   box-shadow:
     0 1px 0 rgba(255, 255, 255, 0.05) inset,
     0 40px 120px -30px rgba(0, 0, 0, 0.8);
   overflow: hidden;
-}
-@media (max-width: 720px) {
-  .sheet {
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
-    background: linear-gradient(180deg, rgba(10, 10, 12, 0.92), rgba(8, 8, 10, 0.96));
-  }
 }
 .sheet-section {
   position: relative;
@@ -281,18 +254,9 @@ body {
   border-radius: 999px;
   font-size: 13px;
   letter-spacing: 0.02em;
-  background: rgba(12, 12, 14, 0.6);
-  backdrop-filter: blur(10px);
+  background: rgba(12, 12, 14, 0.92);
   text-decoration: none;
   color: inherit;
-}
-@media (max-width: 720px) {
-  .nav-brand,
-  .nav-menu {
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
-    background: rgba(12, 12, 14, 0.92);
-  }
 }
 .nav-brand .gem {
   width: 9px;
@@ -308,8 +272,7 @@ body {
   padding: 6px;
   border: 1px solid var(--border);
   border-radius: 999px;
-  background: rgba(12, 12, 14, 0.6);
-  backdrop-filter: blur(10px);
+  background: rgba(12, 12, 14, 0.92);
 }
 .nav-menu a {
   padding: 8px 14px;
@@ -496,8 +459,91 @@ body {
   overflow-x: hidden;
 }
 
+/* — hamburger (tylko <=820px, tam gdzie znikają .nav-lnk) — */
+.nav-burger-wrap {
+  display: none;
+  position: relative;
+}
+.nav-burger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 999px;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+.burger-ico {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.burger-ico span {
+  width: 16px;
+  height: 1.5px;
+  background: var(--text2);
+  border-radius: 1px;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+.burger-ico.is-open span:nth-child(1) {
+  transform: translateY(5.5px) rotate(45deg);
+}
+.burger-ico.is-open span:nth-child(2) {
+  opacity: 0;
+}
+.burger-ico.is-open span:nth-child(3) {
+  transform: translateY(-5.5px) rotate(-45deg);
+}
+.nav-panel {
+  position: absolute;
+  right: -6px;
+  top: calc(100% + 14px);
+  min-width: 190px;
+  display: flex;
+  flex-direction: column;
+  padding: 8px;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  background: rgba(12, 12, 14, 0.97);
+  box-shadow: 0 18px 48px -18px rgba(0, 0, 0, 0.9);
+}
+.nav-panel-lnk {
+  padding: 11px 14px;
+  border-radius: 12px;
+  font-size: 14px;
+  color: var(--text2);
+  text-decoration: none;
+}
+.nav-panel-lnk:hover {
+  color: var(--text);
+  background: rgba(var(--accent-rgb), 0.1);
+}
+
+.nav-menu a.nav-panel-cta {
+  margin-top: 4px;
+  color: var(--ink);
+  background: var(--accent);
+  font-weight: 500;
+  text-align: center;
+}
+.nav-menu a.nav-panel-cta:hover {
+  color: var(--ink);
+  background: var(--accent2);
+}
+
 @media (max-width: 820px) {
   .nav-menu .nav-lnk {
+    display: none;
+  }
+  .nav-burger-wrap {
+    display: block;
+  }
+}
+/* wąskie ekrany: CTA przenosi się do panelu hamburgera, żeby nav się mieścił */
+@media (max-width: 640px) {
+  .nav-menu .nav-cta {
     display: none;
   }
 }
@@ -511,12 +557,6 @@ body {
     opacity: 1 !important;
     transform: none !important;
     transition: none !important;
-  }
-  .comet-haze,
-  .comet-trail,
-  .comet-head,
-  .cosmos-glow {
-    animation: none;
   }
   *,
   *::before,
