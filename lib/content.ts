@@ -30,12 +30,12 @@ const pl = {
   },
   hero: {
     aria: "Wprowadzenie",
-    badge: "Usprawniam, automatyzuję procesy w firmach z AI",
+    badge: "Tworzę content na social media — napędzany AI",
     // twarde spacje ( ) po jednoliterowych „i/w/z" — żeby nie zostawały sierotami na końcu linii
-    h1: "Usprawniam, automatyzuję procesy w firmach z AI",
-    enTitle: "AI Process & Automation Specialist",
+    h1: "Tworzę content na social media — napędzany AI",
+    enTitle: "Social Media Content Creator (AI-powered)",
     subhead:
-      "Audytuję i automatyzuję procesy w firmach — aplikacje, integracje i rozwiązania AI, które zdejmują z ludzi powtarzalną robotę, żeby został im czas i energia na to, czego AI nie potrafi: kreatywność, wyobraźnię i trafne decyzje.",
+      "Od pomysłu po publikację: scenariusze i teksty, wideo (CapCut Pro, DaVinci Resolve), grafiki i miniatury (Canva, GPT-Image), kalendarz treści sprzężony z trendami i analityką. Prowadzę własne kanały na autorskim, zautomatyzowanym pipeline z agentami AI — i buduję takie systemy dla firm.",
     en: "Współpraca zdalna · PL / EU · English: communicative, AI-assisted.",
   },
   coRobie: {
@@ -43,8 +43,13 @@ const pl = {
     kicker: "01",
     h2a: "Mniej powtarzalnej roboty.",
     h2b: "Więcej miejsca na człowieka.",
-    lead: "Aplikacje, automatyzacje, systemy z agentami AI — od pierwszego ekranu po wdrożenie.",
+    lead: "Content, automatyzacje i systemy z agentami AI — od pomysłu po publikację.",
     items: [
+      {
+        h: "Content i social media",
+        p: "Prowadzę kanały end-to-end: scenariusze i redakcja, nagrania i montaż (CapCut Pro, DaVinci Resolve), miniatury i klatki-hook (GPT-Image, Canva), publikacja wg kalendarza sprzężonego z trendami i analityką. YouTube long / Reels / karuzele.",
+        note: "Żywe portfolio: kanały Metoda Sufy (YT/IG/FB).",
+      },
       {
         h: "Aplikacje i strony",
         p: "Tworzę aplikacje webowe i strony w React / Next.js i w podejściu no-code + AI. Od pierwszego ekranu po wdrożenie — szybko, czysto, z dbałością o wydajność i UX.",
@@ -123,6 +128,7 @@ const pl = {
     kicker: "04",
     h2: "Narzędzia, w których pracuję.",
     groups: [
+      "CapCut Pro · Canva · DaVinci Resolve · GPT-Image · Meta Business Suite",
       "No-code + AI · prompt engineering · multi-agent",
       "Claude Code · Cursor · Docker · Git/GitHub · ffmpeg · Fish-Speech",
       "n8n · ExoVault · MCP · integracje API · agenci AI · automatyzacja",
@@ -141,7 +147,7 @@ const pl = {
         ". Buduję rozwiązania, dzięki którym robotę robią roboty, a życie zostaje człowiekowi.",
     },
     background:
-      "Wcześniej 17 lat na scenie i przed kamerą — stąd umiejętność tłumaczenia technologii na ludzki język i przeprowadzania ludzi przez zmianę. Dziś buduję z AI. Po godzinach rozwijam markę osobistą Metoda Sufy.",
+      "Wcześniej 17 lat na scenie i przed kamerą jako zawodowy aktor (Warszawska Szkoła Filmowa): główna rola w serialu „Gliniarze” (Polsat), „Kobiety mafii”, Opera Narodowa („Moc Przeznaczenia”, reż. Treliński), Teatr Kamienica — i dziesiątki ról serialowych. Stąd swoboda przed kamerą i mikrofonem, warsztat głosu i storytelling, które dziś napędzają mój content. Buduję z AI; markę osobistą Metoda Sufy prowadzę jako żywe portfolio.",
     teamIntro:
       "Nie sam — współpracuję z niewielkim zespołem o uzupełniających się rolach. Dobre rzeczy powstają we współpracy, zwłaszcza tam, gdzie technologia spotyka realne procesy:",
     teamRoles: [
@@ -165,8 +171,8 @@ const pl = {
   kontakt: {
     title: "Porozmawiajmy",
     kicker: "06",
-    headline: "Masz proces, który pochłania czas? Porozmawiajmy.",
-    lead: "Pomagam firmom usprawniać i automatyzować procesy z AI — audyt, automatyzacje, aplikacje i rozwiązania AI. Współpraca zdalna (B2B lub etat), PL i zagranica.",
+    headline: "Szukasz kogoś, kto poprowadzi Twoje social media z AI? Porozmawiajmy.",
+    lead: "Tworzę content i buduję zautomatyzowane studia treści — wideo, grafiki, kalendarz, analityka i publikacja. Do tego automatyzacje i aplikacje z AI. Współpraca zdalna (B2B lub etat), PL i zagranica.",
   },
 };
 
@@ -194,11 +200,11 @@ const en: typeof pl = {
   },
   hero: {
     aria: "Introduction",
-    badge: "I streamline and automate company processes with AI",
-    h1: "I streamline and automate company processes with AI",
-    enTitle: "AI Process & Automation Specialist",
+    badge: "I create social media content — powered by AI",
+    h1: "I create social media content — powered by AI",
+    enTitle: "Social Media Content Creator (AI-powered)",
     subhead:
-      "I audit and automate business processes — apps, integrations and AI solutions that take repetitive work off people's plates, so they keep time and energy for what AI can't do: creativity, imagination and sound decisions.",
+      "From idea to publication: scripts and copy, video (CapCut Pro, DaVinci Resolve), graphics and thumbnails (Canva, GPT-Image), and a content calendar driven by trends and analytics. I run my own channels on a custom automated AI-agent pipeline — and build such systems for companies.",
     en: "Remote collaboration · PL / EU · Based in Poland, working across time zones.",
   },
   coRobie: {
@@ -206,8 +212,13 @@ const en: typeof pl = {
     kicker: "01",
     h2a: "Less repetitive work.",
     h2b: "More room for people.",
-    lead: "Apps, automations, AI-agent systems — from the first screen to deployment.",
+    lead: "Content, automations and AI-agent systems — from idea to publication.",
     items: [
+      {
+        h: "Content & social media",
+        p: "I run channels end-to-end: scripts and editing, recording and video editing (CapCut Pro, DaVinci Resolve), thumbnails and hook frames (GPT-Image, Canva), publishing on a calendar driven by trends and analytics. YouTube long-form / Reels / carousels.",
+        note: "Living portfolio: Metoda Sufy channels (YT/IG/FB).",
+      },
       {
         h: "Apps & websites",
         p: "I build web apps and websites with React / Next.js and a no-code + AI approach. From the first screen to deployment — fast, clean, with care for performance and UX.",
@@ -286,6 +297,7 @@ const en: typeof pl = {
     kicker: "04",
     h2: "Tools I work with.",
     groups: [
+      "CapCut Pro · Canva · DaVinci Resolve · GPT-Image · Meta Business Suite",
       "No-code + AI · prompt engineering · multi-agent",
       "Claude Code · Cursor · Docker · Git/GitHub · ffmpeg · Fish-Speech",
       "n8n · ExoVault · MCP · API integrations · AI agents · automation",
@@ -303,7 +315,7 @@ const en: typeof pl = {
       after: ". I build solutions where labor is done by robots, and life stays with people.",
     },
     background:
-      "Before this: 17 years on stage and in front of the camera — that's where I learned to translate technology into human language and guide people through change. Today I build with AI. After hours I develop my personal brand, Metoda Sufy.",
+      "Before this: 17 years as a professional actor (Warsaw Film School) — lead role in the crime series “Gliniarze” (Polsat), “Women of Mafia”, Polish National Opera (“La forza del destino”, dir. M. Treliński), and dozens of TV roles. That's where the on-camera ease, voice craft and storytelling powering my content come from. Today I build with AI; my personal brand Metoda Sufy doubles as a living portfolio.",
     teamIntro:
       "Not alone — I collaborate with a small team of complementary roles. Good things are built together, especially where technology meets real processes:",
     teamRoles: [
@@ -327,8 +339,8 @@ const en: typeof pl = {
   kontakt: {
     title: "Let's talk",
     kicker: "06",
-    headline: "Got a process that eats your time? Let's talk.",
-    lead: "I help companies streamline and automate processes with AI — audits, automations, apps and AI solutions. Remote collaboration (B2B or employment), Poland and abroad.",
+    headline: "Looking for someone to run your social media with AI? Let's talk.",
+    lead: "I create content and build automated content studios — video, graphics, calendar, analytics and publishing. Plus AI automations and apps. Remote collaboration (B2B or employment), Poland and abroad.",
   },
 };
 

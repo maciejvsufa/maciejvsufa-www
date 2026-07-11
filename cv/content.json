@@ -15,7 +15,7 @@
     },
     "header": {
       "name": "Maciej Sufa",
-      "title": "Specjalista ds. automatyzacji procesów z AI",
+      "title": "Social Media Content Creator (AI-powered)",
       "phone": "+48 504 003 019",
       "email": "sufamaciej@gmail.com",
       "website": "maciejvsufa.pl",
@@ -25,19 +25,19 @@
       "address": "Łódź, ul. Milionowa 243",
       "born": "24.04.1988, Warszawa"
     },
-    "summary": "Audytuję i automatyzuję procesy w firmach — aplikacje, integracje i rozwiązania AI zdejmujące powtarzalną robotę. Projektuję systemy z agentami AI, automatyzacje (n8n, Python, MCP) i pipeline'y social media. Audyt → prototyp → wdrożenie. Tło biznesowe: 3 lata obsługi klienta premium (salon Domoteka) i doświadczenie sceniczne (teatr, film, warsztaty) pomagają tłumaczyć technologię na język biznesu. Otwarty na etat lub B2B — posiadam działalność gospodarczą. Zdalnie · PL/EU.",
+    "summary": "Tworzę content na social media od pomysłu po publikację: scenariusze i redakcja tekstów, wideo (CapCut Pro, DaVinci Resolve, ffmpeg), grafiki i miniatury (Canva, GPT-Image), kalendarz treści sprzężony z trendami i analityką. Prowadzę własne kanały (YT/IG/FB) na autorskim, zautomatyzowanym pipeline z agentami AI — case study: Metoda Sufy. Zaplecze techniczne: automatyzacje (n8n, Python, API), aplikacje webowe. 17 lat jako zawodowy aktor — m.in. główna rola w serialu „Gliniarze” (Polsat) — swoboda przed obiektywem i mikrofonem. Otwarty na etat lub B2B — posiadam działalność gospodarczą. Zdalnie · PL/EU.",
     "skills": [
       {
+        "group": "Content i social media",
+        "items": ["CapCut Pro · DaVinci Resolve · ffmpeg", "Canva · GPT-Image · Midjourney", "Meta Business Suite", "Scenariusze · storyboard · redakcja PL", "Kalendarz treści · trendy · analityka", "Występowanie przed kamerą"]
+      },
+      {
         "group": "AI i automatyzacja",
-        "items": ["Agenci AI", "Prompt engineering", "n8n · ExoVault · MCP · API", "Audyt AI", "Multi-agent"]
+        "items": ["Agenci AI", "Prompt engineering", "n8n · ExoVault · MCP · API", "Pipeline wideo end-to-end", "Multi-agent"]
       },
       {
-        "group": "Development",
-        "items": ["React · Next.js · TypeScript", "Python · Tailwind", "No-code + AI", "Docker · Git"]
-      },
-      {
-        "group": "Produkcja · miękkie",
-        "items": ["Social media automation", "Pipeline wideo", "Komunikacja z klientem", "Wdrożenia · szkolenia"]
+        "group": "Development · miękkie",
+        "items": ["React · Next.js · TypeScript", "Python · No-code + AI", "Docker · Git", "Komunikacja z klientem · szkolenia"]
       },
       {
         "group": "Języki",
@@ -45,6 +45,17 @@
       }
     ],
     "experience": [
+      {
+        "period": "2025 – obecnie",
+        "role": "Twórca contentu & założyciel",
+        "company": "Studio AI — Metoda Sufy",
+        "context": "Marka osobista prowadzona jak studio contentu: YouTube, Instagram, Facebook — pełny cykl od pomysłu po publikację",
+        "bullets": [
+          "Produkcja wideo end-to-end: scenariusz → lektor/nagranie → montaż (CapCut Pro, ffmpeg, DaVinci Resolve) → miniatury i klatki-hook (GPT-Image, Canva) → publikacja",
+          "Autorski zautomatyzowany pipeline z agentami AI: radar trendów, analityka rezonansu postów, kalendarz treści, kolejka publikacji (n8n, VPS)",
+          "Redakcja i copywriting PL: posty, karuzele, haki, sekwencje e-mail; sprzedaż własnego ebooka"
+        ]
+      },
       {
         "period": "2026 – obecnie",
         "role": "Współtwórca",
@@ -69,6 +80,11 @@
       }
     ],
     "projects": [
+      {
+        "name": "Metoda Sufy — żywe portfolio",
+        "url": "https://metodasufy.pl",
+        "desc": "Kanały YT/IG/FB prowadzone własnym zautomatyzowanym studiem contentu: wideo long i Reels, karuzele, ebook — pełne metryki zasięgu i zaangażowania dostępne na życzenie"
+      },
       {
         "name": "Asistel",
         "url": "https://asistel.pl",
@@ -114,7 +130,7 @@
     },
     "header": {
       "name": "Maciej Sufa",
-      "title": "AI Process & Automation Specialist",
+      "title": "Social Media Content Creator (AI-powered)",
       "phone": "+48 504 003 019",
       "email": "sufamaciej@gmail.com",
       "website": "maciejvsufa.pl",
@@ -124,19 +140,19 @@
       "address": "Łódź, ul. Milionowa 243, Poland",
       "born": "24 April 1988, Warsaw"
     },
-    "summary": "I audit and automate business processes with AI — apps, integrations and solutions that remove repetitive work. I design AI-agent systems, automations (n8n, Python, MCP) and social media pipelines. Audit → prototype → deployment. Business background: 3 years in premium customer service (Domoteka showroom) plus stage experience (theatre, film, workshops) help me translate technology into business language. Open to employment or B2B — registered sole proprietorship. Remote · PL/EU.",
+    "summary": "I create social media content end-to-end: scripts and copy editing, video (CapCut Pro, DaVinci Resolve, ffmpeg), graphics and thumbnails (Canva, GPT-Image), and a content calendar driven by trends and analytics. I run my own channels (YT/IG/FB) on a custom automated pipeline with AI agents — case study: Metoda Sufy. Technical backbone: automations (n8n, Python, APIs) and web apps. 17 years as a professional actor — incl. a lead role in the crime series \"Gliniarze\" (Polsat) — fully at ease on mic and lens. Open to employment or B2B — registered sole proprietorship. Remote · PL/EU.",
     "skills": [
       {
+        "group": "Content & social media",
+        "items": ["CapCut Pro · DaVinci Resolve · ffmpeg", "Canva · GPT-Image · Midjourney", "Meta Business Suite", "Scripts · storyboards · copy editing", "Content calendar · trends · analytics", "On-camera presence"]
+      },
+      {
         "group": "AI & automation",
-        "items": ["AI agents", "Prompt engineering", "n8n · ExoVault · MCP · API", "AI audits", "Multi-agent"]
+        "items": ["AI agents", "Prompt engineering", "n8n · ExoVault · MCP · API", "End-to-end video pipeline", "Multi-agent"]
       },
       {
-        "group": "Development",
-        "items": ["React · Next.js · TypeScript", "Python · Tailwind", "No-code + AI", "Docker · Git"]
-      },
-      {
-        "group": "Production · soft",
-        "items": ["Social media automation", "Video pipeline", "Client communication", "Deployments · training"]
+        "group": "Development · soft",
+        "items": ["React · Next.js · TypeScript", "Python · No-code + AI", "Docker · Git", "Client communication · training"]
       },
       {
         "group": "Languages",
@@ -144,6 +160,17 @@
       }
     ],
     "experience": [
+      {
+        "period": "2025 – present",
+        "role": "Content Creator & Founder",
+        "company": "Studio AI — Metoda Sufy",
+        "context": "Personal brand run as a content studio: YouTube, Instagram, Facebook — full cycle from idea to publication",
+        "bullets": [
+          "End-to-end video production: script → voiceover/recording → editing (CapCut Pro, ffmpeg, DaVinci Resolve) → thumbnails and hook frames (GPT-Image, Canva) → publishing",
+          "Custom automated pipeline with AI agents: trend radar, post-resonance analytics, content calendar, publishing queue (n8n, VPS)",
+          "Polish copywriting and editing: posts, carousels, hooks, e-mail sequences; selling my own ebook"
+        ]
+      },
       {
         "period": "2026 – present",
         "role": "Co-founder",
@@ -168,6 +195,11 @@
       }
     ],
     "projects": [
+      {
+        "name": "Metoda Sufy — living portfolio",
+        "url": "https://metodasufy.pl",
+        "desc": "YT/IG/FB channels run on my own automated content studio: long-form video and Reels, carousels, ebook — full reach and engagement metrics available on request"
+      },
       {
         "name": "Asistel",
         "url": "https://asistel.pl",
