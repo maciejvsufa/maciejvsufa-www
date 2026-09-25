@@ -1,83 +1,70 @@
 import type { SiteContent } from "@/lib/content";
 import { site } from "@/lib/site";
-import { Rune } from "@/components/ui/rune";
 
+/** Hero w stylu Syntax CV: imię dużym krojem, rola pisana litera po literze, liczby, cytat. */
 export function Hero({ t }: { t: SiteContent }) {
-  const hero = t.hero;
+  const h = t.hero;
   return (
-    <section
-      aria-label={hero.aria}
-      className="sheet-section hero grid min-h-[88vh] grid-cols-1 items-center gap-8 pt-[clamp(120px,14vw,180px)] md:grid-cols-[0.84fr_1.16fr] md:gap-[34px]"
-    >
-      <div>
-        <div className="badge inline-flex w-fit items-center gap-2 rounded-full border border-border bg-surface/70 px-[13px] py-1.5 font-mono text-[12px] text-accent">
-          <span className="h-2 w-2 animate-[pulseDot_1.8s_ease-in-out_infinite] rounded-full bg-accent" />
-          {hero.badge}
+    <section aria-label={h.aria}>
+      <div className="hero-grid">
+        <div>
+          <p className="font-mono text-[13px] text-text3">{h.place}</p>
+          <h1 className="hero-name mt-5">
+            {h.first}{" "}
+            <br />
+            <span className="dim">{h.last}</span>
+          </h1>
+          {/* Litery to dekoracja (aria-hidden); czytnik ekranu dostaje całą rolę z sr-only. */}
+          <p className="mt-6 text-[clamp(17px,2.2vw,21px)] font-medium text-accent">
+            <span className="sr-only">{h.role}</span>
+            <span className="typed" aria-hidden="true">
+              {Array.from(h.role).map((ch, i) => (
+                <span key={i} className="ch" style={{ "--i": i } as React.CSSProperties}>
+                  {ch}
+                </span>
+              ))}
+            </span>
+          </p>
         </div>
 
-        <h1 className="mt-[22px] max-w-[18ch] font-display text-[clamp(40px,5.6vw,74px)] font-semibold leading-[0.99] tracking-[-0.03em]">
-          {hero.h1}
-        </h1>
-
-        <p className="mt-3.5 font-mono text-[12px] uppercase tracking-[0.2em] text-accent">{hero.enTitle}</p>
-
-        <p className="mt-6 max-w-[52ch] rounded-[14px] border border-border bg-surface/66 px-[18px] py-[15px] text-[clamp(15px,1.3vw,17px)] leading-[1.62] text-text2">
-          {hero.subhead}
-        </p>
-
-        <p className="mt-4 font-mono text-[13px] text-text3">{hero.en}</p>
-
-        <div className="mt-[30px] flex flex-wrap items-center gap-3.5">
-          <a className="btn btn-primary btn-sound" href="#co-robie">
-            {t.ui.heroCtaPrimary} <span className="arr">↓</span>
-          </a>
-          <a className="btn btn-ghost btn-sound" href={t.ui.cvHref}>
-            {t.ui.heroCtaCv} <span className="arr">↗</span>
-          </a>
-        </div>
-
-        <div className="mt-[26px] flex flex-wrap gap-[22px] font-mono text-[13px] text-text3">
-          <a className="transition-colors hover:text-accent" href={site.socials.github} target="_blank" rel="noopener noreferrer">
-            ↗ GitHub
-          </a>
-          <a className="transition-colors hover:text-accent" href={site.socials.linkedin} target="_blank" rel="noopener noreferrer">
-            ↗ LinkedIn
-          </a>
-          <a className="transition-colors hover:text-accent" href={`mailto:${site.email}`}>
-            ↗ {site.email}
-          </a>
+        <div className="hero-photo mx-auto md:mx-0">
+          <picture>
+            <source media="(max-width: 720px)" srcSet="/portrait-cutout-480.webp" type="image/webp" />
+            <source srcSet="/portrait-cutout.webp" type="image/webp" />
+            <img
+              src="/portrait-cutout-800.png"
+              alt={h.photoAlt}
+              width={800}
+              height={995}
+              fetchPriority="high"
+              decoding="async"
+            />
+          </picture>
         </div>
       </div>
 
-      <div className="portrait-wrap relative mx-auto aspect-[4/5] w-full max-w-[660px] overflow-hidden">
-        <picture className="absolute inset-0">
-          <source
-            media="(max-width: 720px)"
-            srcSet="/portrait-cutout-480.webp"
-            type="image/webp"
-          />
-          <source srcSet="/portrait-cutout.webp" type="image/webp" />
-          <img
-            src="/portrait-cutout-800.png"
-            alt="Maciej Sufa"
-            width={800}
-            height={995}
-            decoding="async"
-            fetchPriority="high"
-            className="h-full w-full object-contain object-bottom [filter:contrast(1.04)_saturate(0.94)]"
-          />
-        </picture>
-        <div
-          aria-hidden
-          className="pointer-events-none absolute inset-0"
-          style={{
-            background:
-              "linear-gradient(to bottom, transparent 52%, rgba(8,8,10,0.55) 78%, var(--bg) 100%)",
-          }}
-        />
-        <Rune symbol="dazbog" style={{ left: "1%", top: "44%" }} />
-        <Rune symbol="perun" style={{ right: "0.5%", top: "30%" }} />
-        <Rune symbol="tecza" style={{ left: "9%", bottom: "5%" }} />
+      <dl className="mt-12 grid grid-cols-2 gap-6 border-y border-border py-6">
+        {h.stats.map((s) => (
+          <div key={s.label} className="flex flex-col-reverse justify-end">
+            <dt className="mt-1 font-mono text-[12.5px] text-text3">{s.label}</dt>
+            <dd className="stat-value">{s.value}</dd>
+          </div>
+        ))}
+      </dl>
+
+      <blockquote className="quote mt-10 max-w-[40ch]">
+        {h.quoteBefore}
+        <em>{h.quoteEm}</em>
+        {h.quoteAfter}
+      </blockquote>
+
+      <div className="mt-10 flex flex-wrap items-center gap-3">
+        <a className="btn btn-primary" href={`mailto:${site.email}`}>
+          {t.ui.heroCtaPrimary} <span className="arr">↗</span>
+        </a>
+        <a className="btn btn-ghost" href={t.ui.cvHref}>
+          {t.ui.heroCtaCv} <span className="arr">↓</span>
+        </a>
       </div>
     </section>
   );

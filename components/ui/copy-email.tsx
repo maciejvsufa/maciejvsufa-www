@@ -25,7 +25,7 @@ export function CopyEmail({ email, label, copied }: { email: string; label: stri
   };
 
   return (
-    <button type="button" className="btn btn-ghost btn-sound" onClick={copy} aria-live="polite">
+    <button type="button" className="btn btn-ghost" onClick={copy} aria-live="polite">
       {done ? copied : label}
     </button>
   );

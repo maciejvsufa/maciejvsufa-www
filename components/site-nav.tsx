@@ -16,7 +16,7 @@ export function SiteNav({ t }: { t: SiteContent }) {
             {l.label}
           </a>
         ))}
-        <a className="nav-cta btn-sound font-mono" href="#kontakt">
+        <a className="nav-cta font-mono" href="#kontakt">
           {t.ui.navCta}
         </a>
         <span className="lang-switch font-mono" aria-label={t.ui.langSwitchAria}>
