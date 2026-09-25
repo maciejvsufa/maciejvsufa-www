@@ -1,70 +1,41 @@
 import type { SiteContent } from "@/lib/content";
-import { site } from "@/lib/site";
+import { FitText } from "@/components/fx/fit-text";
+import { SplitText } from "@/components/fx/split-text";
 
-/** Hero w stylu Syntax CV: imię dużym krojem, rola pisana litera po literze, liczby, cytat. */
+/**
+ * Tło hero: zdjęcie na cały ekran, stałe (przewijana treść jedzie po nim), czarno-białe.
+ * Wejście: skala 1.2 → 1 przez 3 s (jak w szablonie).
+ */
+export function HeroBackdrop({ alt }: { alt: string }) {
+  return (
+    <div className="hero-bg">
+      <picture>
+        <source media="(max-width: 809px)" srcSet="/hero-bw-800.webp" type="image/webp" />
+        <img src="/hero-bw.webp" alt={alt} width={1254} height={1254} fetchPriority="high" decoding="async" />
+      </picture>
+    </div>
+  );
+}
+
+/** Pierwszy ekran: miętowe liczby, wielkie imię, rola na dole, cytat wersalikami w kolumnie 75%. */
 export function Hero({ t }: { t: SiteContent }) {
   const h = t.hero;
   return (
-    <section aria-label={h.aria}>
-      <div className="hero-grid">
-        <div>
-          <p className="font-mono text-[13px] text-text3">{h.place}</p>
-          <h1 className="hero-name mt-5">
-            {h.first}{" "}
-            <br />
-            <span className="dim">{h.last}</span>
-          </h1>
-          {/* Litery to dekoracja (aria-hidden); czytnik ekranu dostaje całą rolę z sr-only. */}
-          <p className="mt-6 text-[clamp(17px,2.2vw,21px)] font-medium text-accent">
-            <span className="sr-only">{h.role}</span>
-            <span className="typed" aria-hidden="true">
-              {Array.from(h.role).map((ch, i) => (
-                <span key={i} className="ch" style={{ "--i": i } as React.CSSProperties}>
-                  {ch}
-                </span>
-              ))}
+    <section aria-label={h.aria} className="hero" id="top">
+      <SplitText as="p" text={h.quote.toUpperCase()} by="word" trigger="mount" start={2} stagger={0.075} className="hero-quote" />
+
+      <div className="hero-main">
+        <p className="hero-stats">
+          {h.stats.map((s) => (
+            <span key={s} className="block">
+              {s}
             </span>
-          </p>
+          ))}
+        </p>
+        <div className="hero-name-box">
+          <FitText as="h1" lines={h.nameLines} align="right" className="hero-name" />
         </div>
-
-        <div className="hero-photo mx-auto md:mx-0">
-          <picture>
-            <source media="(max-width: 720px)" srcSet="/portrait-cutout-480.webp" type="image/webp" />
-            <source srcSet="/portrait-cutout.webp" type="image/webp" />
-            <img
-              src="/portrait-cutout-800.png"
-              alt={h.photoAlt}
-              width={800}
-              height={995}
-              fetchPriority="high"
-              decoding="async"
-            />
-          </picture>
-        </div>
-      </div>
-
-      <dl className="mt-12 grid grid-cols-2 gap-6 border-y border-border py-6">
-        {h.stats.map((s) => (
-          <div key={s.label} className="flex flex-col-reverse justify-end">
-            <dt className="mt-1 font-mono text-[12.5px] text-text3">{s.label}</dt>
-            <dd className="stat-value">{s.value}</dd>
-          </div>
-        ))}
-      </dl>
-
-      <blockquote className="quote mt-10 max-w-[40ch]">
-        {h.quoteBefore}
-        <em>{h.quoteEm}</em>
-        {h.quoteAfter}
-      </blockquote>
-
-      <div className="mt-10 flex flex-wrap items-center gap-3">
-        <a className="btn btn-primary" href={`mailto:${site.email}`}>
-          {t.ui.heroCtaPrimary} <span className="arr">↗</span>
-        </a>
-        <a className="btn btn-ghost" href={t.ui.cvHref}>
-          {t.ui.heroCtaCv} <span className="arr">↓</span>
-        </a>
+        <SplitText as="p" text={h.roleLine} by="word" trigger="mount" start={0.5} stagger={0.075} className="hero-role" />
       </div>
     </section>
   );

@@ -1,6 +1,5 @@
 import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
-import { DM_Mono } from "next/font/google";
 import "./globals.css";
 import { site } from "@/lib/site";
 
@@ -12,13 +11,8 @@ const switzer = localFont({
     { path: "./fonts/Switzer-400.woff2", weight: "400", style: "normal" },
     { path: "./fonts/Switzer-500.woff2", weight: "500", style: "normal" },
     { path: "./fonts/Switzer-600.woff2", weight: "600", style: "normal" },
+    { path: "./fonts/Switzer-700.woff2", weight: "700", style: "normal" },
   ],
-});
-const dmMono = DM_Mono({
-  variable: "--font-dm-mono",
-  subsets: ["latin", "latin-ext"],
-  weight: ["400"],
-  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -63,7 +57,7 @@ const jsonLd = {
       "@id": personId,
       name: site.name,
       url: site.url,
-      image: `${site.url}/portrait-cutout-800.png`,
+      image: `${site.url}/hero-bw.webp`,
       jobTitle: site.jobTitle,
       email: `mailto:${site.email}`,
       sameAs: [site.socials.instagram, site.socials.facebook, site.socials.linkedin, site.socials.github],
@@ -90,15 +84,14 @@ const jsonLd = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="pl" className={`${switzer.variable} ${dmMono.variable} h-full antialiased`}>
+    <html lang="pl" className={`${switzer.variable} h-full antialiased`}>
       <head>
-        <link
-          rel="preload"
-          as="image"
-          href="/portrait-cutout-480.webp"
-          type="image/webp"
-          fetchPriority="high"
-        />
+        <link rel="preload" as="image" href="/hero-bw-800.webp" type="image/webp" media="(max-width: 809px)" fetchPriority="high" />
+        <link rel="preload" as="image" href="/hero-bw.webp" type="image/webp" media="(min-width: 810px)" fetchPriority="high" />
+        {/* bez JavaScriptu treść ma być widoczna od razu */}
+        <noscript>
+          <style>{`.split .sp,.fade-in{opacity:1!important;transform:none!important;filter:none!important}`}</style>
+        </noscript>
       </head>
       <body className="min-h-full">
         {children}
