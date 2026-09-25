@@ -1,33 +1,44 @@
-import { SiteNav } from "@/components/site-nav";
-import { SiteFooter } from "@/components/site-footer";
-import { Hero } from "@/components/sections/hero";
-import { CoRobie } from "@/components/sections/co-robie";
-import { Projekty } from "@/components/sections/projekty";
-import { JakPracuje } from "@/components/sections/jak-pracuje";
-import { Stack } from "@/components/sections/stack";
-import { OMnie } from "@/components/sections/o-mnie";
-import { Kontakt } from "@/components/sections/kontakt";
-import { SiteEffectsLazy } from "@/components/fx/site-effects-lazy";
+import { SiteHeader } from "@/components/site-header";
+import { Hero, HeroBackdrop } from "@/components/sections/hero";
+import {
+  CoRobie,
+  Doswiadczenie,
+  Edukacja,
+  JakPracuje,
+  Jezyki,
+  Kontakt,
+  OMnie,
+  Umiejetnosci,
+} from "@/components/sections/cv-sections";
+import { Thanks } from "@/components/sections/thanks";
 import type { SiteContent } from "@/lib/content";
 
-/** Wspólna kompozycja strony głównej — "/" (pl) i "/en/" (en) różnią się tylko słownikiem. */
+/**
+ * Kompozycja jak w szablonie Syntax CV: stałe zdjęcie na cały ekran, stały nagłówek,
+ * pierwszy ekran z imieniem, potem czarny panel z sekcjami (na desktopie 2/3 szerokości —
+ * po prawej widać zdjęcie).
+ */
 export function HomePage({ t }: { t: SiteContent }) {
   return (
     <>
-      <a href="#top" className="skip-link">
+      <a href="#o-mnie" className="skip-link">
         {t.ui.skipLink}
       </a>
-      <SiteNav t={t} />
-      <SiteEffectsLazy />
-      <main className="sheet" id="top">
+      <HeroBackdrop alt={t.hero.photoAlt} />
+      <SiteHeader t={t} />
+      <main className="page">
         <Hero t={t} />
-        <CoRobie t={t} />
-        <Projekty t={t} />
-        <JakPracuje t={t} />
-        <Stack t={t} />
-        <OMnie t={t} />
-        <Kontakt t={t} />
-        <SiteFooter t={t} />
+        <div className="panel">
+          <OMnie t={t} />
+          <Doswiadczenie t={t} />
+          <CoRobie t={t} />
+          <JakPracuje t={t} />
+          <Umiejetnosci t={t} />
+          <Edukacja t={t} />
+          <Jezyki t={t} />
+          <Kontakt t={t} />
+          <Thanks t={t} />
+        </div>
       </main>
     </>
   );

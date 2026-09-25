@@ -1,178 +1,166 @@
 /**
- * Źródło prawdy treści strony (DRY) — port z COPY-maciejvsufa.md.
+ * Źródło prawdy treści strony (DRY).
  * Dwujęzycznie: content.pl / content.en — strona "/" renderuje pl, "/en/" renderuje en.
- * Ton firmowy (hire-me) wszędzie poza sekcją "O mnie" (ton ludzki, motto).
+ * Układ wiernie wg szablonu Syntax CV: hero ze zdjęciem na cały ekran, sekcje „01. …” w dwóch kolumnach.
+ * Zasady: bez zmyślonych liczb, referencji i klientów; Tercet Labs tylko jedną linią
+ * w doświadczeniu (reszta żyje na tercetlabs.pl).
  */
 
+import { site } from "@/lib/site";
+
 export type Lang = "pl" | "en";
+
+type Link = { href: string; label: string };
+type Job = { org: string; meta: string; years: string; role: string; p: string; links?: Link[] };
+type Site = { href: string; label: string; note: string };
 
 const pl = {
   lang: "pl" as Lang,
   ui: {
     skipLink: "Przejdź do treści",
-    navAria: "Główna",
-    nav: [
-      { href: "#co-robie", label: "Usługi" },
-      { href: "#projekty", label: "Projekty" },
-      { href: "#jak-pracuje", label: "Jak pracuję" },
-      { href: "#o-mnie", label: "O mnie" },
-    ],
-    navCta: "Porozmawiajmy",
-    menuOpen: "Otwórz menu",
-    menuClose: "Zamknij menu",
+    status: "Otwarty na współpracę",
+    timezone: "(UTC+1)",
+    downloadCv: "Pobierz CV",
+    contactMe: "Napisz do mnie",
+    cvHref: "/cv/Maciej_Sufa_CV.pdf",
+    menu: "Menu",
+    menuClose: "Zamknij",
+    scroll: "Przewiń",
+    backToTop: "Do góry",
     copyEmail: "Kopiuj e-mail",
     emailCopied: "Skopiowano ✓",
     langSwitchAria: "Zmień język / Change language",
-    heroCtaPrimary: "Zobacz, co robię",
-    heroCtaCv: "Pobierz CV",
-    cvHref: "/cv/Maciej_Sufa_CV.pdf",
     footerPrivacy: "Polityka prywatności",
   },
   hero: {
     aria: "Wprowadzenie",
-    badge: "Tworzę content na social media — napędzany AI",
-    // twarde spacje ( ) po jednoliterowych „i/w/z" — żeby nie zostawały sierotami na końcu linii
-    h1: "Tworzę content na social media — napędzany AI",
-    enTitle: "Social Media Content Creator (AI-powered)",
-    subhead:
-      "Od pomysłu po publikację: scenariusze i teksty, wideo (CapCut Pro, DaVinci Resolve), grafiki i miniatury (Canva, GPT-Image), kalendarz treści sprzężony z trendami i analityką. Prowadzę własne kanały na autorskim, zautomatyzowanym pipeline z agentami AI — i buduję takie systemy dla firm.",
-    en: "Współpraca zdalna · PL / EU · English: communicative, AI-assisted.",
+    nameLines: ["Maciej", "V. Sufa"],
+    stats: ["17 lat przed kamerą", "od 2025 content z AI"],
+    roleLine: "Social Media Content Creator (AI-powered), Łódź",
+    quote:
+      "Najcenniejszy zasób to nie pieniądze — to czas życia. Niech robotę robią roboty, a życie zostanie człowiekowi.",
+    photoAlt: "Maciej V. Sufa",
+  },
+  about: {
+    kicker: "01",
+    title: "O mnie",
+    body: [
+      "Tworzę content na social media od pomysłu po publikację i robię to z pomocą AI. Piszę scenariusze i teksty, montuję wideo (CapCut Pro, DaVinci Resolve), robię grafiki i miniatury (Canva, GPT-Image) i układam kalendarz treści pod trendy i analitykę.",
+      "Własne kanały prowadzę z pomocą zautomatyzowanej linii produkcyjnej i agentów AI, a podobne systemy buduję dla firm. Wcześniej przez 17 lat byłem zawodowym aktorem — stąd swoboda przed kamerą, warsztat głosu i opowiadanie historii.",
+    ],
+  },
+  experience: {
+    kicker: "02",
+    title: "Doświadczenie",
+    items: [
+      {
+        org: "Tercet Labs",
+        meta: "sp. z o.o.",
+        years: "2026–obecnie",
+        role: "Współzałożyciel",
+        p: "Spółka, która wdraża AI w firmach razem z ich zespołami. Jeden z naszych produktów to Asistel — asystent głosowy dla aptek.",
+        links: [
+          { href: site.socials.tercetlabs, label: "tercetlabs.pl" },
+          { href: site.socials.asistel, label: "asistel.pl" },
+        ],
+      },
+      {
+        org: "LEV",
+        meta: "zdalnie",
+        years: "2025–obecnie",
+        role: "Założyciel",
+        p: "Moja praktyka: content i social media dla firm.",
+      },
+      {
+        org: "Studio AI — Metoda Sufy",
+        meta: "YouTube, Instagram, Facebook",
+        years: "2025–obecnie",
+        role: "Twórca contentu i założyciel",
+        p: "Marka osobista prowadzona jak studio treści. Scenariusz, głos, montaż, miniatury i publikacja idą przez własną linię produkcyjną z agentami AI.",
+        links: [{ href: site.socials.metoda, label: "metodasufy.pl" }],
+      },
+      {
+        org: "Film, telewizja, teatr, opera",
+        meta: "17 lat",
+        years: "",
+        role: "Zawodowy aktor",
+        p: "Główna rola w serialu „Gliniarze” (Polsat), „Kobiety mafii”, Opera Narodowa („Moc Przeznaczenia”, reż. Treliński), Teatr Kamienica i dziesiątki ról serialowych.",
+      },
+    ] as Job[],
   },
   coRobie: {
+    kicker: "03",
     title: "Co robię",
-    kicker: "01",
-    h2a: "Mniej powtarzalnej roboty.",
-    h2b: "Więcej miejsca na człowieka.",
-    lead: "Content, automatyzacje i systemy z agentami AI — od pomysłu po publikację.",
     items: [
       {
         h: "Content i social media",
-        p: "Prowadzę kanały end-to-end: scenariusze i redakcja, nagrania i montaż (CapCut Pro, DaVinci Resolve), miniatury i klatki-hook (GPT-Image, Canva), publikacja wg kalendarza sprzężonego z trendami i analityką. YouTube long / Reels / karuzele.",
-        note: "Żywe portfolio: kanały Metoda Sufy (YT/IG/FB).",
-      },
-      {
-        h: "Aplikacje i strony",
-        p: "Tworzę aplikacje webowe i strony w React / Next.js i w podejściu no-code + AI. Od pierwszego ekranu po wdrożenie — szybko, czysto, z dbałością o wydajność i UX.",
-        note: "Ta strona = przykład: Next.js, statyczny eksport, 99+ Lighthouse.",
-      },
-      {
-        h: "Automatyzacje",
-        p: "Projektuję i wdrażam automatyzacje procesów: n8n, integracje API, Python, agenci AI, MCP. Przejmują żmudną, powtarzalną robotę — obsługę zgłoszeń, raporty, przepływy danych.",
-      },
-      {
-        h: "Systemy z agentami AI",
-        p: "Buduję rozwiązania oparte na agentach AI i orkiestracji wielu modeli — od asystentów głosowych po pipeline'y produkcyjne. Łączę je z istniejącymi narzędziami firmy.",
+        p: "Prowadzę kanały od początku do końca: scenariusz, nagranie, montaż, miniatury, publikacja według kalendarza. YouTube, Reels, karuzele.",
       },
       {
         h: "Automatyzacja social media",
-        p: "Automatyzuję tworzenie i publikację treści: kalendarz postów, generowanie wideo, pipeline end-to-end. Mniej ręcznej roboty, więcej regularności.",
-      },
-    ],
-  },
-  projekty: {
-    title: "Wybrane projekty",
-    kicker: "02",
-    h2: "Rzeczy, które zbudowałem.",
-    items: [
-      {
-        name: "Asistel",
-        tag: "AI VOICE AGENT · współtwórca",
-        p: "Głosowy asystent AI dla aptek i firm wielooddziałowych: odbiera telefony, zbiera zgłoszenia i odciąża zespół od powtarzalnej obsługi. Odpowiadam za stronę produktową, warstwę AI (projekt rozmowy, zbieranie informacji do ticketów) i komunikację z klientem. Praca w zespole z code-review i wspólnym zatwierdzaniem.",
-        stack: ["Next.js", "agenci AI", "integracje telefonia/AI"],
-        link: "https://asistel.pl",
-        linkLabel: "asistel.pl",
+        p: "Automatyzuję tworzenie i publikację treści: kalendarz postów, generowanie wideo, kolejka publikacji. Mniej ręcznej roboty, więcej regularności.",
       },
       {
-        name: "LEV",
-        tag: "WŁASNA PRAKTYKA AI · założyciel",
-        p: "Prowadzę własną praktykę, w której tworzę rozwiązania AI dla firm: automatyzacje, aplikacje, strony i integracje. Zaczynam od audytu potrzeb, buduję działający prototyp, wdrażam i przekazuję wiedzę zespołowi.",
-        stack: ["automatyzacja", "no-code + AI", "integracje API"],
+        h: "Systemy z agentami AI",
+        p: "Łączę agentów AI i kilka modeli w jeden proces — od asystentów głosowych po linie produkcyjne wideo — i wpinam je w narzędzia, których firma już używa.",
       },
       {
-        name: "Studio AI",
-        tag: "PIPELINE PRODUKCYJNY",
-        p: "End-to-end pipeline do treści wideo: synteza głosu (lokalnie, Fish-Speech), montaż (ffmpeg), awatar mówiący, ilustracje, miniatury — z bramkami kontroli jakości. YouTube long / Reels / Shorts.",
-        stack: ["Python", "Fish-Speech", "ffmpeg", "Docker"],
-      },
-      {
-        name: "Organizacja Myśląca",
-        tag: "SYSTEM WSPIERANIA DECYZJI",
-        p: "System wspierania podejmowania decyzji oparty o myślenie systemowe (Senge): drabina wnioskowania, dialog i dyskusja, archetypy systemowe. Prototypuję narzędzie z agentami AI — od metodyki po działający produkt.",
-        stack: ["myślenie systemowe", "agenci AI", "prototypowanie"],
+        h: "Aplikacje i strony",
+        p: "Tworzę strony i aplikacje w React i Next.js. Ta strona to przykład: statyczny eksport, wynik Lighthouse powyżej 95.",
       },
     ],
   },
   jakPracuje: {
-    title: "Jak pracuję",
-    kicker: "03",
-    lead: "Nie tylko kod — sprawna organizacja pracy",
-    intro:
-      "Pracuję w duchu organizacji myślącej: zespół, który podejmuje trafne decyzje, sprawnie się komunikuje i osiąga dużo małym nakładem czasu. To nie teoria — to sposób, w jaki prowadzę projekty z AI.",
-    points: [
-      {
-        h: "Trafne decyzje",
-        p: "Najpierw zrozumieć problem z wielu stron, potem zdecydować. Audyt zanim kod.",
-      },
-      {
-        h: "Sprawna komunikacja",
-        p: "Jasny podział, wspólne zatwierdzanie, code-review, jeden wspólny stan projektu.",
-      },
-      {
-        h: "Efektywność małym nakładem",
-        p: "Orkiestracja agentów AI: plan → build → cross-review → ship. Robotę robotom, myślenie człowiekowi.",
-      },
-    ],
-  },
-  stack: {
-    title: "Stack",
     kicker: "04",
-    h2: "Narzędzia, w których pracuję.",
-    groups: [
-      "CapCut Pro · Canva · DaVinci Resolve · GPT-Image · Meta Business Suite",
-      "No-code + AI · prompt engineering · multi-agent",
-      "Claude Code · Cursor · Docker · Git/GitHub · ffmpeg · Fish-Speech",
-      "n8n · ExoVault · MCP · integracje API · agenci AI · automatyzacja",
-      "React · Next.js · TypeScript · Python · Tailwind · three.js",
+    title: "Jak pracuję",
+    intro:
+      "Pracuję w duchu organizacji myślącej: zespół podejmuje trafne decyzje, sprawnie się komunikuje i osiąga dużo małym nakładem czasu.",
+    points: [
+      { h: "Trafne decyzje", p: "Najpierw rozumiem problem z kilku stron, potem decyduję. Audyt przed kodem." },
+      { h: "Sprawna komunikacja", p: "Jasny podział zadań, wspólne zatwierdzanie, przegląd kodu i jeden wspólny stan projektu." },
+      { h: "Dużo małym nakładem", p: "Agenci AI pracują w rytmie: plan → budowa → przegląd krzyżowy → wydanie. Robotę robią roboty, myśli człowiek." },
     ],
   },
-  oMnie: {
-    title: "O mnie",
+  skills: {
     kicker: "05",
-    motto:
-      "Najcenniejszy zasób to nie pieniądze — to czas życia. Buduję rozwiązania, dzięki którym to, co nazywamy robotą, robią roboty, a to, co nazywamy życiem, zostaje człowiekowi. Największa mądrość to nie wiedzieć wszystko — a użyć tego, co już się wie, tu, gdzie się jest, dla swojego dobra. To mnie napędza: dawać ludziom i firmom narzędzia na dobre, satysfakcjonujące życie i pracę.",
-    mottoParts: {
-      before: "Najcenniejszy zasób to nie pieniądze — to ",
-      em: "czas życia",
-      after:
-        ". Buduję rozwiązania, dzięki którym robotę robią roboty, a życie zostaje człowiekowi.",
-    },
-    background:
-      "Wcześniej 17 lat na scenie i przed kamerą jako zawodowy aktor (Warszawska Szkoła Filmowa): główna rola w serialu „Gliniarze” (Polsat), „Kobiety mafii”, Opera Narodowa („Moc Przeznaczenia”, reż. Treliński), Teatr Kamienica — i dziesiątki ról serialowych. Stąd swoboda przed kamerą i mikrofonem, warsztat głosu i storytelling, które dziś napędzają mój content. Buduję z AI; markę osobistą Metoda Sufy prowadzę jako żywe portfolio.",
-    teamIntro:
-      "Nie sam — współpracuję z niewielkim zespołem o uzupełniających się rolach. Dobre rzeczy powstają we współpracy, zwłaszcza tam, gdzie technologia spotyka realne procesy:",
-    teamRoles: [
-      {
-        role: "Infrastruktura i operacje IT",
-        note: "Koordynacja techniczna i wdrożenia w organizacjach wielooddziałowych — m.in. doświadczenie w sieciach aptecznych, telefonia i utrzymanie systemów na co dzień.",
-      },
-      {
-        role: "Architektura platform i automatyzacja",
-        note: "Projektowanie systemów wiedzy, narzędzi dla developerów i pipeline’ów pod agentów AI — od koncepcji po utrzymanie.",
-      },
-      {
-        role: "Produkt, AI i wdrożenia",
-        note: "Aplikacje, agenci AI, warstwa biznesowa, komunikacja z klientem i dowiezienie do produkcji — mój zakres w zespole.",
-      },
+    title: "Umiejętności",
+    items: [
+      "CapCut Pro", "DaVinci Resolve", "Canva", "GPT-Image", "Meta Business Suite", "Scenariusze", "Redakcja PL",
+      "Agenci AI", "Prompt engineering", "n8n", "MCP", "ExoVault", "Integracje API", "Fish-Speech", "ffmpeg",
+      "React", "Next.js", "TypeScript", "Python", "Tailwind", "Docker", "Git", "Praca przed kamerą",
     ],
-    cert: 'Certyfikat „Umiejętności Jutra: AI" (Google & SGH).',
-    english:
-      "Angielski: komunikatywny, async-first, wspierany narzędziami AI — spotkania online i pisemna komunikacja bez przeszkód.",
+  },
+  education: {
+    kicker: "06",
+    title: "Edukacja",
+    items: [
+      { org: "Warszawska Szkoła Filmowa", years: "2008–2010", h: "Aktorstwo", p: "Studia aktorskie; potem 17 lat pracy w filmie, telewizji, teatrze i operze." },
+      { org: "Google & SGH", years: "2025", h: "Certyfikat „Umiejętności Jutra: AI”", p: "Program praktyczny: AI w produktywności, marketingu, sprzedaży i analityce." },
+    ],
+  },
+  languages: {
+    kicker: "07",
+    title: "Języki",
+    items: [
+      { name: "Polski", level: "Ojczysty" },
+      { name: "Angielski", level: "B1/B2, z pomocą AI" },
+    ],
   },
   kontakt: {
-    title: "Porozmawiajmy",
-    kicker: "06",
-    headline: "Szukasz kogoś, kto poprowadzi Twoje social media z AI? Porozmawiajmy.",
-    lead: "Tworzę content i buduję zautomatyzowane studia treści — wideo, grafiki, kalendarz, analityka i publikacja. Do tego automatyzacje i aplikacje z AI. Współpraca zdalna (B2B lub etat), PL i zagranica.",
+    kicker: "08",
+    title: "Kontakt",
+    emailLabel: "E-mail",
+    sitesLabel: "Strony",
+    socialsLabel: "Social media",
+    sites: [
+      { href: site.socials.tercetlabs, label: "tercetlabs.pl", note: "Tercet Labs" },
+      { href: site.socials.asistel, label: "asistel.pl", note: "Asistel" },
+      { href: site.socials.metoda, label: "metodasufy.pl", note: "Metoda Sufy" },
+    ] as Site[],
+  },
+  thanks: {
+    lines: ["Dziękuję,", "że tu", "jesteś"],
+    cta: ["Zróbmy razem", "coś dobrego"],
   },
 };
 
@@ -180,178 +168,151 @@ const en: typeof pl = {
   lang: "en",
   ui: {
     skipLink: "Skip to content",
-    navAria: "Main",
-    nav: [
-      { href: "#co-robie", label: "Services" },
-      { href: "#projekty", label: "Projects" },
-      { href: "#jak-pracuje", label: "How I work" },
-      { href: "#o-mnie", label: "About" },
-    ],
-    navCta: "Let's talk",
-    menuOpen: "Open menu",
-    menuClose: "Close menu",
+    status: "Open to work",
+    timezone: "(UTC+1)",
+    downloadCv: "Download CV",
+    contactMe: "Contact Me",
+    cvHref: "/cv/Maciej_Sufa_CV_EN.pdf",
+    menu: "Menu",
+    menuClose: "Close",
+    scroll: "Scroll",
+    backToTop: "Back to Top",
     copyEmail: "Copy e-mail",
     emailCopied: "Copied ✓",
     langSwitchAria: "Change language / Zmień język",
-    heroCtaPrimary: "See what I do",
-    heroCtaCv: "Download CV",
-    cvHref: "/cv/Maciej_Sufa_CV_EN.pdf",
     footerPrivacy: "Privacy policy",
   },
   hero: {
     aria: "Introduction",
-    badge: "I create social media content — powered by AI",
-    h1: "I create social media content — powered by AI",
-    enTitle: "Social Media Content Creator (AI-powered)",
-    subhead:
-      "From idea to publication: scripts and copy, video (CapCut Pro, DaVinci Resolve), graphics and thumbnails (Canva, GPT-Image), and a content calendar driven by trends and analytics. I run my own channels on a custom automated AI-agent pipeline — and build such systems for companies.",
-    en: "Remote collaboration · PL / EU · Based in Poland, working across time zones.",
+    nameLines: ["Maciej", "V. Sufa"],
+    stats: ["17 yrs on camera", "since 2025 AI content"],
+    roleLine: "Social Media Content Creator (AI-powered), based in Łódź",
+    quote:
+      "The most valuable resource isn't money — it's lifetime. Let robots do the labor, so life stays with people.",
+    photoAlt: "Maciej V. Sufa",
+  },
+  about: {
+    kicker: "01",
+    title: "About",
+    body: [
+      "I create social media content from idea to publication, with the help of AI. I write scripts and copy, edit video (CapCut Pro, DaVinci Resolve), make graphics and thumbnails (Canva, GPT-Image) and plan a content calendar around trends and analytics.",
+      "I run my own channels on an automated production line with AI agents, and I build similar systems for companies. Before that I spent 17 years as a professional actor — that's where my ease on camera, voice craft and storytelling come from.",
+    ],
+  },
+  experience: {
+    kicker: "02",
+    title: "Experience",
+    items: [
+      {
+        org: "Tercet Labs",
+        meta: "sp. z o.o.",
+        years: "2026–Present",
+        role: "Co-founder",
+        p: "A company that brings AI into businesses together with their teams. Our products include Asistel, a voice assistant for pharmacies.",
+        links: [
+          { href: `${site.socials.tercetlabs}/en/`, label: "tercetlabs.pl" },
+          { href: site.socials.asistel, label: "asistel.pl" },
+        ],
+      },
+      {
+        org: "LEV",
+        meta: "Remote",
+        years: "2025–Present",
+        role: "Founder",
+        p: "My practice: content and social media for companies.",
+      },
+      {
+        org: "Studio AI — Metoda Sufy",
+        meta: "YouTube, Instagram, Facebook",
+        years: "2025–Present",
+        role: "Content Creator & Founder",
+        p: "A personal brand run like a content studio. Script, voice, editing, thumbnails and publishing go through my own production line with AI agents.",
+        links: [{ href: site.socials.metoda, label: "metodasufy.pl" }],
+      },
+      {
+        org: "Film, TV, theatre, opera",
+        meta: "17 years",
+        years: "",
+        role: "Professional Actor",
+        p: "Lead role in the crime series “Gliniarze” (Polsat), “Women of Mafia”, Polish National Opera (“La forza del destino”, dir. M. Treliński), Teatr Kamienica and dozens of TV roles.",
+      },
+    ] as Job[],
   },
   coRobie: {
+    kicker: "03",
     title: "What I do",
-    kicker: "01",
-    h2a: "Less repetitive work.",
-    h2b: "More room for people.",
-    lead: "Content, automations and AI-agent systems — from idea to publication.",
     items: [
       {
         h: "Content & social media",
-        p: "I run channels end-to-end: scripts and editing, recording and video editing (CapCut Pro, DaVinci Resolve), thumbnails and hook frames (GPT-Image, Canva), publishing on a calendar driven by trends and analytics. YouTube long-form / Reels / carousels.",
-        note: "Living portfolio: Metoda Sufy channels (YT/IG/FB).",
-      },
-      {
-        h: "Apps & websites",
-        p: "I build web apps and websites with React / Next.js and a no-code + AI approach. From the first screen to deployment — fast, clean, with care for performance and UX.",
-        note: "This site is an example: Next.js, static export, 99+ Lighthouse.",
-      },
-      {
-        h: "Automations",
-        p: "I design and deploy process automations: n8n, API integrations, Python, AI agents, MCP. They take over tedious, repetitive work — ticket handling, reports, data flows.",
-      },
-      {
-        h: "AI-agent systems",
-        p: "I build solutions based on AI agents and multi-model orchestration — from voice assistants to production pipelines. I connect them with the company's existing tools.",
+        p: "I run channels end to end: script, recording, editing, thumbnails and publishing on a calendar. YouTube, Reels, carousels.",
       },
       {
         h: "Social media automation",
-        p: "I automate content creation and publishing: post calendars, video generation, end-to-end pipelines. Less manual work, more consistency.",
-      },
-    ],
-  },
-  projekty: {
-    title: "Selected projects",
-    kicker: "02",
-    h2: "Things I've built.",
-    items: [
-      {
-        name: "Asistel",
-        tag: "AI VOICE AGENT · co-founder",
-        p: "AI voice assistant for pharmacies and multi-branch companies: it answers calls, collects requests and relieves the team of repetitive support. I own the product site, the AI layer (conversation design, ticket data capture) and client communication. Teamwork with code review and shared approval.",
-        stack: ["Next.js", "AI agents", "telephony/AI integrations"],
-        link: "https://asistel.pl",
-        linkLabel: "asistel.pl",
+        p: "I automate content creation and publishing: post calendars, video generation, a publishing queue. Less manual work, more consistency.",
       },
       {
-        name: "LEV",
-        tag: "INDEPENDENT AI PRACTICE · founder",
-        p: "My own practice building AI solutions for business: automations, apps, websites and integrations. I start with a needs audit, build a working prototype, deploy it and hand the knowledge over to the team.",
-        stack: ["automation", "no-code + AI", "API integrations"],
+        h: "AI-agent systems",
+        p: "I connect AI agents and several models into one process — from voice assistants to video production lines — and plug them into the tools a company already uses.",
       },
       {
-        name: "Studio AI",
-        tag: "PRODUCTION PIPELINE",
-        p: "End-to-end video content pipeline: voice synthesis (local, Fish-Speech), editing (ffmpeg), talking avatar, illustrations, thumbnails — with quality gates. YouTube long / Reels / Shorts.",
-        stack: ["Python", "Fish-Speech", "ffmpeg", "Docker"],
-      },
-      {
-        name: "Organizacja Myśląca",
-        tag: "DECISION-SUPPORT SYSTEM",
-        p: "A decision-support system based on systems thinking (Senge): ladder of inference, dialogue vs. discussion, system archetypes. I prototype the tool with AI agents — from methodology to a working product.",
-        stack: ["systems thinking", "AI agents", "prototyping"],
+        h: "Apps & websites",
+        p: "I build websites and apps with React and Next.js. This site is an example: static export, Lighthouse score above 95.",
       },
     ],
   },
   jakPracuje: {
-    title: "How I work",
-    kicker: "03",
-    lead: "Not just code — well-organized work",
-    intro:
-      "I work in the spirit of a thinking organization: a team that makes sound decisions, communicates efficiently and achieves a lot with little overhead. It's not theory — it's how I run AI projects.",
-    points: [
-      {
-        h: "Sound decisions",
-        p: "First understand the problem from many angles, then decide. Audit before code.",
-      },
-      {
-        h: "Efficient communication",
-        p: "Clear ownership, shared approval, code review, one shared project state.",
-      },
-      {
-        h: "Results with little overhead",
-        p: "AI-agent orchestration: plan → build → cross-review → ship. Robots do the labor, humans do the thinking.",
-      },
-    ],
-  },
-  stack: {
-    title: "Stack",
     kicker: "04",
-    h2: "Tools I work with.",
-    groups: [
-      "CapCut Pro · Canva · DaVinci Resolve · GPT-Image · Meta Business Suite",
-      "No-code + AI · prompt engineering · multi-agent",
-      "Claude Code · Cursor · Docker · Git/GitHub · ffmpeg · Fish-Speech",
-      "n8n · ExoVault · MCP · API integrations · AI agents · automation",
-      "React · Next.js · TypeScript · Python · Tailwind · three.js",
+    title: "How I work",
+    intro:
+      "I work in the spirit of a thinking organization: a team that makes sound decisions, communicates well and achieves a lot with little overhead.",
+    points: [
+      { h: "Sound decisions", p: "First I understand the problem from several angles, then I decide. Audit before code." },
+      { h: "Clear communication", p: "Clear ownership, shared approval, code review and one shared project state." },
+      { h: "Results with little overhead", p: "AI agents work in a loop: plan → build → cross-review → ship. Robots do the labor, people do the thinking." },
     ],
   },
-  oMnie: {
-    title: "About",
+  skills: {
     kicker: "05",
-    motto:
-      "The most valuable resource isn't money — it's lifetime. I build solutions where what we call labor is done by robots, and what we call life stays with people. The greatest wisdom isn't knowing everything — it's using what you already know, where you are, for your own good. That's what drives me: giving people and companies tools for a good, satisfying life and work.",
-    mottoParts: {
-      before: "The most valuable resource isn't money — it's ",
-      em: "lifetime",
-      after: ". I build solutions where labor is done by robots, and life stays with people.",
-    },
-    background:
-      "Before this: 17 years as a professional actor (Warsaw Film School) — lead role in the crime series “Gliniarze” (Polsat), “Women of Mafia”, Polish National Opera (“La forza del destino”, dir. M. Treliński), and dozens of TV roles. That's where the on-camera ease, voice craft and storytelling powering my content come from. Today I build with AI; my personal brand Metoda Sufy doubles as a living portfolio.",
-    teamIntro:
-      "Not alone — I collaborate with a small team of complementary roles. Good things are built together, especially where technology meets real processes:",
-    teamRoles: [
-      {
-        role: "Infrastructure & IT operations",
-        note: "Technical coordination and rollouts in multi-branch organizations — incl. pharmacy networks, telephony and day-to-day systems maintenance.",
-      },
-      {
-        role: "Platform architecture & automation",
-        note: "Designing knowledge systems, developer tooling and pipelines for AI agents — from concept to maintenance.",
-      },
-      {
-        role: "Product, AI & delivery",
-        note: "Apps, AI agents, the business layer, client communication and shipping to production — my scope in the team.",
-      },
+    title: "Skills",
+    items: [
+      "CapCut Pro", "DaVinci Resolve", "Canva", "GPT-Image", "Meta Business Suite", "Scriptwriting", "Polish copy editing",
+      "AI agents", "Prompt engineering", "n8n", "MCP", "ExoVault", "API integrations", "Fish-Speech", "ffmpeg",
+      "React", "Next.js", "TypeScript", "Python", "Tailwind", "Docker", "Git", "On-camera presence",
     ],
-    cert: '"AI Skills for Tomorrow" certificate (Google & SGH).',
-    english:
-      "English: conversational, async-first, AI-assisted — online meetings and written communication without friction.",
+  },
+  education: {
+    kicker: "06",
+    title: "Education",
+    items: [
+      { org: "Warsaw Film School", years: "2008–2010", h: "Acting", p: "Acting studies, followed by 17 years of work in film, TV, theatre and opera." },
+      { org: "Google & SGH", years: "2025", h: "“AI Skills for Tomorrow” certificate", p: "Hands-on program: AI in productivity, marketing, sales and analytics." },
+    ],
+  },
+  languages: {
+    kicker: "07",
+    title: "Languages",
+    items: [
+      { name: "Polish", level: "Native speaker" },
+      { name: "English", level: "B1/B2, AI-assisted" },
+    ],
   },
   kontakt: {
-    title: "Let's talk",
-    kicker: "06",
-    headline: "Looking for someone to run your social media with AI? Let's talk.",
-    lead: "I create content and build automated content studios — video, graphics, calendar, analytics and publishing. Plus AI automations and apps. Remote collaboration (B2B or employment), Poland and abroad.",
+    kicker: "08",
+    title: "Contact",
+    emailLabel: "Email",
+    sitesLabel: "Sites",
+    socialsLabel: "Socials",
+    sites: [
+      { href: `${site.socials.tercetlabs}/en/`, label: "tercetlabs.pl", note: "Tercet Labs" },
+      { href: site.socials.asistel, label: "asistel.pl", note: "Asistel" },
+      { href: site.socials.metoda, label: "metodasufy.pl", note: "Metoda Sufy" },
+    ] as Site[],
+  },
+  thanks: {
+    lines: ["Thanks", "for being", "here"],
+    cta: ["Let's make", "something great"],
   },
 };
 
 export const content = { pl, en } as const;
 export type SiteContent = typeof pl;
-
-// Zgodność wstecz — istniejące importy PL (sekcje przechodzą na propsy `t`).
-export const hero = pl.hero;
-export const coRobie = pl.coRobie;
-export const projekty = pl.projekty;
-export const jakPracuje = pl.jakPracuje;
-export const stack = pl.stack;
-export const oMnie = pl.oMnie;
-export const kontakt = pl.kontakt;

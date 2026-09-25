@@ -25,26 +25,58 @@
       "address": "Łódź, ul. Milionowa 243",
       "born": "24.04.1988, Warszawa"
     },
-    "summary": "Tworzę content na social media od pomysłu po publikację: scenariusze i redakcja tekstów, wideo (CapCut Pro, DaVinci Resolve, ffmpeg), grafiki i miniatury (Canva, GPT-Image), kalendarz treści sprzężony z trendami i analityką. Prowadzę własne kanały (YT/IG/FB) na autorskim, zautomatyzowanym pipeline z agentami AI — case study: Metoda Sufy. Zaplecze techniczne: automatyzacje (n8n, Python, API), aplikacje webowe. 17 lat jako zawodowy aktor — m.in. główna rola w serialu „Gliniarze” (Polsat) — swoboda przed obiektywem i mikrofonem. Otwarty na etat lub B2B — posiadam działalność gospodarczą. Zdalnie · PL/EU.",
+    "summary": "Tworzę content na social media od pomysłu po publikację: scenariusze i redakcja tekstów, wideo (CapCut Pro, DaVinci Resolve, ffmpeg), grafiki i miniatury (Canva, GPT-Image), kalendarz treści sprzężony z trendami i analityką. Prowadzę własne kanały (YT/IG/FB) na autorskim, zautomatyzowanym pipeline z agentami AI — case study: Metoda Sufy. Zaplecze techniczne: automatyzacje (n8n, Python, API), aplikacje webowe. 17 lat jako zawodowy aktor — m.in. główna rola w serialu „Gliniarze” (Polsat) — swoboda przed obiektywem i mikrofonem. Współzałożyciel Tercet Labs. Otwarty na etat lub B2B — posiadam działalność gospodarczą. Zdalnie · PL/EU.",
     "skills": [
       {
         "group": "Content i social media",
-        "items": ["CapCut Pro · DaVinci Resolve · ffmpeg", "Canva · GPT-Image · Midjourney", "Meta Business Suite", "Scenariusze · storyboard · redakcja PL", "Kalendarz treści · trendy · analityka", "Występowanie przed kamerą"]
+        "items": [
+          "CapCut Pro · DaVinci Resolve · ffmpeg",
+          "Canva · GPT-Image · Midjourney",
+          "Meta Business Suite",
+          "Scenariusze · storyboard · redakcja PL",
+          "Kalendarz treści · trendy · analityka",
+          "Występowanie przed kamerą"
+        ]
       },
       {
         "group": "AI i automatyzacja",
-        "items": ["Agenci AI", "Prompt engineering", "n8n · ExoVault · MCP · API", "Pipeline wideo end-to-end", "Multi-agent"]
+        "items": [
+          "Agenci AI",
+          "Prompt engineering",
+          "n8n · ExoVault · MCP · API",
+          "Pipeline wideo end-to-end",
+          "Multi-agent"
+        ]
       },
       {
         "group": "Development · miękkie",
-        "items": ["React · Next.js · TypeScript", "Python · No-code + AI", "Docker · Git", "Komunikacja z klientem · szkolenia"]
+        "items": [
+          "React · Next.js · TypeScript",
+          "Python · No-code + AI",
+          "Docker · Git",
+          "Komunikacja z klientem · szkolenia"
+        ]
       },
       {
         "group": "Języki",
-        "items": ["Polski — ojczysty", "Angielski — B1/B2 (biegle dokumentacja techniczna, komunikatywnie w mowie)"]
+        "items": [
+          "Polski — ojczysty",
+          "Angielski — B1/B2 (biegle dokumentacja techniczna, komunikatywnie w mowie)"
+        ]
       }
     ],
     "experience": [
+      {
+        "period": "2026 – obecnie",
+        "role": "Współzałożyciel",
+        "company": "Tercet Labs sp. z o.o.",
+        "context": "Spółka, która wdraża AI w firmach razem z ich zespołami (tercetlabs.pl). Jeden z naszych produktów to Asistel — asystent głosowy dla aptek (asistel.pl)",
+        "bullets": [
+          "Produkt, warstwa AI (dialog, tickety) i komunikacja z klientem; panel zarządzania zespołem i procesami w firmie",
+          "PWA Asistel: notatki głosowe speech-to-text — farmaceuta nagrywa jednym dotknięciem, system zapisuje tekst; praca bez odrywania rąk",
+          "Głosowy agent odbierający połączenia — code-review i wspólne zatwierdzanie w zespole"
+        ]
+      },
       {
         "period": "2025 – obecnie",
         "role": "Twórca contentu & założyciel",
@@ -57,25 +89,13 @@
         ]
       },
       {
-        "period": "2026 – obecnie",
-        "role": "Współtwórca",
-        "company": "Asistel",
-        "context": "Platforma AI dla aptek i firm wielooddziałowych (asistel.pl) — współpraca w 3-osobowym, doświadczonym zespole",
-        "bullets": [
-          "Produkt, warstwa AI (dialog, tickety) i komunikacja z klientem; panel zarządzania zespołem i procesami w firmie",
-          "PWA Asistel: notatki głosowe speech-to-text — farmaceuta nagrywa jednym dotknięciem, system zapisuje tekst; praca bez odrywania rąk",
-          "Głosowy agent odbierający połączenia — code-review i wspólne zatwierdzanie w zespole"
-        ]
-      },
-      {
         "period": "2025 – obecnie",
-        "role": "Założyciel & AI Solutions Builder",
+        "role": "Założyciel",
         "company": "LEV",
-        "context": "Własna praktyka — rozwiązania AI dla firm",
+        "context": "Moja praktyka: content i social media dla firm",
         "bullets": [
-          "Audyt → prototyp → wdrożenie: automatyzacje, aplikacje, strony, integracje API",
-          "ExoVault (exovault.co) jako narzędzie pracy: szyfrowana pamięć agenta AI, organizacja zadań i komunikacja zespołu",
-          "Automatyzacja social media, szkolenia zespołów"
+          "Content dla firm od pomysłu po publikację: scenariusze, wideo, grafiki i miniatury, kalendarz treści",
+          "Automatyzacja social media i szkolenia zespołów z narzędzi AI"
         ]
       }
     ],
@@ -84,11 +104,6 @@
         "name": "Metoda Sufy — żywe portfolio",
         "url": "https://metodasufy.pl",
         "desc": "Kanały YT/IG/FB prowadzone własnym zautomatyzowanym studiem contentu: wideo long i Reels, karuzele, ebook — pełne metryki zasięgu i zaangażowania dostępne na życzenie"
-      },
-      {
-        "name": "Asistel",
-        "url": "https://asistel.pl",
-        "desc": "Platforma AI dla aptek i firm wielooddziałowych, współtworzona w 3-osobowym zespole: głosowy agent AI odbierający połączenia, PWA z notatkami speech-to-text, panel zarządzania zespołem i procesami"
       },
       {
         "name": "Studio AI",
@@ -140,26 +155,58 @@
       "address": "Łódź, ul. Milionowa 243, Poland",
       "born": "24 April 1988, Warsaw"
     },
-    "summary": "I create social media content end-to-end: scripts and copy editing, video (CapCut Pro, DaVinci Resolve, ffmpeg), graphics and thumbnails (Canva, GPT-Image), and a content calendar driven by trends and analytics. I run my own channels (YT/IG/FB) on a custom automated pipeline with AI agents — case study: Metoda Sufy. Technical backbone: automations (n8n, Python, APIs) and web apps. 17 years as a professional actor — incl. a lead role in the crime series \"Gliniarze\" (Polsat) — fully at ease on mic and lens. Open to employment or B2B — registered sole proprietorship. Remote · PL/EU.",
+    "summary": "I create social media content end-to-end: scripts and copy editing, video (CapCut Pro, DaVinci Resolve, ffmpeg), graphics and thumbnails (Canva, GPT-Image), and a content calendar driven by trends and analytics. I run my own channels (YT/IG/FB) on a custom automated pipeline with AI agents — case study: Metoda Sufy. Technical backbone: automations (n8n, Python, APIs) and web apps. 17 years as a professional actor — incl. a lead role in the crime series \"Gliniarze\" (Polsat) — fully at ease on mic and lens. Co-founder of Tercet Labs. Open to employment or B2B — registered sole proprietorship. Remote · PL/EU.",
     "skills": [
       {
         "group": "Content & social media",
-        "items": ["CapCut Pro · DaVinci Resolve · ffmpeg", "Canva · GPT-Image · Midjourney", "Meta Business Suite", "Scripts · storyboards · copy editing", "Content calendar · trends · analytics", "On-camera presence"]
+        "items": [
+          "CapCut Pro · DaVinci Resolve · ffmpeg",
+          "Canva · GPT-Image · Midjourney",
+          "Meta Business Suite",
+          "Scripts · storyboards · copy editing",
+          "Content calendar · trends · analytics",
+          "On-camera presence"
+        ]
       },
       {
         "group": "AI & automation",
-        "items": ["AI agents", "Prompt engineering", "n8n · ExoVault · MCP · API", "End-to-end video pipeline", "Multi-agent"]
+        "items": [
+          "AI agents",
+          "Prompt engineering",
+          "n8n · ExoVault · MCP · API",
+          "End-to-end video pipeline",
+          "Multi-agent"
+        ]
       },
       {
         "group": "Development · soft",
-        "items": ["React · Next.js · TypeScript", "Python · No-code + AI", "Docker · Git", "Client communication · training"]
+        "items": [
+          "React · Next.js · TypeScript",
+          "Python · No-code + AI",
+          "Docker · Git",
+          "Client communication · training"
+        ]
       },
       {
         "group": "Languages",
-        "items": ["Polish — native", "English — B1/B2 (fluent with technical documentation, conversational spoken)"]
+        "items": [
+          "Polish — native",
+          "English — B1/B2 (fluent with technical documentation, conversational spoken)"
+        ]
       }
     ],
     "experience": [
+      {
+        "period": "2026 – present",
+        "role": "Co-founder",
+        "company": "Tercet Labs sp. z o.o.",
+        "context": "A company that brings AI into businesses together with their teams (tercetlabs.pl). Our products include Asistel, a voice assistant for pharmacies (asistel.pl)",
+        "bullets": [
+          "Product, AI layer (dialog, tickets) and client communication; team and process management panel",
+          "Asistel PWA: speech-to-text voice notes — one-tap recording, saved as text; pharmacists work hands-free",
+          "Voice agent handling calls — code review and shared approval in the team"
+        ]
+      },
       {
         "period": "2025 – present",
         "role": "Content Creator & Founder",
@@ -172,25 +219,13 @@
         ]
       },
       {
-        "period": "2026 – present",
-        "role": "Co-founder",
-        "company": "Asistel",
-        "context": "AI platform for pharmacies and multi-branch companies (asistel.pl) — 3-person experienced team",
-        "bullets": [
-          "Product, AI layer (dialog, tickets) and client communication; team and process management panel",
-          "Asistel PWA: speech-to-text voice notes — one-tap recording, saved as text; pharmacists work hands-free",
-          "Voice agent handling calls — code review and shared approval in the team"
-        ]
-      },
-      {
         "period": "2025 – present",
-        "role": "Founder & AI Solutions Builder",
+        "role": "Founder",
         "company": "LEV",
-        "context": "Independent practice — AI solutions for business",
+        "context": "My practice: content and social media for companies",
         "bullets": [
-          "Audit → prototype → deployment: automations, apps, websites, API integrations",
-          "ExoVault (exovault.co) as a work tool: encrypted AI agent memory, task organization and team communication",
-          "Social media automation, team training"
+          "Content for companies from idea to publication: scripts, video, graphics and thumbnails, content calendar",
+          "Social media automation and team training in AI tools"
         ]
       }
     ],
@@ -199,11 +234,6 @@
         "name": "Metoda Sufy — living portfolio",
         "url": "https://metodasufy.pl",
         "desc": "YT/IG/FB channels run on my own automated content studio: long-form video and Reels, carousels, ebook — full reach and engagement metrics available on request"
-      },
-      {
-        "name": "Asistel",
-        "url": "https://asistel.pl",
-        "desc": "AI platform for pharmacies and multi-branch companies, co-created in a 3-person team: AI voice agent handling calls, PWA with speech-to-text notes, team & process management panel"
       },
       {
         "name": "Studio AI",
