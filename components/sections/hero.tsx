@@ -3,16 +3,28 @@ import { FitText } from "@/components/fx/fit-text";
 import { SplitText } from "@/components/fx/split-text";
 
 /**
- * Tło hero: zdjęcie na cały ekran, stałe (przewijana treść jedzie po nim), czarno-białe.
+ * Stałe tło strony (przewijana treść jedzie po nim), czarno-białe, dwie warstwy:
+ * rozmyte tło na cały ekran + postać przy prawej krawędzi — twarz wypada w pasie,
+ * którego czarny panel nie zasłania, więc wizerunek widać przez całe przewijanie.
  * Wejście: skala 1.2 → 1 przez 3 s (jak w szablonie).
  */
 export function HeroBackdrop({ alt }: { alt: string }) {
   return (
     <div className="hero-bg">
-      <picture>
-        <source media="(max-width: 809px)" srcSet="/hero-bw-800.webp" type="image/webp" />
-        <img src="/hero-bw.webp" alt={alt} width={1254} height={1254} fetchPriority="high" decoding="async" />
-      </picture>
+      <div className="hero-bg-zoom">
+        <picture>
+          <source media="(max-width: 809px)" srcSet="/hero-fig-480.webp" type="image/webp" />
+          <img
+            className="hero-fig"
+            src="/hero-fig.webp"
+            alt={alt}
+            width={800}
+            height={995}
+            fetchPriority="high"
+            decoding="async"
+          />
+        </picture>
+      </div>
     </div>
   );
 }

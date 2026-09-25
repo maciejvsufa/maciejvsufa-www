@@ -57,7 +57,7 @@ const jsonLd = {
       "@id": personId,
       name: site.name,
       url: site.url,
-      image: `${site.url}/hero-bw.webp`,
+      image: `${site.url}/hero-fig.webp`,
       jobTitle: site.jobTitle,
       email: `mailto:${site.email}`,
       sameAs: [site.socials.instagram, site.socials.facebook, site.socials.linkedin, site.socials.github],
@@ -86,8 +86,8 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="pl" className={`${switzer.variable} h-full antialiased`}>
       <head>
-        <link rel="preload" as="image" href="/hero-bw-800.webp" type="image/webp" media="(max-width: 809px)" fetchPriority="high" />
-        <link rel="preload" as="image" href="/hero-bw.webp" type="image/webp" media="(min-width: 810px)" fetchPriority="high" />
+        <link rel="preload" as="image" href="/hero-fig-480.webp" type="image/webp" media="(max-width: 809px)" fetchPriority="high" />
+        <link rel="preload" as="image" href="/hero-fig.webp" type="image/webp" media="(min-width: 810px)" fetchPriority="high" />
         {/* bez JavaScriptu treść ma być widoczna od razu */}
         <noscript>
           <style>{`.split .sp,.fade-in{opacity:1!important;transform:none!important;filter:none!important}`}</style>
