@@ -20,15 +20,10 @@ export function Section({
     <section id={id} className="sec">
       <div className="sec-row">
         <div className="sec-grid">
-          <SplitText
-            as="h2"
-            text={`${num}. ${title}`}
-            by="char"
-            trigger="view"
-            stagger={0.05}
-            blur
-            className="sec-title"
-          />
+          <h2 className="sec-title">
+            <SplitText text={`${num}.`} by="char" trigger="view" stagger={0.05} blur className="sec-num" />{" "}
+            <SplitText text={title} by="char" trigger="view" start={0.1} stagger={0.04} blur />
+          </h2>
           <div className="sec-body">{children}</div>
         </div>
       </div>

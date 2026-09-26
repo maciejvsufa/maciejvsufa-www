@@ -52,6 +52,7 @@
   --font-display: var(--font-switzer), system-ui, sans-serif;
   --font-sans: var(--font-switzer), system-ui, sans-serif;
   --font-mono: var(--font-switzer), system-ui, sans-serif;
+  --font-serif-stack: var(--font-serif), Georgia, "Times New Roman", serif;
 }
 
 html {
@@ -401,10 +402,14 @@ a {
   top: 80px;
   align-self: start;
   z-index: 1;
-  font-size: 32px;
-  font-weight: 700;
-  line-height: 1;
-  text-transform: uppercase;
+  font-family: var(--font-serif-stack);
+  font-size: 38px;
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+}
+.sec-num {
+  color: var(--accent);
 }
 .items {
   display: flex;
@@ -420,10 +425,12 @@ a {
 }
 .h3 {
   display: block;
-  margin-top: 12px;
-  font-size: 24px;
-  font-weight: 700;
+  margin-top: 10px;
+  font-family: var(--font-serif-stack);
+  font-size: 27px;
+  font-weight: 600;
   line-height: 1.2;
+  letter-spacing: -0.005em;
 }
 .lang-card .h3 {
   margin-top: 0;
@@ -731,6 +738,9 @@ a {
   .sec-title {
     position: relative;
     top: auto;
+    font-size: 30px;
+  }
+  .h3 {
     font-size: 24px;
   }
   .items {
@@ -751,7 +761,7 @@ a {
 }
 @media (min-width: 810px) and (max-width: 1279px) {
   .sec-title {
-    font-size: 24px;
+    font-size: 32px;
   }
 }
 
