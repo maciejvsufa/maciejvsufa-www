@@ -52,7 +52,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#f5efe3",
+  themeColor: "#ffffff",
   width: "device-width",
   initialScale: 1,
 };
@@ -95,8 +95,16 @@ const jsonLd = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="pl" className={`${switzer.variable} ${playfair.variable} h-full antialiased`}>
+    <html lang="pl" suppressHydrationWarning className={`${switzer.variable} ${playfair.variable} h-full antialiased`}>
       <head>
+        {/* tryb „jednej strony” włączony przed pierwszym rysowaniem — bez przeskoku układu (CLS);
+            bez JS klasa się nie pojawia i treść stoi zwyczajnie, jedna pod drugą */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              "var d=document.documentElement;d.classList.add('story-on');if(matchMedia('(prefers-reduced-motion: reduce)').matches)d.classList.add('story-still')",
+          }}
+        />
         <link rel="preload" as="image" href="/hero-fig-480.webp" type="image/webp" media="(max-width: 809px)" fetchPriority="high" />
         <link rel="preload" as="image" href="/hero-fig.webp" type="image/webp" media="(min-width: 810px)" fetchPriority="high" />
         {/* bez JavaScriptu treść ma być widoczna od razu */}

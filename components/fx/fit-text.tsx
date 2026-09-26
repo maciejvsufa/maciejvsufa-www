@@ -39,7 +39,15 @@ export function FitText({
       // (tylko od 810 px — na telefonie hero celowo jest wyższe niż ekran)
       const section = fitHeightOf && window.innerWidth >= 810 ? el.closest<HTMLElement>(fitHeightOf) : null;
       if (section) {
-        const over = section.scrollHeight - window.innerHeight;
+        // treść hero wyrównana do dołu wystaje w górę, więc scrollHeight jej nie widzi —
+        // liczymy wprost: wysokość dzieci + odstępy wewnętrzne względem wysokości ramki/okna
+        const cs = getComputedStyle(section);
+        const content =
+          Array.from(section.children).reduce((a, c) => a + c.getBoundingClientRect().height, 0) +
+          parseFloat(cs.paddingTop) +
+          parseFloat(cs.paddingBottom);
+        const limit = Math.min(section.clientHeight || window.innerHeight, window.innerHeight);
+        const over = content - limit;
         if (over > 0) {
           size = Math.max(48, size - over / (lines.length * 0.9));
           el.style.fontSize = `${size}px`;
