@@ -34,9 +34,14 @@ export function Hero({ t }: { t: SiteContent }) {
   const h = t.hero;
   return (
     <section aria-label={h.aria} className="hero" id="top">
-      <SplitText as="p" text={h.quote.toUpperCase()} by="word" trigger="mount" start={2} stagger={0.075} className="hero-quote" />
-
       <div className="hero-main">
+        {/* Cytat jak w gazecie: lekka kursywa, półprzezroczysty, po lewej — nie zasłania twarzy. */}
+        <figure className="hero-quote">
+          <blockquote>
+            <SplitText as="p" text={h.quote} by="word" trigger="mount" start={1.4} stagger={0.018} />
+          </blockquote>
+          <figcaption>— {h.quoteBy}</figcaption>
+        </figure>
         <p className="hero-stats">
           {h.stats.map((s) => (
             <span key={s} className="block">
@@ -45,7 +50,7 @@ export function Hero({ t }: { t: SiteContent }) {
           ))}
         </p>
         <div className="hero-name-box">
-          <FitText as="h1" lines={h.nameLines} align="right" className="hero-name" />
+          <FitText as="h1" lines={h.nameLines} align="right" className="hero-name" fitHeightOf=".hero" />
         </div>
         <SplitText as="p" text={h.roleLine} by="word" trigger="mount" start={0.5} stagger={0.075} className="hero-role" />
       </div>

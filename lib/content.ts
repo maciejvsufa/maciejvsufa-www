@@ -39,7 +39,8 @@ const pl = {
     stats: ["17 lat przed kamerą", "od 2025 content z AI"],
     roleLine: "Social Media Content Creator (AI-powered), Łódź",
     quote:
-      "Najcenniejszy zasób to nie pieniądze — to czas życia. Niech robotę robią roboty, a życie zostanie człowiekowi.",
+      "Najcenniejszy zasób to nie pieniądze — to czas życia. Niech robotę robią roboty, a człowiek realizuje się w kreatywnych działaniach i abstrakcji, w których przewyższa sztuczną inteligencję. Człowiek ma to, czego brakuje AI. AI ma to, czego brakuje człowiekowi. Razem mają wszystko, czego potrzebuje dzisiejsza nauka, biznes, rozwój, kreacja.",
+    quoteBy: "Maciej V. Sufa",
     photoAlt: "Maciej V. Sufa",
   },
   about: {
@@ -200,7 +201,8 @@ const en: typeof pl = {
     stats: ["17 yrs on camera", "since 2025 AI content"],
     roleLine: "Social Media Content Creator (AI-powered), based in Łódź",
     quote:
-      "The most valuable resource isn't money — it's lifetime. Let robots do the labor, so life stays with people.",
+      "The most valuable resource isn't money — it's lifetime. Let robots do the labor, while people fulfil themselves in creative work and abstraction, where they surpass artificial intelligence. People have what AI lacks. AI has what people lack. Together they have everything today's science, business, growth and creation need.",
+    quoteBy: "Maciej V. Sufa",
     photoAlt: "Maciej V. Sufa",
   },
   about: {

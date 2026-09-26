@@ -12,6 +12,7 @@ const switzer = localFont({
     { path: "./fonts/Switzer-500.woff2", weight: "500", style: "normal" },
     { path: "./fonts/Switzer-600.woff2", weight: "600", style: "normal" },
     { path: "./fonts/Switzer-700.woff2", weight: "700", style: "normal" },
+    { path: "./fonts/Switzer-300i.woff2", weight: "300", style: "italic" },
   ],
 });
 
