@@ -3,22 +3,26 @@
 /* ============================================================
    maciejvsufa.pl — wierne odwzorowanie szablonu Framer „Syntax CV”
    (syntaxcv.framer.website). Wartości z CSS szablonu:
-   czerń #000, biel #fff, szary #949494, mięta #00FFAE, font Switzer,
+   Kolory: jasna paleta marki — krem (tło), granat (tekst), złoto (akcent); font Switzer,
    treść 16px/1.2, stanowiska 24px/700, tytuły sekcji 32px/700 wersalikami,
-   linia sekcji 0.5px #949494, sekcja = 67% szerokości, tytuł przyklejony 80px od góry.
+   cienka linia sekcji, sekcja = 67% szerokości, tytuł przyklejony 80px od góry.
    Animacje: jak w konfiguracji „appear” szablonu (patrz komentarze niżej).
    ============================================================ */
 :root {
-  --bg: #000000;
-  --surface: #0b0b0b;
-  --surface2: #121212;
-  --border: #949494;
-  --text: #ffffff;
-  --text2: #ffffff;
-  --text3: #949494;
-  --accent: #00ffae;
-  --accent2: #7dffd2;
-  --ink: #000000;
+  --bg: #f5efe3; /* krem */
+  --paper: 245, 239, 227;
+  --surface: #efe7d7;
+  --surface2: #e8dcc4;
+  --navy: 15, 27, 45; /* granat #0F1B2D */
+  --border: rgba(15, 27, 45, 0.28);
+  --text: #0f1b2d;
+  --text2: #0f1b2d;
+  --text3: #5b6475; /* łupek — drugi plan, kontrast AA na kremie */
+  --accent: #8f6b22; /* złoto do tekstu (kontrast AA na kremie) */
+  --accent2: #6f5218;
+  --gold: #c9a24a; /* złoto dekoracyjne: linie, kropki, poświata */
+  --gold-rgb: 201, 162, 74;
+  --ink: #f5efe3;
   --px: 64px; /* margines boczny: desktop 64, tablet 40, telefon 16 */
   --w: calc(100% - 2 * var(--px));
   --ease-spring: cubic-bezier(0.22, 1, 0.36, 1); /* ≈ spring bounce 0 */
@@ -99,7 +103,26 @@ a {
   inset: 0;
   z-index: 0;
   overflow: hidden;
-  background: #111 url("/hero-bg.webp") center / cover no-repeat;
+  background: var(--bg);
+}
+/* rozmyte zdjęcie jako delikatna mgiełka + ciepła złota poświata za postacią */
+.hero-bg::before,
+.hero-bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+.hero-bg::before {
+  background: url("/hero-bg.webp") center / cover no-repeat;
+  opacity: 0.32;
+}
+.hero-bg::after {
+  background:
+    radial-gradient(40% 55% at 80% 42%, rgba(var(--gold-rgb), 0.28), transparent 70%),
+    radial-gradient(60% 60% at 10% 90%, rgba(var(--navy), 0.06), transparent 70%);
+}
+.hero-bg-zoom {
+  z-index: 1;
 }
 .hero-bg-zoom {
   position: absolute;
@@ -111,12 +134,13 @@ a {
    na środku pasa między czarnym panelem (px + 67% treści) a prawą krawędzią. */
 .hero-fig {
   --edge: calc(var(--px) + (100vw - 2 * var(--px)) * 0.67);
-  --fig-w: calc(100vh * 800 / 995);
+  --fig-h: calc(100vh - 64px); /* głowa zaczyna się pod nagłówkiem, napisy zostają na czystym tle */
+  --fig-w: calc(var(--fig-h) * 800 / 995);
   position: absolute;
   bottom: 0;
   left: calc((var(--edge) + 100vw) / 2 - var(--fig-w) * 0.44);
   width: var(--fig-w);
-  height: 100vh;
+  height: var(--fig-h);
   max-width: none;
   object-fit: contain;
   object-position: bottom;
@@ -147,8 +171,8 @@ a {
   content: "";
   position: absolute;
   inset: 0 0 auto 0;
-  height: 120px;
-  background: linear-gradient(rgba(0, 0, 0, 0.85) 35%, transparent);
+  height: 76px; /* kończy się nad przyklejonym tytułem sekcji (top: 80px) */
+  background: linear-gradient(rgba(var(--paper), 0.95) 55%, transparent);
   opacity: var(--hdr-shade, 0);
   transition: opacity 0.4s ease;
 }
@@ -176,15 +200,15 @@ a {
   height: 6px;
   border-radius: 50%;
   background: var(--accent);
-  box-shadow: 0 0 0 0 rgba(0, 255, 174, 0.6);
+  box-shadow: 0 0 0 0 rgba(var(--gold-rgb), 0.7);
   animation: pulse 2.4s ease-out infinite;
 }
 @keyframes pulse {
   70% {
-    box-shadow: 0 0 0 7px rgba(0, 255, 174, 0);
+    box-shadow: 0 0 0 7px rgba(var(--gold-rgb), 0);
   }
   100% {
-    box-shadow: 0 0 0 0 rgba(0, 255, 174, 0);
+    box-shadow: 0 0 0 0 rgba(var(--gold-rgb), 0);
   }
 }
 .hdr-links {
@@ -209,10 +233,31 @@ a {
 .site-header a:hover {
   color: var(--accent);
 }
+/* napisy nagłówka po prawej leżą na zdjęciu (włosy) — kremowa poświata dla czytelności */
+.hdr-links,
+.hdr-right,
+.hdr-bottom {
+  text-shadow:
+    0 0 6px rgba(var(--paper), 0.95),
+    0 0 14px rgba(var(--paper), 0.8);
+}
 .hdr-bottom {
   position: absolute;
-  bottom: 36px;
+  bottom: 30px;
   left: calc(var(--px) + (100% - 2 * var(--px)) * 0.75);
+}
+/* „Przewiń / Do góry” leży na zdjęciu (garnitur) — kremowa pigułka */
+.hdr-scroll {
+  display: inline-block;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: rgba(var(--paper), 0.88);
+  box-shadow: 0 6px 20px -10px rgba(var(--navy), 0.5);
+  text-shadow: none;
+  transition: background 0.2s;
+}
+.hdr-scroll:hover {
+  background: var(--bg);
 }
 .hdr-menu {
   display: none;
@@ -228,7 +273,8 @@ a {
   padding: 16px;
   border: 1px solid var(--border);
   border-radius: 12px;
-  background: #000;
+  background: var(--bg);
+  box-shadow: 0 18px 40px -18px rgba(var(--navy), 0.35);
   pointer-events: auto;
 }
 .hdr-menu button {
@@ -267,7 +313,7 @@ a {
   max-width: min(560px, 44%);
   margin: 0 0 40px;
   padding-left: 20px;
-  border-left: 1px solid rgba(0, 255, 174, 0.7);
+  border-left: 2px solid var(--gold);
 }
 .hero-quote blockquote {
   font-size: clamp(15px, 1.2vw, 18px);
@@ -275,8 +321,7 @@ a {
   font-weight: 300;
   line-height: 1.55;
   letter-spacing: 0.005em;
-  color: rgba(255, 255, 255, 0.74);
-  text-shadow: 0 1px 12px rgba(0, 0, 0, 0.55);
+  color: rgba(var(--navy), 0.78);
 }
 .hero-quote figcaption {
   margin-top: 12px;
@@ -328,10 +373,10 @@ a {
   padding-top: 200px;
   background: linear-gradient(
     to right,
-    rgba(0, 0, 0, 0.94) 0%,
-    rgba(0, 0, 0, 0.9) 55%,
-    rgba(0, 0, 0, 0.72) 70%,
-    rgba(0, 0, 0, 0.42) 100%
+    rgba(var(--paper), 0.97) 0%,
+    rgba(var(--paper), 0.93) 55%,
+    rgba(var(--paper), 0.74) 70%,
+    rgba(var(--paper), 0.42) 100%
   );
   -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 220px);
   mask-image: linear-gradient(to bottom, transparent 0, #000 220px);
@@ -385,7 +430,7 @@ a {
 }
 .txt {
   line-height: 1.45;
-  color: rgba(255, 255, 255, 0.86);
+  color: rgba(var(--navy), 0.86);
 }
 .lnk,
 .cval,
@@ -413,14 +458,11 @@ a {
   height: auto;
   border-radius: 8px;
   border: 0.5px solid var(--border);
-  filter: grayscale(1) brightness(0.78) contrast(1.05);
-  transition:
-    transform 0.5s var(--ease-spring),
-    filter 0.4s ease;
+  box-shadow: 0 14px 34px -18px rgba(var(--navy), 0.45);
+  transition: transform 0.5s var(--ease-spring);
 }
 .cert:hover img {
   transform: scale(1.02);
-  filter: none;
 }
 .cert .lnk {
   display: inline-block;
@@ -433,7 +475,8 @@ a {
 }
 .tag {
   padding: 4px 8px;
-  border: 1px solid rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(var(--navy), 0.3);
+  background: rgba(255, 255, 255, 0.35);
   border-radius: 6px;
   font-size: 14px;
 }
@@ -448,8 +491,9 @@ a {
   justify-content: space-between;
   min-height: 112px;
   padding: 16px;
-  border: 1px solid rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(var(--navy), 0.22);
   border-radius: 12px;
+  background: rgba(255, 255, 255, 0.45);
 }
 .contact {
   display: flex;
@@ -473,7 +517,7 @@ a {
   display: inline-flex;
   align-items: center;
   padding: 6px 12px;
-  border: 1px solid rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(var(--navy), 0.3);
   border-radius: 6px;
   font-size: 14px;
   background: none;
@@ -600,7 +644,7 @@ a {
   }
   .site-header::before {
     height: 104px;
-    background: linear-gradient(#000 70%, transparent);
+    background: linear-gradient(var(--bg) 70%, transparent);
   }
   .hdr-logo {
     flex-direction: column;
@@ -633,11 +677,15 @@ a {
     width: 100%;
     margin-top: 32px;
   }
-  /* telefon: panel ma pełną szerokość, więc postać stoi na środku pierwszego ekranu */
+  /* telefon: zdjęcie u góry pierwszego ekranu, tekst pod nim na jasnym tle */
   .hero-fig {
-    --fig-w: calc(78svh * 800 / 995);
+    --fig-w: calc(46svh * 800 / 995);
+    top: 64px;
+    bottom: auto;
     left: calc(50vw - var(--fig-w) * 0.44);
-    height: 78svh;
+    height: 46svh;
+    -webkit-mask-image: linear-gradient(to bottom, #000 72%, transparent);
+    mask-image: linear-gradient(to bottom, #000 72%, transparent);
   }
   .hero-name {
     font-size: calc((100vw - 32px) / 4.3);
@@ -645,20 +693,27 @@ a {
   .hero {
     padding-bottom: 32px;
   }
-  /* telefon: przyciemnienie pod tekstem hero; dół = ten sam odcień co góra warstwy, bez szwu */
+  /* telefon: tekst hero zaczyna się pod zdjęciem; delikatne rozjaśnienie od dołu zdjęcia */
+  .hero {
+    justify-content: flex-start;
+    padding-top: calc(64px + 46svh - 24px);
+  }
   .hero::before {
     content: "";
     position: absolute;
     inset: 0;
     pointer-events: none;
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.55) 35%, transparent 65%);
+    background: linear-gradient(to top, rgba(var(--paper), 0.96) 0%, rgba(var(--paper), 0.9) calc(100% - 46svh - 40px), transparent calc(100% - 46svh + 40px));
+  }
+  .hero-main {
+    z-index: 1;
   }
   .hero-role {
     margin-top: 24px;
   }
   .panel {
     padding-top: 140px;
-    background: linear-gradient(to right, rgba(0, 0, 0, 0.84), rgba(0, 0, 0, 0.76));
+    background: linear-gradient(to right, rgba(var(--paper), 0.95), rgba(var(--paper), 0.86));
     -webkit-mask-image: none;
     mask-image: none;
   }

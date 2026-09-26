@@ -36,7 +36,8 @@ export function FitText({
       let size = (box.clientWidth / widest) * 100 * 0.995;
       el.style.fontSize = `${size}px`;
       // hero ma się mieścić na jednym ekranie: nadmiar wysokości zabieramy z napisu
-      const section = fitHeightOf ? el.closest<HTMLElement>(fitHeightOf) : null;
+      // (tylko od 810 px — na telefonie hero celowo jest wyższe niż ekran)
+      const section = fitHeightOf && window.innerWidth >= 810 ? el.closest<HTMLElement>(fitHeightOf) : null;
       if (section) {
         const over = section.scrollHeight - window.innerHeight;
         if (over > 0) {

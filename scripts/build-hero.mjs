@@ -1,6 +1,6 @@
 /**
- * Warstwy hero w stylu szablonu Syntax CV (czerń i biel):
- *  - hero-bg.webp  — tło: zdjęcie z garnituru mocno rozmyte i przyciemnione (sam nastrój),
+ * Warstwy hero w stylu szablonu Syntax CV, w kolorze (paleta marki: granat / złoto / krem):
+ *  - hero-bg.webp  — tło: zdjęcie z garnituru mocno rozmyte (na stronie jako jasna mgiełka nad kremem),
  *  - hero-fig*.webp — postać: wycinanka (przezroczyste tło), stoi przy prawej krawędzi ekranu,
  *    więc przy przewijaniu wizerunek zostaje widoczny obok czarnego panelu.
  * Uruchom: node scripts/build-hero.mjs
@@ -11,8 +11,7 @@ import { stat } from "node:fs/promises";
 await sharp("cv/maciej-garnitur.png")
   .resize({ width: 640 })
   .blur(28)
-  .grayscale()
-  .linear(0.38, -4)
+  .modulate({ saturation: 0.7, brightness: 1.05 })
   .webp({ quality: 70 })
   .toFile("public/hero-bg.webp");
 
@@ -22,8 +21,7 @@ for (const [file, width] of [
 ]) {
   await sharp("public/portrait-cutout.webp")
     .resize({ width })
-    .grayscale()
-    .linear(0.82, 0)
+    .modulate({ saturation: 0.95, brightness: 0.97 })
     .webp({ quality: 82, alphaQuality: 90 })
     .toFile(file);
 }
