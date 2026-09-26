@@ -299,6 +299,40 @@ html:not(.story-on) .scene[data-tone="mist"] {
   transform: scaleX(var(--p, 0));
 }
 
+/* — zdjęcie pod tytułem sceny (plener w „O mnie”) — */
+.scene-aside {
+  margin-top: 28px;
+}
+.aside-photo {
+  position: relative;
+  overflow: hidden;
+  border-radius: 14px;
+  aspect-ratio: 4 / 5;
+  max-height: 46vh;
+  box-shadow: 0 24px 50px -32px rgba(var(--navy), 0.5);
+}
+.aside-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 38% 30%;
+  transform: scale(1.06);
+  transition: transform 1.4s var(--ease-spring);
+}
+.scene[data-state="active"] .aside-photo img {
+  transform: scale(1);
+}
+.aside-photo::after {
+  /* pomarańczowy akcent w rogu kadru */
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 42%;
+  height: 3px;
+  background: var(--orange);
+}
+
 /* — scena: infografika (stoi) + punkty (zmieniają się) — */
 .scene-stage {
   display: flex;
@@ -1127,43 +1161,51 @@ html:not(.story-on) .scene[data-tone="mist"] {
   overflow: hidden;
   background: linear-gradient(120deg, #ffffff 30%, #eef2f7);
 }
-.hero-bg::before,
 .hero-bg::after {
   content: "";
   position: absolute;
   inset: 0;
-}
-.hero-bg::before {
-  background: url("/hero-bg.webp") center / cover no-repeat;
-  opacity: 0.16;
-  filter: saturate(0.4);
-}
-.hero-bg::after {
   background:
     linear-gradient(rgba(var(--navy), 0.04) 1px, transparent 1px) 0 0 / 48px 48px,
     linear-gradient(90deg, rgba(var(--navy), 0.04) 1px, transparent 1px) 0 0 / 48px 48px;
   mask-image: linear-gradient(90deg, #000 20%, transparent 70%);
 }
-.hero-bg-zoom {
+/* portret: pionowy panel od krawędzi kolumny z imieniem (67%) do prawej krawędzi ramki */
+.hero-photo {
   position: absolute;
-  inset: 0;
-  z-index: 1;
-  transform-origin: 80% 40%;
-  animation: heroZoom 3s cubic-bezier(0.12, 0.23, 0.5, 1) both;
-  container-type: size;
-}
-.hero-fig {
-  --edge: calc(var(--px) + (100cqw - 2 * var(--px)) * 0.67);
-  --fig-h: calc(100cqh - 56px);
-  position: absolute;
+  top: 0;
+  right: 0;
   bottom: 0;
-  left: calc((var(--edge) + 100cqw) / 2 - var(--fig-h) * 800 / 995 * 0.44);
-  height: var(--fig-h);
-  width: auto;
-  max-width: none;
-  aspect-ratio: 800 / 995;
-  object-fit: contain;
-  object-position: bottom;
+  z-index: 1;
+  width: calc(100% - var(--px) - (100% - 2 * var(--px)) * 0.67 - 24px);
+  overflow: hidden;
+}
+.hero-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 52% 22%;
+  animation: heroZoom 3s cubic-bezier(0.12, 0.23, 0.5, 1) both;
+}
+/* cienka pomarańczowa krawędź panelu + delikatne przyciemnienie u góry pod napisy nagłówka */
+.hero-photo::before,
+.hero-photo::after {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+}
+.hero-photo::before {
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: var(--orange);
+}
+.hero-photo::after {
+  inset: 0 0 auto 0;
+  height: 140px;
+  background: linear-gradient(rgba(11, 27, 51, 0.45), transparent);
 }
 @keyframes heroZoom {
   from {
@@ -1364,12 +1406,20 @@ html:not(.story-on) .scene[data-tone="mist"] {
 .site-header a:hover {
   color: var(--accent);
 }
+/* na pierwszym ekranie „Pobierz CV / PL-EN” leżą na zdjęciu — białe; dalej granatowe */
 .hdr-links,
-.hdr-right,
-.hdr-bottom {
-  text-shadow:
-    0 0 6px rgba(255, 255, 255, 0.95),
-    0 0 14px rgba(255, 255, 255, 0.8);
+.hdr-right {
+  transition: color 0.5s var(--ease-spring);
+}
+.on-hero .hdr-links,
+.on-hero .hdr-right,
+.on-hero .hdr-right .lang a,
+.on-hero .hdr-right .lang a.on {
+  color: #fff;
+  text-shadow: 0 1px 10px rgba(11, 27, 51, 0.5);
+}
+.on-hero .hdr-right .lang a:not(.on) {
+  color: rgba(255, 255, 255, 0.7);
 }
 .hdr-bottom {
   position: absolute;
@@ -1551,13 +1601,35 @@ html:not(.story-on) .split-parent .sp {
   .hero-quote {
     display: none;
   }
-  .hero-fig {
-    --fig-h: 44cqh;
-    top: 58px;
+  .hero-photo {
+    left: 0;
+    width: auto;
     bottom: auto;
-    left: calc(50cqw - var(--fig-h) * 800 / 995 * 0.44);
-    -webkit-mask-image: linear-gradient(to bottom, #000 72%, transparent);
-    mask-image: linear-gradient(to bottom, #000 72%, transparent);
+    height: 56%;
+    -webkit-mask-image: linear-gradient(to bottom, #000 70%, transparent);
+    mask-image: linear-gradient(to bottom, #000 70%, transparent);
+  }
+  .hero-photo::before {
+    display: none;
+  }
+  .hero-photo img {
+    object-position: 50% 18%;
+  }
+  .on-hero .hdr-logo,
+  .on-hero .hdr-menu button,
+  .on-hero .hdr-status {
+    color: #fff;
+    text-shadow: 0 1px 10px rgba(11, 27, 51, 0.55);
+  }
+  .scene-aside {
+    margin-top: 12px;
+  }
+  .aside-photo {
+    aspect-ratio: 16 / 7;
+    max-height: none;
+  }
+  .aside-photo img {
+    object-position: 40% 28%;
   }
   .hero {
     justify-content: flex-end;

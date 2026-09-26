@@ -17,6 +17,7 @@ export function Scene({
   items,
   phoneItems = [],
   visual,
+  aside,
   shape = "a",
 }: {
   num: string;
@@ -27,6 +28,8 @@ export function Scene({
   phoneItems?: ReactNode[];
   /** infografika stojąca nad punktami; podświetla elementy .hlx.hl-N dla aktywnego punktu N */
   visual?: ReactNode;
+  /** element pod tytułem w lewej kolumnie (np. zdjęcie) */
+  aside?: ReactNode;
   /** wariant układu (zostawione dla zgodności; ozdoby usunięte w wersji „profesjonalnej”) */
   shape?: "a" | "b" | "c" | "d";
 }) {
@@ -55,6 +58,7 @@ export function Scene({
                 <span />
               </span>
             </div>
+            {aside ? <div className="scene-aside">{aside}</div> : null}
           </header>
           <div className="scene-stage">
             {visual ? <div className="scene-visual">{visual}</div> : null}

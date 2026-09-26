@@ -57,6 +57,8 @@ export function StoryController() {
         });
         frame.dataset.tone = scenes[k].dataset.tone ?? "";
         frame.dataset.scene = String(k);
+        // nagłówek nad zdjęciem pierwszego ekranu — jasne napisy
+        document.querySelector(".site-header")?.classList.toggle("on-hero", k === 0);
         rail.forEach((a) => a.classList.toggle("on", Number(a.dataset.i) === k));
       }
 

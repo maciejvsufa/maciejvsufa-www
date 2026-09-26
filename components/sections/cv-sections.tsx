@@ -21,6 +21,14 @@ export function OMnie({ t }: { t: SiteContent }) {
       num={a.kicker}
       title={a.title}
       tone="white"
+      aside={
+        <figure className="aside-photo">
+          <picture>
+            <source media="(max-width: 809px)" srcSet="/photos/plener-480.webp" type="image/webp" />
+            <img src="/photos/plener.webp" alt={t.hero.photoAlt} width={900} height={900} loading="lazy" decoding="async" />
+          </picture>
+        </figure>
+      }
       visual={
         <ul className="kpis">
           {a.kpis.map((k) => (
