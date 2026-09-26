@@ -3,26 +3,17 @@ import { FitText } from "@/components/fx/fit-text";
 import { SplitText } from "@/components/fx/split-text";
 
 /**
- * Stałe tło strony (przewijana treść jedzie po nim), czarno-białe, dwie warstwy:
- * rozmyte tło na cały ekran + postać przy prawej krawędzi — twarz wypada w pasie,
- * którego czarny panel nie zasłania, więc wizerunek widać przez całe przewijanie.
- * Wejście: skala 1.2 → 1 przez 3 s (jak w szablonie).
+ * Tło pierwszego ekranu: jasna siatka + pionowy portret („elegancja uśmiech 2”) jako panel
+ * przy prawej krawędzi, jak w magazynie. Imię i cytat stoją po lewej, poza zdjęciem.
+ * Wejście: zdjęcie powoli się przybliża do skali 1 (3 s).
  */
 export function HeroBackdrop({ alt }: { alt: string }) {
   return (
     <div className="hero-bg">
-      <div className="hero-bg-zoom">
+      <div className="hero-photo">
         <picture>
-          <source media="(max-width: 809px)" srcSet="/hero-fig-480.webp" type="image/webp" />
-          <img
-            className="hero-fig"
-            src="/hero-fig.webp"
-            alt={alt}
-            width={800}
-            height={995}
-            fetchPriority="high"
-            decoding="async"
-          />
+          <source media="(max-width: 809px)" srcSet="/photos/hero-portret-640.webp" type="image/webp" />
+          <img src="/photos/hero-portret.webp" alt={alt} width={1000} height={1501} fetchPriority="high" decoding="async" />
         </picture>
       </div>
     </div>

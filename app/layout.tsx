@@ -68,7 +68,7 @@ const jsonLd = {
       "@id": personId,
       name: site.name,
       url: site.url,
-      image: `${site.url}/hero-fig.webp`,
+      image: `${site.url}/photos/hero-portret.webp`,
       jobTitle: site.jobTitle,
       email: `mailto:${site.email}`,
       sameAs: [site.socials.instagram, site.socials.facebook, site.socials.linkedin, site.socials.github],
@@ -105,8 +105,8 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
               "var d=document.documentElement;d.classList.add('story-on');if(matchMedia('(prefers-reduced-motion: reduce)').matches)d.classList.add('story-still')",
           }}
         />
-        <link rel="preload" as="image" href="/hero-fig-480.webp" type="image/webp" media="(max-width: 809px)" fetchPriority="high" />
-        <link rel="preload" as="image" href="/hero-fig.webp" type="image/webp" media="(min-width: 810px)" fetchPriority="high" />
+        <link rel="preload" as="image" href="/photos/hero-portret-640.webp" type="image/webp" media="(max-width: 809px)" fetchPriority="high" />
+        <link rel="preload" as="image" href="/photos/hero-portret.webp" type="image/webp" media="(min-width: 810px)" fetchPriority="high" />
         {/* bez JavaScriptu treść ma być widoczna od razu */}
         <noscript>
           <style>{`.split .sp,.fade-in{opacity:1!important;transform:none!important;filter:none!important}`}</style>
