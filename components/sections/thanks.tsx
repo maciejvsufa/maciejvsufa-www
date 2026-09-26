@@ -8,8 +8,6 @@ export function Thanks({ t }: { t: SiteContent }) {
   const th = t.thanks;
   return (
     <section className="scene scene-thanks shape-d" data-tone="sky" data-state="next" aria-label={th.lines.join(" ")}>
-      <span className="deco-disc" aria-hidden="true" />
-      <span className="deco-ring" aria-hidden="true" />
       <div className="thanks">
         <div className="thanks-box">
           <FitText lines={th.lines} className="thanks-big" />

@@ -43,7 +43,6 @@ export function HomePage({ t }: { t: SiteContent }) {
       <main className="story">
         <div className="story-pin">
           <div className="frame" data-tone="white">
-            <span className="grain" aria-hidden="true" />
             <Hero t={t} />
             <OMnie t={t} />
             <Doswiadczenie t={t} />

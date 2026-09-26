@@ -4,11 +4,15 @@ import { Scene } from "@/components/fx/scene";
 import { CopyEmail } from "@/components/ui/copy-email";
 
 /*
- * Każda sekcja to scena (components/fx/scene.tsx): przypięty ekran, punkty pojawiają się
- * po kolei, każda scena ma własny klimat (tone). Karty są duże — jeden punkt naraz.
+ * Sekcje jako infografiki: nad punktami stoi wykres/schemat (visual), a punkty pod nim
+ * zmieniają się przy przewijaniu. Element infografiki z klasami `hlx hl-N` podświetla się,
+ * gdy aktywny jest punkt N (steruje components/story/story-controller).
+ * Wszystkie dane pochodzą z treści (lib/content.ts) — żadnych zmyślonych liczb.
  */
 
-/** 01. O mnie — lead + dwa akapity w jednej karcie. */
+const hl = (list: number[]) => `hlx ${list.map((i) => `hl-${i}`).join(" ")}`;
+
+/** 01. O mnie — trzy wskaźniki + opis. */
 export function OMnie({ t }: { t: SiteContent }) {
   const a = t.about;
   const [first, ...rest] = a.body[0].split(/(?<=\.)\s/);
@@ -17,7 +21,19 @@ export function OMnie({ t }: { t: SiteContent }) {
       num={a.kicker}
       title={a.title}
       tone="white"
-      shape="a"
+      visual={
+        <ul className="kpis">
+          {a.kpis.map((k) => (
+            <li key={k.label} className="kpi">
+              <span className="kpi-value">
+                {k.value}
+                {k.unit ? <span className="kpi-unit"> {k.unit}</span> : null}
+              </span>
+              <span className="kpi-label">{k.label}</span>
+            </li>
+          ))}
+        </ul>
+      }
       phoneItems={[
         <figure key="q" className="pcard pcard-quote">
           <blockquote>{t.hero.quote}</blockquote>
@@ -39,15 +55,58 @@ export function OMnie({ t }: { t: SiteContent }) {
   );
 }
 
-/** 02. Doświadczenie — jedna rola na ekran. */
+/**
+ * 02. Doświadczenie — oś czasu z paskami ról; aktywna rola podświetlona, opis pod spodem.
+ * Oś z przerwaniem: 2008–2024 ściśnięte (50%), 2024–dziś rozciągnięte (50%) — inaczej
+ * role z lat 2025–2026 byłyby niewidocznymi kreskami obok 17 lat aktorstwa.
+ */
+const T0 = 2008;
+const TB = 2024; // punkt przerwania osi
+const T1 = 2027; // prawa krawędź osi („dziś”)
+const pct = (y: number) => (y <= TB ? ((y - T0) / (TB - T0)) * 50 : 50 + ((y - TB) / (T1 - TB)) * 50);
+
 export function Doswiadczenie({ t }: { t: SiteContent }) {
   const e = t.experience;
+  const ticks = [2008, 2016, 2024, 2025, 2026];
   return (
     <Scene
       num={e.kicker}
       title={e.title}
       tone="sky"
-      shape="b"
+      visual={
+        <figure className="gantt" aria-hidden="true">
+          <span className="gantt-break" />
+          <div className="gantt-rows">
+            {e.spans.map((s, i) => {
+              const to = s.to ?? T1;
+              return (
+                <div key={s.label} className={`gantt-row ${hl([i])}`}>
+                  <span className="gantt-label">{s.label}</span>
+                  <span className="gantt-track">
+                    <span
+                      className={`gantt-bar${s.to === null ? " is-open" : ""}`}
+                      style={{ left: `${pct(s.from)}%`, width: `${Math.max(2.5, pct(to) - pct(s.from))}%` }}
+                    />
+                  </span>
+                </div>
+              );
+            })}
+          </div>
+          <div className="gantt-axis">
+            <span className="gantt-label" />
+            <span className="gantt-ticks">
+              {ticks.map((y) => (
+                <span key={y} style={{ left: `${pct(y)}%` }}>
+                  {y}
+                </span>
+              ))}
+              <span className="is-now" style={{ left: "100%" }}>
+                {e.now}
+              </span>
+            </span>
+          </div>
+        </figure>
+      }
       items={e.items.map((job) => (
         <article key={job.org} className="pcard pcard-line">
           <div className="pcard-top">
@@ -72,7 +131,7 @@ export function Doswiadczenie({ t }: { t: SiteContent }) {
   );
 }
 
-/** 03. Co robię — granatowe karty, jedna usługa na ekran. */
+/** 03. Co robię — schemat linii produkcyjnej treści z warstwą AI; usługa podświetla swój fragment. */
 export function CoRobie({ t }: { t: SiteContent }) {
   const c = t.coRobie;
   return (
@@ -80,10 +139,26 @@ export function CoRobie({ t }: { t: SiteContent }) {
       num={c.kicker}
       title={c.title}
       tone="peach"
-      shape="c"
+      visual={
+        <figure className="flow" aria-hidden="true">
+          <ol className="flow-steps">
+            {c.flow.map((n, i) => (
+              <li key={n.label} className={`flow-node ${hl(n.hl)}`}>
+                <span className="flow-i">{String(i + 1).padStart(2, "0")}</span>
+                <span className="flow-t">{n.label}</span>
+              </li>
+            ))}
+          </ol>
+          <div className={`flow-ai ${hl(c.aiLayer.hl)}`}>
+            <span className="flow-ai-mark">AI</span>
+            {c.aiLayer.label}
+          </div>
+          <div className={`flow-extra ${hl(c.extra.hl)}`}>{c.extra.label}</div>
+        </figure>
+      }
       items={c.items.map((it, i) => (
         <article key={it.h} className="pcard pcard-dark">
-          <span className="pcard-kicker">0{i + 1}</span>
+          <span className="pcard-kicker">{String(i + 1).padStart(2, "0")}</span>
           <h3 className="pcard-h">{it.h}</h3>
           <p className="pcard-txt">{it.p}</p>
         </article>
@@ -92,7 +167,7 @@ export function CoRobie({ t }: { t: SiteContent }) {
   );
 }
 
-/** 04. Jak pracuję — wstęp przy tytule, zasady po kolei na złotych kartach. */
+/** 04. Jak pracuję — schemat cyklu plan → budowa → przegląd → wydanie. */
 export function JakPracuje({ t }: { t: SiteContent }) {
   const j = t.jakPracuje;
   return (
@@ -101,10 +176,24 @@ export function JakPracuje({ t }: { t: SiteContent }) {
       title={j.title}
       intro={j.intro}
       tone="white"
-      shape="d"
+      visual={
+        <figure className="cycle" aria-hidden="true">
+          <svg className="cycle-ring" viewBox="0 0 200 200">
+            <circle cx="100" cy="100" r="78" />
+            <path d="M100 22 A78 78 0 0 1 178 100" className="cycle-arc" />
+          </svg>
+          <span className="cycle-center">{j.center}</span>
+          {j.cycle.map((n, i) => (
+            <span key={n.label} className={`cycle-node cycle-${i} ${hl(n.hl)}`}>
+              <span className="cycle-i">{i + 1}</span>
+              {n.label}
+            </span>
+          ))}
+        </figure>
+      }
       items={j.points.map((p, i) => (
-        <article key={p.h} className="pcard pcard-warm">
-          <span className="pcard-bignum">0{i + 1}</span>
+        <article key={p.h} className="pcard">
+          <span className="pcard-kicker">{String(i + 1).padStart(2, "0")}</span>
           <h3 className="pcard-h">{p.h}</h3>
           <p className="pcard-txt">{p.p}</p>
         </article>
@@ -113,31 +202,60 @@ export function JakPracuje({ t }: { t: SiteContent }) {
   );
 }
 
-/** 05. Umiejętności — tagi w jednej karcie. */
+/** 05. Umiejętności — rozkład na grupy (pasek proporcji) + mapa narzędzi. */
 export function Umiejetnosci({ t }: { t: SiteContent }) {
   const s = t.skills;
+  const total = s.groups.reduce((a, g) => a + g.items.length, 0);
   return (
     <Scene
       num={s.kicker}
       title={s.title}
       tone="mist"
-      shape="a"
-      items={[
-        <article key="s" className="pcard">
-          <ul className="tags">
-            {s.items.map((it) => (
-              <li key={it} className="tag">
-                {it}
+      visual={
+        <figure className="dist">
+          <p className="dist-total">
+            <span className="kpi-value">{total}</span>
+            <span className="kpi-label">{s.total}</span>
+          </p>
+          <div className="dist-bar" aria-hidden="true">
+            {s.groups.map((g, i) => (
+              <span key={g.h} className={`dist-seg dist-${i}`} style={{ flexGrow: g.items.length }} />
+            ))}
+          </div>
+          <ul className="dist-legend">
+            {s.groups.map((g, i) => (
+              <li key={g.h}>
+                <span className={`dist-sw dist-${i}`} aria-hidden="true" />
+                {g.h} <b>{g.items.length}</b>
               </li>
             ))}
           </ul>
+        </figure>
+      }
+      items={[
+        <article key="s" className="pcard skill-map">
+          {s.groups.map((g, i) => (
+            <div key={g.h} className="skill-col">
+              <p className="skill-h">
+                <span className={`dist-sw dist-${i}`} aria-hidden="true" />
+                {g.h}
+              </p>
+              <ul className="tags">
+                {g.items.map((it) => (
+                  <li key={it} className="tag">
+                    {it}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
         </article>,
       ]}
     />
   );
 }
 
-/** 06. Edukacja — szkoła, potem certyfikat ze zdjęciem. */
+/** 06. Edukacja — mini oś czasu + karta (certyfikat ze skanem). */
 export function Edukacja({ t }: { t: SiteContent }) {
   const e = t.education;
   return (
@@ -145,7 +263,16 @@ export function Edukacja({ t }: { t: SiteContent }) {
       num={e.kicker}
       title={e.title}
       tone="sky"
-      shape="c"
+      visual={
+        <ol className="edu-line" aria-hidden="true">
+          {e.items.map((it, i) => (
+            <li key={it.org} className={`edu-pt ${hl([i])}`}>
+              <span className="edu-year">{it.years}</span>
+              <span className="edu-org">{it.org}</span>
+            </li>
+          ))}
+        </ol>
+      }
       items={e.items.map((it) => (
         <article key={it.org} className="pcard pcard-line">
           <div className="pcard-top">
@@ -167,7 +294,7 @@ export function Edukacja({ t }: { t: SiteContent }) {
   );
 }
 
-/** 07. Języki — dwa kafelki w jednej karcie. */
+/** 07. Języki — skala europejska A1–C2 z zaznaczonym poziomem. */
 export function Jezyki({ t }: { t: SiteContent }) {
   const l = t.languages;
   return (
@@ -175,22 +302,30 @@ export function Jezyki({ t }: { t: SiteContent }) {
       num={l.kicker}
       title={l.title}
       tone="peach"
-      shape="b"
       items={[
-        <ul key="l" className="grid-2">
+        <article key="l" className="pcard cefr">
           {l.items.map((it) => (
-            <li key={it.name} className="pcard lang-card">
-              <span className="pcard-h">{it.name}</span>
-              <span className="meta">{it.level}</span>
-            </li>
+            <div key={it.name} className="cefr-row">
+              <p className="cefr-head">
+                <span className="pcard-h">{it.name}</span>
+                <span className="meta">{it.level}</span>
+              </p>
+              <ol className="cefr-scale" aria-hidden="true">
+                {l.scale.map((lv, i) => (
+                  <li key={lv} className={i + 1 >= it.from && i + 1 <= it.to ? "on" : i + 1 < it.from ? "past" : ""}>
+                    {lv}
+                  </li>
+                ))}
+              </ol>
+            </div>
           ))}
-        </ul>,
+        </article>,
       ]}
     />
   );
 }
 
-/** 08. Kontakt — e-mail na granatowej karcie, strony i social media obok. */
+/** 08. Kontakt — e-mail wyróżniony, strony i social media obok. */
 export function Kontakt({ t }: { t: SiteContent }) {
   const k = t.kontakt;
   const socials = [
@@ -204,7 +339,6 @@ export function Kontakt({ t }: { t: SiteContent }) {
       num={k.kicker}
       title={k.title}
       tone="white"
-      shape="d"
       items={[
         <div key="k" className="contact-grid">
           <div className="pcard pcard-dark contact-mail">

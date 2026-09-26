@@ -16,6 +16,7 @@ export function Scene({
   tone,
   items,
   phoneItems = [],
+  visual,
   shape = "a",
 }: {
   num: string;
@@ -24,7 +25,9 @@ export function Scene({
   tone: Tone;
   items: ReactNode[];
   phoneItems?: ReactNode[];
-  /** wariant ułożenia ozdób (koło, pierścień, kropka) — każda scena inaczej */
+  /** infografika stojąca nad punktami; podświetla elementy .hlx.hl-N dla aktywnego punktu N */
+  visual?: ReactNode;
+  /** wariant układu (zostawione dla zgodności; ozdoby usunięte w wersji „profesjonalnej”) */
   shape?: "a" | "b" | "c" | "d";
 }) {
   const all = [
@@ -33,10 +36,6 @@ export function Scene({
   ];
   return (
     <section className={`scene shape-${shape}`} data-tone={tone} data-state="next" aria-label={`${num}. ${title}`}>
-      <span className="deco-disc" aria-hidden="true" />
-      <span className="deco-ring" aria-hidden="true" />
-      <span className="deco-dot" aria-hidden="true" />
-      <span className="scene-bignum" data-num={num} aria-hidden="true" />
       <div className="scene-inner">
         <div className="scene-grid">
           <header className="scene-head">
@@ -58,11 +57,14 @@ export function Scene({
             </div>
           </header>
           <div className="scene-stage">
-            {all.map((it, i) => (
-              <div key={it.key} className={`scene-item${it.phone ? " only-phone" : ""}`} data-state={i === 0 ? "active" : "next"}>
-                {it.node}
-              </div>
-            ))}
+            {visual ? <div className="scene-visual">{visual}</div> : null}
+            <div className="scene-items">
+              {all.map((it, i) => (
+                <div key={it.key} className={`scene-item${it.phone ? " only-phone" : ""}`} data-state={i === 0 ? "active" : "next"}>
+                  {it.node}
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>

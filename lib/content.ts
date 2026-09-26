@@ -46,6 +46,11 @@ const pl = {
   about: {
     kicker: "01",
     title: "O mnie",
+    kpis: [
+      { value: "17", unit: "lat", label: "na scenie i przed kamerą" },
+      { value: "2025", unit: "", label: "start: content z AI" },
+      { value: "2026", unit: "", label: "współzałożyciel Tercet Labs" },
+    ],
     body: [
       "Tworzę content na social media od pomysłu po publikację i robię to z pomocą AI. Piszę scenariusze i teksty, montuję wideo (CapCut Pro, DaVinci Resolve), robię grafiki i miniatury (Canva, GPT-Image) i układam kalendarz treści pod trendy i analitykę.",
       "Własne kanały prowadzę z pomocą zautomatyzowanej linii produkcyjnej i agentów AI, a podobne systemy buduję dla firm. Wcześniej przez 17 lat byłem zawodowym aktorem — stąd swoboda przed kamerą, warsztat głosu i opowiadanie historii.",
@@ -54,6 +59,14 @@ const pl = {
   experience: {
     kicker: "02",
     title: "Doświadczenie",
+    now: "dziś",
+    // oś czasu: początek i koniec (null = trwa); aktorstwo: 2008 + 17 lat
+    spans: [
+      { label: "Tercet Labs", from: 2026, to: null },
+      { label: "LEV", from: 2025, to: null },
+      { label: "Studio AI", from: 2025, to: null },
+      { label: "Aktorstwo", from: 2008, to: 2025 },
+    ],
     items: [
       {
         org: "Tercet Labs",
@@ -93,6 +106,15 @@ const pl = {
   coRobie: {
     kicker: "03",
     title: "Co robię",
+    flow: [
+      { label: "Pomysł i scenariusz", hl: [0] },
+      { label: "Nagranie i montaż", hl: [0, 1] },
+      { label: "Grafiki i miniatury", hl: [0, 1] },
+      { label: "Publikacja wg kalendarza", hl: [0, 1] },
+      { label: "Analityka i trendy", hl: [0, 1] },
+    ],
+    aiLayer: { label: "Agenci AI i automatyzacja", hl: [1, 2] },
+    extra: { label: "Strony i aplikacje", hl: [3] },
     items: [
       {
         h: "Content i social media",
@@ -117,6 +139,13 @@ const pl = {
     title: "Jak pracuję",
     intro:
       "Pracuję w duchu organizacji myślącej: zespół podejmuje trafne decyzje, sprawnie się komunikuje i osiąga dużo małym nakładem czasu.",
+    center: "Organizacja myśląca",
+    cycle: [
+      { label: "Plan", hl: [0] },
+      { label: "Budowa", hl: [2] },
+      { label: "Przegląd krzyżowy", hl: [1] },
+      { label: "Wydanie", hl: [2] },
+    ],
     points: [
       { h: "Trafne decyzje", p: "Najpierw rozumiem problem z kilku stron, potem decyduję. Audyt przed kodem." },
       { h: "Sprawna komunikacja", p: "Jasny podział zadań, wspólne zatwierdzanie, przegląd kodu i jeden wspólny stan projektu." },
@@ -126,11 +155,12 @@ const pl = {
   skills: {
     kicker: "05",
     title: "Umiejętności",
-    items: [
-      "CapCut Pro", "DaVinci Resolve", "Canva", "GPT-Image", "Meta Business Suite", "Scenariusze", "Redakcja PL",
-      "Agenci AI", "Prompt engineering", "n8n", "MCP", "ExoVault", "Integracje API", "Fish-Speech", "ffmpeg",
-      "React", "Next.js", "TypeScript", "Python", "Tailwind", "Docker", "Git", "Praca przed kamerą",
+    groups: [
+      { h: "Content i wideo", items: ["CapCut Pro", "DaVinci Resolve", "Canva", "GPT-Image", "Meta Business Suite", "Scenariusze", "Redakcja PL", "Praca przed kamerą"] },
+      { h: "AI i automatyzacja", items: ["Agenci AI", "Prompt engineering", "n8n", "MCP", "ExoVault", "Integracje API", "Fish-Speech", "ffmpeg"] },
+      { h: "Kod", items: ["React", "Next.js", "TypeScript", "Python", "Tailwind", "Docker", "Git"] },
     ],
+    total: "narzędzi i umiejętności",
   },
   education: {
     kicker: "06",
@@ -154,9 +184,10 @@ const pl = {
   languages: {
     kicker: "07",
     title: "Języki",
+    scale: ["A1", "A2", "B1", "B2", "C1", "C2", "ojcz."],
     items: [
-      { name: "Polski", level: "Ojczysty" },
-      { name: "Angielski", level: "B1/B2, z pomocą AI" },
+      { name: "Polski", level: "Ojczysty", from: 6, to: 7 },
+      { name: "Angielski", level: "B1/B2, z pomocą AI", from: 3, to: 4 },
     ],
   },
   kontakt: {
@@ -208,6 +239,11 @@ const en: typeof pl = {
   about: {
     kicker: "01",
     title: "About",
+    kpis: [
+      { value: "17", unit: "yrs", label: "on stage and on camera" },
+      { value: "2025", unit: "", label: "start: AI-powered content" },
+      { value: "2026", unit: "", label: "co-founder of Tercet Labs" },
+    ],
     body: [
       "I create social media content from idea to publication, with the help of AI. I write scripts and copy, edit video (CapCut Pro, DaVinci Resolve), make graphics and thumbnails (Canva, GPT-Image) and plan a content calendar around trends and analytics.",
       "I run my own channels on an automated production line with AI agents, and I build similar systems for companies. Before that I spent 17 years as a professional actor — that's where my ease on camera, voice craft and storytelling come from.",
@@ -216,6 +252,13 @@ const en: typeof pl = {
   experience: {
     kicker: "02",
     title: "Experience",
+    now: "now",
+    spans: [
+      { label: "Tercet Labs", from: 2026, to: null },
+      { label: "LEV", from: 2025, to: null },
+      { label: "Studio AI", from: 2025, to: null },
+      { label: "Acting", from: 2008, to: 2025 },
+    ],
     items: [
       {
         org: "Tercet Labs",
@@ -255,6 +298,15 @@ const en: typeof pl = {
   coRobie: {
     kicker: "03",
     title: "What I do",
+    flow: [
+      { label: "Idea and script", hl: [0] },
+      { label: "Recording and editing", hl: [0, 1] },
+      { label: "Graphics and thumbnails", hl: [0, 1] },
+      { label: "Scheduled publishing", hl: [0, 1] },
+      { label: "Analytics and trends", hl: [0, 1] },
+    ],
+    aiLayer: { label: "AI agents and automation", hl: [1, 2] },
+    extra: { label: "Websites and apps", hl: [3] },
     items: [
       {
         h: "Content & social media",
@@ -279,6 +331,13 @@ const en: typeof pl = {
     title: "How I work",
     intro:
       "I work in the spirit of a thinking organization: a team that makes sound decisions, communicates well and achieves a lot with little overhead.",
+    center: "Thinking organization",
+    cycle: [
+      { label: "Plan", hl: [0] },
+      { label: "Build", hl: [2] },
+      { label: "Cross-review", hl: [1] },
+      { label: "Ship", hl: [2] },
+    ],
     points: [
       { h: "Sound decisions", p: "First I understand the problem from several angles, then I decide. Audit before code." },
       { h: "Clear communication", p: "Clear ownership, shared approval, code review and one shared project state." },
@@ -288,11 +347,12 @@ const en: typeof pl = {
   skills: {
     kicker: "05",
     title: "Skills",
-    items: [
-      "CapCut Pro", "DaVinci Resolve", "Canva", "GPT-Image", "Meta Business Suite", "Scriptwriting", "Polish copy editing",
-      "AI agents", "Prompt engineering", "n8n", "MCP", "ExoVault", "API integrations", "Fish-Speech", "ffmpeg",
-      "React", "Next.js", "TypeScript", "Python", "Tailwind", "Docker", "Git", "On-camera presence",
+    groups: [
+      { h: "Content & video", items: ["CapCut Pro", "DaVinci Resolve", "Canva", "GPT-Image", "Meta Business Suite", "Scriptwriting", "Polish copy editing", "On-camera presence"] },
+      { h: "AI & automation", items: ["AI agents", "Prompt engineering", "n8n", "MCP", "ExoVault", "API integrations", "Fish-Speech", "ffmpeg"] },
+      { h: "Code", items: ["React", "Next.js", "TypeScript", "Python", "Tailwind", "Docker", "Git"] },
     ],
+    total: "tools and skills",
   },
   education: {
     kicker: "06",
@@ -316,9 +376,10 @@ const en: typeof pl = {
   languages: {
     kicker: "07",
     title: "Languages",
+    scale: ["A1", "A2", "B1", "B2", "C1", "C2", "native"],
     items: [
-      { name: "Polish", level: "Native speaker" },
-      { name: "English", level: "B1/B2, AI-assisted" },
+      { name: "Polish", level: "Native speaker", from: 6, to: 7 },
+      { name: "English", level: "B1/B2, AI-assisted", from: 3, to: 4 },
     ],
   },
   kontakt: {

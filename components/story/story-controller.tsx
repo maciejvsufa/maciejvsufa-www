@@ -71,6 +71,11 @@ export function StoryController() {
           items.forEach((it, i) => {
             it.dataset.state = i < idx ? "past" : i === idx ? "active" : "next";
           });
+          // infografika: podświetl elementy przypisane do aktywnego punktu
+          sc.dataset.item = String(idx);
+          sc.querySelectorAll<HTMLElement>(".hlx").forEach((el) =>
+            el.classList.toggle("is-on", el.classList.contains(`hl-${idx}`)),
+          );
           const now = sc.querySelector(".scene-count-now");
           if (now) now.textContent = String(idx + 1).padStart(2, "0");
         }
