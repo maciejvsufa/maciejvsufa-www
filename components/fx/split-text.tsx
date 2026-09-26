@@ -22,7 +22,8 @@ export function SplitText({
   text: string;
   as?: ElementType;
   by?: "char" | "word";
-  trigger?: "mount" | "view";
+  /** mount — od razu; view — po wejściu w ekran; parent — gdy scena-rodzic staje się aktywna (CSS) */
+  trigger?: "mount" | "view" | "parent";
   start?: number;
   stagger?: number;
   blur?: boolean;

@@ -29,11 +29,16 @@ export function HeroBackdrop({ alt }: { alt: string }) {
   );
 }
 
-/** Pierwszy ekran: miętowe liczby, wielkie imię, rola na dole, cytat wersalikami w kolumnie 75%. */
+/**
+ * Pierwszy ekran jako scena „jednej strony”: zdjęcie, pomarańczowe liczby, wielkie imię,
+ * rola, cytat prasowy po lewej. Przy przewijaniu tylko gaśnie — kolejna scena najeżdża od dołu.
+ */
 export function Hero({ t }: { t: SiteContent }) {
   const h = t.hero;
   return (
-    <section aria-label={h.aria} className="hero" id="top">
+    <section aria-label={h.aria} className="scene scene-hero" data-tone="white" data-state="active">
+      <HeroBackdrop alt={h.photoAlt} />
+      <div className="hero">
       <div className="hero-main">
         {/* Cytat jak w gazecie: lekka kursywa, półprzezroczysty, po lewej — nie zasłania twarzy. */}
         <figure className="hero-quote">
@@ -53,6 +58,7 @@ export function Hero({ t }: { t: SiteContent }) {
           <FitText as="h1" lines={h.nameLines} align="right" className="hero-name" fitHeightOf=".hero" />
         </div>
         <SplitText as="p" text={h.roleLine} by="word" trigger="mount" start={0.5} stagger={0.075} className="hero-role" />
+      </div>
       </div>
     </section>
   );

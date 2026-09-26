@@ -14,10 +14,16 @@ export function OMnie({ t }: { t: SiteContent }) {
   const [first, ...rest] = a.body[0].split(/(?<=\.)\s/);
   return (
     <Scene
-      id="o-mnie"
       num={a.kicker}
       title={a.title}
-      tone="cream"
+      tone="white"
+      shape="a"
+      phoneItems={[
+        <figure key="q" className="pcard pcard-quote">
+          <blockquote>{t.hero.quote}</blockquote>
+          <figcaption>— {t.hero.quoteBy}</figcaption>
+        </figure>,
+      ]}
       items={[
         <article key="a" className="pcard">
           <p className="pcard-lead">{first}</p>
@@ -38,11 +44,10 @@ export function Doswiadczenie({ t }: { t: SiteContent }) {
   const e = t.experience;
   return (
     <Scene
-      id="doswiadczenie"
       num={e.kicker}
       title={e.title}
       tone="sky"
-      label={e.title}
+      shape="b"
       items={e.items.map((job) => (
         <article key={job.org} className="pcard pcard-line">
           <div className="pcard-top">
@@ -72,11 +77,10 @@ export function CoRobie({ t }: { t: SiteContent }) {
   const c = t.coRobie;
   return (
     <Scene
-      id="co-robie"
       num={c.kicker}
       title={c.title}
-      tone="sage"
-      label={c.title}
+      tone="peach"
+      shape="c"
       items={c.items.map((it, i) => (
         <article key={it.h} className="pcard pcard-dark">
           <span className="pcard-kicker">0{i + 1}</span>
@@ -93,14 +97,13 @@ export function JakPracuje({ t }: { t: SiteContent }) {
   const j = t.jakPracuje;
   return (
     <Scene
-      id="jak-pracuje"
       num={j.kicker}
       title={j.title}
       intro={j.intro}
-      tone="gold"
-      label={j.title}
+      tone="white"
+      shape="d"
       items={j.points.map((p, i) => (
-        <article key={p.h} className="pcard pcard-gold">
+        <article key={p.h} className="pcard pcard-warm">
           <span className="pcard-bignum">0{i + 1}</span>
           <h3 className="pcard-h">{p.h}</h3>
           <p className="pcard-txt">{p.p}</p>
@@ -115,10 +118,10 @@ export function Umiejetnosci({ t }: { t: SiteContent }) {
   const s = t.skills;
   return (
     <Scene
-      id="umiejetnosci"
       num={s.kicker}
       title={s.title}
-      tone="rose"
+      tone="mist"
+      shape="a"
       items={[
         <article key="s" className="pcard">
           <ul className="tags">
@@ -139,11 +142,10 @@ export function Edukacja({ t }: { t: SiteContent }) {
   const e = t.education;
   return (
     <Scene
-      id="edukacja"
       num={e.kicker}
       title={e.title}
       tone="sky"
-      label={e.title}
+      shape="c"
       items={e.items.map((it) => (
         <article key={it.org} className="pcard pcard-line">
           <div className="pcard-top">
@@ -170,10 +172,10 @@ export function Jezyki({ t }: { t: SiteContent }) {
   const l = t.languages;
   return (
     <Scene
-      id="jezyki"
       num={l.kicker}
       title={l.title}
-      tone="sage"
+      tone="peach"
+      shape="b"
       items={[
         <ul key="l" className="grid-2">
           {l.items.map((it) => (
@@ -199,10 +201,10 @@ export function Kontakt({ t }: { t: SiteContent }) {
   ];
   return (
     <Scene
-      id="kontakt"
       num={k.kicker}
       title={k.title}
-      tone="cream"
+      tone="white"
+      shape="d"
       items={[
         <div key="k" className="contact-grid">
           <div className="pcard pcard-dark contact-mail">
