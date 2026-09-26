@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
+import { Playfair_Display } from "next/font/google";
 import "./globals.css";
 import { site } from "@/lib/site";
 
@@ -14,6 +15,15 @@ const switzer = localFont({
     { path: "./fonts/Switzer-700.woff2", weight: "700", style: "normal" },
     { path: "./fonts/Switzer-300i.woff2", weight: "300", style: "italic" },
   ],
+});
+
+// Playfair Display — szeryf do tytułów sekcji i stanowisk („ludzki”, magazynowy).
+// next/font pobiera plik przy budowaniu i serwuje go z naszej domeny (bez połączeń z Google).
+const playfair = Playfair_Display({
+  variable: "--font-serif",
+  subsets: ["latin", "latin-ext"],
+  weight: ["500", "600"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -85,7 +95,7 @@ const jsonLd = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="pl" className={`${switzer.variable} h-full antialiased`}>
+    <html lang="pl" className={`${switzer.variable} ${playfair.variable} h-full antialiased`}>
       <head>
         <link rel="preload" as="image" href="/hero-fig-480.webp" type="image/webp" media="(max-width: 809px)" fetchPriority="high" />
         <link rel="preload" as="image" href="/hero-fig.webp" type="image/webp" media="(min-width: 810px)" fetchPriority="high" />

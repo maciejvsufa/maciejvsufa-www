@@ -19,6 +19,8 @@ export function ScrollLabel({ scroll, top }: { scroll: string; top: string }) {
       root.setProperty("--hdr-shade", d ? "1" : "0");
       // postęp wyjazdu hero 0..1 — treść hero płynnie gaśnie, zamiast wjeżdżać pod nagłówek
       root.setProperty("--hp", Math.min(1, window.scrollY / (vh * 0.6)).toFixed(3));
+      // postęp zakrywania pierwszego ekranu 0..1 — zdjęcie gaśnie, gdy taśma na nie najeżdża
+      root.setProperty("--hq", Math.min(1, window.scrollY / vh).toFixed(3));
     };
     on();
     window.addEventListener("scroll", on, { passive: true });
@@ -26,7 +28,7 @@ export function ScrollLabel({ scroll, top }: { scroll: string; top: string }) {
   }, []);
 
   return (
-    <div className="hdr-bottom">
+    <div className={`hdr-bottom${down ? " is-down" : ""}`}>
       {down ? (
         <a href="#top" className="hdr-scroll">
           {top}

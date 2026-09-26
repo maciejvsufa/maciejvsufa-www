@@ -14,9 +14,9 @@ import { Thanks } from "@/components/sections/thanks";
 import type { SiteContent } from "@/lib/content";
 
 /**
- * Kompozycja jak w szablonie Syntax CV: stałe zdjęcie na cały ekran, stały nagłówek,
- * pierwszy ekran z imieniem, potem czarny panel z sekcjami (na desktopie 2/3 szerokości —
- * po prawej widać zdjęcie).
+ * Kompozycja: stałe tło sceny (osobna warstwa po bokach), stały nagłówek, pierwszy ekran
+ * ze zdjęciem (przypięty, gaśnie przy przewijaniu), potem „taśma” — arkusz z sekcjami
+ * z perforacją po bokach, który najeżdża na zdjęcie i całkowicie je zakrywa.
  */
 export function HomePage({ t }: { t: SiteContent }) {
   return (
@@ -24,11 +24,14 @@ export function HomePage({ t }: { t: SiteContent }) {
       <a href="#o-mnie" className="skip-link">
         {t.ui.skipLink}
       </a>
-      <HeroBackdrop alt={t.hero.photoAlt} />
+      <div className="stage" aria-hidden="true" />
       <SiteHeader t={t} />
       <main className="page">
-        <Hero t={t} />
-        <div className="panel">
+        <div className="hero-wrap">
+          <HeroBackdrop alt={t.hero.photoAlt} />
+          <Hero t={t} />
+        </div>
+        <div className="sheet">
           <OMnie t={t} />
           <Doswiadczenie t={t} />
           <CoRobie t={t} />
