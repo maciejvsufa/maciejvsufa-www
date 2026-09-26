@@ -1,121 +1,126 @@
 import type { SiteContent } from "@/lib/content";
 import { site } from "@/lib/site";
-import { Section } from "@/components/ui/section";
-import { FadeIn } from "@/components/fx/fade-in";
+import { Scene } from "@/components/fx/scene";
 import { CopyEmail } from "@/components/ui/copy-email";
 
 /*
- * Każdy punkt to osobna karta (ramka, tło, cień), a sekcje różnią się odcieniem:
- * Doświadczenie — jasne karty ze złotym paskiem, Co robię — granatowe, Jak pracuję — złote,
- * Edukacja i Kontakt — jasne. FadeIn jest opakowaniem, karta w środku (hover nie walczy z wjazdem).
+ * Każda sekcja to scena (components/fx/scene.tsx): przypięty ekran, punkty pojawiają się
+ * po kolei, każda scena ma własny klimat (tone). Karty są duże — jeden punkt naraz.
  */
 
-/** 01. O mnie — pierwsze zdanie jako lead (szeryf), reszta zwykłym tekstem. */
+/** 01. O mnie — lead + dwa akapity w jednej karcie. */
 export function OMnie({ t }: { t: SiteContent }) {
   const a = t.about;
   const [first, ...rest] = a.body[0].split(/(?<=\.)\s/);
   return (
-    <Section id="o-mnie" num={a.kicker} title={a.title}>
-      <FadeIn>
-        <div className="card card-soft">
-          <p className="lead">{first}</p>
-          <p className="txt mt-4">{rest.join(" ")}</p>
+    <Scene
+      id="o-mnie"
+      num={a.kicker}
+      title={a.title}
+      tone="cream"
+      items={[
+        <article key="a" className="pcard">
+          <p className="pcard-lead">{first}</p>
+          <p className="pcard-txt">{rest.join(" ")}</p>
           {a.body.slice(1).map((p) => (
-            <p key={p.slice(0, 24)} className="txt mt-4">
+            <p key={p.slice(0, 24)} className="pcard-txt">
               {p}
             </p>
           ))}
-        </div>
-      </FadeIn>
-    </Section>
+        </article>,
+      ]}
+    />
   );
 }
 
-/** 02. Doświadczenie — firma + plakietka z latami, stanowisko, opis, linki. */
+/** 02. Doświadczenie — jedna rola na ekran. */
 export function Doswiadczenie({ t }: { t: SiteContent }) {
   const e = t.experience;
   return (
-    <Section id="doswiadczenie" num={e.kicker} title={e.title}>
-      <div className="items">
-        {e.items.map((job) => (
-          <FadeIn key={job.org}>
-            <article className="card card-line">
-              <div className="card-top">
-                <span className="org">{job.org}</span>
-                <span className="badge">{job.years || job.meta}</span>
-              </div>
-              {job.years ? <p className="meta mt-1">{job.meta}</p> : null}
-              <h3 className="h3">{job.role}</h3>
-              <p className="txt mt-3">{job.p}</p>
-              {job.links ? (
-                <p className="mt-4 flex flex-wrap gap-x-5 gap-y-2">
-                  {job.links.map((l) => (
-                    <a key={l.href} className="lnk" href={l.href} target="_blank" rel="noopener noreferrer">
-                      {l.label} ↗
-                    </a>
-                  ))}
-                </p>
-              ) : null}
-            </article>
-          </FadeIn>
-        ))}
-      </div>
-    </Section>
+    <Scene
+      id="doswiadczenie"
+      num={e.kicker}
+      title={e.title}
+      tone="sky"
+      label={e.title}
+      items={e.items.map((job) => (
+        <article key={job.org} className="pcard pcard-line">
+          <div className="pcard-top">
+            <span className="org">{job.org}</span>
+            <span className="badge">{job.years || job.meta}</span>
+          </div>
+          {job.years ? <p className="meta">{job.meta}</p> : null}
+          <h3 className="pcard-h">{job.role}</h3>
+          <p className="pcard-txt">{job.p}</p>
+          {job.links ? (
+            <p className="pcard-links">
+              {job.links.map((l) => (
+                <a key={l.href} className="lnk" href={l.href} target="_blank" rel="noopener noreferrer">
+                  {l.label} ↗
+                </a>
+              ))}
+            </p>
+          ) : null}
+        </article>
+      ))}
+    />
   );
 }
 
-/** 03. Co robię — granatowe karty w siatce 2×2. */
+/** 03. Co robię — granatowe karty, jedna usługa na ekran. */
 export function CoRobie({ t }: { t: SiteContent }) {
   const c = t.coRobie;
   return (
-    <Section id="co-robie" num={c.kicker} title={c.title}>
-      <div className="grid-2">
-        {c.items.map((it, i) => (
-          <FadeIn key={it.h}>
-            <article className="card card-dark h-full">
-              <span className="card-num">0{i + 1}</span>
-              <h3 className="h3">{it.h}</h3>
-              <p className="txt mt-3">{it.p}</p>
-            </article>
-          </FadeIn>
-        ))}
-      </div>
-    </Section>
+    <Scene
+      id="co-robie"
+      num={c.kicker}
+      title={c.title}
+      tone="sage"
+      label={c.title}
+      items={c.items.map((it, i) => (
+        <article key={it.h} className="pcard pcard-dark">
+          <span className="pcard-kicker">0{i + 1}</span>
+          <h3 className="pcard-h">{it.h}</h3>
+          <p className="pcard-txt">{it.p}</p>
+        </article>
+      ))}
+    />
   );
 }
 
-/** 04. Jak pracuję — wstęp + złote karty z dużą cyfrą. */
+/** 04. Jak pracuję — wstęp przy tytule, zasady po kolei na złotych kartach. */
 export function JakPracuje({ t }: { t: SiteContent }) {
   const j = t.jakPracuje;
   return (
-    <Section id="jak-pracuje" num={j.kicker} title={j.title}>
-      <FadeIn>
-        <p className="lead">{j.intro}</p>
-      </FadeIn>
-      <div className="items mt-8">
-        {j.points.map((p, i) => (
-          <FadeIn key={p.h}>
-            <article className="card card-gold card-row">
-              <span className="big-num">0{i + 1}</span>
-              <div>
-                <h3 className="h3 !mt-0">{p.h}</h3>
-                <p className="txt mt-2">{p.p}</p>
-              </div>
-            </article>
-          </FadeIn>
-        ))}
-      </div>
-    </Section>
+    <Scene
+      id="jak-pracuje"
+      num={j.kicker}
+      title={j.title}
+      intro={j.intro}
+      tone="gold"
+      label={j.title}
+      items={j.points.map((p, i) => (
+        <article key={p.h} className="pcard pcard-gold">
+          <span className="pcard-bignum">0{i + 1}</span>
+          <h3 className="pcard-h">{p.h}</h3>
+          <p className="pcard-txt">{p.p}</p>
+        </article>
+      ))}
+    />
   );
 }
 
-/** 05. Umiejętności — tagi w karcie. */
+/** 05. Umiejętności — tagi w jednej karcie. */
 export function Umiejetnosci({ t }: { t: SiteContent }) {
   const s = t.skills;
   return (
-    <Section id="umiejetnosci" num={s.kicker} title={s.title}>
-      <FadeIn>
-        <div className="card card-soft">
+    <Scene
+      id="umiejetnosci"
+      num={s.kicker}
+      title={s.title}
+      tone="rose"
+      items={[
+        <article key="s" className="pcard">
           <ul className="tags">
             {s.items.map((it) => (
               <li key={it} className="tag">
@@ -123,62 +128,67 @@ export function Umiejetnosci({ t }: { t: SiteContent }) {
               </li>
             ))}
           </ul>
-        </div>
-      </FadeIn>
-    </Section>
+        </article>,
+      ]}
+    />
   );
 }
 
-/** 06. Edukacja — jasne karty; certyfikat w karcie Google & SGH. */
+/** 06. Edukacja — szkoła, potem certyfikat ze zdjęciem. */
 export function Edukacja({ t }: { t: SiteContent }) {
   const e = t.education;
   return (
-    <Section id="edukacja" num={e.kicker} title={e.title}>
-      <div className="items">
-        {e.items.map((it) => (
-          <FadeIn key={it.org}>
-            <article className="card card-line">
-              <div className="card-top">
-                <span className="org">{it.org}</span>
-                <span className="badge">{it.years}</span>
-              </div>
-              <h3 className="h3">{it.h}</h3>
-              <p className="txt mt-3">{it.p}</p>
-              {it.cert ? (
-                <a className="cert" href={it.cert.full} target="_blank" rel="noopener noreferrer">
-                  {/* eslint-disable-next-line @next/next/no-img-element -- statyczny eksport, plik już zoptymalizowany (scripts/build-cert.mjs) */}
-                  <img src={it.cert.src} alt={it.cert.alt} width={640} height={435} loading="lazy" decoding="async" />
-                  <span className="lnk">{it.cert.open} ↗</span>
-                </a>
-              ) : null}
-            </article>
-          </FadeIn>
-        ))}
-      </div>
-    </Section>
+    <Scene
+      id="edukacja"
+      num={e.kicker}
+      title={e.title}
+      tone="sky"
+      label={e.title}
+      items={e.items.map((it) => (
+        <article key={it.org} className="pcard pcard-line">
+          <div className="pcard-top">
+            <span className="org">{it.org}</span>
+            <span className="badge">{it.years}</span>
+          </div>
+          <h3 className="pcard-h">{it.h}</h3>
+          <p className="pcard-txt">{it.p}</p>
+          {it.cert ? (
+            <a className="cert" href={it.cert.full} target="_blank" rel="noopener noreferrer">
+              {/* eslint-disable-next-line @next/next/no-img-element -- statyczny eksport, plik już zoptymalizowany (scripts/build-cert.mjs) */}
+              <img src={it.cert.src} alt={it.cert.alt} width={640} height={435} loading="lazy" decoding="async" />
+              <span className="lnk">{it.cert.open} ↗</span>
+            </a>
+          ) : null}
+        </article>
+      ))}
+    />
   );
 }
 
-/** 07. Języki — kafelki. */
+/** 07. Języki — dwa kafelki w jednej karcie. */
 export function Jezyki({ t }: { t: SiteContent }) {
   const l = t.languages;
   return (
-    <Section id="jezyki" num={l.kicker} title={l.title}>
-      <FadeIn>
-        <ul className="grid-2">
+    <Scene
+      id="jezyki"
+      num={l.kicker}
+      title={l.title}
+      tone="sage"
+      items={[
+        <ul key="l" className="grid-2">
           {l.items.map((it) => (
-            <li key={it.name} className="card card-soft lang-card">
-              <span className="h3 !mt-0">{it.name}</span>
+            <li key={it.name} className="pcard lang-card">
+              <span className="pcard-h">{it.name}</span>
               <span className="meta">{it.level}</span>
             </li>
           ))}
-        </ul>
-      </FadeIn>
-    </Section>
+        </ul>,
+      ]}
+    />
   );
 }
 
-/** 08. Kontakt — trzy karty: e-mail (wyróżniona, granatowa), strony, social media. */
+/** 08. Kontakt — e-mail na granatowej karcie, strony i social media obok. */
 export function Kontakt({ t }: { t: SiteContent }) {
   const k = t.kontakt;
   const socials = [
@@ -188,11 +198,15 @@ export function Kontakt({ t }: { t: SiteContent }) {
     { href: site.socials.github, label: "GitHub" },
   ];
   return (
-    <Section id="kontakt" num={k.kicker} title={k.title}>
-      <div className="items">
-        <FadeIn>
-          <div className="card card-dark">
-            <p className="card-num">{k.emailLabel}</p>
+    <Scene
+      id="kontakt"
+      num={k.kicker}
+      title={k.title}
+      tone="cream"
+      items={[
+        <div key="k" className="contact-grid">
+          <div className="pcard pcard-dark contact-mail">
+            <span className="pcard-kicker">{k.emailLabel}</span>
             <a className="cval" href={`mailto:${site.email}`}>
               {site.email}
             </a>
@@ -200,30 +214,24 @@ export function Kontakt({ t }: { t: SiteContent }) {
               <CopyEmail email={site.email} label={t.ui.copyEmail} copied={t.ui.emailCopied} />
             </div>
           </div>
-        </FadeIn>
-        <div className="grid-2">
-          <FadeIn>
-            <div className="card card-soft h-full">
-              <p className="meta mb-2">{k.sitesLabel}</p>
-              {k.sites.map((s) => (
-                <a key={s.label} className="cval" href={s.href} target="_blank" rel="noopener noreferrer">
-                  {s.label}
-                </a>
-              ))}
-            </div>
-          </FadeIn>
-          <FadeIn>
-            <div className="card card-soft h-full">
-              <p className="meta mb-2">{k.socialsLabel}</p>
-              {socials.map((s) => (
-                <a key={s.label} className="cval" href={s.href} target="_blank" rel="noopener noreferrer">
-                  {s.label}
-                </a>
-              ))}
-            </div>
-          </FadeIn>
-        </div>
-      </div>
-    </Section>
+          <div className="pcard">
+            <p className="meta mb-2">{k.sitesLabel}</p>
+            {k.sites.map((s) => (
+              <a key={s.label} className="cval" href={s.href} target="_blank" rel="noopener noreferrer">
+                {s.label}
+              </a>
+            ))}
+          </div>
+          <div className="pcard">
+            <p className="meta mb-2">{k.socialsLabel}</p>
+            {socials.map((s) => (
+              <a key={s.label} className="cval" href={s.href} target="_blank" rel="noopener noreferrer">
+                {s.label}
+              </a>
+            ))}
+          </div>
+        </div>,
+      ]}
+    />
   );
 }
