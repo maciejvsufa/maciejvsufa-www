@@ -114,6 +114,13 @@ export function Edukacja({ t }: { t: SiteContent }) {
             <p className="meta">{`${it.org}  •  ${it.years}`}</p>
             <h3 className="h3">{it.h}</h3>
             <p className="txt mt-6">{it.p}</p>
+            {it.cert ? (
+              <a className="cert" href={it.cert.full} target="_blank" rel="noopener noreferrer">
+                {/* eslint-disable-next-line @next/next/no-img-element -- statyczny eksport, plik już zoptymalizowany (scripts/build-cert.mjs) */}
+                <img src={it.cert.src} alt={it.cert.alt} width={640} height={435} loading="lazy" decoding="async" />
+                <span className="lnk">{it.cert.open} ↗</span>
+              </a>
+            ) : null}
           </FadeIn>
         ))}
       </div>

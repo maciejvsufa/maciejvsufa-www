@@ -12,11 +12,14 @@ export function FitText({
   align = "left",
   as: Tag = "p",
   className = "",
+  fitHeightOf,
 }: {
   lines: string[];
   align?: "left" | "right";
   as?: "h1" | "p";
   className?: string;
+  /** Zmniejsz napis, jeśli sekcja o tej klasie nie mieści się w wysokości ekranu (hero). */
+  fitHeightOf?: string;
 }) {
   const ref = useRef<HTMLHeadingElement & HTMLParagraphElement>(null);
 
@@ -29,14 +32,29 @@ export function FitText({
       el.style.fontSize = "100px";
       const spans = Array.from(el.querySelectorAll<HTMLElement>(".fit-line"));
       const widest = Math.max(...spans.map((s) => s.getBoundingClientRect().width));
-      if (widest > 0) el.style.fontSize = `${(box.clientWidth / widest) * 100 * 0.995}px`;
+      if (widest <= 0) return;
+      let size = (box.clientWidth / widest) * 100 * 0.995;
+      el.style.fontSize = `${size}px`;
+      // hero ma się mieścić na jednym ekranie: nadmiar wysokości zabieramy z napisu
+      const section = fitHeightOf ? el.closest<HTMLElement>(fitHeightOf) : null;
+      if (section) {
+        const over = section.scrollHeight - window.innerHeight;
+        if (over > 0) {
+          size = Math.max(48, size - over / (lines.length * 0.9));
+          el.style.fontSize = `${size}px`;
+        }
+      }
     };
     fit();
     document.fonts?.ready.then(fit);
     const ro = new ResizeObserver(fit);
     if (el.parentElement) ro.observe(el.parentElement);
-    return () => ro.disconnect();
-  }, []);
+    window.addEventListener("resize", fit);
+    return () => {
+      ro.disconnect();
+      window.removeEventListener("resize", fit);
+    };
+  }, [fitHeightOf, lines.length]);
 
   return (
     <Tag ref={ref} className={`fit ${className}`} style={{ textAlign: align }}>

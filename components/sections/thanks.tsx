@@ -12,7 +12,11 @@ export function Thanks({ t }: { t: SiteContent }) {
         <FitText lines={th.lines} className="thanks-big" />
       </div>
       <div className="thanks-cta-row">
-        <SplitText as="p" text={th.cta.join(" ")} by="word" trigger="view" start={0.4} stagger={0.075} className="thanks-cta" />
+        <p className="thanks-cta">
+          <a href={`mailto:${site.email}`}>
+            <SplitText text={th.cta.join(" ")} by="word" trigger="view" start={0.4} stagger={0.075} /> ↗
+          </a>
+        </p>
       </div>
       <footer className="foot">
         <span>© 2026 {site.name}</span>
