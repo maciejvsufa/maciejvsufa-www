@@ -10,11 +10,15 @@ export function ScrollLabel({ scroll, top }: { scroll: string; top: string }) {
   const [down, setDown] = useState(false);
 
   useEffect(() => {
+    const root = document.documentElement.style;
     const on = () => {
-      const d = window.scrollY > window.innerHeight * 0.5;
+      const vh = window.innerHeight;
+      const d = window.scrollY > vh * 0.5;
       setDown(d);
-      // telefon: przyciemnienie pod nagłówkiem, gdy treść jedzie pod nim
-      document.documentElement.style.setProperty("--hdr-shade", d ? "1" : "0");
+      // przyciemnienie pod nagłówkiem, gdy treść jedzie pod nim
+      root.setProperty("--hdr-shade", d ? "1" : "0");
+      // postęp wyjazdu hero 0..1 — treść hero płynnie gaśnie, zamiast wjeżdżać pod nagłówek
+      root.setProperty("--hp", Math.min(1, window.scrollY / (vh * 0.6)).toFixed(3));
     };
     on();
     window.addEventListener("scroll", on, { passive: true });

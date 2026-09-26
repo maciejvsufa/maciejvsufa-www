@@ -13,6 +13,7 @@ export type Lang = "pl" | "en";
 type Link = { href: string; label: string };
 type Job = { org: string; meta: string; years: string; role: string; p: string; links?: Link[] };
 type Site = { href: string; label: string; note: string };
+type Edu = { org: string; years: string; h: string; p: string; cert?: { src: string; full: string; alt: string; open: string } };
 
 const pl = {
   lang: "pl" as Lang,
@@ -135,8 +136,19 @@ const pl = {
     title: "Edukacja",
     items: [
       { org: "Warszawska Szkoła Filmowa", years: "2008–2010", h: "Aktorstwo", p: "Studia aktorskie; potem 17 lat pracy w filmie, telewizji, teatrze i operze." },
-      { org: "Google & SGH", years: "2025", h: "Certyfikat „Umiejętności Jutra: AI”", p: "Program praktyczny: AI w produktywności, marketingu, sprzedaży i analityce." },
-    ],
+      {
+        org: "Google & SGH",
+        years: "2025",
+        h: "Certyfikat „Wykorzystanie AI w rozwoju firmy”",
+        p: "Pięciotygodniowy program Google i SGH „Umiejętności Jutra AI”, zakończony egzaminem: AI w produktywności, marketingu, sprzedaży i analityce.",
+        cert: {
+          src: "/cert/umiejetnosci-jutra-ai-640.webp",
+          full: "/cert/umiejetnosci-jutra-ai.webp",
+          alt: "Certyfikat Google i SGH „Wykorzystanie AI w rozwoju firmy” wystawiony 19.03.2025 dla Macieja Sufy",
+          open: "Zobacz certyfikat",
+        },
+      },
+    ] as Edu[],
   },
   languages: {
     kicker: "07",
@@ -285,8 +297,19 @@ const en: typeof pl = {
     title: "Education",
     items: [
       { org: "Warsaw Film School", years: "2008–2010", h: "Acting", p: "Acting studies, followed by 17 years of work in film, TV, theatre and opera." },
-      { org: "Google & SGH", years: "2025", h: "“AI Skills for Tomorrow” certificate", p: "Hands-on program: AI in productivity, marketing, sales and analytics." },
-    ],
+      {
+        org: "Google & SGH",
+        years: "2025",
+        h: "Certificate “Using AI to grow a business”",
+        p: "Five-week Google and SGH program “AI Skills for Tomorrow”, completed with a final exam: AI in productivity, marketing, sales and analytics.",
+        cert: {
+          src: "/cert/umiejetnosci-jutra-ai-640.webp",
+          full: "/cert/umiejetnosci-jutra-ai.webp",
+          alt: "Google and SGH certificate “Using AI to grow a business”, issued 19 March 2025 to Maciej Sufa",
+          open: "View certificate",
+        },
+      },
+    ] as Edu[],
   },
   languages: {
     kicker: "07",
