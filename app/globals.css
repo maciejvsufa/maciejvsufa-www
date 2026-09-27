@@ -133,15 +133,24 @@ a {
 .story-on .story-steps {
   display: block;
 }
+/* przewijanie „karta po karcie”: każdy znacznik to punkt zatrzymania, którego nie da się przeskoczyć */
+html.story-on {
+  scroll-snap-type: y mandatory;
+}
 .step {
-  height: calc(var(--n) * 70vh);
   pointer-events: none;
 }
-.step:first-child {
+.snap {
+  display: block;
   height: 70vh;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
 }
-.step:last-child {
-  height: 115vh;
+.snap-phone {
+  display: none;
+}
+.step:last-child .snap {
+  height: 115vh; /* ostatni krok musi dać się przewinąć do końca */
 }
 
 .frame {
@@ -1760,8 +1769,8 @@ html:not(.story-on) .split-parent .sp {
   .scene-stage {
     gap: 14px;
   }
-  .step {
-    height: calc(var(--n-m) * 70vh);
+  .snap-phone {
+    display: block;
   }
   .kpi {
     padding: 14px 10px;
