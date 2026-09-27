@@ -202,6 +202,12 @@ const pl = {
       { href: site.socials.metoda, label: "metodasufy.pl", note: "Metoda Sufy" },
     ] as Site[],
   },
+  // podpisy zdjęć — na telefonie zdjęcie jest osobną kartą w scenie
+  photos: {
+    about: { t: "Maciej V. Sufa", s: "Łódź · zdalnie PL / EU" },
+    experience: { t: "Tercet Labs", s: "współzałożyciel" },
+    services: { t: "Content i social media", s: "od pomysłu po publikację" },
+  },
   thanks: {
     lines: ["Dziękuję,", "że tu", "jesteś"],
     cta: ["Zróbmy razem", "coś dobrego"],
@@ -393,6 +399,11 @@ const en: typeof pl = {
       { href: site.socials.asistel, label: "asistel.pl", note: "Asistel" },
       { href: site.socials.metoda, label: "metodasufy.pl", note: "Metoda Sufy" },
     ] as Site[],
+  },
+  photos: {
+    about: { t: "Maciej V. Sufa", s: "Łódź, Poland · remote PL / EU" },
+    experience: { t: "Tercet Labs", s: "co-founder" },
+    services: { t: "Content & social media", s: "from idea to publication" },
   },
   thanks: {
     lines: ["Thanks", "for being", "here"],

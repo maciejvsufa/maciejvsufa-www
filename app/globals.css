@@ -1550,6 +1550,55 @@ html:not(.story-on) .split-parent .sp {
   }
 }
 
+/* — telefon: duża karta ze zdjęciem (pierwszy punkt sceny); na komputerze ukryta — */
+.photo-card {
+  position: relative;
+  margin: 0;
+  overflow: hidden;
+  border-radius: 18px;
+  background: var(--navy-hex);
+  box-shadow: 0 24px 50px -30px rgba(var(--navy), 0.6);
+}
+.photo-card::before {
+  /* to samo zdjęcie, rozmyte — wypełnia miejsce wokół zdjęcia pokazanego w całości */
+  content: "";
+  position: absolute;
+  inset: -30px;
+  background: var(--bg) var(--pos, 50% 30%) / cover no-repeat;
+  filter: blur(26px) saturate(1.1);
+  opacity: 0.85;
+}
+.photo-card img {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* zdjęcie w całości, bez przycinania */
+  object-position: 50% 40%;
+}
+.photo-card figcaption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding: 56px 20px 18px;
+  color: #fff;
+  background: linear-gradient(transparent, rgba(11, 27, 51, 0.85));
+}
+.photo-card-t {
+  font-family: var(--font-serif-stack);
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.1;
+}
+.photo-card-s {
+  font-size: 13.5px;
+  opacity: 0.85;
+}
+
 /* ============================================================
    Tablet
    ============================================================ */
@@ -1600,6 +1649,34 @@ html:not(.story-on) .split-parent .sp {
   }
   .only-phone {
     display: block;
+  }
+  /* telefon: zdjęcia jako osobne karty w scenie zamiast przyciętych pasków pod tytułem */
+  .scene-aside {
+    display: none;
+  }
+  .story-on .scene-grid {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+  .story-on .scene-stage {
+    position: relative;
+    flex: 1;
+    min-height: 0;
+  }
+  .story-on .scene-item.photo-item {
+    position: absolute;
+    inset: 0;
+    z-index: 4;
+  }
+  .story-on .scene-item.photo-item .photo-card {
+    height: 100%;
+  }
+  .story-on .scene-item.photo-item[data-state="past"] {
+    transform: translate3d(0, -14%, 0) scale(0.96);
+  }
+  html:not(.story-on) .photo-card {
+    height: 110vw;
   }
   .hero-quote {
     display: none;

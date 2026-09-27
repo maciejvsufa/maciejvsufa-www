@@ -36,6 +36,10 @@ export function StoryController() {
         Array.from(sc.querySelectorAll<HTMLElement>(".scene-item")).filter((it) => getComputedStyle(it).display !== "none"),
       );
       scenes.forEach((sc, i) => {
+        // punkty niewidoczne na tej szerokości (np. karty tylko na telefon) nie mogą zostać „aktywne”
+        sc.querySelectorAll<HTMLElement>(".scene-item").forEach((it) => {
+          if (!visible[i].includes(it)) it.dataset.state = "next";
+        });
         const tot = sc.querySelector(".scene-count-total");
         if (tot) tot.textContent = String(visible[i].length).padStart(2, "0");
         sc.classList.toggle("has-many", visible[i].length > 1);
@@ -73,10 +77,13 @@ export function StoryController() {
           items.forEach((it, i) => {
             it.dataset.state = i < idx ? "past" : i === idx ? "active" : "next";
           });
-          // infografika: podświetl elementy przypisane do aktywnego punktu
-          sc.dataset.item = String(idx);
+          // infografika: podświetl elementy przypisane do aktywnego punktu. Numeracja hl-N dotyczy
+          // punktów treści — karty tylko na telefon (zdjęcie, cytat) stoją przed nimi i się nie liczą.
+          const phoneOnly = items.filter((it) => it.classList.contains("only-phone")).length;
+          const hIdx = idx - phoneOnly;
+          sc.dataset.item = String(hIdx);
           sc.querySelectorAll<HTMLElement>(".hlx").forEach((el) =>
-            el.classList.toggle("is-on", el.classList.contains(`hl-${idx}`)),
+            el.classList.toggle("is-on", hIdx >= 0 && el.classList.contains(`hl-${hIdx}`)),
           );
           const now = sc.querySelector(".scene-count-now");
           if (now) now.textContent = String(idx + 1).padStart(2, "0");
