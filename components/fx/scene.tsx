@@ -18,6 +18,7 @@ export function Scene({
   phoneItems = [],
   visual,
   aside,
+  phonePhoto,
   shape = "a",
 }: {
   num: string;
@@ -30,10 +31,13 @@ export function Scene({
   visual?: ReactNode;
   /** element pod tytułem w lewej kolumnie (np. zdjęcie) */
   aside?: ReactNode;
+  /** tylko telefon: duża karta ze zdjęciem jako pierwszy punkt sceny (przykrywa scenę pod tytułem) */
+  phonePhoto?: ReactNode;
   /** wariant układu (zostawione dla zgodności; ozdoby usunięte w wersji „profesjonalnej”) */
   shape?: "a" | "b" | "c" | "d";
 }) {
   const all = [
+    ...(phonePhoto ? [{ node: phonePhoto, phone: true, key: "photo", photo: true }] : []),
     ...phoneItems.map((node, i) => ({ node, phone: true, key: `p${i}` })),
     ...items.map((node, i) => ({ node, phone: false, key: `i${i}` })),
   ];
@@ -64,7 +68,11 @@ export function Scene({
             {visual ? <div className="scene-visual">{visual}</div> : null}
             <div className="scene-items">
               {all.map((it, i) => (
-                <div key={it.key} className={`scene-item${it.phone ? " only-phone" : ""}`} data-state={i === 0 ? "active" : "next"}>
+                <div
+                  key={it.key}
+                  className={`scene-item${it.phone ? " only-phone" : ""}${"photo" in it ? " photo-item" : ""}`}
+                  data-state={i === 0 ? "active" : "next"}
+                >
                   {it.node}
                 </div>
               ))}

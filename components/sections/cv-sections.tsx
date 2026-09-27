@@ -12,6 +12,23 @@ import { CopyEmail } from "@/components/ui/copy-email";
 
 const hl = (list: number[]) => `hlx ${list.map((i) => `hl-${i}`).join(" ")}`;
 
+/** Telefon: duża karta ze zdjęciem i podpisem — osobny punkt sceny, odjeżdża przy przewijaniu. */
+function PhotoCard({ name, alt, w, h, pos, t, s }: { name: string; alt: string; w: number; h: number; pos: string; t: string; s: string }) {
+  return (
+    <figure
+      className="photo-card"
+      style={{ "--pos": pos, "--bg": `url(/photos/${name}-480.webp)` } as React.CSSProperties}
+    >
+      {/* eslint-disable-next-line @next/next/no-img-element -- statyczny eksport, pliki już zoptymalizowane (scripts/build-photos.mjs) */}
+      <img src={`/photos/${name}-480.webp`} alt={alt} width={w} height={h} loading="lazy" decoding="async" />
+      <figcaption>
+        <span className="photo-card-t">{t}</span>
+        <span className="photo-card-s">{s}</span>
+      </figcaption>
+    </figure>
+  );
+}
+
 /** Zdjęcie pod tytułem sceny (public/photos, generowane przez scripts/build-photos.mjs). */
 function AsidePhoto({ name, alt, w, h, pos }: { name: string; alt: string; w: number; h: number; pos: string }) {
   return (
@@ -34,6 +51,7 @@ export function OMnie({ t }: { t: SiteContent }) {
       title={a.title}
       tone="white"
       aside={<AsidePhoto name="osobiste" alt={t.hero.photoAlt} w={432} h={563} pos="50% 28%" />}
+      phonePhoto={<PhotoCard name="osobiste" alt={t.hero.photoAlt} w={432} h={563} pos="50% 25%" {...t.photos.about} />}
       visual={
         <ul className="kpis">
           {a.kpis.map((k) => (
@@ -87,6 +105,7 @@ export function Doswiadczenie({ t }: { t: SiteContent }) {
       title={e.title}
       tone="sky"
       aside={<AsidePhoto name="dosw-portret" alt={t.hero.photoAlt} w={488} h={1024} pos="50% 16%" />}
+      phonePhoto={<PhotoCard name="dosw-portret" alt={t.hero.photoAlt} w={488} h={1024} pos="50% 12%" {...t.photos.experience} />}
       visual={
         <figure className="gantt" aria-hidden="true">
           <span className="gantt-break" />
@@ -154,6 +173,7 @@ export function CoRobie({ t }: { t: SiteContent }) {
       title={c.title}
       tone="peach"
       aside={<AsidePhoto name="plener-luz" alt={t.hero.photoAlt} w={432} h={452} pos="60% 30%" />}
+      phonePhoto={<PhotoCard name="plener-luz" alt={t.hero.photoAlt} w={432} h={452} pos="62% 30%" {...t.photos.services} />}
       visual={
         <figure className="flow" aria-hidden="true">
           <ol className="flow-steps">

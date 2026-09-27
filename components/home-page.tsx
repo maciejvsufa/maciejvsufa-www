@@ -23,9 +23,10 @@ import type { SiteContent } from "@/lib/content";
 export function HomePage({ t }: { t: SiteContent }) {
   const steps: { id: string; n: number; nPhone?: number; label: string }[] = [
     { id: "top", n: 1, label: t.hero.aria },
-    { id: "o-mnie", n: 1, nPhone: 2, label: t.about.title },
-    { id: "doswiadczenie", n: t.experience.items.length, label: t.experience.title },
-    { id: "co-robie", n: t.coRobie.items.length, label: t.coRobie.title },
+    // nPhone: na telefonie dochodzi karta ze zdjęciem (i cytat w „O mnie”)
+    { id: "o-mnie", n: 1, nPhone: 3, label: t.about.title },
+    { id: "doswiadczenie", n: t.experience.items.length, nPhone: t.experience.items.length + 1, label: t.experience.title },
+    { id: "co-robie", n: t.coRobie.items.length, nPhone: t.coRobie.items.length + 1, label: t.coRobie.title },
     { id: "jak-pracuje", n: t.jakPracuje.points.length, label: t.jakPracuje.title },
     { id: "umiejetnosci", n: 1, label: t.skills.title },
     { id: "edukacja", n: t.education.items.length, label: t.education.title },
