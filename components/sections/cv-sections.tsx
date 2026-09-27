@@ -12,6 +12,18 @@ import { CopyEmail } from "@/components/ui/copy-email";
 
 const hl = (list: number[]) => `hlx ${list.map((i) => `hl-${i}`).join(" ")}`;
 
+/** Zdjęcie pod tytułem sceny (public/photos, generowane przez scripts/build-photos.mjs). */
+function AsidePhoto({ name, alt, w, h, pos }: { name: string; alt: string; w: number; h: number; pos: string }) {
+  return (
+    <figure className="aside-photo" style={{ "--pos": pos } as React.CSSProperties}>
+      <picture>
+        <source media="(max-width: 809px)" srcSet={`/photos/${name}-480.webp`} type="image/webp" />
+        <img src={`/photos/${name}.webp`} alt={alt} width={w} height={h} loading="lazy" decoding="async" />
+      </picture>
+    </figure>
+  );
+}
+
 /** 01. O mnie — trzy wskaźniki + opis. */
 export function OMnie({ t }: { t: SiteContent }) {
   const a = t.about;
@@ -21,14 +33,7 @@ export function OMnie({ t }: { t: SiteContent }) {
       num={a.kicker}
       title={a.title}
       tone="white"
-      aside={
-        <figure className="aside-photo">
-          <picture>
-            <source media="(max-width: 809px)" srcSet="/photos/plener-480.webp" type="image/webp" />
-            <img src="/photos/plener.webp" alt={t.hero.photoAlt} width={900} height={900} loading="lazy" decoding="async" />
-          </picture>
-        </figure>
-      }
+      aside={<AsidePhoto name="osobiste" alt={t.hero.photoAlt} w={432} h={563} pos="50% 28%" />}
       visual={
         <ul className="kpis">
           {a.kpis.map((k) => (
@@ -81,6 +86,7 @@ export function Doswiadczenie({ t }: { t: SiteContent }) {
       num={e.kicker}
       title={e.title}
       tone="sky"
+      aside={<AsidePhoto name="dosw-portret" alt={t.hero.photoAlt} w={488} h={1024} pos="50% 16%" />}
       visual={
         <figure className="gantt" aria-hidden="true">
           <span className="gantt-break" />
@@ -147,6 +153,7 @@ export function CoRobie({ t }: { t: SiteContent }) {
       num={c.kicker}
       title={c.title}
       tone="peach"
+      aside={<AsidePhoto name="plener-luz" alt={t.hero.photoAlt} w={432} h={452} pos="60% 30%" />}
       visual={
         <figure className="flow" aria-hidden="true">
           <ol className="flow-steps">

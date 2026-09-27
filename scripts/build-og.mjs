@@ -26,10 +26,9 @@ const bgSvg = `<svg width="${W}" height="${H}" xmlns="http://www.w3.org/2000/svg
   <text x="72" y="556" font-family="'Segoe UI', Arial, sans-serif" font-size="22" fill="#5b6475" letter-spacing="3">MACIEJVSUFA.PL</text>
 </svg>`;
 
-// portret „elegancja uśmiech 2” jako pionowy panel przy prawej krawędzi (jak na stronie)
+// portret z pierwszego ekranu jako pionowy panel przy prawej krawędzi (jak na stronie)
 const PW = 440;
-const portraitBuf = await sharp("photos-src/elegancja-usmiech-2.jpg")
-  .rotate()
+const portraitBuf = await sharp("public/photos/hero-portret.webp")
   .resize({ width: PW, height: H, fit: "cover", position: "top" })
   .toBuffer();
 const edge = await sharp({ create: { width: 4, height: H, channels: 3, background: "#e8590c" } }).png().toBuffer();

@@ -105,7 +105,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
               "var d=document.documentElement;d.classList.add('story-on');if(matchMedia('(prefers-reduced-motion: reduce)').matches)d.classList.add('story-still')",
           }}
         />
-        <link rel="preload" as="image" href="/photos/hero-portret-640.webp" type="image/webp" media="(max-width: 809px)" fetchPriority="high" />
+        <link rel="preload" as="image" href="/photos/hero-portret-480.webp" type="image/webp" media="(max-width: 809px)" fetchPriority="high" />
         <link rel="preload" as="image" href="/photos/hero-portret.webp" type="image/webp" media="(min-width: 810px)" fetchPriority="high" />
         {/* bez JavaScriptu treść ma być widoczna od razu */}
         <noscript>
