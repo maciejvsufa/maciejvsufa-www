@@ -177,42 +177,50 @@ a {
 .scene {
   position: relative;
 }
+/* Przejście sceny: nowa, nieprzezroczysta warstwa wjeżdża od dołu i przykrywa poprzednią,
+   która cofa się lekko w górę. Tylko transform i opacity — liczone przez kartę graficzną,
+   bez przerysowywania ekranu (wcześniej clip-path + blur powodowały przycinanie). */
 .story-on .scene {
   position: absolute;
   inset: 0;
+  background: var(--scene-bg, #fff);
+  backface-visibility: hidden;
   transition:
-    clip-path 1s var(--ease-curtain),
-    transform 1s var(--ease-spring),
-    opacity 0.8s var(--ease-spring),
-    filter 0.8s var(--ease-spring);
+    transform 0.95s var(--ease-curtain),
+    opacity 0.95s var(--ease-spring);
 }
 .story-on .scene[data-state="active"] {
   z-index: 2;
-  clip-path: inset(0 0 0 0);
-  transform: none;
+  transform: translate3d(0, 0, 0);
   opacity: 1;
+  will-change: transform;
 }
 .story-on .scene[data-state="next"] {
   z-index: 3;
-  clip-path: inset(100% 0 0 0);
-  transform: translateY(60px);
+  transform: translate3d(0, 100%, 0);
   pointer-events: none;
 }
 .story-on .scene[data-state="past"] {
   z-index: 1;
-  clip-path: inset(0 0 0 0);
-  transform: translateY(-40px) scale(0.98);
+  transform: translate3d(0, -12%, 0) scale(0.97);
   opacity: 0;
-  filter: blur(4px);
   pointer-events: none;
+}
+.scene[data-tone="white"] {
+  --scene-bg: #ffffff;
+}
+.scene[data-tone="sky"] {
+  --scene-bg: #f5f7fa;
+}
+.scene[data-tone="peach"] {
+  --scene-bg: #fbfaf8;
+}
+.scene[data-tone="mist"] {
+  --scene-bg: #f3f5f8;
 }
 html:not(.story-on) .scene {
   background: var(--scene-bg, #fff);
   border-top: 1px solid var(--line);
-}
-html:not(.story-on) .scene[data-tone="sky"],
-html:not(.story-on) .scene[data-tone="mist"] {
-  --scene-bg: #f5f7fa;
 }
 
 .scene-inner {
@@ -299,7 +307,7 @@ html:not(.story-on) .scene[data-tone="mist"] {
   transform: scaleX(var(--p, 0));
 }
 
-/* — zdjęcie pod tytułem sceny (plener w „O mnie”) — */
+/* — zdjęcie pod tytułem sceny (O mnie, Doświadczenie, Co robię) — */
 .scene-aside {
   margin-top: 28px;
 }
@@ -315,7 +323,7 @@ html:not(.story-on) .scene[data-tone="mist"] {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: 38% 30%;
+  object-position: var(--pos, 50% 30%);
   transform: scale(1.06);
   transition: transform 1.4s var(--ease-spring);
 }
@@ -350,26 +358,22 @@ html:not(.story-on) .scene[data-tone="mist"] {
 .story-on .scene-item {
   grid-area: 1 / 1;
   transition:
-    opacity 0.6s var(--ease-spring),
-    transform 0.7s var(--ease-spring),
-    filter 0.6s var(--ease-spring);
+    opacity 0.55s var(--ease-spring),
+    transform 0.65s var(--ease-spring);
 }
 .story-on .scene-item[data-state="next"] {
   opacity: 0;
-  transform: translateY(40px);
-  filter: blur(4px);
+  transform: translate3d(0, 36px, 0);
   pointer-events: none;
 }
 .story-on .scene-item[data-state="past"] {
   opacity: 0;
-  transform: translateY(-40px);
-  filter: blur(4px);
+  transform: translate3d(0, -36px, 0);
   pointer-events: none;
 }
 .story-on .scene-item[data-state="active"] {
   opacity: 1;
   transform: none;
-  filter: none;
 }
 .only-phone {
   display: none;
@@ -1184,7 +1188,7 @@ html:not(.story-on) .scene[data-tone="mist"] {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: 52% 22%;
+  object-position: 38% 18%;
   animation: heroZoom 3s cubic-bezier(0.12, 0.23, 0.5, 1) both;
 }
 /* cienka pomarańczowa krawędź panelu + delikatne przyciemnienie u góry pod napisy nagłówka */
@@ -1481,7 +1485,7 @@ html:not(.story-on) .scene[data-tone="mist"] {
   transform: translateY(10px);
 }
 .split-blur .sp {
-  filter: blur(10px);
+  /* dawniej blur(10px) na każdej literze — zbyt kosztowne; zostaje przesunięcie i przezroczystość */
 }
 .split-mount .sp {
   animation: spIn 0.4s var(--ease-spring) var(--d) both;
@@ -1490,8 +1494,7 @@ html:not(.story-on) .scene[data-tone="mist"] {
 .split-parent .sp {
   transition:
     opacity 0.45s var(--ease-spring),
-    transform 0.45s var(--ease-spring),
-    filter 0.45s var(--ease-spring);
+    transform 0.45s var(--ease-spring);
   transition-delay: calc(var(--d) + 0.25s);
 }
 .split-view.is-in .sp,
@@ -1629,7 +1632,7 @@ html:not(.story-on) .split-parent .sp {
     max-height: none;
   }
   .aside-photo img {
-    object-position: 40% 28%;
+    object-position: var(--pos, 50% 28%);
   }
   .hero {
     justify-content: flex-end;

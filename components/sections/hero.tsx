@@ -3,7 +3,7 @@ import { FitText } from "@/components/fx/fit-text";
 import { SplitText } from "@/components/fx/split-text";
 
 /**
- * Tło pierwszego ekranu: jasna siatka + pionowy portret („elegancja uśmiech 2”) jako panel
+ * Tło pierwszego ekranu: jasna siatka + pionowy portret (zdjęcie 1 z kolażu 27.09 — uśmiech, marynarka) jako panel
  * przy prawej krawędzi, jak w magazynie. Imię i cytat stoją po lewej, poza zdjęciem.
  * Wejście: zdjęcie powoli się przybliża do skali 1 (3 s).
  */
@@ -12,8 +12,8 @@ export function HeroBackdrop({ alt }: { alt: string }) {
     <div className="hero-bg">
       <div className="hero-photo">
         <picture>
-          <source media="(max-width: 809px)" srcSet="/photos/hero-portret-640.webp" type="image/webp" />
-          <img src="/photos/hero-portret.webp" alt={alt} width={1000} height={1501} fetchPriority="high" decoding="async" />
+          <source media="(max-width: 809px)" srcSet="/photos/hero-portret-480.webp" type="image/webp" />
+          <img src="/photos/hero-portret.webp" alt={alt} width={596} height={1024} fetchPriority="high" decoding="async" />
         </picture>
       </div>
     </div>

@@ -10,21 +10,26 @@ export function ScrollLabel({ scroll, top }: { scroll: string; top: string }) {
   const [down, setDown] = useState(false);
 
   useEffect(() => {
-    const root = document.documentElement.style;
+    // tylko przełączenie „Przewiń” ↔ „Do góry”; setState wyłącznie przy zmianie (bez pracy na każdą klatkę)
+    let last = false;
+    let raf = 0;
     const on = () => {
-      const vh = window.innerHeight;
-      const d = window.scrollY > vh * 0.5;
-      setDown(d);
-      // przyciemnienie pod nagłówkiem, gdy treść jedzie pod nim
-      root.setProperty("--hdr-shade", d ? "1" : "0");
-      // postęp wyjazdu hero 0..1 — treść hero płynnie gaśnie, zamiast wjeżdżać pod nagłówek
-      root.setProperty("--hp", Math.min(1, window.scrollY / (vh * 0.6)).toFixed(3));
-      // postęp zakrywania pierwszego ekranu 0..1 — zdjęcie gaśnie, gdy taśma na nie najeżdża
-      root.setProperty("--hq", Math.min(1, window.scrollY / vh).toFixed(3));
+      raf = 0;
+      const d = window.scrollY > window.innerHeight * 0.5;
+      if (d !== last) {
+        last = d;
+        setDown(d);
+      }
+    };
+    const onScroll = () => {
+      if (!raf) raf = requestAnimationFrame(on);
     };
     on();
-    window.addEventListener("scroll", on, { passive: true });
-    return () => window.removeEventListener("scroll", on);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      if (raf) cancelAnimationFrame(raf);
+    };
   }, []);
 
   return (
