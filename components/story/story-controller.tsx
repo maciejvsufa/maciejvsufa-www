@@ -114,15 +114,91 @@ export function StoryController() {
       }
     };
 
+    // ——— jeden gest = jedna karta ———
+    // Machnięcie palcem, kółko myszy albo klawisz przesuwa dokładnie o jeden znacznik (.snap),
+    // niezależnie od siły gestu; w trakcie przejazdu kolejne gesty są ignorowane.
+    let snaps: number[] = [];
+    const measureSnaps = () => {
+      snaps = Array.from(document.querySelectorAll<HTMLElement>(".story-steps .snap"))
+        .filter((el) => el.offsetParent !== null)
+        .map((el) => Math.round(el.getBoundingClientRect().top + window.scrollY));
+    };
+    let lockUntil = 0;
+    const nearest = () => {
+      const y = window.scrollY;
+      let best = 0;
+      snaps.forEach((top, i) => {
+        if (Math.abs(top - y) < Math.abs(snaps[best] - y)) best = i;
+      });
+      return best;
+    };
+    const go = (dir: 1 | -1) => {
+      const now = performance.now();
+      if (now < lockUntil || !snaps.length) return;
+      const target = snaps[Math.min(snaps.length - 1, Math.max(0, nearest() + dir))];
+      lockUntil = now + 750;
+      window.scrollTo({ top: target, behavior: still ? ("instant" as ScrollBehavior) : "smooth" });
+    };
+    const still = root.classList.contains("story-still");
+
+    const onWheel = (e: WheelEvent) => {
+      if (e.ctrlKey || Math.abs(e.deltaY) < 4) return; // zoom przeglądarki i drobne drgania — bez zmian
+      e.preventDefault();
+      go(e.deltaY > 0 ? 1 : -1);
+    };
+    let touchY = 0;
+    let touching = false;
+    const onTouchStart = (e: TouchEvent) => {
+      if (e.touches.length !== 1) return;
+      touching = true;
+      touchY = e.touches[0].clientY;
+    };
+    const onTouchMove = (e: TouchEvent) => {
+      if (touching && e.cancelable) e.preventDefault(); // bez natywnego „rozpędzania” strony
+    };
+    const onTouchEnd = (e: TouchEvent) => {
+      if (!touching) return;
+      touching = false;
+      const dy = touchY - e.changedTouches[0].clientY;
+      if (Math.abs(dy) > 40) go(dy > 0 ? 1 : -1);
+    };
+    const onKey = (e: KeyboardEvent) => {
+      const t = e.target as HTMLElement;
+      if (t && (t.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName))) return;
+      if (["ArrowDown", "PageDown", " "].includes(e.key) && !e.shiftKey) {
+        e.preventDefault();
+        go(1);
+      } else if (["ArrowUp", "PageUp"].includes(e.key) || (e.key === " " && e.shiftKey)) {
+        e.preventDefault();
+        go(-1);
+      }
+    };
+
     measure();
+    measureSnaps();
     update();
     window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("resize", onResize);
+    window.addEventListener("resize", measureSnaps);
+    window.addEventListener("wheel", onWheel, { passive: false });
+    window.addEventListener("touchstart", onTouchStart, { passive: true });
+    window.addEventListener("touchmove", onTouchMove, { passive: false });
+    window.addEventListener("touchend", onTouchEnd, { passive: true });
+    window.addEventListener("keydown", onKey);
     frame.addEventListener("focusin", onFocus);
-    document.fonts?.ready.then(onResize);
+    document.fonts?.ready.then(() => {
+      onResize();
+      measureSnaps();
+    });
     return () => {
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", onResize);
+      window.removeEventListener("resize", measureSnaps);
+      window.removeEventListener("wheel", onWheel);
+      window.removeEventListener("touchstart", onTouchStart);
+      window.removeEventListener("touchmove", onTouchMove);
+      window.removeEventListener("touchend", onTouchEnd);
+      window.removeEventListener("keydown", onKey);
       frame.removeEventListener("focusin", onFocus);
       if (raf) cancelAnimationFrame(raf);
       root.classList.remove("story-on", "story-still");

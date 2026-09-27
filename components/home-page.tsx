@@ -65,14 +65,15 @@ export function HomePage({ t }: { t: SiteContent }) {
             </nav>
           </div>
         </div>
+        {/* jeden znacznik = jedna karta; przewijanie zatrzymuje się na każdym (scroll-snap-stop),
+            więc jedno przesunięcie palcem to zawsze jedna karta. Znaczniki .snap-phone tylko na telefonie. */}
         <div className="story-steps" aria-hidden="true">
           {steps.map((s) => (
-            <div
-              key={s.id}
-              id={s.id}
-              className="step"
-              style={{ "--n": s.n, "--n-m": s.nPhone ?? s.n } as React.CSSProperties}
-            />
+            <div key={s.id} id={s.id} className="step">
+              {Array.from({ length: Math.max(s.n, s.nPhone ?? s.n) }, (_, i) => (
+                <span key={i} className={`snap${i >= s.n ? " snap-phone" : ""}`} />
+              ))}
+            </div>
           ))}
         </div>
       </main>
