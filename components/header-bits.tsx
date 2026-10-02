@@ -3,8 +3,6 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import type { SiteContent } from "@/lib/content";
-import { site } from "@/lib/site";
-
 /** Dolny napis nagłówka: „Przewiń” na hero, „Do góry” po przewinięciu (jak „Scroll” → „Back to Top”). */
 export function ScrollLabel({ scroll, top }: { scroll: string; top: string }) {
   const [down, setDown] = useState(false);
@@ -39,7 +37,7 @@ export function ScrollLabel({ scroll, top }: { scroll: string; top: string }) {
           {top}
         </a>
       ) : (
-        <a href="#o-mnie" className="hdr-scroll">
+        <a href="#co-robie" className="hdr-scroll">
           {scroll}
         </a>
       )}
@@ -65,14 +63,14 @@ export function MobileMenu({ t }: { t: SiteContent }) {
       </button>
       {open ? (
         <div id="mobile-menu" className="menu-panel">
-          <a href={t.ui.cvHref} onClick={() => setOpen(false)}>
-            {t.ui.downloadCv}
-          </a>
-          <a href={`mailto:${site.email}`} onClick={() => setOpen(false)}>
-            {t.ui.contactMe}
-          </a>
-          <a href="#kontakt" onClick={() => setOpen(false)}>
-            {t.kontakt.title}
+          {t.ui.nav.map((n) => (
+            <a key={n.href} href={n.href} onClick={() => setOpen(false)}>
+              {n.label}
+            </a>
+          ))}
+          <a className="hdr-cta" href={t.ui.ctaHref} onClick={() => setOpen(false)}>
+            {t.ui.cta}
+            <i aria-hidden="true">↗</i>
           </a>
           <span className="menu-lang">
             <Link href="/" hrefLang="pl" lang="pl">

@@ -4,8 +4,8 @@ import { site } from "@/lib/site";
 import { MobileMenu, ScrollLabel } from "@/components/header-bits";
 
 /**
- * Stały nagłówek jak w szablonie: po lewej imię i status, w kolumnie 75% „Pobierz CV / Napisz do mnie”,
- * po prawej język i strefa czasowa; na dole w kolumnie 75% napis „Przewiń” → „Do góry”.
+ * Stały nagłówek jak w Makro: po lewej imię i status, pośrodku linki do sekcji,
+ * po prawej język i przycisk „Umów rozmowę”; na dole „Przewiń” → „Do góry”.
  */
 export function SiteHeader({ t, showScroll = true }: { t: SiteContent; showScroll?: boolean }) {
   const isEn = t.lang === "en";
@@ -23,8 +23,11 @@ export function SiteHeader({ t, showScroll = true }: { t: SiteContent; showScrol
         </div>
 
         <nav aria-label="Menu" className="hdr-links">
-          <a href={t.ui.cvHref}>{t.ui.downloadCv}</a>
-          <a href={`mailto:${site.email}`}>{t.ui.contactMe}</a>
+          {t.ui.nav.map((n) => (
+            <a key={n.href} href={showScroll ? n.href : `${isEn ? "/en/" : "/"}${n.href}`}>
+              {n.label}
+            </a>
+          ))}
         </nav>
 
         <div className="hdr-right">
@@ -37,7 +40,10 @@ export function SiteHeader({ t, showScroll = true }: { t: SiteContent; showScrol
               EN
             </Link>
           </span>
-          <span className="tz">{t.ui.timezone}</span>
+          <a className="hdr-cta" href={t.ui.ctaHref}>
+            {t.ui.cta}
+            <i aria-hidden="true">↗</i>
+          </a>
         </div>
 
         <MobileMenu t={t} />

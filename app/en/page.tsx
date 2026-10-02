@@ -4,7 +4,7 @@ import { HtmlLang } from "@/components/html-lang";
 import { content } from "@/lib/content";
 import { site } from "@/lib/site";
 
-const EN_TITLE = "Maciej V. Sufa — Social Media Content Creator (AI-powered)";
+const EN_TITLE = "Maciej V. Sufa: content and AI for business";
 
 export const metadata: Metadata = {
   title: EN_TITLE,

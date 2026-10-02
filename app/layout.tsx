@@ -1,28 +1,14 @@
 import type { Metadata, Viewport } from "next";
-import localFont from "next/font/local";
-import { Playfair_Display } from "next/font/google";
+import { Inter_Tight } from "next/font/google";
 import "./globals.css";
 import { site } from "@/lib/site";
 
-// Switzer (Fontshare, darmowa licencja) — pełne pliki z polskimi znakami.
-const switzer = localFont({
-  variable: "--font-switzer",
-  display: "swap",
-  src: [
-    { path: "./fonts/Switzer-400.woff2", weight: "400", style: "normal" },
-    { path: "./fonts/Switzer-500.woff2", weight: "500", style: "normal" },
-    { path: "./fonts/Switzer-600.woff2", weight: "600", style: "normal" },
-    { path: "./fonts/Switzer-700.woff2", weight: "700", style: "normal" },
-    { path: "./fonts/Switzer-300i.woff2", weight: "300", style: "italic" },
-  ],
-});
-
-// Playfair Display — szeryf do tytułów sekcji i stanowisk („ludzki”, magazynowy).
+// Inter Tight (Google Fonts, darmowy) to najbliższy odpowiednik Inter Display z szablonu Makro.
 // next/font pobiera plik przy budowaniu i serwuje go z naszej domeny (bez połączeń z Google).
-const playfair = Playfair_Display({
-  variable: "--font-serif",
+const inter = Inter_Tight({
+  variable: "--font-inter",
   subsets: ["latin", "latin-ext"],
-  weight: ["500", "600"],
+  weight: ["400", "500", "600"],
   display: "swap",
 });
 
@@ -68,7 +54,7 @@ const jsonLd = {
       "@id": personId,
       name: site.name,
       url: site.url,
-      image: `${site.url}/photos/hero-portret.webp`,
+      image: `${site.url}/photos/hero-maciej.webp`,
       jobTitle: site.jobTitle,
       email: `mailto:${site.email}`,
       sameAs: [site.socials.instagram, site.socials.facebook, site.socials.linkedin, site.socials.github],
@@ -95,7 +81,7 @@ const jsonLd = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="pl" suppressHydrationWarning className={`${switzer.variable} ${playfair.variable} h-full antialiased`}>
+    <html lang="pl" suppressHydrationWarning className={`${inter.variable} h-full antialiased`}>
       <head>
         {/* tryb „jednej strony” włączony przed pierwszym rysowaniem — bez przeskoku układu (CLS);
             bez JS klasa się nie pojawia i treść stoi zwyczajnie, jedna pod drugą */}
@@ -105,8 +91,8 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
               "var d=document.documentElement;d.classList.add('story-on');if(matchMedia('(prefers-reduced-motion: reduce)').matches)d.classList.add('story-still')",
           }}
         />
-        <link rel="preload" as="image" href="/photos/hero-portret-480.webp" type="image/webp" media="(max-width: 809px)" fetchPriority="high" />
-        <link rel="preload" as="image" href="/photos/hero-portret.webp" type="image/webp" media="(min-width: 810px)" fetchPriority="high" />
+        <link rel="preload" as="image" href="/photos/hero-maciej-900.webp" type="image/webp" media="(max-width: 809px)" fetchPriority="high" />
+        <link rel="preload" as="image" href="/photos/hero-maciej.webp" type="image/webp" media="(min-width: 810px)" fetchPriority="high" />
         {/* bez JavaScriptu treść ma być widoczna od razu */}
         <noscript>
           <style>{`.split .sp,.fade-in{opacity:1!important;transform:none!important;filter:none!important}`}</style>
@@ -122,3 +108,4 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     </html>
   );
 }
+

@@ -1,13 +1,13 @@
 /** Stałe witryny — jedno miejsce na URL, kontakt, social. */
 export const site = {
   name: "Maciej V. Sufa",
-  title: "Maciej V. Sufa — Social Media Content Creator (AI-powered)",
+  title: "Maciej V. Sufa: treści i AI dla firm",
   description:
-    "Tworzę content na social media z AI: scenariusze, wideo, grafiki, kalendarz treści i publikacja. Współzałożyciel Tercet Labs. Współpraca zdalna, PL/EU.",
+    "Tworzę treści na social media i wdrażam automatyzacje oraz agentów AI, które oszczędzają firmom czas. Współzałożyciel Tercet Labs, współtwórca Asistel. Zdalnie, PL/UE.",
   descriptionEn:
-    "I create social media content with AI: scripts, video, graphics, content calendar and publishing. Co-founder of Tercet Labs. Remote, PL/EU.",
+    "I create social media content and deploy automations and AI agents that save companies time. Co-founder of Tercet Labs, co-creator of Asistel. Remote, PL/EU.",
   url: "https://maciejvsufa.pl",
-  jobTitle: "Social Media Content Creator (AI-powered)",
+  jobTitle: "Content Creator i specjalista AI dla firm",
   email: "sufamaciej@gmail.com",
   location: "Łódź, PL",
   socials: {
