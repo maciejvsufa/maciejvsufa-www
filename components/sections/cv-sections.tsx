@@ -1,366 +1,175 @@
-import type { SiteContent } from "@/lib/content";
+import type { ReactNode } from "react";
+import type { Card, SiteContent } from "@/lib/content";
 import { site } from "@/lib/site";
-import { Scene } from "@/components/fx/scene";
+import { Scene, type Tone } from "@/components/fx/scene";
 import { CopyEmail } from "@/components/ui/copy-email";
+import { Cta } from "@/components/ui/cta";
+import { Icon } from "@/components/viz/icon";
+import { VizBody, VizPanel } from "@/components/viz/viz";
 
-/*
- * Sekcje jako infografiki: nad punktami stoi wykres/schemat (visual), a punkty pod nim
- * zmieniają się przy przewijaniu. Element infografiki z klasami `hlx hl-N` podświetla się,
- * gdy aktywny jest punkt N (steruje components/story/story-controller).
- * Wszystkie dane pochodzą z treści (lib/content.ts) — żadnych zmyślonych liczb.
- */
+type Head = { kicker: string; title: string; intro?: string };
 
-const hl = (list: number[]) => `hlx ${list.map((i) => `hl-${i}`).join(" ")}`;
-
-/** Telefon: duża karta ze zdjęciem i podpisem — osobny punkt sceny, odjeżdża przy przewijaniu. */
-function PhotoCard({ name, alt, w, h, pos, t, s }: { name: string; alt: string; w: number; h: number; pos: string; t: string; s: string }) {
+function Links({ links }: { links?: Card["links"] }) {
+  if (!links) return null;
   return (
-    <figure
-      className="photo-card"
-      style={{ "--pos": pos, "--bg": `url(/photos/${name}-480.webp)` } as React.CSSProperties}
-    >
-      {/* eslint-disable-next-line @next/next/no-img-element -- statyczny eksport, pliki już zoptymalizowane (scripts/build-photos.mjs) */}
-      <img src={`/photos/${name}-480.webp`} alt={alt} width={w} height={h} loading="lazy" decoding="async" />
-      <figcaption>
-        <span className="photo-card-t">{t}</span>
-        <span className="photo-card-s">{s}</span>
-      </figcaption>
-    </figure>
-  );
-}
-
-/** Zdjęcie pod tytułem sceny (public/photos, generowane przez scripts/build-photos.mjs). */
-function AsidePhoto({ name, alt, w, h, pos }: { name: string; alt: string; w: number; h: number; pos: string }) {
-  return (
-    <figure className="aside-photo" style={{ "--pos": pos } as React.CSSProperties}>
-      <picture>
-        <source media="(max-width: 809px)" srcSet={`/photos/${name}-480.webp`} type="image/webp" />
-        <img src={`/photos/${name}.webp`} alt={alt} width={w} height={h} loading="lazy" decoding="async" />
-      </picture>
-    </figure>
-  );
-}
-
-/** 01. O mnie — trzy wskaźniki + opis. */
-export function OMnie({ t }: { t: SiteContent }) {
-  const a = t.about;
-  const [first, ...rest] = a.body[0].split(/(?<=\.)\s/);
-  return (
-    <Scene
-      num={a.kicker}
-      title={a.title}
-      tone="white"
-      aside={<AsidePhoto name="osobiste" alt={t.hero.photoAlt} w={432} h={563} pos="50% 28%" />}
-      phonePhoto={<PhotoCard name="osobiste" alt={t.hero.photoAlt} w={432} h={563} pos="50% 25%" {...t.photos.about} />}
-      visual={
-        <ul className="kpis">
-          {a.kpis.map((k) => (
-            <li key={k.label} className="kpi">
-              <span className="kpi-value">
-                {k.value}
-                {k.unit ? <span className="kpi-unit"> {k.unit}</span> : null}
-              </span>
-              <span className="kpi-label">{k.label}</span>
-            </li>
-          ))}
-        </ul>
-      }
-      phoneItems={[
-        <figure key="q" className="pcard pcard-quote">
-          <blockquote>{t.hero.quote}</blockquote>
-          <figcaption>— {t.hero.quoteBy}</figcaption>
-        </figure>,
-      ]}
-      items={[
-        <article key="a" className="pcard">
-          <p className="pcard-lead">{first}</p>
-          <p className="pcard-txt">{rest.join(" ")}</p>
-          {a.body.slice(1).map((p) => (
-            <p key={p.slice(0, 24)} className="pcard-txt">
-              {p}
-            </p>
-          ))}
-        </article>,
-      ]}
-    />
+    <p className="pcard-links">
+      {links.map((l) => (
+        <a key={l.href} className="lnk" href={l.href} target="_blank" rel="noopener noreferrer">
+          {l.label} ↗
+        </a>
+      ))}
+    </p>
   );
 }
 
 /**
- * 02. Doświadczenie — oś czasu z paskami ról; aktywna rola podświetlona, opis pod spodem.
- * Oś z przerwaniem: 2008–2024 ściśnięte (50%), 2024–dziś rozciągnięte (50%) — inaczej
- * role z lat 2025–2026 byłyby niewidocznymi kreskami obok 17 lat aktorstwa.
+ * Kafel jak w szablonie Makro: biały panel z etykietą, nagłówkiem, opisem i linijką z ptaszkiem
+ * + panel wizualny z rozmytym tłem i pływającym widżetem. Co drugi kafel ma widżet po lewej.
  */
-const T0 = 2008;
-const TB = 2024; // punkt przerwania osi
-const T1 = 2027; // prawa krawędź osi („dziś”)
-const pct = (y: number) => (y <= TB ? ((y - T0) / (TB - T0)) * 50 : 50 + ((y - TB) / (T1 - TB)) * 50);
-
-export function Doswiadczenie({ t }: { t: SiteContent }) {
-  const e = t.experience;
-  const ticks = [2008, 2016, 2024, 2025, 2026];
+function Tile({ c, k, sample }: { c: Card; k: number; sample: string }) {
   return (
-    <Scene
-      num={e.kicker}
-      title={e.title}
-      tone="sky"
-      aside={<AsidePhoto name="dosw-portret" alt={t.hero.photoAlt} w={488} h={1024} pos="50% 16%" />}
-      phonePhoto={<PhotoCard name="dosw-portret" alt={t.hero.photoAlt} w={488} h={1024} pos="50% 12%" {...t.photos.experience} />}
-      visual={
-        <figure className="gantt" aria-hidden="true">
-          <span className="gantt-break" />
-          <div className="gantt-rows">
-            {e.spans.map((s, i) => {
-              const to = s.to ?? T1;
-              return (
-                <div key={s.label} className={`gantt-row ${hl([i])}`}>
-                  <span className="gantt-label">{s.label}</span>
-                  <span className="gantt-track">
-                    <span
-                      className={`gantt-bar${s.to === null ? " is-open" : ""}`}
-                      style={{ left: `${pct(s.from)}%`, width: `${Math.max(2.5, pct(to) - pct(s.from))}%` }}
-                    />
-                  </span>
-                </div>
-              );
-            })}
-          </div>
-          <div className="gantt-axis">
-            <span className="gantt-label" />
-            <span className="gantt-ticks">
-              {ticks.map((y) => (
-                <span key={y} style={{ left: `${pct(y)}%` }}>
-                  {y}
-                </span>
-              ))}
-              <span className="is-now" style={{ left: "100%" }}>
-                {e.now}
-              </span>
-            </span>
-          </div>
-        </figure>
-      }
-      items={e.items.map((job) => (
-        <article key={job.org} className="pcard pcard-line">
-          <div className="pcard-top">
-            <span className="org">{job.org}</span>
-            <span className="badge">{job.years || job.meta}</span>
-          </div>
-          {job.years ? <p className="meta">{job.meta}</p> : null}
-          <h3 className="pcard-h">{job.role}</h3>
-          <p className="pcard-txt">{job.p}</p>
-          {job.links ? (
-            <p className="pcard-links">
-              {job.links.map((l) => (
-                <a key={l.href} className="lnk" href={l.href} target="_blank" rel="noopener noreferrer">
-                  {l.label} ↗
-                </a>
-              ))}
-            </p>
-          ) : null}
-        </article>
-      ))}
-    />
-  );
-}
-
-/** 03. Co robię — schemat linii produkcyjnej treści z warstwą AI; usługa podświetla swój fragment. */
-export function CoRobie({ t }: { t: SiteContent }) {
-  const c = t.coRobie;
-  return (
-    <Scene
-      num={c.kicker}
-      title={c.title}
-      tone="peach"
-      aside={<AsidePhoto name="plener-luz" alt={t.hero.photoAlt} w={432} h={452} pos="60% 30%" />}
-      phonePhoto={<PhotoCard name="plener-luz" alt={t.hero.photoAlt} w={432} h={452} pos="62% 30%" {...t.photos.services} />}
-      visual={
-        <figure className="flow" aria-hidden="true">
-          <ol className="flow-steps">
-            {c.flow.map((n, i) => (
-              <li key={n.label} className={`flow-node ${hl(n.hl)}`}>
-                <span className="flow-i">{String(i + 1).padStart(2, "0")}</span>
-                <span className="flow-t">{n.label}</span>
-              </li>
-            ))}
-          </ol>
-          <div className={`flow-ai ${hl(c.aiLayer.hl)}`}>
-            <span className="flow-ai-mark">AI</span>
-            {c.aiLayer.label}
-          </div>
-          <div className={`flow-extra ${hl(c.extra.hl)}`}>{c.extra.label}</div>
-        </figure>
-      }
-      items={c.items.map((it, i) => (
-        <article key={it.h} className="pcard pcard-dark">
-          <span className="pcard-kicker">{String(i + 1).padStart(2, "0")}</span>
-          <h3 className="pcard-h">{it.h}</h3>
-          <p className="pcard-txt">{it.p}</p>
-        </article>
-      ))}
-    />
-  );
-}
-
-/** 04. Jak pracuję — schemat cyklu plan → budowa → przegląd → wydanie. */
-export function JakPracuje({ t }: { t: SiteContent }) {
-  const j = t.jakPracuje;
-  return (
-    <Scene
-      num={j.kicker}
-      title={j.title}
-      intro={j.intro}
-      tone="white"
-      visual={
-        <figure className="cycle" aria-hidden="true">
-          <svg className="cycle-ring" viewBox="0 0 200 200">
-            <circle cx="100" cy="100" r="78" />
-            <path d="M100 22 A78 78 0 0 1 178 100" className="cycle-arc" />
-          </svg>
-          <span className="cycle-center">{j.center}</span>
-          {j.cycle.map((n, i) => (
-            <span key={n.label} className={`cycle-node cycle-${i} ${hl(n.hl)}`}>
-              <span className="cycle-i">{i + 1}</span>
-              {n.label}
-            </span>
-          ))}
-        </figure>
-      }
-      items={j.points.map((p, i) => (
-        <article key={p.h} className="pcard">
-          <span className="pcard-kicker">{String(i + 1).padStart(2, "0")}</span>
-          <h3 className="pcard-h">{p.h}</h3>
-          <p className="pcard-txt">{p.p}</p>
-        </article>
-      ))}
-    />
-  );
-}
-
-/** 05. Umiejętności — rozkład na grupy (pasek proporcji) + mapa narzędzi. */
-export function Umiejetnosci({ t }: { t: SiteContent }) {
-  const s = t.skills;
-  const total = s.groups.reduce((a, g) => a + g.items.length, 0);
-  return (
-    <Scene
-      num={s.kicker}
-      title={s.title}
-      tone="mist"
-      visual={
-        <figure className="dist">
-          <p className="dist-total">
-            <span className="kpi-value">{total}</span>
-            <span className="kpi-label">{s.total}</span>
+    <article className={`tile${k % 2 ? " is-flip" : ""}`}>
+      <div className="tile-text">
+        <span className="tag">
+          <Icon name={c.icon} />
+          {c.tag}
+        </span>
+        <h3 className="tile-h">{c.h}</h3>
+        <p className="tile-p">{c.p}</p>
+        <Links links={c.links} />
+        {c.check ? (
+          <p className="tile-check">
+            <Icon name="check" size={16} />
+            {c.check}
           </p>
-          <div className="dist-bar" aria-hidden="true">
-            {s.groups.map((g, i) => (
-              <span key={g.h} className={`dist-seg dist-${i}`} style={{ flexGrow: g.items.length }} />
-            ))}
-          </div>
-          <ul className="dist-legend">
-            {s.groups.map((g, i) => (
-              <li key={g.h}>
-                <span className={`dist-sw dist-${i}`} aria-hidden="true" />
-                {g.h} <b>{g.items.length}</b>
-              </li>
-            ))}
-          </ul>
-        </figure>
-      }
+        ) : null}
+      </div>
+      <VizPanel v={c.viz} sample={sample} tint={k} />
+    </article>
+  );
+}
+
+function tiles(h: Head, tone: Tone, list: Card[], sample: string) {
+  return (
+    <Scene
+      wide
+      num={h.kicker}
+      title={h.title}
+      intro={h.intro}
+      tone={tone}
+      items={list.map((c, k) => (
+        <Tile key={c.h} c={c} k={k} sample={sample} />
+      ))}
+    />
+  );
+}
+
+export function CoRobie({ t }: { t: SiteContent }) {
+  return tiles(t.coRobie, "white", t.coRobie.items, t.ui.sample);
+}
+
+/** Co zyskujesz — bento jak w szablonie: cztery kafle naraz, ciemne i jasne na przemian. */
+export function Korzysci({ t }: { t: SiteContent }) {
+  const b = t.korzysci;
+  return (
+    <Scene
+      wide
+      num={b.kicker}
+      title={b.title}
+      intro={b.intro}
+      tone="white"
       items={[
-        <article key="s" className="pcard skill-map">
-          {s.groups.map((g, i) => (
-            <div key={g.h} className="skill-col">
-              <p className="skill-h">
-                <span className={`dist-sw dist-${i}`} aria-hidden="true" />
-                {g.h}
-              </p>
-              <ul className="tags">
-                {g.items.map((it) => (
-                  <li key={it} className="tag">
-                    {it}
+        <div key="bento" className="bento">
+          {b.items.map((c, k) => (
+            <article key={c.h} className={`bt${k % 2 === 0 ? " is-dark" : ""}`}>
+              <span className="tag">
+                <Icon name={c.icon} />
+                {c.tag}
+              </span>
+              <h3 className="bt-h">{c.h}</h3>
+              <p className="bt-p">{c.p}</p>
+              <div className={`viz bt-viz viz-${c.viz.type}`} aria-hidden="true">
+                <VizBody v={c.viz} />
+              </div>
+            </article>
+          ))}
+          <span className="bento-sample">{t.ui.sample}</span>
+        </div>,
+      ]}
+    />
+  );
+}
+
+export function Uslugi({ t }: { t: SiteContent }) {
+  return tiles(t.uslugi, "sky", t.uslugi.items, t.ui.sample);
+}
+
+export function JakPracuje({ t }: { t: SiteContent }) {
+  return tiles(t.jakPracuje, "white", t.jakPracuje.items, t.ui.sample);
+}
+
+/** Formy współpracy — trzy kolumny jak cennik w szablonie; środkowa wyróżniona (ciemna). */
+export function Wspolpraca({ t }: { t: SiteContent }) {
+  const w = t.wspolpraca;
+  return (
+    <Scene
+      wide
+      num={w.kicker}
+      title={w.title}
+      intro={w.intro}
+      tone="sky"
+      items={[
+        <div key="plans" className="plans">
+          {w.plans.map((p) => (
+            <article key={p.h} className={`plan${p.featured ? " is-featured" : ""}`}>
+              <h3 className="plan-h">{p.h}</h3>
+              <p className="plan-p">{p.p}</p>
+              <p className="plan-price">{p.price}</p>
+              <ul className="plan-list">
+                {p.features.map((f) => (
+                  <li key={f}>
+                    <Icon name="check" size={16} />
+                    {f}
                   </li>
                 ))}
               </ul>
-            </div>
+              <a className="plan-btn" href={t.ui.ctaHref}>
+                {w.pick} · {p.h}
+              </a>
+            </article>
           ))}
-        </article>,
+        </div>,
       ]}
     />
   );
 }
 
-/** 06. Edukacja — mini oś czasu + karta (certyfikat ze skanem). */
-export function Edukacja({ t }: { t: SiteContent }) {
-  const e = t.education;
-  return (
-    <Scene
-      num={e.kicker}
-      title={e.title}
-      tone="sky"
-      visual={
-        <ol className="edu-line" aria-hidden="true">
-          {e.items.map((it, i) => (
-            <li key={it.org} className={`edu-pt ${hl([i])}`}>
-              <span className="edu-year">{it.years}</span>
-              <span className="edu-org">{it.org}</span>
-            </li>
-          ))}
-        </ol>
-      }
-      items={e.items.map((it) => (
-        <article key={it.org} className="pcard pcard-line">
-          <div className="pcard-top">
-            <span className="org">{it.org}</span>
-            <span className="badge">{it.years}</span>
-          </div>
-          <h3 className="pcard-h">{it.h}</h3>
-          <p className="pcard-txt">{it.p}</p>
-          {it.cert ? (
-            <a className="cert" href={it.cert.full} target="_blank" rel="noopener noreferrer">
-              {/* eslint-disable-next-line @next/next/no-img-element -- statyczny eksport, plik już zoptymalizowany (scripts/build-cert.mjs) */}
-              <img src={it.cert.src} alt={it.cert.alt} width={640} height={435} loading="lazy" decoding="async" />
-              <span className="lnk">{it.cert.open} ↗</span>
-            </a>
-          ) : null}
-        </article>
+export function Realizacje({ t }: { t: SiteContent }) {
+  return tiles(t.realizacje, "white", t.realizacje.items, t.ui.sample);
+}
+
+export function Omnie({ t }: { t: SiteContent }) {
+  return tiles(t.omnie, "sky", t.omnie.items, t.ui.sample);
+}
+
+function plain(h: Head, tone: Tone, items: ReactNode[]) {
+  return <Scene num={h.kicker} title={h.title} intro={h.intro} tone={tone} items={items} />;
+}
+
+export function Faq({ t }: { t: SiteContent }) {
+  const f = t.faq;
+  return plain(f, "white", [
+    <div key="faq" className="pcard faq">
+      {f.items.map((it) => (
+        <details key={it.q} name="faq">
+          <summary>{it.q}</summary>
+          <p>{it.a}</p>
+        </details>
       ))}
-    />
-  );
+    </div>,
+  ]);
 }
 
-/** 07. Języki — skala europejska A1–C2 z zaznaczonym poziomem. */
-export function Jezyki({ t }: { t: SiteContent }) {
-  const l = t.languages;
-  return (
-    <Scene
-      num={l.kicker}
-      title={l.title}
-      tone="peach"
-      items={[
-        <article key="l" className="pcard cefr">
-          {l.items.map((it) => (
-            <div key={it.name} className="cefr-row">
-              <p className="cefr-head">
-                <span className="pcard-h">{it.name}</span>
-                <span className="meta">{it.level}</span>
-              </p>
-              <ol className="cefr-scale" aria-hidden="true">
-                {l.scale.map((lv, i) => (
-                  <li key={lv} className={i + 1 >= it.from && i + 1 <= it.to ? "on" : i + 1 < it.from ? "past" : ""}>
-                    {lv}
-                  </li>
-                ))}
-              </ol>
-            </div>
-          ))}
-        </article>,
-      ]}
-    />
-  );
-}
-
-/** 08. Kontakt — e-mail wyróżniony, strony i social media obok. */
 export function Kontakt({ t }: { t: SiteContent }) {
   const k = t.kontakt;
   const socials = [
@@ -369,40 +178,34 @@ export function Kontakt({ t }: { t: SiteContent }) {
     { href: site.socials.linkedin, label: "LinkedIn" },
     { href: site.socials.github, label: "GitHub" },
   ];
-  return (
-    <Scene
-      num={k.kicker}
-      title={k.title}
-      tone="white"
-      items={[
-        <div key="k" className="contact-grid">
-          <div className="pcard pcard-dark contact-mail">
-            <span className="pcard-kicker">{k.emailLabel}</span>
-            <a className="cval" href={`mailto:${site.email}`}>
-              {site.email}
-            </a>
-            <div className="mt-4">
-              <CopyEmail email={site.email} label={t.ui.copyEmail} copied={t.ui.emailCopied} />
-            </div>
-          </div>
-          <div className="pcard">
-            <p className="meta mb-2">{k.sitesLabel}</p>
-            {k.sites.map((s) => (
-              <a key={s.label} className="cval" href={s.href} target="_blank" rel="noopener noreferrer">
-                {s.label}
-              </a>
-            ))}
-          </div>
-          <div className="pcard">
-            <p className="meta mb-2">{k.socialsLabel}</p>
-            {socials.map((s) => (
-              <a key={s.label} className="cval" href={s.href} target="_blank" rel="noopener noreferrer">
-                {s.label}
-              </a>
-            ))}
-          </div>
-        </div>,
-      ]}
-    />
-  );
+  return plain(k, "sky", [
+    <div key="k" className="contact-grid">
+      <div className="pcard pcard-dark contact-mail">
+        <span className="pcard-kicker">{k.emailLabel}</span>
+        <a className="cval" href={t.ui.ctaHref}>
+          {site.email}
+        </a>
+        <div className="contact-actions">
+          <Cta href={t.ui.ctaHref} label={t.ui.cta} />
+          <CopyEmail email={site.email} label={t.ui.copyEmail} copied={t.ui.emailCopied} />
+        </div>
+      </div>
+      <div className="pcard">
+        <p className="meta mb-2">{k.sitesLabel}</p>
+        {k.sites.map((s) => (
+          <a key={s.label} className="cval" href={s.href} target="_blank" rel="noopener noreferrer">
+            {s.label}
+          </a>
+        ))}
+      </div>
+      <div className="pcard">
+        <p className="meta mb-2">{k.socialsLabel}</p>
+        {socials.map((s) => (
+          <a key={s.label} className="cval" href={s.href} target="_blank" rel="noopener noreferrer">
+            {s.label}
+          </a>
+        ))}
+      </div>
+    </div>,
+  ]);
 }

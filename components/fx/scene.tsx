@@ -20,6 +20,7 @@ export function Scene({
   aside,
   phonePhoto,
   shape = "a",
+  wide = false,
 }: {
   num: string;
   title: string;
@@ -35,6 +36,8 @@ export function Scene({
   phonePhoto?: ReactNode;
   /** wariant układu (zostawione dla zgodności; ozdoby usunięte w wersji „profesjonalnej”) */
   shape?: "a" | "b" | "c" | "d";
+  /** nagłówek w jednym rzędzie nad punktami, punkty na całą szerokość (kafle, bento, cennik) */
+  wide?: boolean;
 }) {
   const all = [
     ...(phonePhoto ? [{ node: phonePhoto, phone: true, key: "photo", photo: true }] : []),
@@ -42,7 +45,7 @@ export function Scene({
     ...items.map((node, i) => ({ node, phone: false, key: `i${i}` })),
   ];
   return (
-    <section className={`scene shape-${shape}`} data-tone={tone} data-state="next" aria-label={`${num}. ${title}`}>
+    <section className={`scene shape-${shape}${wide ? " scene-wide" : ""}`} data-tone={tone} data-state="next" aria-label={`${num}. ${title}`}>
       <div className="scene-inner">
         <div className="scene-grid">
           <header className="scene-head">

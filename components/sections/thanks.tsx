@@ -13,7 +13,7 @@ export function Thanks({ t }: { t: SiteContent }) {
           <FitText lines={th.lines} className="thanks-big" />
         </div>
         <p className="thanks-cta">
-          <a href={`mailto:${site.email}`}>
+          <a href={t.ui.ctaHref}>
             <SplitText text={th.cta.join(" ")} by="word" trigger="parent" start={0.3} stagger={0.075} /> ↗
           </a>
         </p>
