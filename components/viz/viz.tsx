@@ -276,9 +276,13 @@ export function VizBody({ v }: { v: VizData }) {
 export function VizPanel({ v, sample, tint = 0 }: { v: VizData; sample: string; tint?: number }) {
   if (v.type === "photo") {
     return (
-      <div className="tile-visual is-photo">
+      <div className={`tile-visual is-photo${v.contain ? " is-contain" : ""}`}>
+        {v.contain && (
+          // eslint-disable-next-line @next/next/no-img-element -- rozmyte tło pod zdjęciem
+          <img className="photo-fill" src={v.src} alt="" aria-hidden="true" loading="lazy" decoding="async" />
+        )}
         {/* eslint-disable-next-line @next/next/no-img-element -- statyczny eksport, plik już zoptymalizowany */}
-        <img src={v.src} alt={v.alt} width={640} height={640} loading="lazy" decoding="async" />
+        <img src={v.src} alt={v.alt} width={v.contain ? 800 : 640} height={v.contain ? 703 : 640} loading="lazy" decoding="async" />
       </div>
     );
   }

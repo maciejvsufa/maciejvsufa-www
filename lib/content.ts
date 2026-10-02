@@ -35,7 +35,7 @@ export type Viz =
   | { type: "alert"; title: string; text: string; meta: string; action: string }
   | { type: "call"; title: string; lines: { who: "in" | "out"; t: string }[]; ticket: string }
   | { type: "progress"; title: string; rows: { t: string; p: number }[]; gate: string }
-  | { type: "photo"; src: string; alt: string };
+  | { type: "photo"; src: string; alt: string; contain?: boolean };
 
 type Link = { href: string; label: string };
 export type Card = { icon: IconName; tag: string; h: string; p: string; check?: string; links?: Link[]; viz: Viz };
@@ -71,7 +71,7 @@ const pl = {
     title: "Tworzę treści i wdrażam AI, które oszczędza firmom czas",
     lead: "Prowadzę kanały od pomysłu do publikacji i buduję automatyzacje oraz agentów AI, którzy zdejmują z zespołu powtarzalną robotę.",
     facts: ["17 lat przed kamerą", "Certyfikat Google & SGH", "Współtwórca Asistel"],
-    photoAlt: "Maciej V. Sufa w granatowej koszuli",
+    photoAlt: "Uśmiechnięty Maciej V. Sufa w niebieskiej koszuli",
   },
   coRobie: {
     kicker: "01",
@@ -411,7 +411,7 @@ const pl = {
         h: "Maciej V. Sufa",
         p: "Content creator i specjalista od AI dla firm. Mieszkam w Łodzi, pracuję zdalnie z klientami z Polski i UE.",
         check: "Certyfikat Google & SGH",
-        viz: { type: "photo", src: "/photos/maciej-swiatlo.webp", alt: "Maciej V. Sufa uśmiecha się, trzymając dwie lampy LED przy twarzy" },
+        viz: { type: "photo", src: "/photos/maciej-swiatlo.webp", alt: "Maciej V. Sufa uśmiecha się, trzymając dwie lampy LED przy twarzy", contain: true },
       },
       {
         icon: "film",
@@ -501,7 +501,7 @@ const en: typeof pl = {
     title: "I create content and deploy AI that saves companies time",
     lead: "I run channels from idea to publication and build automations and AI agents that take repetitive work off your team.",
     facts: ["17 years on camera", "Google & SGH certificate", "Co-creator of Asistel"],
-    photoAlt: "Maciej V. Sufa in a navy shirt",
+    photoAlt: "Smiling Maciej V. Sufa in a blue shirt",
   },
   coRobie: {
     kicker: "01",
@@ -841,7 +841,7 @@ const en: typeof pl = {
         h: "Maciej V. Sufa",
         p: "Content creator and AI specialist for business. Based in Łódź, working remotely with clients from Poland and the EU.",
         check: "Google & SGH certificate",
-        viz: { type: "photo", src: "/photos/maciej-swiatlo.webp", alt: "Maciej V. Sufa smiling, holding two LED light tubes beside his face" },
+        viz: { type: "photo", src: "/photos/maciej-swiatlo.webp", alt: "Maciej V. Sufa smiling, holding two LED light tubes beside his face", contain: true },
       },
       {
         icon: "film",

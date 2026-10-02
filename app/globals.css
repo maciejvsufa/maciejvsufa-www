@@ -719,6 +719,28 @@ html:not(.story-on) .scene {
   transform-origin: 50% 0%;
   transition: transform 1.6s var(--ease-spring);
 }
+.tile-visual.is-contain img:not(.photo-fill) {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: auto;
+  height: auto;
+  max-width: 88%;
+  max-height: 88%;
+  border-radius: 18px;
+  object-fit: fill;
+  transform: scale(0.94);
+  transform-origin: 50% 50%;
+}
+.tile-visual.is-contain img.photo-fill {
+  inset: -48px;
+  width: calc(100% + 96px);
+  height: calc(100% + 96px);
+  object-fit: cover;
+  filter: blur(36px) saturate(1.2);
+  opacity: 0.85;
+  transition: transform 1.6s var(--ease-spring);
+}
 .ghost {
   position: absolute;
   border-radius: 18px;
@@ -1263,6 +1285,12 @@ html:not(.story-on) .scene {
 }
 :is(.scene[data-state="active"] .scene-item[data-state="active"], html:not(.story-on) .scene-item) .tile-visual.is-photo img {
   transform: scale(1);
+}
+:is(.scene[data-state="active"] .scene-item[data-state="active"], html:not(.story-on) .scene-item) .tile-visual.is-contain img:not(.photo-fill) {
+  transform: scale(1);
+}
+.tile-visual.is-contain img:not(.photo-fill) {
+  box-shadow: 0 30px 60px -24px rgba(20, 10, 40, 0.45);
 }
 
 /* ============================================================
