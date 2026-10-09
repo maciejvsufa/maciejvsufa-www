@@ -102,6 +102,7 @@ export function StoryController() {
     // Tab na link w ukrytym punkcie → przewiń do niego, żeby był widoczny
     const onFocus = (e: FocusEvent) => {
       const t = e.target as HTMLElement;
+      if (t.closest("dialog")) return;
       const sc = t.closest<HTMLElement>(".scene");
       if (!sc) return;
       const k = scenes.indexOf(sc);
@@ -141,7 +142,11 @@ export function StoryController() {
     };
     const still = root.classList.contains("story-still");
 
+    // okno „Doświadczenie aktorskie” ma własne przewijanie — gdy jest otwarte, karty stoją
+    const dialogOpen = () => document.querySelector("dialog[open]") !== null;
+
     const onWheel = (e: WheelEvent) => {
+      if (dialogOpen()) return;
       if (e.ctrlKey || Math.abs(e.deltaY) < 4) return; // zoom przeglądarki i drobne drgania — bez zmian
       e.preventDefault();
       go(e.deltaY > 0 ? 1 : -1);
@@ -149,7 +154,7 @@ export function StoryController() {
     let touchY = 0;
     let touching = false;
     const onTouchStart = (e: TouchEvent) => {
-      if (e.touches.length !== 1) return;
+      if (e.touches.length !== 1 || dialogOpen()) return;
       touching = true;
       touchY = e.touches[0].clientY;
     };
@@ -163,6 +168,7 @@ export function StoryController() {
       if (Math.abs(dy) > 40) go(dy > 0 ? 1 : -1);
     };
     const onKey = (e: KeyboardEvent) => {
+      if (dialogOpen()) return;
       const t = e.target as HTMLElement;
       if (t && (t.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName))) return;
       if (["ArrowDown", "PageDown", " "].includes(e.key) && !e.shiftKey) {
@@ -176,6 +182,23 @@ export function StoryController() {
 
     measure();
     measureSnaps();
+    // stare kotwice (sprzed wizytówki) prowadzą do najbliższej karty, nie na górę strony
+    const legacy: Record<string, string> = {
+      "#uslugi": "co-robie",
+      "#korzysci": "co-robie",
+      "#jak-pracuje": "co-robie",
+      "#wspolpraca": "co-robie",
+      "#realizacje": "co-robie",
+      "#o-mnie": "kontakt",
+      "#faq": "kontakt",
+      "#koniec": "kontakt",
+    };
+    const to = legacy[window.location.hash];
+    if (to) {
+      history.replaceState(null, "", `#${to}`);
+      const el = document.getElementById(to);
+      if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY, behavior: "instant" as ScrollBehavior });
+    }
     update();
     window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("resize", onResize);
