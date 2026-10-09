@@ -98,44 +98,67 @@ export function Zakres({ t }: { t: SiteContent }) {
   );
 }
 
-/** O mnie + aktorstwo w jednej linii + przycisk do pełnej listy ról. */
-function About({ t }: { t: SiteContent }) {
+/** O mnie + aktorstwo w jednej linii + przycisk do pełnej listy ról (bez zdjęcia). */
+function AboutText({ t }: { t: SiteContent }) {
   const k = t.kontakt;
   const a = t.aktorstwo;
   return (
-    <div className="about">
-      <div className="about-photo">
-        {/* eslint-disable-next-line @next/next/no-img-element -- statyczny eksport, plik już zoptymalizowany */}
-        <img src="/photos/maciej-firma.webp" alt={k.photoAlt} width={640} height={640} loading="lazy" decoding="async" />
-      </div>
-      <div className="about-text">
-        {k.about.map((p) => (
-          <p key={p}>{p}</p>
-        ))}
-        <p className="about-acting">
-          <span className="about-acting-line">{a.line}:</span>
-          <span className="about-titles">
-            {a.titles.map((x, n) => (
-              <span key={x} className="about-title" style={i(n)}>
-                {x}
-              </span>
-            ))}
-          </span>
-        </p>
-        <ActingButton label={a.button} />
-      </div>
+    <div className="about-text">
+      {k.about.map((p) => (
+        <p key={p}>{p}</p>
+      ))}
+      <p className="about-acting">
+        <span className="about-acting-line">{a.line}:</span>
+        <span className="about-titles">
+          {a.titles.map((x, n) => (
+            <span key={x} className="about-title" style={i(n)}>
+              {x}
+            </span>
+          ))}
+        </span>
+      </p>
+      <ActingButton label={a.button} />
     </div>
   );
 }
 
+function Photo({ t, className }: { t: SiteContent; className: string }) {
+  return (
+    <div className={className}>
+      {/* eslint-disable-next-line @next/next/no-img-element -- statyczny eksport, plik już zoptymalizowany */}
+      <img src="/photos/maciej-firma.webp" alt={t.kontakt.photoAlt} width={800} height={702} loading="lazy" decoding="async" />
+    </div>
+  );
+}
+
+/** Telefon: zdjęcie nad tekstem. */
+function About({ t }: { t: SiteContent }) {
+  return (
+    <div className="about">
+      <Photo t={t} className="about-photo" />
+      <AboutText t={t} />
+    </div>
+  );
+}
+
+const socials = [
+  { href: site.socials.instagram, label: "Instagram" },
+  { href: site.socials.linkedin, label: "LinkedIn" },
+  { href: site.socials.github, label: "GitHub" },
+];
+
+function Foot({ t }: { t: SiteContent }) {
+  return (
+    <footer className="foot">
+      <span>© 2026 {site.name}</span>
+      <a href="/privacy/">{t.ui.footerPrivacy}</a>
+    </footer>
+  );
+}
+
+/** Telefon: kontakt jako osobna karta. */
 function Contact({ t }: { t: SiteContent }) {
   const k = t.kontakt;
-  const socials = [
-    { href: site.socials.instagram, label: "Instagram" },
-    { href: site.socials.facebook, label: "Facebook" },
-    { href: site.socials.linkedin, label: "LinkedIn" },
-    { href: site.socials.github, label: "GitHub" },
-  ];
   return (
     <div className="contact-wrap">
       <div className="contact-grid">
@@ -168,30 +191,72 @@ function Contact({ t }: { t: SiteContent }) {
           </p>
         </div>
       </div>
-      <footer className="foot">
-        <span>© 2026 {site.name}</span>
-        <a href="/privacy/">{t.ui.footerPrivacy}</a>
-      </footer>
+      <Foot t={t} />
+    </div>
+  );
+}
+
+/** Komputer: trzy równe panele jak w „Co robię” — duże zdjęcie / o mnie i aktorstwo / kontakt. */
+function KtoWide({ t }: { t: SiteContent }) {
+  const k = t.kontakt;
+  return (
+    <div className="kto">
+      <div className="kto-grid">
+        <Photo t={t} className="kto-panel kto-photo" />
+        <div className="kto-panel kto-about">
+          <AboutText t={t} />
+        </div>
+        <div className="kto-panel kto-contact">
+          <p className="kto-lead">{k.contactLead}</p>
+          <span className="pcard-kicker">{k.emailLabel}</span>
+          <a className="cval" href={t.ui.ctaHref}>
+            {site.email}
+          </a>
+          <div className="contact-actions">
+            <Cta href={t.ui.ctaHref} label={t.ui.cta} />
+            <CopyEmail email={site.email} label={t.ui.copyEmail} copied={t.ui.emailCopied} />
+          </div>
+          <div className="kto-links">
+            <div>
+              <p className="meta">{k.sitesLabel}</p>
+              {k.sites.map((s) => (
+                <a key={s.label} className="lnk" href={s.href} target="_blank" rel="noopener noreferrer">
+                  {s.label}
+                </a>
+              ))}
+            </div>
+            <div>
+              <p className="meta">{k.socialsLabel}</p>
+              {socials.map((s) => (
+                <a key={s.label} className="lnk" href={s.href} target="_blank" rel="noopener noreferrer">
+                  {s.label}
+                </a>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+      <Foot t={t} />
     </div>
   );
 }
 
 /**
- * Karta 3 — Kto za tym stoi: po lewej (pod tytułem) o mnie i aktorstwo, po prawej kontakt.
- * Na telefonie dwie karty: o mnie / kontakt.
+ * Karta 3 — Kto za tym stoi. Komputer: trzy panele (zdjęcie / o mnie / kontakt).
+ * Telefon: dwie karty — o mnie ze zdjęciem / kontakt.
  */
 export function Kontakt({ t }: { t: SiteContent }) {
   const k = t.kontakt;
   return (
     <Scene
+      wide
       num={k.kicker}
       title={k.title}
       intro={k.intro}
       tone="white"
-      aside={<About t={t} />}
-      asideWideOnly
-      phoneItems={[<About key="about" t={t} />]}
-      items={[<Contact key="contact" t={t} />]}
+      items={[<KtoWide key="wide" t={t} />]}
+      itemsWideOnly
+      phoneItems={[<About key="about" t={t} />, <Contact key="contact" t={t} />]}
     />
   );
 }

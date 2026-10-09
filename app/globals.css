@@ -2288,7 +2288,7 @@ html:has(dialog[open]) {
     line-height: 1.4;
   }
   .zakres .bt-viz {
-    zoom: 0.62;
+    zoom: 0.58;
   }
   .zakres-foot {
     flex-direction: column;
@@ -2385,5 +2385,201 @@ html:has(dialog[open]) {
 @media (max-width: 809px) and (max-height: 800px) {
   .zakres .bt-viz {
     zoom: 0.55;
+  }
+}
+
+/* — Kto za tym stoi (komputer): trzy panele jak kafle w „Co robię” — zdjęcie / o mnie / kontakt — */
+.kto-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.05fr 1.1fr;
+  gap: 16px;
+  height: calc(var(--tile-h) - 30px);
+}
+.kto-panel {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  overflow: hidden;
+  border-radius: 26px;
+  opacity: 0;
+  transform: translate3d(0, 28px, 0);
+  transition:
+    opacity 0.6s var(--ease-spring) calc(0.15s + var(--i, 0) * 0.1s),
+    transform 0.8s var(--ease-spring) calc(0.15s + var(--i, 0) * 0.1s);
+}
+.kto-about {
+  --i: 1;
+}
+.kto-contact {
+  --i: 2;
+}
+.kto-photo {
+  background: var(--surface2);
+}
+.kto-photo img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 56% 30%;
+  transform: scale(1.12);
+  transition: transform 1.8s var(--ease-spring) 0.2s;
+}
+.kto-about {
+  justify-content: center;
+  padding: 34px 34px;
+  background: linear-gradient(180deg, #f1f4f8, #ffffff 75%);
+  box-shadow: inset 0 0 0 1px #e9edf2;
+}
+.kto-about .about-text p {
+  font-size: 16.5px;
+}
+.kto-about .about-text p:first-child {
+  font-size: clamp(19px, 1.5vw, 23px);
+  line-height: 1.35;
+  letter-spacing: -0.02em;
+  color: var(--text);
+}
+.kto-contact {
+  padding: 30px 32px;
+  background: var(--dark);
+  color: #fff;
+}
+.kto-lead {
+  margin-bottom: auto;
+  padding-bottom: 20px;
+  font-size: clamp(24px, 2.1vw, 34px);
+  line-height: 1.15;
+  letter-spacing: -0.035em;
+}
+.kto-contact .pcard-kicker {
+  align-self: flex-start;
+}
+.kto-contact .cval {
+  margin-top: 6px;
+  color: #fff;
+  font-size: clamp(19px, 1.6vw, 24px);
+}
+.kto-contact .btn {
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.35);
+}
+.kto-contact .btn:hover {
+  color: var(--text);
+}
+.kto-links {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 22px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.16);
+  font-size: 15.5px;
+}
+.kto-links .meta {
+  margin-bottom: 8px;
+  color: rgba(255, 255, 255, 0.65);
+}
+.kto-links .lnk {
+  display: table;
+  margin-bottom: 6px;
+  color: #fff;
+}
+.kto .foot {
+  margin-top: 16px;
+}
+:is(.scene[data-state="active"] .scene-item[data-state="active"], html:not(.story-on) .scene-item) .kto-panel {
+  opacity: 1;
+  transform: none;
+}
+:is(.scene[data-state="active"] .scene-item[data-state="active"], html:not(.story-on) .scene-item) .kto-photo img {
+  transform: scale(1);
+}
+@media (hover: hover) {
+  .kto-photo:hover img {
+    transform: scale(1.03);
+    transition-duration: 0.9s;
+    transition-delay: 0s;
+  }
+}
+@media (min-width: 810px) and (max-height: 820px) {
+  .kto-about,
+  .kto-contact {
+    padding: 22px 24px;
+  }
+  .kto-about .about-text p {
+    font-size: 14.5px;
+  }
+  .kto-about .about-text p:first-child {
+    font-size: 17px;
+  }
+  .kto-about .about-acting {
+    margin-top: 10px;
+    padding-top: 10px;
+  }
+  .kto-contact .contact-actions {
+    margin-top: 12px;
+  }
+  .kto-links {
+    font-size: 14px;
+  }
+  .kto-lead {
+    display: none;
+  }
+  .kto-links {
+    margin-top: auto;
+  }
+  .zakres .bt-viz {
+    zoom: 0.78;
+  }
+}
+@media (min-width: 810px) and (max-width: 1279px) {
+  .kto-grid {
+    grid-template-columns: 0.8fr 1fr 1fr;
+  }
+}
+
+/* telefon — dopasowanie do wysokości ekranu: widżety czytelne, nic nie ucięte */
+@media (max-width: 809px) {
+  /* samotny kafel (Strony www) na drugiej karcie ma dużo miejsca — widżet większy */
+  .zakres:has(.zakres-foot) .bt-viz {
+    zoom: 0.9;
+  }
+}
+@media (max-width: 809px) and (min-height: 860px) {
+  .zakres .bt-viz {
+    zoom: 0.72;
+  }
+  .zakres:has(.zakres-foot) .bt-viz {
+    zoom: 1;
+  }
+  .about-photo {
+    aspect-ratio: 4 / 3;
+  }
+  .about-text p {
+    font-size: 16px;
+  }
+}
+@media (max-width: 809px) and (max-height: 700px) {
+  .hero-photo {
+    height: 34%;
+  }
+  .hero-title {
+    font-size: clamp(30px, 8.6vw, 38px);
+  }
+  .hero-lead {
+    font-size: 14px;
+  }
+  .zakres .bt {
+    padding-top: 10px;
+  }
+  .zakres .bt-h {
+    margin-top: 6px;
+    font-size: 18px;
+  }
+  .zakres:has(.zakres-foot) .bt-viz {
+    zoom: 0.75;
   }
 }
