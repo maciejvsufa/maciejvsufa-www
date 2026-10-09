@@ -1,176 +1,134 @@
-import type { ReactNode } from "react";
+import type { CSSProperties } from "react";
 import type { Card, SiteContent } from "@/lib/content";
 import { site } from "@/lib/site";
-import { Scene, type Tone } from "@/components/fx/scene";
+import { Scene } from "@/components/fx/scene";
+import { ActingButton } from "@/components/ui/acting-dialog";
 import { CopyEmail } from "@/components/ui/copy-email";
 import { Cta } from "@/components/ui/cta";
 import { Icon } from "@/components/viz/icon";
-import { VizBody, VizPanel } from "@/components/viz/viz";
+import { VizBody } from "@/components/viz/viz";
 
-type Head = { kicker: string; title: string; intro?: string };
+const i = (n: number) => ({ "--i": n }) as CSSProperties;
 
-function Links({ links }: { links?: Card["links"] }) {
-  if (!links) return null;
+/** Kafel bento: etykieta, nagłówek, zdanie i mały widżet, który rusza, gdy karta staje się aktywna. */
+function Bt({ c, k }: { c: Card; k: number }) {
   return (
-    <p className="pcard-links">
-      {links.map((l) => (
-        <a key={l.href} className="lnk" href={l.href} target="_blank" rel="noopener noreferrer">
-          {l.label} ↗
-        </a>
-      ))}
-    </p>
-  );
-}
-
-/**
- * Kafel jak w szablonie Makro: biały panel z etykietą, nagłówkiem, opisem i linijką z ptaszkiem
- * + panel wizualny z rozmytym tłem i pływającym widżetem. Co drugi kafel ma widżet po lewej.
- */
-function Tile({ c, k, sample }: { c: Card; k: number; sample: string }) {
-  return (
-    <article className={`tile${k % 2 ? " is-flip" : ""}`}>
-      <div className="tile-text">
-        <span className="tag">
-          <Icon name={c.icon} />
-          {c.tag}
-        </span>
-        <h3 className="tile-h">{c.h}</h3>
-        <p className="tile-p">{c.p}</p>
-        <Links links={c.links} />
-        {c.check ? (
-          <p className="tile-check">
-            <Icon name="check" size={16} />
-            {c.check}
-          </p>
-        ) : null}
+    <article className={`bt${k === 1 ? " is-dark" : ""}`} style={i(k)}>
+      <span className="tag">
+        <Icon name={c.icon} />
+        {c.tag}
+      </span>
+      <h3 className="bt-h">{c.h}</h3>
+      <p className="bt-p">{c.p}</p>
+      <div className={`viz bt-viz viz-${c.viz.type}`} aria-hidden="true">
+        <VizBody v={c.viz} />
       </div>
-      <VizPanel v={c.viz} sample={sample} tint={k} />
     </article>
   );
 }
 
-function tiles(h: Head, tone: Tone, list: Card[], sample: string) {
+/** Linijka pod kaflami: proces (strzałki zapalają się po kolei) i jeden dowód z linkami. */
+function ZakresFoot({ t }: { t: SiteContent }) {
+  const z = t.coRobie;
   return (
-    <Scene
-      wide
-      num={h.kicker}
-      title={h.title}
-      intro={h.intro}
-      tone={tone}
-      items={list.map((c, k) => (
-        <Tile key={c.h} c={c} k={k} sample={sample} />
-      ))}
-    />
+    <div className="zakres-foot">
+      <p className="zakres-proc">
+        {z.proces.map((s, k) => (
+          <span key={s} className="zp-step" style={i(k)}>
+            {k > 0 ? (
+              <i className="zp-arrow" aria-hidden="true">
+                →
+              </i>
+            ) : null}
+            {s}
+          </span>
+        ))}
+        <span className="zp-note" style={i(z.proces.length)}>
+          {z.procesNote}
+        </span>
+      </p>
+      <p className="zakres-proof" style={i(z.proces.length + 1)}>
+        <Icon name="check" size={16} />
+        {z.dowodLabel}{" "}
+        {z.dowod.map((l, k) => (
+          <span key={l.href}>
+            {k > 0 ? " · " : null}
+            <a className="lnk" href={l.href} target="_blank" rel="noopener noreferrer">
+              {l.label} ↗
+            </a>
+          </span>
+        ))}
+      </p>
+      <span className="bento-sample">{t.ui.sample}</span>
+    </div>
   );
 }
 
-export function CoRobie({ t }: { t: SiteContent }) {
-  return tiles(t.coRobie, "white", t.coRobie.items, t.ui.sample);
-}
-
-/** Co zyskujesz — bento jak w szablonie: cztery kafle naraz, ciemne i jasne na przemian. */
-export function Korzysci({ t }: { t: SiteContent }) {
-  const b = t.korzysci;
+/**
+ * Karta 2 — Co robię: trzy kafle naraz (komputer), linijka procesu i dowód.
+ * Na telefonie te same kafle w dwóch kartach: 1–2 / 3 + proces + dowód.
+ */
+export function Zakres({ t }: { t: SiteContent }) {
+  const z = t.coRobie;
+  const all = z.items.map((c, k) => <Bt key={c.h} c={c} k={k} />);
   return (
     <Scene
       wide
-      num={b.kicker}
-      title={b.title}
-      intro={b.intro}
-      tone="white"
-      items={[
-        <div key="bento" className="bento">
-          {b.items.map((c, k) => (
-            <article key={c.h} className={`bt${k % 2 === 0 ? " is-dark" : ""}`}>
-              <span className="tag">
-                <Icon name={c.icon} />
-                {c.tag}
-              </span>
-              <h3 className="bt-h">{c.h}</h3>
-              <p className="bt-p">{c.p}</p>
-              <div className={`viz bt-viz viz-${c.viz.type}`} aria-hidden="true">
-                <VizBody v={c.viz} />
-              </div>
-            </article>
-          ))}
-          <span className="bento-sample">{t.ui.sample}</span>
-        </div>,
-      ]}
-    />
-  );
-}
-
-export function Uslugi({ t }: { t: SiteContent }) {
-  return tiles(t.uslugi, "sky", t.uslugi.items, t.ui.sample);
-}
-
-export function JakPracuje({ t }: { t: SiteContent }) {
-  return tiles(t.jakPracuje, "white", t.jakPracuje.items, t.ui.sample);
-}
-
-/** Formy współpracy — trzy kolumny jak cennik w szablonie; środkowa wyróżniona (ciemna). */
-export function Wspolpraca({ t }: { t: SiteContent }) {
-  const w = t.wspolpraca;
-  return (
-    <Scene
-      wide
-      num={w.kicker}
-      title={w.title}
-      intro={w.intro}
+      num={z.kicker}
+      title={z.title}
+      intro={z.intro}
       tone="sky"
       items={[
-        <div key="plans" className="plans">
-          {w.plans.map((p) => (
-            <article key={p.h} className={`plan${p.featured ? " is-featured" : ""}`}>
-              <h3 className="plan-h">{p.h}</h3>
-              <p className="plan-p">{p.p}</p>
-              <p className="plan-price">{p.price}</p>
-              <ul className="plan-list">
-                {p.features.map((f) => (
-                  <li key={f}>
-                    <Icon name="check" size={16} />
-                    {f}
-                  </li>
-                ))}
-              </ul>
-              <a className="plan-btn" href={t.ui.ctaHref}>
-                {w.pick} · {p.h}
-              </a>
-            </article>
-          ))}
+        <div key="wide" className="zakres">
+          <div className="bento bento-3">{all}</div>
+          <ZakresFoot t={t} />
+        </div>,
+      ]}
+      itemsWideOnly
+      phoneItems={[
+        <div key="p1" className="zakres">
+          <div className="bento bento-3">{all.slice(0, 2)}</div>
+        </div>,
+        <div key="p2" className="zakres">
+          <div className="bento bento-3">{all.slice(2)}</div>
+          <ZakresFoot t={t} />
         </div>,
       ]}
     />
   );
 }
 
-export function Realizacje({ t }: { t: SiteContent }) {
-  return tiles(t.realizacje, "white", t.realizacje.items, t.ui.sample);
+/** O mnie + aktorstwo w jednej linii + przycisk do pełnej listy ról. */
+function About({ t }: { t: SiteContent }) {
+  const k = t.kontakt;
+  const a = t.aktorstwo;
+  return (
+    <div className="about">
+      <div className="about-photo">
+        {/* eslint-disable-next-line @next/next/no-img-element -- statyczny eksport, plik już zoptymalizowany */}
+        <img src="/photos/maciej-firma.webp" alt={k.photoAlt} width={640} height={640} loading="lazy" decoding="async" />
+      </div>
+      <div className="about-text">
+        {k.about.map((p) => (
+          <p key={p}>{p}</p>
+        ))}
+        <p className="about-acting">
+          <span className="about-acting-line">{a.line}:</span>
+          <span className="about-titles">
+            {a.titles.map((x, n) => (
+              <span key={x} className="about-title" style={i(n)}>
+                {x}
+              </span>
+            ))}
+          </span>
+        </p>
+        <ActingButton label={a.button} />
+      </div>
+    </div>
+  );
 }
 
-export function Omnie({ t }: { t: SiteContent }) {
-  return tiles(t.omnie, "sky", t.omnie.items, t.ui.sample);
-}
-
-function plain(h: Head, tone: Tone, items: ReactNode[]) {
-  return <Scene num={h.kicker} title={h.title} intro={h.intro} tone={tone} items={items} />;
-}
-
-export function Faq({ t }: { t: SiteContent }) {
-  const f = t.faq;
-  return plain(f, "white", [
-    <div key="faq" className="pcard faq">
-      {f.items.map((it) => (
-        <details key={it.q} name="faq">
-          <summary>{it.q}</summary>
-          <p>{it.a}</p>
-        </details>
-      ))}
-    </div>,
-  ]);
-}
-
-export function Kontakt({ t }: { t: SiteContent }) {
+function Contact({ t }: { t: SiteContent }) {
   const k = t.kontakt;
   const socials = [
     { href: site.socials.instagram, label: "Instagram" },
@@ -178,34 +136,62 @@ export function Kontakt({ t }: { t: SiteContent }) {
     { href: site.socials.linkedin, label: "LinkedIn" },
     { href: site.socials.github, label: "GitHub" },
   ];
-  return plain(k, "sky", [
-    <div key="k" className="contact-grid">
-      <div className="pcard pcard-dark contact-mail">
-        <span className="pcard-kicker">{k.emailLabel}</span>
-        <a className="cval" href={t.ui.ctaHref}>
-          {site.email}
-        </a>
-        <div className="contact-actions">
-          <Cta href={t.ui.ctaHref} label={t.ui.cta} />
-          <CopyEmail email={site.email} label={t.ui.copyEmail} copied={t.ui.emailCopied} />
+  return (
+    <div className="contact-wrap">
+      <div className="contact-grid">
+        <div className="pcard pcard-dark contact-mail">
+          <span className="pcard-kicker">{k.emailLabel}</span>
+          <a className="cval" href={t.ui.ctaHref}>
+            {site.email}
+          </a>
+          <div className="contact-actions">
+            <Cta href={t.ui.ctaHref} label={t.ui.cta} />
+            <CopyEmail email={site.email} label={t.ui.copyEmail} copied={t.ui.emailCopied} />
+          </div>
+        </div>
+        <div className="pcard">
+          <p className="meta mb-2">{k.sitesLabel}</p>
+          {k.sites.map((s) => (
+            <a key={s.label} className="cval" href={s.href} target="_blank" rel="noopener noreferrer">
+              {s.label}
+            </a>
+          ))}
+        </div>
+        <div className="pcard">
+          <p className="meta mb-2">{k.socialsLabel}</p>
+          <p className="contact-socials">
+            {socials.map((s) => (
+              <a key={s.label} className="lnk" href={s.href} target="_blank" rel="noopener noreferrer">
+                {s.label}
+              </a>
+            ))}
+          </p>
         </div>
       </div>
-      <div className="pcard">
-        <p className="meta mb-2">{k.sitesLabel}</p>
-        {k.sites.map((s) => (
-          <a key={s.label} className="cval" href={s.href} target="_blank" rel="noopener noreferrer">
-            {s.label}
-          </a>
-        ))}
-      </div>
-      <div className="pcard">
-        <p className="meta mb-2">{k.socialsLabel}</p>
-        {socials.map((s) => (
-          <a key={s.label} className="cval" href={s.href} target="_blank" rel="noopener noreferrer">
-            {s.label}
-          </a>
-        ))}
-      </div>
-    </div>,
-  ]);
+      <footer className="foot">
+        <span>© 2026 {site.name}</span>
+        <a href="/privacy/">{t.ui.footerPrivacy}</a>
+      </footer>
+    </div>
+  );
+}
+
+/**
+ * Karta 3 — Kto za tym stoi: po lewej (pod tytułem) o mnie i aktorstwo, po prawej kontakt.
+ * Na telefonie dwie karty: o mnie / kontakt.
+ */
+export function Kontakt({ t }: { t: SiteContent }) {
+  const k = t.kontakt;
+  return (
+    <Scene
+      num={k.kicker}
+      title={k.title}
+      intro={k.intro}
+      tone="white"
+      aside={<About t={t} />}
+      asideWideOnly
+      phoneItems={[<About key="about" t={t} />]}
+      items={[<Contact key="contact" t={t} />]}
+    />
+  );
 }

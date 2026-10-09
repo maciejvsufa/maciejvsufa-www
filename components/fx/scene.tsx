@@ -21,6 +21,8 @@ export function Scene({
   phonePhoto,
   shape = "a",
   wide = false,
+  itemsWideOnly = false,
+  asideWideOnly = false,
 }: {
   num: string;
   title: string;
@@ -38,11 +40,15 @@ export function Scene({
   shape?: "a" | "b" | "c" | "d";
   /** nagłówek w jednym rzędzie nad punktami, punkty na całą szerokość (kafle, bento, cennik) */
   wide?: boolean;
+  /** punkty `items` tylko od tabletu w górę — telefon pokazuje wtedy własne `phoneItems` */
+  itemsWideOnly?: boolean;
+  /** element pod tytułem tylko od tabletu w górę (na telefonie leży jako osobna karta w `phoneItems`) */
+  asideWideOnly?: boolean;
 }) {
   const all = [
     ...(phonePhoto ? [{ node: phonePhoto, phone: true, key: "photo", photo: true }] : []),
     ...phoneItems.map((node, i) => ({ node, phone: true, key: `p${i}` })),
-    ...items.map((node, i) => ({ node, phone: false, key: `i${i}` })),
+    ...items.map((node, i) => ({ node, phone: false, wideOnly: itemsWideOnly, key: `i${i}` })),
   ];
   return (
     <section className={`scene shape-${shape}${wide ? " scene-wide" : ""}`} data-tone={tone} data-state="next" aria-label={`${num}. ${title}`}>
@@ -65,7 +71,7 @@ export function Scene({
                 <span />
               </span>
             </div>
-            {aside ? <div className="scene-aside">{aside}</div> : null}
+            {aside ? <div className={`scene-aside${asideWideOnly ? " only-wide" : ""}`}>{aside}</div> : null}
           </header>
           <div className="scene-stage">
             {visual ? <div className="scene-visual">{visual}</div> : null}
@@ -73,7 +79,7 @@ export function Scene({
               {all.map((it, i) => (
                 <div
                   key={it.key}
-                  className={`scene-item${it.phone ? " only-phone" : ""}${"photo" in it ? " photo-item" : ""}`}
+                  className={`scene-item${it.phone ? " only-phone" : ""}${"wideOnly" in it && it.wideOnly ? " only-wide" : ""}${"photo" in it ? " photo-item" : ""}`}
                   data-state={i === 0 ? "active" : "next"}
                 >
                   {it.node}
