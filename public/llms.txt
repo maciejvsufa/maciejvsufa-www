@@ -1,6 +1,6 @@
 # Maciej V. Sufa — Social Media Content Creator (AI-powered)
 
-> Tworzę content na social media od pomysłu po publikację, z pomocą AI: scenariusze i teksty, wideo, grafiki i miniatury, kalendarz treści i publikacja. Współzałożyciel Tercet Labs. Łódź, współpraca zdalna PL / EU.
+> Tworzę content na social media od pomysłu po publikację, z pomocą AI: scenariusze i teksty, wideo, grafiki i miniatury, kalendarz treści i publikacja. Właściciel firmy LEV, aktor, współudziałowiec Tercet Labs. Współpraca zdalna PL / EU.
 
 ## Profil / Profile
 
@@ -12,13 +12,14 @@
 
 ## O mnie / About
 
-Tworzę content na social media z pomocą AI: piszę scenariusze i teksty, montuję wideo (CapCut Pro, DaVinci Resolve), robię grafiki i miniatury (Canva, GPT-Image) i układam kalendarz treści pod trendy i analitykę. Własne kanały prowadzę z pomocą zautomatyzowanej linii produkcyjnej i agentów AI. Wcześniej przez 17 lat byłem zawodowym aktorem (Warszawska Szkoła Filmowa; m.in. główna rola w serialu „Gliniarze”, Polsat). Certyfikat „Umiejętności Jutra: AI” (Google & SGH).
+Tworzę content na social media z pomocą AI: piszę scenariusze i teksty, montuję wideo (CapCut Pro, DaVinci Resolve), robię grafiki i miniatury (Canva, GPT-Image) i układam kalendarz treści pod trendy i analitykę. Własne kanały prowadzę z pomocą zautomatyzowanej linii produkcyjnej i agentów AI. Jestem aktorem z 17-letnim doświadczeniem (Warszawska Szkoła Filmowa; m.in. główna rola w serialu „Gliniarze”, Polsat). Certyfikat „Umiejętności Jutra: AI” (Google & SGH).
 
-English: I create social media content with AI — scripts and copy, video, graphics and thumbnails, content calendar and publishing. I run my own channels on an automated production line with AI agents. Before that I spent 17 years as a professional actor. Co-founder of Tercet Labs. Based in Łódź, Poland; remote across PL and the EU.
+English: I create social media content with AI — scripts and copy, video, graphics and thumbnails, content calendar and publishing. I run my own channels on an automated production line with AI agents. I am an actor with 17 years of experience. Owner of LEV, shareholder in Tercet Labs. Working remotely across PL and the EU.
 
 ## Działalność / Work
 
-- [Tercet Labs](https://tercetlabs.pl): współzałożyciel; spółka wdraża AI w firmach razem z ich zespołami / co-founder; a company that brings AI into businesses together with their teams
+- LEV: moja firma (właściciel) / my company (owner)
+- [Tercet Labs](https://tercetlabs.pl): współudziałowiec; spółka wdraża AI w firmach razem z ich zespołami / shareholder; a company that brings AI into businesses together with their teams
 - [Asistel](https://asistel.pl): produkt Tercet Labs, asystent głosowy dla aptek / a Tercet Labs product, voice assistant for pharmacies
 
 ## Kontakt / Contact

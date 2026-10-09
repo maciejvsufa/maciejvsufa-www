@@ -44,7 +44,7 @@ export const viewport: Viewport = {
 };
 
 // Osoba i spółka to dwa osobne byty: w sameAs tylko profile osobiste,
-// Tercet Labs jako Organization z founder → osoba (bez worksFor).
+// LEV (właściciel) i Tercet Labs (współudziałowiec) jako Organization powiązane z osobą przez affiliation.
 const personId = `${site.url}/#person`;
 const jsonLd = {
   "@context": "https://schema.org",
@@ -67,14 +67,20 @@ const jsonLd = {
         "generative AI",
       ],
       knowsLanguage: ["pl", "en"],
+      affiliation: [{ "@id": `${site.url}/#lev` }, { "@id": `${site.url}/#tercetlabs` }],
       alumniOf: { "@type": "CollegeOrUniversity", name: "Warszawska Szkoła Filmowa" },
-      address: { "@type": "PostalAddress", addressLocality: "Łódź", addressCountry: "PL" },
+      address: { "@type": "PostalAddress", addressCountry: "PL" },
     },
     {
       "@type": "Organization",
+      "@id": `${site.url}/#lev`,
+      name: "LEV",
+    },
+    {
+      "@type": "Organization",
+      "@id": `${site.url}/#tercetlabs`,
       name: "Tercet Labs sp. z o.o.",
       url: site.socials.tercetlabs,
-      founder: { "@id": personId },
     },
   ],
 };

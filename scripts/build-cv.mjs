@@ -93,7 +93,7 @@ function renderProjects(projects) {
 function buildHtml(locale) {
   const d = content[locale];
   const { header, labels, education, certificate } = d;
-  const footer = `${header.name} · ${header.website} · Łódź`;
+  const footer = `${header.name} · ${header.website} · ${header.address}`;
 
   return `<!DOCTYPE html>
 <html lang="${locale}">
