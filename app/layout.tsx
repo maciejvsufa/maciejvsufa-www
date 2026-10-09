@@ -57,7 +57,7 @@ const jsonLd = {
       image: `${site.url}/photos/hero-maciej.webp`,
       jobTitle: site.jobTitle,
       email: `mailto:${site.email}`,
-      sameAs: [site.socials.instagram, site.socials.facebook, site.socials.linkedin, site.socials.github],
+      sameAs: [site.socials.instagram, site.socials.linkedin, site.socials.github],
       knowsAbout: [
         "social media content",
         "video editing",

@@ -4,10 +4,9 @@
 
 ## Profil / Profile
 
-- [Strona / Wizytówka](https://maciejvsufa.pl/): co robię (treści, automatyzacje, agenci AI), o mnie, doświadczenie aktorskie, kontakt
+- [Strona / Wizytówka](https://maciejvsufa.pl/): co robię (Content Creator, AI w firmie, strony www), o mnie, doświadczenie aktorskie, kontakt
 - [CV (PDF)](https://maciejvsufa.pl/cv/Maciej_Sufa_CV.pdf): do pobrania / downloadable CV
 - [Instagram](https://www.instagram.com/maciejvsufa/): @maciejvsufa
-- [Facebook](https://www.facebook.com/maciejvsufa): maciejvsufa
 - [LinkedIn](https://www.linkedin.com/in/maciej-sufa): profil zawodowy / professional profile
 - [GitHub](https://github.com/maciejvsufa): kod / source code
 
