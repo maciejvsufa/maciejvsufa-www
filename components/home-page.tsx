@@ -3,6 +3,7 @@ import { Hero } from "@/components/sections/hero";
 import { Kontakt, Zakres } from "@/components/sections/cv-sections";
 import { StoryController } from "@/components/story/story-controller";
 import { ActingDialog } from "@/components/ui/acting-dialog";
+import { CertificateDialog } from "@/components/ui/certificate-dialog";
 import type { SiteContent } from "@/lib/content";
 
 /**
@@ -47,6 +48,7 @@ export function HomePage({ t }: { t: SiteContent }) {
         </div>
       </main>
       <ActingDialog a={t.aktorstwo} />
+      <CertificateDialog c={t.certyfikat} />
       <StoryController />
     </>
   );

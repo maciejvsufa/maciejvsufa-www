@@ -212,6 +212,15 @@ const pl = {
     stage: acting.stage.map(([y, t, rPl]) => ({ y, t, r: rPl })),
     links: acting.links,
   },
+  certyfikat: {
+    button: "Certyfikat",
+    name: "Wykorzystanie AI w rozwoju firmy",
+    note: "Google Umiejętności Jutra AI · SGH · 19.03.2025",
+    image: "/cert/umiejetnosci-jutra-ai.webp",
+    imageAlt:
+      "Certyfikat „Wykorzystanie AI w rozwoju firmy” wystawiony Maciejowi Sufie 19 marca 2025 w programie Google Umiejętności Jutra AI, partner edukacyjny SGH.",
+    close: "Zamknij",
+  },
 };
 
 const en: typeof pl = {
@@ -338,6 +347,15 @@ const en: typeof pl = {
     film: acting.film.map(([y, t, , rEn, main]) => ({ y, t, r: rEn, main: Boolean(main) })),
     stage: acting.stage.map(([y, t, , rEn]) => ({ y, t, r: rEn })),
     links: acting.links,
+  },
+  certyfikat: {
+    button: "Certificate",
+    name: "Using AI in Business Development",
+    note: "Google Umiejętności Jutra AI · SGH · 19 March 2025",
+    image: "/cert/umiejetnosci-jutra-ai.webp",
+    imageAlt:
+      "Certificate “Using AI in Business Development” issued to Maciej Sufa on 19 March 2025 in the Google Umiejętności Jutra AI programme, educational partner SGH.",
+    close: "Close",
   },
 };
 

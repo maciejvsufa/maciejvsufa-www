@@ -2082,9 +2082,29 @@ html:not(.story-on) .split-parent .sp {
 .about-title:first-child {
   background: var(--lime-soft);
 }
-.acting-btn {
+.about-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
   gap: 8px;
   margin-top: 14px;
+}
+.acting-btn {
+  gap: 8px;
+  font-weight: 500;
+}
+.cert-btn {
+  max-width: 100%;
+  height: auto;
+  white-space: normal;
+  text-align: left;
+  line-height: 1.35;
+}
+.cert-btn-label b {
+  font-weight: 600;
+}
+.cert-btn-label b::after {
+  content: " · ";
   font-weight: 500;
 }
 .acting-btn i {
@@ -2127,6 +2147,22 @@ html:has(dialog[open]) {
   color: var(--text);
   box-shadow: 0 40px 100px -40px rgba(var(--ink-rgb), 0.55);
   overflow: hidden;
+}
+.acting-dialog.cert-dialog {
+  width: min(960px, calc(100vw - 24px));
+  max-height: min(92svh, 920px);
+}
+.cert-note {
+  margin-top: 4px;
+  color: var(--text3);
+  font-size: 14px;
+}
+.cert-scan {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  background: #fff;
 }
 .acting-dialog[open] {
   display: flex;
@@ -2429,6 +2465,7 @@ html:has(dialog[open]) {
 }
 .kto-about {
   justify-content: center;
+  overflow-y: auto;
   padding: 34px 34px;
   background: linear-gradient(180deg, #f1f4f8, #ffffff 75%);
   box-shadow: inset 0 0 0 1px #e9edf2;
