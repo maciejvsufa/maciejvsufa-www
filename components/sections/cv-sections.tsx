@@ -3,6 +3,7 @@ import type { Card, SiteContent } from "@/lib/content";
 import { site } from "@/lib/site";
 import { Scene } from "@/components/fx/scene";
 import { ActingButton } from "@/components/ui/acting-dialog";
+import { CertificateButton } from "@/components/ui/certificate-dialog";
 import { CopyEmail } from "@/components/ui/copy-email";
 import { Cta } from "@/components/ui/cta";
 import { Icon } from "@/components/viz/icon";
@@ -117,7 +118,10 @@ function AboutText({ t }: { t: SiteContent }) {
           ))}
         </span>
       </p>
-      <ActingButton label={a.button} />
+      <div className="about-actions">
+        <ActingButton label={a.button} />
+        <CertificateButton c={t.certyfikat} />
+      </div>
     </div>
   );
 }
