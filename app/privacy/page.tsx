@@ -25,8 +25,11 @@ export default function Privacy() {
             Do statystyk odwiedzin używam narzędzia analitycznego <strong>Metricool</strong>{" "}
             (Metricool Software S.L., Hiszpania). Po załadowaniu strony skrypt Metricool zlicza
             wizyty i zbiera dane techniczne: odwiedzane podstrony, źródło wejścia (np. link
-            z Instagrama), przybliżoną lokalizację, typ urządzenia i przeglądarki. Widzę te dane
-            wyłącznie jako zbiorcze statystyki — sprawdzam w nich, które treści przyciągają ludzi.
+            z Instagrama), rozmiar okna przeglądarki, a po stronie serwera Metricool także adres
+            IP (z niego przybliżoną lokalizację) oraz typ urządzenia i przeglądarki. Skrypt{" "}
+            <strong>nie zapisuje</strong> w Twojej przeglądarce plików cookie ani innych danych.
+            Widzę te dane wyłącznie jako zbiorcze statystyki — sprawdzam w nich, które treści
+            przyciągają ludzi.
             Szczegóły znajdziesz w{" "}
             <a
               className="text-accent hover:text-accent2"
