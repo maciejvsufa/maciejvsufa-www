@@ -18,9 +18,25 @@ export default function Privacy() {
         </h1>
         <div className="mt-6 space-y-4 leading-[1.65] text-text2">
           <p>
-            Ta strona jest statyczna i nastawiona na prywatność. <strong>Nie używa</strong> ciasteczek
-            firm trzecich, trackerów, pikseli reklamowych ani narzędzi analitycznych. Nie zbiera
-            i nie przechowuje Twoich danych w tle.
+            Ta strona jest statyczna i nastawiona na prywatność. <strong>Nie używa</strong> pikseli
+            reklamowych ani nie sprzedaje i nie udostępnia Twoich danych do celów reklamowych.
+          </p>
+          <p>
+            Do statystyk odwiedzin używam narzędzia analitycznego <strong>Metricool</strong>{" "}
+            (Metricool Software S.L., Hiszpania). Po załadowaniu strony skrypt Metricool zlicza
+            wizyty i zbiera dane techniczne: odwiedzane podstrony, źródło wejścia (np. link
+            z Instagrama), przybliżoną lokalizację, typ urządzenia i przeglądarki. Widzę te dane
+            wyłącznie jako zbiorcze statystyki — sprawdzam w nich, które treści przyciągają ludzi.
+            Szczegóły znajdziesz w{" "}
+            <a
+              className="text-accent hover:text-accent2"
+              href="https://metricool.com/privacy-policy/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              polityce prywatności Metricool
+            </a>
+            . Możesz zablokować te statystyki dowolnym blokerem treści w przeglądarce.
           </p>
           <p>
             Kontakt odbywa się przez link e-mail (mailto). Jeśli napiszesz na{" "}
