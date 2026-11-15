@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { SiteHeader } from "@/components/site-header";
 import { HtmlLang } from "@/components/html-lang";
 import { Foot } from "@/components/sections/cv-sections";
+import { ReelRow } from "@/components/sections/reel-row";
 import { site } from "@/lib/site";
 import { content } from "@/lib/content";
 
@@ -42,6 +43,9 @@ export default function PortfolioEn() {
           </a>
           .
         </p>
+        <div className="portfolio-reels">
+          <ReelRow reels={content.en.coRobie.reels} viewsWord={content.en.coRobie.viewsWord} />
+        </div>
         <p className="mt-6 flex flex-wrap gap-x-5 gap-y-2">
           {links.map((s) => (
             <a

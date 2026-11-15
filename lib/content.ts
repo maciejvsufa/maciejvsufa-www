@@ -10,6 +10,9 @@
 
 import { site } from "@/lib/site";
 
+/** Jedyna rolka, do której mamy sprawdzony adres. Pozostałe okładki bez linku. */
+const REEL_2210 = "https://www.instagram.com/reel/Dezb4BlAZRD/";
+
 export type Lang = "pl" | "en";
 
 export type IconName =
@@ -120,7 +123,7 @@ const pl = {
     emailCopied: "Skopiowano ✓",
     langSwitchAria: "Zmień język / Change language",
     footerPrivacy: "Polityka prywatności",
-    sample: "Kalendarz: publikacje z Metricoola, stan na 15.11.2026. Liczba 9 460: rolka z 22.10, pomiar 1–3.11.2026.",
+    sample: "9 460: rolka z 22.10, pomiar 1–3.11. 1 517: rolka z 9.11. Metricool, stan na 15.11.2026.",
     nav: [
       { href: "#co-robie", label: "Co robię" },
       { href: "#o-mnie", label: "O mnie" },
@@ -132,10 +135,10 @@ const pl = {
     badge: "Content creator · autor",
     title: "Krótkie wideo od scenariusza po wyniki",
     lead: "Sam piszę, występuję, montuję i sprawdzam, co działa. 17 lat przed kamerą — dziś w rolkach na Instagramie, TikToku i YouTube.",
-    cta: "Zobacz portfolio",
-    ctaHref: "/portfolio/",
+    cta: "Zobacz rolkę",
+    ctaHref: REEL_2210,
     ctaAlt: "albo napisz do mnie",
-    facts: ["17 lat przed kamerą", "Rolka z 22.10.2026: 9 460 wyświetleń", "„Obudzona” — premiera 14.02.2027"],
+    facts: ["17 lat przed kamerą", "9 460 wyświetleń, rolka z 22.10.2026", "3 604 obserwujących na Instagramie"],
     photoAlt: "Uśmiechnięty Maciej V. Sufa w niebieskiej koszuli",
   },
   coRobie: {
@@ -204,17 +207,39 @@ const pl = {
               date: "30.10.2026",
             },
             {
-              img: "/kalendarz/2026-10-28.webp",
-              title: "Claude Code zmontował mi rolkę",
-              date: "28.10.2026",
+              img: "/kalendarz/2026-11-09.webp",
+              title: "Jest mi po prostu smutno",
+              date: "9.11.2026",
+              views: 1517,
             },
           ],
-          source: "Wyświetlenia: tylko 22.10, Metricool 1–3.11.2026",
+          source: "9 460: rolka 22.10, pomiar 1–3.11. 1 517: rolka 9.11, Metricool, stan na 15.11.2026.",
         },
       },
     ] as Card[],
     proces: ["Scenariusz", "Nagranie", "Montaż", "Publikacja"],
     procesNote: "Potem sprawdzam liczby.",
+    viewsWord: "wyświetleń",
+    reels: [
+      {
+        img: "/kalendarz/2026-10-22.webp",
+        title: "Po tym jednym słowie widać, czy związek przetrwa",
+        date: "22.10.2026",
+        views: 9460,
+        href: REEL_2210,
+      },
+      {
+        img: "/kalendarz/2026-10-30.webp",
+        title: "Co słychać? „Dobrze”. I tyle.",
+        date: "30.10.2026",
+      },
+      {
+        img: "/kalendarz/2026-11-09.webp",
+        title: "Jest mi po prostu smutno",
+        date: "9.11.2026",
+        views: 1517,
+      },
+    ],
     dowodLabel: "Współtwórca",
     dowod: [
       { href: site.socials.asistel, label: "Asistel" },
@@ -281,7 +306,7 @@ const en: typeof pl = {
     emailCopied: "Copied ✓",
     langSwitchAria: "Zmień język / Change language",
     footerPrivacy: "Privacy policy",
-    sample: "Calendar: posts from Metricool, as of 15.11.2026. The 9,460 is the reel of 22.10, measured 1–3.11.2026.",
+    sample: "9,460: reel of 22.10, measured 1–3.11. 1,517: reel of 9.11. Metricool, as of 15.11.2026.",
     nav: [
       { href: "#co-robie", label: "What I do" },
       { href: "#o-mnie", label: "About" },
@@ -293,10 +318,10 @@ const en: typeof pl = {
     badge: "Content creator · author",
     title: "Short-form video from script to results",
     lead: "I write, perform, edit and check what works. 17 years on camera — today in reels on Instagram, TikTok and YouTube.",
-    cta: "See portfolio",
-    ctaHref: "/en/portfolio/",
+    cta: "Watch the reel",
+    ctaHref: REEL_2210,
     ctaAlt: "or write to me",
-    facts: ["17 years on camera", "Reel of 22.10.2026: 9,460 views", "“Obudzona” — out 14.02.2027"],
+    facts: ["17 years on camera", "9,460 views, reel of 22.10.2026", "3,604 Instagram followers"],
     photoAlt: "Smiling Maciej V. Sufa in a blue shirt",
   },
   coRobie: {
@@ -365,17 +390,39 @@ const en: typeof pl = {
               date: "30.10.2026",
             },
             {
-              img: "/kalendarz/2026-10-28.webp",
-              title: "Claude Code zmontował mi rolkę",
-              date: "28.10.2026",
+              img: "/kalendarz/2026-11-09.webp",
+              title: "Jest mi po prostu smutno",
+              date: "9.11.2026",
+              views: 1517,
             },
           ],
-          source: "Views: only 22.10, Metricool 1–3.11.2026",
+          source: "9,460: reel of 22.10, measured 1–3.11. 1,517: reel of 9.11, Metricool, as of 15.11.2026.",
         },
       },
     ],
     proces: ["Script", "Shoot", "Edit", "Publish"],
     procesNote: "Then I read the numbers.",
+    viewsWord: "views",
+    reels: [
+      {
+        img: "/kalendarz/2026-10-22.webp",
+        title: "Po tym jednym słowie widać, czy związek przetrwa",
+        date: "22.10.2026",
+        views: 9460,
+        href: REEL_2210,
+      },
+      {
+        img: "/kalendarz/2026-10-30.webp",
+        title: "Co słychać? „Dobrze”. I tyle.",
+        date: "30.10.2026",
+      },
+      {
+        img: "/kalendarz/2026-11-09.webp",
+        title: "Jest mi po prostu smutno",
+        date: "9.11.2026",
+        views: 1517,
+      },
+    ],
     dowodLabel: "Co-creator of",
     dowod: [
       { href: site.socials.asistel, label: "Asistel" },

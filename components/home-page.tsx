@@ -10,13 +10,12 @@ import type { SiteContent } from "@/lib/content";
  * Wizytówka „jednej strony”: ramka (.frame) jest przypięta i nie przesuwa się — przewijanie tylko
  * podmienia sceny. Pod ramką leżą niewidzialne kroki (.story-steps), które nadają stronie wysokość
  * i niosą kotwice (#co-robie, #kontakt). Kolejność scen w .frame = kolejność kroków w .story-steps.
- * Komputer: 4 tablice (bohater, Co robię, opis osoby, kontakt). Telefon: „Co robię”
- * ma dodatkowy znacznik, bo tam są dwie karty.
+ * Komputer i telefon: 4 tablice (bohater, Co robię, opis osoby, kontakt).
  */
 export function HomePage({ t }: { t: SiteContent }) {
   const steps: { id: string; phoneExtra: number }[] = [
     { id: "top", phoneExtra: 0 },
-    { id: "co-robie", phoneExtra: 1 },
+    { id: "co-robie", phoneExtra: 0 },
     { id: "o-mnie", phoneExtra: 0 },
     { id: "kontakt", phoneExtra: 0 },
   ];

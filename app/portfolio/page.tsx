@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { SiteHeader } from "@/components/site-header";
 import { Foot } from "@/components/sections/cv-sections";
+import { ReelRow } from "@/components/sections/reel-row";
 import { site } from "@/lib/site";
 import { content } from "@/lib/content";
 
@@ -46,7 +47,7 @@ const cases: Case[] = [
       "Instagram: 3 604 obserwujących (Metricool, 1–3.11.2026).",
     ],
     link: { href: "https://www.instagram.com/reel/Dezb4BlAZRD/", label: "Zobacz rolkę na Instagramie" },
-    status: "Pełny opis projektu i wybrane filmy: w realizacji (stan na 15.11.2026).",
+    status: "Opis całego projektu: w realizacji (stan na 15.11.2026).",
   },
   {
     kicker: "02 · Warsztat przed kamerą",
@@ -99,6 +100,11 @@ export default function Portfolio() {
               <h2 id={`h-${c.kicker.slice(0, 2)}`} className="font-display text-[24px] font-semibold text-text">
                 {c.h}
               </h2>
+              {c.kicker.startsWith("01") ? (
+                <div className="portfolio-reels">
+                  <ReelRow reels={content.pl.coRobie.reels} viewsWord={content.pl.coRobie.viewsWord} />
+                </div>
+              ) : null}
               <p className="mt-2 leading-[1.6] text-text2">{c.p}</p>
               <ul className="mt-3 list-disc space-y-1 pl-5 leading-[1.6] text-text2">
                 {c.facts.map((f) => (
