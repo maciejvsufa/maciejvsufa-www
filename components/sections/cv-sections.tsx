@@ -87,7 +87,7 @@ function Photo({ t, className }: { t: SiteContent; className: string }) {
   return (
     <div className={className}>
       {/* eslint-disable-next-line @next/next/no-img-element -- statyczny eksport, plik już zoptymalizowany */}
-      <img src="/photos/maciej-firma.webp" alt={t.kontakt.photoAlt} width={800} height={702} loading="lazy" decoding="async" />
+      <img src="/photos/maciej-warszawa.webp" alt={t.kontakt.photoAlt} width={1600} height={1067} loading="lazy" decoding="async" />
     </div>
   );
 }
@@ -145,7 +145,7 @@ function Contact({ t }: { t: SiteContent }) {
   return (
     <div className="contact-wrap">
       <div className="contact-grid">
-        <div className="pcard pcard-dark contact-mail">
+        <div className="pcard contact-mail">
           <span className="pcard-kicker">{k.emailLabel}</span>
           <a className="cval" href={t.ui.ctaHref}>
             {site.email}
