@@ -38,6 +38,13 @@ export type Viz =
       legend: [string, string];
       source: string;
     }
+  | {
+      type: "rank";
+      title: string;
+      /** views tylko przy rolce, dla której jest pomiar. Bez liczby pasek się nie rysuje. */
+      rows: { img: string; title: string; date: string; views?: number }[];
+      source: string;
+    }
   | { type: "flow"; title: string; steps: string[]; status: string }
   | { type: "orbit"; title: string; center: string; sub: string; nodes: string[] }
   | { type: "line"; title: string; value: string; badge: string; points: number[]; axis: string[]; foot: [string, string][] }
@@ -113,7 +120,7 @@ const pl = {
     emailCopied: "Skopiowano ✓",
     langSwitchAria: "Zmień język / Change language",
     footerPrivacy: "Polityka prywatności",
-    sample: "Kalendarz: moje publikacje z Metricoola, stan na 15.11.2026. Przepływ to widok przykładowy. Lighthouse to prawdziwy pomiar tej strony.",
+    sample: "Kalendarz: publikacje z Metricoola, stan na 15.11.2026. Liczba 9 460: rolka z 22.10, pomiar 1–3.11.2026.",
     nav: [
       { href: "#co-robie", label: "Co robię" },
       { href: "#kontakt", label: "O mnie i kontakt" },
@@ -133,14 +140,14 @@ const pl = {
   coRobie: {
     kicker: "01",
     title: "Co robię",
-    intro: "Trzy rzeczy, które robię dla firm.",
+    intro: "Krótkie wideo od scenariusza po liczby.",
     items: [
       {
         icon: "film",
         tag: "Content Creator",
         h: "Treści, które wychodzą regularnie",
         p: "Scenariusz, nagranie, montaż, miniatury i publikacja według kalendarza. YouTube, Reels, karuzele.",
-        check: "Bez dziur w kalendarzu publikacji",
+        check: "Kalendarz publikacji bez pustych tygodni",
         viz: {
           type: "planner",
           title: "Kalendarz treści",
@@ -162,38 +169,51 @@ const pl = {
         },
       },
       {
-        icon: "spark",
-        tag: "AI w firmie",
-        h: "Firma, która działa sprawniej z AI",
-        p: "Sprawdzam, gdzie ucieka czas, i wdrażam automatyzacje oraz agentów AI w narzędziach, których już używacie.",
-        check: "Bez przesiadki na nowy system",
+        icon: "bolt",
+        tag: "Proces",
+        h: "Od zdania do publikacji",
+        p: "Sam piszę scenariusz, występuję, montuję w DaVinci Resolve i sprawdzam, co ludzie oglądają.",
+        check: "Jedna osoba od pomysłu do liczb",
         viz: {
           type: "flow",
-          title: "Przepływ: zgłoszenie klienta",
-          steps: ["Telefon albo e-mail", "Agent AI rozpoznaje sprawę", "Zgłoszenie w systemie", "Zespół dostaje gotowe"],
-          status: "Schemat przykładowy",
+          title: "Jak powstaje rolka",
+          steps: ["Zdanie na ekranie", "Scenariusz", "Nagranie", "Montaż", "Publikacja"],
+          status: "Tak robię każdą rolkę",
         },
       },
       {
-        icon: "link",
-        tag: "Strony www",
-        h: "Strony, które pracują na firmę",
-        p: "Projektuję i buduję szybkie strony firmowe i wizytówki: czytelne na telefonie, z wersją angielską i kontaktem pod ręką.",
-        check: "Szybka i czytelna na telefonie",
+        icon: "chart",
+        tag: "Wynik",
+        h: "Rolka, którą widać w liczbach",
+        p: "22.10.2026 na Instagramie: 9 460 wyświetleń przy 3 604 obserwujących.",
+        check: "Metricool, pomiar 1–3.11.2026",
         viz: {
-          type: "progress",
-          title: "maciejvsufa.pl · Lighthouse",
+          type: "rank",
+          title: "Październik",
           rows: [
-            { t: "Szybkość", p: 93 },
-            { t: "Dostępność", p: 100 },
-            { t: "SEO", p: 100 },
+            {
+              img: "/kalendarz/2026-10-22.webp",
+              title: "Po tym jednym słowie widać, czy związek przetrwa",
+              date: "22.10.2026",
+              views: 9460,
+            },
+            {
+              img: "/kalendarz/2026-10-30.webp",
+              title: "Co słychać? „Dobrze”. I tyle.",
+              date: "30.10.2026",
+            },
+            {
+              img: "/kalendarz/2026-10-28.webp",
+              title: "Claude Code zmontował mi rolkę",
+              date: "28.10.2026",
+            },
           ],
-          gate: "Pomiar z 30.10.2026",
+          source: "Wyświetlenia: tylko 22.10, Metricool 1–3.11.2026",
         },
       },
     ] as Card[],
-    proces: ["Audyt", "Prototyp", "Wdrożenie"],
-    procesNote: "Wycena po rozmowie.",
+    proces: ["Scenariusz", "Nagranie", "Montaż", "Publikacja"],
+    procesNote: "Potem sprawdzam liczby.",
     dowodLabel: "Współtwórca",
     dowod: [
       { href: site.socials.asistel, label: "Asistel" },
@@ -258,7 +278,7 @@ const en: typeof pl = {
     emailCopied: "Copied ✓",
     langSwitchAria: "Zmień język / Change language",
     footerPrivacy: "Privacy policy",
-    sample: "Calendar: my posts from Metricool, as of 15.11.2026. The flow is an example view. Lighthouse is a real measurement of this site.",
+    sample: "Calendar: posts from Metricool, as of 15.11.2026. The 9,460 is the reel of 22.10, measured 1–3.11.2026.",
     nav: [
       { href: "#co-robie", label: "What I do" },
       { href: "#kontakt", label: "About and contact" },
@@ -278,14 +298,14 @@ const en: typeof pl = {
   coRobie: {
     kicker: "01",
     title: "What I do",
-    intro: "Three things I do for companies.",
+    intro: "Short-form video, from the script to the numbers.",
     items: [
       {
         icon: "film",
         tag: "Content Creator",
         h: "Content that ships on schedule",
         p: "Script, recording, editing, thumbnails and publishing on a calendar. YouTube, Reels, carousels.",
-        check: "No gaps in the publishing calendar",
+        check: "A publishing calendar without empty weeks",
         viz: {
           type: "planner",
           title: "Content calendar",
@@ -307,38 +327,51 @@ const en: typeof pl = {
         },
       },
       {
-        icon: "spark",
-        tag: "AI in business",
-        h: "A company that runs smoother with AI",
-        p: "I find where time leaks and deploy automations and AI agents in the tools you already use.",
-        check: "No switching to a new system",
+        icon: "bolt",
+        tag: "Process",
+        h: "From a line on screen to a post",
+        p: "I write the script, perform, edit in DaVinci Resolve and check what people actually watch.",
+        check: "One person, from the idea to the numbers",
         viz: {
           type: "flow",
-          title: "Flow: customer request",
-          steps: ["Phone call or e-mail", "AI agent identifies the case", "Ticket in the system", "Team gets it ready"],
-          status: "Example flow",
+          title: "How a reel gets made",
+          steps: ["Line on screen", "Script", "Shoot", "Edit", "Publish"],
+          status: "This is how I make every reel",
         },
       },
       {
-        icon: "link",
-        tag: "Websites",
-        h: "Websites that work for the business",
-        p: "I design and build fast company websites and one-page sites: easy to read on a phone, with an English version and contact at hand.",
-        check: "Fast and readable on a phone",
+        icon: "chart",
+        tag: "Result",
+        h: "A reel you can see in the numbers",
+        p: "On 22.10.2026, on Instagram: 9,460 views, with 3,604 followers.",
+        check: "Metricool, measured 1–3.11.2026",
         viz: {
-          type: "progress",
-          title: "maciejvsufa.pl · Lighthouse",
+          type: "rank",
+          title: "October",
           rows: [
-            { t: "Speed", p: 93 },
-            { t: "Accessibility", p: 100 },
-            { t: "SEO", p: 100 },
+            {
+              img: "/kalendarz/2026-10-22.webp",
+              title: "Po tym jednym słowie widać, czy związek przetrwa",
+              date: "22.10.2026",
+              views: 9460,
+            },
+            {
+              img: "/kalendarz/2026-10-30.webp",
+              title: "Co słychać? „Dobrze”. I tyle.",
+              date: "30.10.2026",
+            },
+            {
+              img: "/kalendarz/2026-10-28.webp",
+              title: "Claude Code zmontował mi rolkę",
+              date: "28.10.2026",
+            },
           ],
-          gate: "Measured 30.10.2026",
+          source: "Views: only 22.10, Metricool 1–3.11.2026",
         },
       },
     ],
-    proces: ["Audit", "Prototype", "Deployment"],
-    procesNote: "Quote after a call.",
+    proces: ["Script", "Shoot", "Edit", "Publish"],
+    procesNote: "Then I read the numbers.",
     dowodLabel: "Co-creator of",
     dowod: [
       { href: site.socials.asistel, label: "Asistel" },
