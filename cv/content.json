@@ -27,27 +27,61 @@
     "summary": "Robię krótkie wideo od pomysłu po wnioski z liczb: scenariusz, nagranie, montaż w DaVinci Resolve, publikacja i analiza. Od 17 lat pracuję przed kamerą, m.in. w głównej roli w serialu „Gliniarze” (Polsat). Moja rolka z 22.10.2026 zebrała na Instagramie 9 460 wyświetleń i 106 zapisów (Metricool, pomiar 1–3.11.2026). Piszę książki, prowadzę firmę LEV i mam udziały w Tercet Labs. Szukam etatu albo współpracy B2B, zdalnie w Polsce i UE.",
     "skills": [
       {
-        "group": "Content i social media",
+        "group": "Content",
         "items": [
-          "DaVinci Resolve Studio · CapCut · Canva",
           "Scenariusze · storyboard · redakcja PL",
-          "Kalendarz treści · analityka (Metricool, Arkusze Google)",
-          "Meta Business Suite",
           "Występowanie przed kamerą"
         ]
       },
       {
-        "group": "AI w produkcji",
+        "group": "Montaż i grafika",
         "items": [
-          "Claude · agenci AI · prompt engineering",
-          "Grafiki: GPT-Image · Midjourney",
-          "Python · ffmpeg · automatyzacje"
+          "DaVinci Resolve Studio",
+          "CapCut (desktop i Pro)",
+          "Canva Pro",
+          "Edits (Instagram)"
         ]
       },
       {
-        "group": "Strony www",
+        "group": "Wideo i grafika z AI",
         "items": [
-          "Next.js · React · TypeScript · Git"
+          "GPT-Image",
+          "Midjourney (grafiki do projektów)"
+        ]
+      },
+      {
+        "group": "Przerabianie długiego na krótkie",
+        "items": [
+          "Clips Kitty — własne narzędzie do automatycznego cięcia długich nagrań na klipy (Whisper + model językowy)"
+        ]
+      },
+      {
+        "group": "Publikacja i analityka",
+        "items": [
+          "Metricool (planowanie i statystyki)",
+          "Meta Business Suite",
+          "Arkusze Google"
+        ]
+      },
+      {
+        "group": "Asystenci AI w pracy",
+        "items": [
+          "Claude (scenariusze, research, agenci)",
+          "Grok"
+        ]
+      },
+      {
+        "group": "Nagrywanie",
+        "items": [
+          "Aparat Canon",
+          "Interfejs audio Focusrite Scarlett"
+        ]
+      },
+      {
+        "group": "Technika",
+        "items": [
+          "Python · ffmpeg · Next.js",
+          "Cursor"
         ]
       },
       {
@@ -65,7 +99,7 @@
         "company": "Marka osobista @maciejvsufa",
         "context": "Instagram, Facebook, YouTube Shorts, TikTok, LinkedIn — cały cykl od pomysłu po statystyki",
         "bullets": [
-          "Trzy rolki w tygodniu: scenariusz, wystąpienie, montaż w DaVinci Resolve, publikacja i testy tematów",
+          "Każda rolka od początku do końca: scenariusz, wystąpienie, montaż w DaVinci Resolve, publikacja i testy tematów",
           "Rolka z 22.10.2026: 9 460 wyświetleń, 7 456 osób zasięgu, 51 udostępnień, 106 zapisów; Instagram: 3 604 obserwujących (Metricool, 1–3.11.2026)",
           "Własny warsztat produkcji z agentami AI: scenariusze, kalendarz treści, analiza wyników (Claude, Python, ffmpeg)"
         ]
@@ -139,7 +173,8 @@
       "certificate": "Certificate",
       "address": "Address",
       "remote": "Employment or B2B · remote PL / EU",
-      "cooperation": "Registered sole proprietorship — B2B-ready (often preferred by companies)"
+      "cooperation": "Registered sole proprietorship — B2B-ready",
+      "rodo": "GDPR consent"
     },
     "header": {
       "name": "Maciej Sufa",
@@ -152,36 +187,64 @@
       "githubUrl": "https://github.com/maciejvsufa",
       "address": "Łódź · remote PL / EU"
     },
-    "summary": "I create social media content end-to-end: scripts and copy editing, video (CapCut Pro, DaVinci Resolve, ffmpeg), graphics and thumbnails (Canva, GPT-Image), and a content calendar driven by trends and analytics. I run my own channels (YT/IG/FB) on a custom automated pipeline with AI agents — case study: Metoda Sufy. Technical backbone: automations (Python, APIs) and web apps. 17 years as a professional actor — incl. a lead role in the crime series \"Gliniarze\" (Polsat) — fully at ease on mic and lens. Owner of LEV, shareholder in Tercet Labs. Open to employment or B2B — registered sole proprietorship. Remote · PL/EU.",
+    "summary": "I make short-form video from idea to data-driven takeaways: script, shooting, editing in DaVinci Resolve, publishing and analysis. I have worked on camera for 17 years, including a lead role in the Polsat series “Gliniarze”. My reel from 22.10.2026 reached 9,460 views and 106 saves on Instagram (Metricool, measured 1–3.11.2026). I write books, run my company LEV and hold shares in Tercet Labs. I am looking for a full-time or B2B role, remote in Poland and the EU.",
     "skills": [
       {
-        "group": "Content & social media",
+        "group": "Content",
         "items": [
-          "CapCut Pro · DaVinci Resolve · ffmpeg",
-          "Canva · GPT-Image · Midjourney",
-          "Meta Business Suite",
-          "Scripts · storyboards · copy editing",
-          "Content calendar · trends · analytics",
+          "Scripts · storyboards · Polish copy editing",
           "On-camera presence"
         ]
       },
       {
-        "group": "AI & automation",
+        "group": "Editing & design",
         "items": [
-          "AI agents",
-          "Prompt engineering",
-          "n8n · ExoVault · MCP · API",
-          "End-to-end video pipeline",
-          "Multi-agent"
+          "DaVinci Resolve Studio",
+          "CapCut (desktop and Pro)",
+          "Canva Pro",
+          "Edits (Instagram)"
         ]
       },
       {
-        "group": "Development · soft",
+        "group": "AI video & graphics",
         "items": [
-          "React · Next.js · TypeScript",
-          "Python · No-code + AI",
-          "Docker · Git",
-          "Client communication · training"
+          "GPT-Image",
+          "Midjourney (project graphics)"
+        ]
+      },
+      {
+        "group": "Long-form to short-form",
+        "items": [
+          "Clips Kitty — my own tool that automatically cuts long recordings into clips (Whisper + a language model)"
+        ]
+      },
+      {
+        "group": "Publishing & analytics",
+        "items": [
+          "Metricool (scheduling and analytics)",
+          "Meta Business Suite",
+          "Google Sheets"
+        ]
+      },
+      {
+        "group": "AI assistants at work",
+        "items": [
+          "Claude (scripts, research, agents)",
+          "Grok"
+        ]
+      },
+      {
+        "group": "Recording",
+        "items": [
+          "Canon camera",
+          "Focusrite Scarlett audio interface"
+        ]
+      },
+      {
+        "group": "Tech",
+        "items": [
+          "Python · ffmpeg · Next.js",
+          "Cursor"
         ]
       },
       {
@@ -194,65 +257,72 @@
     ],
     "experience": [
       {
+        "period": "2025 – present",
+        "role": "Content Creator",
+        "company": "Personal brand @maciejvsufa",
+        "context": "Instagram, Facebook, YouTube Shorts, TikTok, LinkedIn — the full cycle from idea to analytics",
+        "bullets": [
+          "Every reel end to end: script, on-camera, editing in DaVinci Resolve, publishing and topic testing",
+          "Reel of 22.10.2026: 9,460 views, 7,456 accounts reached, 51 shares, 106 saves; Instagram: 3,604 followers (Metricool, 1–3.11.2026)",
+          "My own production workflow with AI agents: scripts, content calendar, results analysis (Claude, Python, ffmpeg)"
+        ]
+      },
+      {
+        "period": "12.2025 – present",
+        "role": "Owner",
+        "company": "Lev Maciej Sufa (LEV)",
+        "context": "Content and websites for companies",
+        "bullets": [
+          "Content from idea to publication: scripts, video, graphics, content calendar",
+          "Websites designed and built in Next.js, incl. maciejvsufa.pl"
+        ]
+      },
+      {
         "period": "2026 – present",
         "role": "Shareholder",
         "company": "Tercet Labs sp. z o.o.",
-        "context": "A company that brings AI into businesses together with their teams (tercetlabs.pl). Our products include Asistel, a voice assistant for pharmacies (asistel.pl)",
+        "context": "A company that brings AI into businesses together with their teams (tercetlabs.pl)",
         "bullets": [
-          "Product, AI layer (dialog, tickets) and client communication; team and process management panel",
-          "Asistel PWA: speech-to-text voice notes — one-tap recording, saved as text; pharmacists work hands-free",
-          "Voice agent handling calls — code review and shared approval in the team"
+          "Co-creator of Asistel (asistel.pl), a voice assistant for pharmacies: product and client communication",
+          "Asistel PWA: voice notes turned into text — pharmacists record with one tap and keep their hands on the job"
         ]
       },
       {
-        "period": "2025 – present",
-        "role": "Content Creator & Founder",
-        "company": "Studio AI — Metoda Sufy",
-        "context": "Personal brand run as a content studio: YouTube, Instagram, Facebook — full cycle from idea to publication",
+        "period": "17 years",
+        "role": "Actor",
+        "company": "Film, television, theatre",
+        "context": "At ease in front of the lens and the microphone",
         "bullets": [
-          "End-to-end video production: script → voiceover/recording → editing (CapCut Pro, ffmpeg, DaVinci Resolve) → thumbnails and hook frames (GPT-Image, Canva) → publishing",
-          "Custom automated pipeline with AI agents: trend radar, post-resonance analytics, content calendar",
-          "Polish copywriting and editing: posts, carousels, hooks, e-mail sequences; selling my own ebook"
-        ]
-      },
-      {
-        "period": "2025 – present",
-        "role": "Founder",
-        "company": "LEV",
-        "context": "My practice: content and social media for companies",
-        "bullets": [
-          "Content for companies from idea to publication: scripts, video, graphics and thumbnails, content calendar",
-          "Social media automation and team training in AI tools"
+          "Lead role: detective Robert Barcz in the series “Gliniarze” (Polsat, 2016–2017)",
+          "“Kobiety mafii”, dir. Patryk Vega (2018); “Ojciec Mateusz”; “Barwy szczęścia”",
+          "Polish National Opera – Teatr Wielki (2023)"
         ]
       }
     ],
     "projects": [
       {
-        "name": "Metoda Sufy — living portfolio",
-        "desc": "YT/IG/FB channels run on my own automated content studio: long-form video and Reels, carousels, ebook — full reach and engagement metrics available on request"
-      },
-      {
-        "name": "Studio AI",
-        "desc": "End-to-end video production pipeline: script → voiceover (TTS, forced alignment) → illustrations → editing and publishing (Python, ffmpeg, Claude agents; ExoVault as agent-team memory and task board)"
-      },
-      {
-        "name": "Organizacja Myśląca (Thinking Organization)",
-        "desc": "Decision-support system based on systems thinking (Senge): ladder of inference, dialogue vs. discussion, system archetypes — prototyping the tool with AI agents"
+        "name": "Books",
+        "desc": "“Obudzona” — for women, out 14.02.2027. “Zainstalowany” — for men."
       },
       {
         "name": "maciejvsufa.pl",
-        "url": "https://maciejvsufa.pl",
-        "desc": "Next.js portfolio (PL/EN), Lighthouse 93/100/100/100 (measured 30.10.2026)"
+        "url": "https://maciejvsufa.pl/en/portfolio/",
+        "desc": "Personal website and portfolio (Next.js, PL/EN). Lighthouse: 93/100/100/100 (measured 30.10.2026)"
+      },
+      {
+        "name": "Studio AI",
+        "desc": "My own video production workflow: script → recording or voiceover → illustrations → editing (Python, ffmpeg, Claude agents; ExoVault as memory and task board)"
       }
     ],
     "education": {
       "line": "Warsaw Film School (WSF) — acting (2008–2010), higher education"
     },
     "certificate": {
-      "name": "AI Skills for Tomorrow — Using AI in Business Development",
-      "issuer": "Google & SGH (Warsaw School of Economics)",
-      "year": "2025",
-      "desc": "Practical Google & SGH program: AI in productivity, marketing, sales, analytics and AI agents; AI implementation leadership"
-    }
+      "name": "Using AI in Business Development",
+      "issuer": "Google, AI Skills for Tomorrow programme · education partner SGH (Warsaw School of Economics)",
+      "year": "19.03.2025",
+      "desc": "five-week programme with a final exam. Certificate no.: 2c7fe85e-80bc-4ad4-b321-84903b1d0432"
+    },
+    "rodo": "I consent to the processing of my personal data contained in this CV for the purpose of the recruitment process for the position I am applying for."
   }
 }

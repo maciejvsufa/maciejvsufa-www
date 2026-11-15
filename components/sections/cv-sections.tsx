@@ -163,7 +163,8 @@ export function Foot({ t }: { t: SiteContent }) {
       <nav className="foot-nav" aria-label={en ? "Footer" : "Stopka"}>
         <a href={`${base}/`}>{en ? "Home" : "Strona główna"}</a>
         <a href={`${base}/portfolio/`}>Portfolio</a>
-        {en ? null : <a href="/cv/">CV</a>}
+        <a href={`${base}/cv/`}>CV</a>
+        {en ? null : <a href="/aktorstwo/">Aktorstwo</a>}
         <a href={`${base}/#kontakt`}>{en ? "Contact" : "Kontakt"}</a>
         <a href={`${base}/privacy/`}>{t.ui.footerPrivacy}</a>
       </nav>

@@ -117,12 +117,12 @@ body {
 
 .photo-wrap {
   width: 100%;
-  height: 52mm;
+  height: 34mm;
   flex-shrink: 0;
   overflow: hidden;
   border-radius: 3px;
   border: 1px solid rgba(201, 192, 173, 0.35);
-  margin-bottom: 5mm;
+  margin-bottom: 3mm;
 }
 
 .photo-wrap img {
@@ -207,11 +207,11 @@ body {
 }
 
 .skill-group {
-  margin-bottom: 3mm;
+  margin-bottom: 1.8mm;
 }
 
 .skill-group h3 {
-  font-size: 9pt;
+  font-size: 8.6pt;
   font-weight: 600;
   color: #e8e2d4;
   margin: 0 0 2px;
@@ -224,9 +224,9 @@ body {
 }
 
 .skill-group li {
-  font-size: 9pt;
+  font-size: 8.2pt;
   color: #b8b5ad;
-  line-height: 1.4;
+  line-height: 1.25;
   padding-left: 8px;
   position: relative;
 }
@@ -393,6 +393,11 @@ body {
   color: #8a8578;
   font-style: italic;
 }
+
+/* 15.11.2026: lista narzędzi jest dłuższa — lewa stopka (duplikat prawej) znika, żeby zmieściły się Języki */
+.sidebar .col-footer {
+  display: none;
+}
 </style>
 </head>
 <body>
@@ -415,23 +420,43 @@ body {
         <span class="label">GitHub</span>
         <a href="https://github.com/maciejvsufa">github.com/maciejvsufa</a>
         <p class="remote-note">Employment or B2B · remote PL / EU</p>
-        <p class="cooperation-note">Registered sole proprietorship — B2B-ready (often preferred by companies)</p>
+        <p class="cooperation-note">Registered sole proprietorship — B2B-ready</p>
       </div>
 
       <div class="section section--skills">
         <h2 class="section-title">Skills</h2>
         
     <div class="skill-group">
-      <h3>Content &amp; social media</h3>
-      <ul><li>CapCut Pro · DaVinci Resolve · ffmpeg</li><li>Canva · GPT-Image · Midjourney</li><li>Meta Business Suite</li><li>Scripts · storyboards · copy editing</li><li>Content calendar · trends · analytics</li><li>On-camera presence</li></ul>
+      <h3>Content</h3>
+      <ul><li>Scripts · storyboards · Polish copy editing</li><li>On-camera presence</li></ul>
     </div>
     <div class="skill-group">
-      <h3>AI &amp; automation</h3>
-      <ul><li>AI agents</li><li>Prompt engineering</li><li>n8n · ExoVault · MCP · API</li><li>End-to-end video pipeline</li><li>Multi-agent</li></ul>
+      <h3>Editing &amp; design</h3>
+      <ul><li>DaVinci Resolve Studio</li><li>CapCut (desktop and Pro)</li><li>Canva Pro</li><li>Edits (Instagram)</li></ul>
     </div>
     <div class="skill-group">
-      <h3>Development · soft</h3>
-      <ul><li>React · Next.js · TypeScript</li><li>Python · No-code + AI</li><li>Docker · Git</li><li>Client communication · training</li></ul>
+      <h3>AI video &amp; graphics</h3>
+      <ul><li>GPT-Image</li><li>Midjourney (project graphics)</li></ul>
+    </div>
+    <div class="skill-group">
+      <h3>Long-form to short-form</h3>
+      <ul><li>Clips Kitty — my own tool that automatically cuts long recordings into clips (Whisper + a language model)</li></ul>
+    </div>
+    <div class="skill-group">
+      <h3>Publishing &amp; analytics</h3>
+      <ul><li>Metricool (scheduling and analytics)</li><li>Meta Business Suite</li><li>Google Sheets</li></ul>
+    </div>
+    <div class="skill-group">
+      <h3>AI assistants at work</h3>
+      <ul><li>Claude (scripts, research, agents)</li><li>Grok</li></ul>
+    </div>
+    <div class="skill-group">
+      <h3>Recording</h3>
+      <ul><li>Canon camera</li><li>Focusrite Scarlett audio interface</li></ul>
+    </div>
+    <div class="skill-group">
+      <h3>Tech</h3>
+      <ul><li>Python · ffmpeg · Next.js</li><li>Cursor</li></ul>
     </div>
     <div class="skill-group">
       <h3>Languages</h3>
@@ -447,7 +472,7 @@ body {
       <div class="main-body">
       <div class="section">
         <h2 class="section-title">Professional Profile</h2>
-        <p class="summary">I create social media content end-to-end: scripts and copy editing, video (CapCut Pro, DaVinci Resolve, ffmpeg), graphics and thumbnails (Canva, GPT-Image), and a content calendar driven by trends and analytics. I run my own channels (YT/IG/FB) on a custom automated pipeline with AI agents — case study: Metoda Sufy. Technical backbone: automations (Python, APIs) and web apps. 17 years as a professional actor — incl. a lead role in the crime series &quot;Gliniarze&quot; (Polsat) — fully at ease on mic and lens. Owner of LEV, shareholder in Tercet Labs. Open to employment or B2B — registered sole proprietorship. Remote · PL/EU.</p>
+        <p class="summary">I make short-form video from idea to data-driven takeaways: script, shooting, editing in DaVinci Resolve, publishing and analysis. I have worked on camera for 17 years, including a lead role in the Polsat series “Gliniarze”. My reel from 22.10.2026 reached 9,460 views and 106 saves on Instagram (Metricool, measured 1–3.11.2026). I write books, run my company LEV and hold shares in Tercet Labs. I am looking for a full-time or B2B role, remote in Poland and the EU.</p>
       </div>
 
       <div class="section">
@@ -455,27 +480,35 @@ body {
         
     <div class="job">
       <div class="job-header">
+        <p class="job-role">Content Creator · Personal brand @maciejvsufa</p>
+        <span class="job-period">2025 – present</span>
+      </div>
+      <p class="job-context">Instagram, Facebook, YouTube Shorts, TikTok, LinkedIn — the full cycle from idea to analytics</p>
+      <ul><li>Every reel end to end: script, on-camera, editing in DaVinci Resolve, publishing and topic testing</li><li>Reel of 22.10.2026: 9,460 views, 7,456 accounts reached, 51 shares, 106 saves; Instagram: 3,604 followers (Metricool, 1–3.11.2026)</li><li>My own production workflow with AI agents: scripts, content calendar, results analysis (Claude, Python, ffmpeg)</li></ul>
+    </div>
+    <div class="job">
+      <div class="job-header">
+        <p class="job-role">Owner · Lev Maciej Sufa (LEV)</p>
+        <span class="job-period">12.2025 – present</span>
+      </div>
+      <p class="job-context">Content and websites for companies</p>
+      <ul><li>Content from idea to publication: scripts, video, graphics, content calendar</li><li>Websites designed and built in Next.js, incl. maciejvsufa.pl</li></ul>
+    </div>
+    <div class="job">
+      <div class="job-header">
         <p class="job-role">Shareholder · Tercet Labs sp. z o.o.</p>
         <span class="job-period">2026 – present</span>
       </div>
-      <p class="job-context">A company that brings AI into businesses together with their teams (tercetlabs.pl). Our products include Asistel, a voice assistant for pharmacies (asistel.pl)</p>
-      <ul><li>Product, AI layer (dialog, tickets) and client communication; team and process management panel</li><li>Asistel PWA: speech-to-text voice notes — one-tap recording, saved as text; pharmacists work hands-free</li><li>Voice agent handling calls — code review and shared approval in the team</li></ul>
+      <p class="job-context">A company that brings AI into businesses together with their teams (tercetlabs.pl)</p>
+      <ul><li>Co-creator of Asistel (asistel.pl), a voice assistant for pharmacies: product and client communication</li><li>Asistel PWA: voice notes turned into text — pharmacists record with one tap and keep their hands on the job</li></ul>
     </div>
     <div class="job">
       <div class="job-header">
-        <p class="job-role">Content Creator &amp; Founder · Studio AI — Metoda Sufy</p>
-        <span class="job-period">2025 – present</span>
+        <p class="job-role">Actor · Film, television, theatre</p>
+        <span class="job-period">17 years</span>
       </div>
-      <p class="job-context">Personal brand run as a content studio: YouTube, Instagram, Facebook — full cycle from idea to publication</p>
-      <ul><li>End-to-end video production: script → voiceover/recording → editing (CapCut Pro, ffmpeg, DaVinci Resolve) → thumbnails and hook frames (GPT-Image, Canva) → publishing</li><li>Custom automated pipeline with AI agents: trend radar, post-resonance analytics, content calendar</li><li>Polish copywriting and editing: posts, carousels, hooks, e-mail sequences; selling my own ebook</li></ul>
-    </div>
-    <div class="job">
-      <div class="job-header">
-        <p class="job-role">Founder · LEV</p>
-        <span class="job-period">2025 – present</span>
-      </div>
-      <p class="job-context">My practice: content and social media for companies</p>
-      <ul><li>Content for companies from idea to publication: scripts, video, graphics and thumbnails, content calendar</li><li>Social media automation and team training in AI tools</li></ul>
+      <p class="job-context">At ease in front of the lens and the microphone</p>
+      <ul><li>Lead role: detective Robert Barcz in the series “Gliniarze” (Polsat, 2016–2017)</li><li>“Kobiety mafii”, dir. Patryk Vega (2018); “Ojciec Mateusz”; “Barwy szczęścia”</li><li>Polish National Opera – Teatr Wielki (2023)</li></ul>
     </div>
       </div>
 
@@ -483,26 +516,23 @@ body {
         <h2 class="section-title">Selected Projects</h2>
         
     <div class="project">
-      <span class="project-name">Metoda Sufy — living portfolio</span><span class="project-desc"> — YT/IG/FB channels run on my own automated content studio: long-form video and Reels, carousels, ebook — full reach and engagement metrics available on request</span>
+      <span class="project-name">Books</span><span class="project-desc"> — “Obudzona” — for women, out 14.02.2027. “Zainstalowany” — for men.</span>
     </div>
     <div class="project">
-      <span class="project-name">Studio AI</span><span class="project-desc"> — End-to-end video production pipeline: script → voiceover (TTS, forced alignment) → illustrations → editing and publishing (Python, ffmpeg, Claude agents; ExoVault as agent-team memory and task board)</span>
+      <a class="project-link" href="https://maciejvsufa.pl/en/portfolio/">maciejvsufa.pl</a><span class="project-desc"> — Personal website and portfolio (Next.js, PL/EN). Lighthouse: 93/100/100/100 (measured 30.10.2026)</span>
     </div>
     <div class="project">
-      <span class="project-name">Organizacja Myśląca (Thinking Organization)</span><span class="project-desc"> — Decision-support system based on systems thinking (Senge): ladder of inference, dialogue vs. discussion, system archetypes — prototyping the tool with AI agents</span>
-    </div>
-    <div class="project">
-      <a class="project-link" href="https://maciejvsufa.pl">maciejvsufa.pl</a><span class="project-desc"> — Next.js portfolio (PL/EN), Lighthouse 93/100/100/100 (measured 30.10.2026)</span>
+      <span class="project-name">Studio AI</span><span class="project-desc"> — My own video production workflow: script → recording or voiceover → illustrations → editing (Python, ffmpeg, Claude agents; ExoVault as memory and task board)</span>
     </div>
       </div>
 
       <div class="section">
         <h2 class="section-title">Education · Certificate</h2>
         <p class="edu-line">Warsaw Film School (WSF) — acting (2008–2010), higher education</p>
-        <p class="cert-name main-cert">AI Skills for Tomorrow — Using AI in Business Development (2025)</p>
-        <p class="cert-issuer main-cert">Google &amp; SGH (Warsaw School of Economics) — Practical Google &amp; SGH program: AI in productivity, marketing, sales, analytics and AI agents; AI implementation leadership</p>
+        <p class="cert-name main-cert">Using AI in Business Development (19.03.2025)</p>
+        <p class="cert-issuer main-cert">Google, AI Skills for Tomorrow programme · education partner SGH (Warsaw School of Economics) — five-week programme with a final exam. Certificate no.: 2c7fe85e-80bc-4ad4-b321-84903b1d0432</p>
       </div>
-      
+      <p class="rodo">I consent to the processing of my personal data contained in this CV for the purpose of the recruitment process for the position I am applying for.</p>
       </div>
 
       <div class="col-footer">Maciej Sufa · maciejvsufa.pl · Łódź · remote PL / EU</div>

@@ -10,7 +10,7 @@ const DESC = "CV do pobrania: content creator, autor, 17 lat przed kamerą. PDF 
 export const metadata: Metadata = {
   title: TITLE,
   description: DESC,
-  alternates: { canonical: "/cv/" },
+  alternates: { canonical: "/cv/", languages: { pl: "/cv/", en: "/en/cv/", "x-default": "/cv/" } },
   openGraph: { title: TITLE, description: DESC, url: `${site.url}/cv/`, siteName: site.name, locale: "pl_PL", type: "website" },
 };
 

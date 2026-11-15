@@ -40,7 +40,7 @@ const cases: Case[] = [
   {
     kicker: "01 · Marka osobista",
     h: "@maciejvsufa",
-    p: "Trzy rolki w tygodniu. Sam piszę scenariusz, występuję, montuję w DaVinci Resolve, publikuję i sprawdzam, które tematy działają.",
+    p: "Każdą rolkę robię od początku do końca: sam piszę scenariusz, występuję, montuję w DaVinci Resolve, publikuję i sprawdzam, które tematy działają.",
     facts: [
       "Rolka z 22.10.2026 na Instagramie: 9 460 wyświetleń, 7 456 osób zasięgu, 106 zapisów, 51 udostępnień (Metricool, pomiar 1–3.11.2026).",
       "Instagram: 3 604 obserwujących (Metricool, 1–3.11.2026).",
