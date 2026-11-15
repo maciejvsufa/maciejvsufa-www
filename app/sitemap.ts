@@ -11,5 +11,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${site.url}/portfolio/`, lastModified: now, priority: 0.9 },
     { url: `${site.url}/en/portfolio/`, lastModified: now, priority: 0.7 },
     { url: `${site.url}/cv/`, lastModified: now, priority: 0.6 },
+    { url: `${site.url}/en/cv/`, lastModified: now, priority: 0.5 },
+    { url: `${site.url}/aktorstwo/`, lastModified: now, priority: 0.6 },
   ];
 }
