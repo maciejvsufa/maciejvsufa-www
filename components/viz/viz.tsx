@@ -236,6 +236,36 @@ function Planner({ v }: { v: Extract<VizData, { type: "planner" }> }) {
   );
 }
 
+/** Trzy rolki: okładka, tytuł, data. Pasek i liczba tylko tam, gdzie jest pomiar wyświetleń. */
+function Rank({ v }: { v: Extract<VizData, { type: "rank" }> }) {
+  const max = Math.max(1, ...v.rows.map((r) => r.views ?? 0));
+  const nf = (n: number) => String(n).replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+  return (
+    <>
+      <Head title={v.title} />
+      <ul className="w-rank">
+        {v.rows.map((r, k) => (
+          <li key={r.img} style={i(k)}>
+            {/* eslint-disable-next-line @next/next/no-img-element -- statyczny eksport, okładka 180×320 */}
+            <img src={r.img} alt="" width={180} height={320} />
+            <span className="w-rank-t">
+              <span className="w-rank-title">{r.title}</span>
+              <small>{r.date}</small>
+              {r.views ? (
+                <span className="w-rank-bar" style={{ "--p": `${Math.round((r.views / max) * 100)}%` } as CSSProperties}>
+                  <i />
+                </span>
+              ) : null}
+            </span>
+            {r.views ? <b className="w-rank-n">{nf(r.views)}</b> : null}
+          </li>
+        ))}
+      </ul>
+      <p className="w-plan-src">{v.source}</p>
+    </>
+  );
+}
+
 function Orbit({ v }: { v: Extract<VizData, { type: "orbit" }> }) {
   const n = v.nodes.length;
   return (
@@ -321,6 +351,8 @@ export function VizBody({ v }: { v: VizData }) {
       return <Calendar v={v} />;
     case "planner":
       return <Planner v={v} />;
+    case "rank":
+      return <Rank v={v} />;
     case "orbit":
       return <Orbit v={v} />;
     case "alert":
