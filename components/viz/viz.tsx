@@ -178,6 +178,64 @@ function Calendar({ v }: { v: Extract<VizData, { type: "calendar" }> }) {
   );
 }
 
+/** Planer jak w Later / Metricool: dwa tygodnie, prawdziwe okładki, wyświetlenia albo godzina publikacji. */
+function Planner({ v }: { v: Extract<VizData, { type: "planner" }> }) {
+  const cells = Array.from({ length: 14 }, (_, k) => v.start + k);
+  const nf = (n: string) => Number(n).toLocaleString("pl-PL");
+  return (
+    <>
+      <Head title={v.title} badge={v.range} />
+      <div className="w-plan">
+        {v.days.map((d) => (
+          <span key={d} className="w-plan-dow">
+            {d}
+          </span>
+        ))}
+        {cells.map((day, k) => {
+          const it = v.items.find((x) => x.day === day);
+          return (
+            <span key={day} className={`w-plan-cell${it ? ` is-${it.state}` : ""}`} style={i(k)}>
+              <small className="w-plan-n">{day}</small>
+              {it ? (
+                <span className="w-plan-post" title={it.label}>
+                  {/* eslint-disable-next-line @next/next/no-img-element -- statyczny eksport, okładka 180×320 */}
+                  <img src={it.img} alt="" width={180} height={320} loading="lazy" decoding="async" />
+                  {it.more ? <b className="w-plan-more">+{it.more}</b> : null}
+                  <em className="w-plan-meta">
+                    {it.state === "pub" ? (
+                      <>
+                        <svg width="7" height="8" viewBox="0 0 7 8" aria-hidden="true">
+                          <path d="M0 0l7 4-7 4z" fill="currentColor" />
+                        </svg>
+                        {nf(it.meta)}
+                      </>
+                    ) : (
+                      it.meta
+                    )}
+                  </em>
+                </span>
+              ) : (
+                <span className="w-plan-empty" />
+              )}
+            </span>
+          );
+        })}
+      </div>
+      <div className="w-plan-legend">
+        <span>
+          <i className="dot pub" />
+          {v.legend[0]}
+        </span>
+        <span>
+          <i className="dot plan" />
+          {v.legend[1]}
+        </span>
+      </div>
+      <p className="w-plan-src">{v.source}</p>
+    </>
+  );
+}
+
 function Orbit({ v }: { v: Extract<VizData, { type: "orbit" }> }) {
   const n = v.nodes.length;
   return (
@@ -261,6 +319,8 @@ export function VizBody({ v }: { v: VizData }) {
       return <Flow v={v} />;
     case "calendar":
       return <Calendar v={v} />;
+    case "planner":
+      return <Planner v={v} />;
     case "orbit":
       return <Orbit v={v} />;
     case "alert":
