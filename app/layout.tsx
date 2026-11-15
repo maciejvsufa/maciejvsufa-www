@@ -51,6 +51,14 @@ const jsonLd = {
   "@context": "https://schema.org",
   "@graph": [
     {
+      "@type": "WebSite",
+      "@id": `${site.url}/#website`,
+      url: site.url,
+      name: site.name,
+      inLanguage: ["pl", "en"],
+      publisher: { "@id": personId },
+    },
+    {
       "@type": "Person",
       "@id": personId,
       name: site.name,
@@ -58,7 +66,14 @@ const jsonLd = {
       image: `${site.url}/photos/hero-maciej.webp`,
       jobTitle: site.jobTitle,
       email: `mailto:${site.email}`,
-      sameAs: [site.socials.instagram, site.socials.linkedin, site.socials.github],
+      sameAs: [
+        site.socials.instagram,
+        site.socials.facebook,
+        site.socials.youtube,
+        site.socials.tiktok,
+        site.socials.linkedin,
+        site.socials.github,
+      ],
       knowsAbout: [
         "social media content",
         "video editing",
@@ -75,7 +90,8 @@ const jsonLd = {
     {
       "@type": "Organization",
       "@id": `${site.url}/#lev`,
-      name: "LEV",
+      name: site.company.name,
+      taxID: site.company.nip,
     },
     {
       "@type": "Organization",

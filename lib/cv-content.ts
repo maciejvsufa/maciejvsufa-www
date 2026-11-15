@@ -32,10 +32,10 @@ export type CvLocale = {
     education: string;
     skills: string;
     certificate: string;
-    born: string;
     address?: string;
     remote: string;
     cooperation?: string;
+    rodo?: string;
   };
   header: {
     name: string;
@@ -47,7 +47,6 @@ export type CvLocale = {
     github?: string;
     githubUrl?: string;
     address: string;
-    born: string;
   };
   summary: string;
   skills: CvSkillGroup[];
@@ -62,6 +61,8 @@ export type CvLocale = {
   education: {
     line: string;
   };
+  /** Klauzula RODO na dole CV (rekrutacja). */
+  rodo?: string;
 };
 
 export type CvContent = {

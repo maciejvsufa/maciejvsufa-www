@@ -8,53 +8,46 @@
       "education": "Wykształcenie",
       "skills": "Kompetencje",
       "certificate": "Certyfikat",
-      "born": "ur.",
       "address": "Adres",
       "remote": "Etat lub B2B · zdalnie PL / EU",
-      "cooperation": "Działalność gospodarcza — gotowość do B2B (atut dla firm)"
+      "cooperation": "Własna działalność gospodarcza — mogę pracować na B2B",
+      "rodo": "Zgoda RODO"
     },
     "header": {
       "name": "Maciej Sufa",
-      "title": "Social Media Content Creator (AI-powered)",
+      "title": "Content Creator · Autor · Video & AI",
       "phone": "+48 504 003 019",
       "email": "sufamaciej@gmail.com",
       "website": "maciejvsufa.pl",
       "websiteUrl": "https://maciejvsufa.pl",
       "github": "github.com/maciejvsufa",
       "githubUrl": "https://github.com/maciejvsufa",
-      "address": "Praca zdalna (PL / UE)",
-      "born": "24.04.1988, Warszawa"
+      "address": "Łódź · zdalnie PL / UE"
     },
-    "summary": "Tworzę content na social media od pomysłu po publikację: scenariusze i redakcja tekstów, wideo (CapCut Pro, DaVinci Resolve, ffmpeg), grafiki i miniatury (Canva, GPT-Image), kalendarz treści sprzężony z trendami i analityką. Prowadzę własne kanały (YT/IG/FB) na autorskim, zautomatyzowanym pipeline z agentami AI — case study: Metoda Sufy. Zaplecze techniczne: automatyzacje (n8n, Python, API), aplikacje webowe. 17 lat jako zawodowy aktor — m.in. główna rola w serialu „Gliniarze” (Polsat) — swoboda przed obiektywem i mikrofonem. Właściciel firmy LEV, współudziałowiec Tercet Labs. Otwarty na etat lub B2B — posiadam działalność gospodarczą. Zdalnie · PL/EU.",
+    "summary": "Robię krótkie wideo od pomysłu po wnioski z liczb: scenariusz, nagranie, montaż w DaVinci Resolve, publikacja i analiza. Od 17 lat pracuję przed kamerą, m.in. w głównej roli w serialu „Gliniarze” (Polsat). Moja rolka z 22.10.2026 zebrała na Instagramie 9 460 wyświetleń i 106 zapisów (Metricool, pomiar 1–3.11.2026). Piszę książki, prowadzę firmę LEV i mam udziały w Tercet Labs. Szukam etatu albo współpracy B2B, zdalnie w Polsce i UE.",
     "skills": [
       {
         "group": "Content i social media",
         "items": [
-          "CapCut Pro · DaVinci Resolve · ffmpeg",
-          "Canva · GPT-Image · Midjourney",
-          "Meta Business Suite",
+          "DaVinci Resolve Studio · CapCut · Canva",
           "Scenariusze · storyboard · redakcja PL",
-          "Kalendarz treści · trendy · analityka",
+          "Kalendarz treści · analityka (Metricool, Arkusze Google)",
+          "Meta Business Suite",
           "Występowanie przed kamerą"
         ]
       },
       {
-        "group": "AI i automatyzacja",
+        "group": "AI w produkcji",
         "items": [
-          "Agenci AI",
-          "Prompt engineering",
-          "n8n · ExoVault · MCP · API",
-          "Pipeline wideo end-to-end",
-          "Multi-agent"
+          "Claude · agenci AI · prompt engineering",
+          "Grafiki: GPT-Image · Midjourney",
+          "Python · ffmpeg · automatyzacje"
         ]
       },
       {
-        "group": "Development · miękkie",
+        "group": "Strony www",
         "items": [
-          "React · Next.js · TypeScript",
-          "Python · No-code + AI",
-          "Docker · Git",
-          "Komunikacja z klientem · szkolenia"
+          "Next.js · React · TypeScript · Git"
         ]
       },
       {
@@ -67,66 +60,73 @@
     ],
     "experience": [
       {
+        "period": "2025 – obecnie",
+        "role": "Twórca treści",
+        "company": "Marka osobista @maciejvsufa",
+        "context": "Instagram, Facebook, YouTube Shorts, TikTok, LinkedIn — cały cykl od pomysłu po statystyki",
+        "bullets": [
+          "Trzy rolki w tygodniu: scenariusz, wystąpienie, montaż w DaVinci Resolve, publikacja i testy tematów",
+          "Rolka z 22.10.2026: 9 460 wyświetleń, 7 456 osób zasięgu, 51 udostępnień, 106 zapisów; Instagram: 3 604 obserwujących (Metricool, 1–3.11.2026)",
+          "Własny warsztat produkcji z agentami AI: scenariusze, kalendarz treści, analiza wyników (Claude, Python, ffmpeg)"
+        ]
+      },
+      {
+        "period": "12.2025 – obecnie",
+        "role": "Właściciel",
+        "company": "Lev Maciej Sufa (LEV)",
+        "context": "Treści i strony www dla firm",
+        "bullets": [
+          "Content od pomysłu po publikację: scenariusze, wideo, grafiki, kalendarz treści",
+          "Strony www: projekt i budowa w Next.js, m.in. maciejvsufa.pl"
+        ]
+      },
+      {
         "period": "2026 – obecnie",
         "role": "Współudziałowiec",
         "company": "Tercet Labs sp. z o.o.",
-        "context": "Spółka, która wdraża AI w firmach razem z ich zespołami (tercetlabs.pl). Jeden z naszych produktów to Asistel — asystent głosowy dla aptek (asistel.pl)",
+        "context": "Spółka, która wdraża AI w firmach razem z ich zespołami (tercetlabs.pl)",
         "bullets": [
-          "Produkt, warstwa AI (dialog, tickety) i komunikacja z klientem; panel zarządzania zespołem i procesami w firmie",
-          "PWA Asistel: notatki głosowe speech-to-text — farmaceuta nagrywa jednym dotknięciem, system zapisuje tekst; praca bez odrywania rąk",
-          "Głosowy agent odbierający połączenia — code-review i wspólne zatwierdzanie w zespole"
+          "Współtwórca Asistela (asistel.pl), asystenta głosowego dla aptek: produkt i komunikacja z klientem",
+          "PWA Asistel: notatki głosowe zamieniane na tekst — farmaceuta nagrywa jednym dotknięciem i nie odrywa rąk od pracy"
         ]
       },
       {
-        "period": "2025 – obecnie",
-        "role": "Twórca contentu & założyciel",
-        "company": "Studio AI — Metoda Sufy",
-        "context": "Marka osobista prowadzona jak studio contentu: YouTube, Instagram, Facebook — pełny cykl od pomysłu po publikację",
+        "period": "17 lat",
+        "role": "Aktor",
+        "company": "Film, telewizja, teatr",
+        "context": "Swoboda przed obiektywem i mikrofonem",
         "bullets": [
-          "Produkcja wideo end-to-end: scenariusz → lektor/nagranie → montaż (CapCut Pro, ffmpeg, DaVinci Resolve) → miniatury i klatki-hook (GPT-Image, Canva) → publikacja",
-          "Autorski zautomatyzowany pipeline z agentami AI: radar trendów, analityka rezonansu postów, kalendarz treści, kolejka publikacji (n8n, VPS)",
-          "Redakcja i copywriting PL: posty, karuzele, haki, sekwencje e-mail; sprzedaż własnego ebooka"
-        ]
-      },
-      {
-        "period": "2025 – obecnie",
-        "role": "Założyciel",
-        "company": "LEV",
-        "context": "Moja praktyka: content i social media dla firm",
-        "bullets": [
-          "Content dla firm od pomysłu po publikację: scenariusze, wideo, grafiki i miniatury, kalendarz treści",
-          "Automatyzacja social media i szkolenia zespołów z narzędzi AI"
+          "Główna rola: detektyw Robert Barcz w serialu „Gliniarze” (Polsat, 2016–2017)",
+          "„Kobiety mafii”, reż. Patryk Vega (2018); „Ojciec Mateusz”; „Barwy szczęścia”",
+          "Teatr Wielki – Opera Narodowa (2023)"
         ]
       }
     ],
     "projects": [
       {
-        "name": "Metoda Sufy — żywe portfolio",
-        "desc": "Kanały YT/IG/FB prowadzone własnym zautomatyzowanym studiem contentu: wideo long i Reels, karuzele, ebook — pełne metryki zasięgu i zaangażowania dostępne na życzenie"
-      },
-      {
-        "name": "Studio AI",
-        "desc": "Autorski pipeline produkcji wideo end-to-end: scenariusz → lektor (TTS, forced alignment) → ilustracje → montaż i publikacja (Python, ffmpeg, agenci Claude, n8n; ExoVault jako pamięć i tablica zadań zespołu agentów)"
-      },
-      {
-        "name": "Organizacja Myśląca",
-        "desc": "System wspierania podejmowania decyzji oparty o myślenie systemowe (Senge): drabina wnioskowania, dialog i dyskusja, archetypy systemowe — prototypowanie narzędzia z agentami AI"
+        "name": "Książki",
+        "desc": "„Obudzona” — dla kobiet, premiera 14.02.2027. „Zainstalowany” — dla mężczyzn."
       },
       {
         "name": "maciejvsufa.pl",
-        "url": "https://maciejvsufa.pl",
-        "desc": "Portfolio Next.js (PL/EN), Lighthouse 99+"
+        "url": "https://maciejvsufa.pl/portfolio/",
+        "desc": "Osobista strona www i portfolio (Next.js, PL/EN). Lighthouse: 93/100/100/100 (pomiar 30.10.2026)"
+      },
+      {
+        "name": "Studio AI",
+        "desc": "Własny warsztat produkcji wideo: scenariusz → nagranie lub lektor → ilustracje → montaż (Python, ffmpeg, agenci Claude; ExoVault jako pamięć i tablica zadań)"
       }
     ],
     "education": {
       "line": "Warszawska Szkoła Filmowa (WSF) — aktorstwo (2008–2010), kształcenie wyższe"
     },
     "certificate": {
-      "name": "Umiejętności Jutra: AI — Wykorzystanie AI w rozwoju firmy",
-      "issuer": "Google & SGH (Szkoła Główna Handlowa)",
-      "year": "2025",
-      "desc": "Program praktyczny Google i SGH: AI w produktywności, marketingu, sprzedaży, analityce i agentach AI; przygotowanie do roli lidera wdrożeń AI"
-    }
+      "name": "Wykorzystanie AI w rozwoju firmy",
+      "issuer": "Google, program Umiejętności Jutra AI · partner edukacyjny SGH",
+      "year": "19.03.2025",
+      "desc": "pięciotygodniowy program z egzaminem końcowym. Nr certyfikatu: 2c7fe85e-80bc-4ad4-b321-84903b1d0432"
+    },
+    "rodo": "Wyrażam zgodę na przetwarzanie moich danych osobowych zawartych w CV w celu prowadzenia rekrutacji na stanowisko, na które aplikuję."
   },
   "en": {
     "lang": "en",
@@ -137,24 +137,22 @@
       "education": "Education",
       "skills": "Skills",
       "certificate": "Certificate",
-      "born": "b.",
       "address": "Address",
       "remote": "Employment or B2B · remote PL / EU",
       "cooperation": "Registered sole proprietorship — B2B-ready (often preferred by companies)"
     },
     "header": {
       "name": "Maciej Sufa",
-      "title": "Social Media Content Creator (AI-powered)",
+      "title": "Content Creator · Author · Video & AI",
       "phone": "+48 504 003 019",
       "email": "sufamaciej@gmail.com",
       "website": "maciejvsufa.pl",
       "websiteUrl": "https://maciejvsufa.pl",
       "github": "github.com/maciejvsufa",
       "githubUrl": "https://github.com/maciejvsufa",
-      "address": "Remote (PL / EU)",
-      "born": "24 April 1988, Warsaw"
+      "address": "Łódź · remote PL / EU"
     },
-    "summary": "I create social media content end-to-end: scripts and copy editing, video (CapCut Pro, DaVinci Resolve, ffmpeg), graphics and thumbnails (Canva, GPT-Image), and a content calendar driven by trends and analytics. I run my own channels (YT/IG/FB) on a custom automated pipeline with AI agents — case study: Metoda Sufy. Technical backbone: automations (n8n, Python, APIs) and web apps. 17 years as a professional actor — incl. a lead role in the crime series \"Gliniarze\" (Polsat) — fully at ease on mic and lens. Owner of LEV, shareholder in Tercet Labs. Open to employment or B2B — registered sole proprietorship. Remote · PL/EU.",
+    "summary": "I create social media content end-to-end: scripts and copy editing, video (CapCut Pro, DaVinci Resolve, ffmpeg), graphics and thumbnails (Canva, GPT-Image), and a content calendar driven by trends and analytics. I run my own channels (YT/IG/FB) on a custom automated pipeline with AI agents — case study: Metoda Sufy. Technical backbone: automations (Python, APIs) and web apps. 17 years as a professional actor — incl. a lead role in the crime series \"Gliniarze\" (Polsat) — fully at ease on mic and lens. Owner of LEV, shareholder in Tercet Labs. Open to employment or B2B — registered sole proprietorship. Remote · PL/EU.",
     "skills": [
       {
         "group": "Content & social media",
@@ -213,7 +211,7 @@
         "context": "Personal brand run as a content studio: YouTube, Instagram, Facebook — full cycle from idea to publication",
         "bullets": [
           "End-to-end video production: script → voiceover/recording → editing (CapCut Pro, ffmpeg, DaVinci Resolve) → thumbnails and hook frames (GPT-Image, Canva) → publishing",
-          "Custom automated pipeline with AI agents: trend radar, post-resonance analytics, content calendar, publishing queue (n8n, VPS)",
+          "Custom automated pipeline with AI agents: trend radar, post-resonance analytics, content calendar",
           "Polish copywriting and editing: posts, carousels, hooks, e-mail sequences; selling my own ebook"
         ]
       },
@@ -235,7 +233,7 @@
       },
       {
         "name": "Studio AI",
-        "desc": "End-to-end video production pipeline: script → voiceover (TTS, forced alignment) → illustrations → editing and publishing (Python, ffmpeg, Claude agents, n8n; ExoVault as agent-team memory and task board)"
+        "desc": "End-to-end video production pipeline: script → voiceover (TTS, forced alignment) → illustrations → editing and publishing (Python, ffmpeg, Claude agents; ExoVault as agent-team memory and task board)"
       },
       {
         "name": "Organizacja Myśląca (Thinking Organization)",
@@ -244,7 +242,7 @@
       {
         "name": "maciejvsufa.pl",
         "url": "https://maciejvsufa.pl",
-        "desc": "Next.js portfolio (PL/EN), Lighthouse 99+"
+        "desc": "Next.js portfolio (PL/EN), Lighthouse 93/100/100/100 (measured 30.10.2026)"
       }
     ],
     "education": {

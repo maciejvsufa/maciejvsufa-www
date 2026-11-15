@@ -2,9 +2,19 @@ import type { Metadata } from "next";
 import { SiteHeader } from "@/components/site-header";
 import { site } from "@/lib/site";
 import { content } from "@/lib/content";
+import { Foot } from "@/components/sections/cv-sections";
+
+const TITLE = "Polityka prywatności — Maciej V. Sufa";
+const DESC = "Jakie dane zbiera strona maciejvsufa.pl, kto jest administratorem i jakie masz prawa.";
 
 export const metadata: Metadata = {
-  title: "Polityka prywatności — Maciej Sufa",
+  title: TITLE,
+  description: DESC,
+  alternates: {
+    canonical: "/privacy/",
+    languages: { pl: "/privacy/", en: "/en/privacy/", "x-default": "/privacy/" },
+  },
+  openGraph: { title: TITLE, description: DESC, url: `${site.url}/privacy/`, siteName: site.name, locale: "pl_PL", type: "website" },
   robots: { index: false, follow: true },
 };
 
@@ -59,9 +69,11 @@ export default function Privacy() {
             powyżej.
           </p>
           <p className="font-mono text-[13px] text-text3">
-            Administrator: {site.name}, {site.location}.
+            Administrator: {site.name}, prowadzący działalność gospodarczą {site.company.name}, NIP{" "}
+            {site.company.nip}, {site.company.city}. Kontakt: {site.email}.
           </p>
         </div>
+        <Foot t={content.pl} />
       </main>
     </>
   );

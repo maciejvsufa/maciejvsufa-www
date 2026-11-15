@@ -10,13 +10,16 @@ export const site = {
   jobTitle: "Content Creator, aktor, właściciel firmy LEV",
   email: "sufamaciej@gmail.com",
   location: "Polska",
+  /** Dane firmy do stopki i polityki (CEIDG). Bez adresu ulicy — decyzja Macieja 15.11.2026. */
+  company: { name: "Lev Maciej Sufa", nip: "5361883532", city: "Łódź" },
   socials: {
     instagram: "https://www.instagram.com/maciejvsufa/",
     facebook: "https://www.facebook.com/maciejvsufa",
+    youtube: "https://www.youtube.com/@MaciejVSufa",
+    tiktok: "https://www.tiktok.com/@maciejvsufa",
     linkedin: "https://www.linkedin.com/in/maciej-sufa",
     github: "https://github.com/maciejvsufa",
     tercetlabs: "https://tercetlabs.pl",
     asistel: "https://asistel.pl",
-    metoda: "https://metodasufy.pl",
   },
 } as const;

@@ -4,7 +4,8 @@
  * Układ: wizytówka na 3 karty (Kim jestem / Co robię / Kto za tym stoi), styl szablonu Makro, mechanika
  * „jednej strony” z przypiętą ramką i kartami bez zmian.
  * Zasady: bez zmyślonych faktów o kliencie i bez cen. Liczby w widżetach to przykładowe
- * widoki narzędzi (podpisane „Przykładowy widok”), nie wyniki ani obietnice.
+ * widoki narzędzi (podpisane jako przykładowe), nie wyniki ani obietnice. Wyjątek: Lighthouse
+ * maciejvsufa.pl z 30.10.2026 (93/100/100) — prawdziwy pomiar z datą.
  */
 
 import { site } from "@/lib/site";
@@ -102,7 +103,7 @@ const pl = {
     emailCopied: "Skopiowano ✓",
     langSwitchAria: "Zmień język / Change language",
     footerPrivacy: "Polityka prywatności",
-    sample: "Przykładowy widok",
+    sample: "Kalendarz i przepływ to widoki przykładowe. Lighthouse to prawdziwy pomiar tej strony.",
     nav: [
       { href: "#co-robie", label: "Co robię" },
       { href: "#kontakt", label: "O mnie i kontakt" },
@@ -151,7 +152,7 @@ const pl = {
           type: "flow",
           title: "Przepływ: zgłoszenie klienta",
           steps: ["Telefon albo e-mail", "Agent AI rozpoznaje sprawę", "Zgłoszenie w systemie", "Zespół dostaje gotowe"],
-          status: "Działa · ostatnio 2 min temu",
+          status: "Schemat przykładowy",
         },
       },
       {
@@ -162,13 +163,13 @@ const pl = {
         check: "Szybka i czytelna na telefonie",
         viz: {
           type: "progress",
-          title: "Nowa strona firmy",
+          title: "maciejvsufa.pl · Lighthouse",
           rows: [
-            { t: "Szybkość", p: 96 },
+            { t: "Szybkość", p: 93 },
             { t: "Dostępność", p: 100 },
             { t: "SEO", p: 100 },
           ],
-          gate: "Gotowa do publikacji",
+          gate: "Pomiar z 30.10.2026",
         },
       },
     ] as Card[],
@@ -238,7 +239,7 @@ const en: typeof pl = {
     emailCopied: "Copied ✓",
     langSwitchAria: "Zmień język / Change language",
     footerPrivacy: "Privacy policy",
-    sample: "Example view",
+    sample: "The calendar and flow are example views. Lighthouse is a real measurement of this site.",
     nav: [
       { href: "#co-robie", label: "What I do" },
       { href: "#kontakt", label: "About and contact" },
@@ -287,7 +288,7 @@ const en: typeof pl = {
           type: "flow",
           title: "Flow: customer request",
           steps: ["Phone call or e-mail", "AI agent identifies the case", "Ticket in the system", "Team gets it ready"],
-          status: "Running · last run 2 min ago",
+          status: "Example flow",
         },
       },
       {
@@ -298,13 +299,13 @@ const en: typeof pl = {
         check: "Fast and readable on a phone",
         viz: {
           type: "progress",
-          title: "New company website",
+          title: "maciejvsufa.pl · Lighthouse",
           rows: [
-            { t: "Speed", p: 96 },
+            { t: "Speed", p: 93 },
             { t: "Accessibility", p: 100 },
             { t: "SEO", p: 100 },
           ],
-          gate: "Ready to publish",
+          gate: "Measured 30.10.2026",
         },
       },
     ],
