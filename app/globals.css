@@ -2441,12 +2441,23 @@ html:has(dialog[open]) {
   }
 }
 
-/* — Kto za tym stoi (komputer): trzy panele jak kafle w „Co robię” — zdjęcie / o mnie / kontakt — */
+/* — Kto za tym stoi (komputer): zdjęcie i opis osoby. Kontakt jest następną tablicą. — */
 .kto-grid {
   display: grid;
-  grid-template-columns: 1fr 1.05fr 1.1fr;
+  grid-template-columns: 0.85fr 1.15fr;
   gap: 16px;
   height: calc(var(--tile-h) - 30px);
+}
+.kontakt-board {
+  display: flex;
+  flex-direction: column;
+  height: calc(var(--tile-h) - 10px);
+}
+.kontakt-card {
+  flex: 1;
+  width: min(760px, 100%);
+  margin-inline: auto;
+  overflow-y: auto;
 }
 .kto-panel {
   position: relative;
@@ -2580,7 +2591,8 @@ html:has(dialog[open]) {
     font-size: 14px;
   }
   .kto-lead {
-    display: none;
+    font-size: 22px;
+    padding-bottom: 12px;
   }
   .kto-links {
     margin-top: auto;
@@ -2591,7 +2603,7 @@ html:has(dialog[open]) {
 }
 @media (min-width: 810px) and (max-width: 1279px) {
   .kto-grid {
-    grid-template-columns: 0.8fr 1fr 1fr;
+    grid-template-columns: 0.75fr 1.25fr;
   }
 }
 

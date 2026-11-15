@@ -1,6 +1,6 @@
 import { SiteHeader } from "@/components/site-header";
 import { Hero } from "@/components/sections/hero";
-import { Kontakt, Zakres } from "@/components/sections/cv-sections";
+import { Kontakt, Osoba, Zakres } from "@/components/sections/cv-sections";
 import { StoryController } from "@/components/story/story-controller";
 import { ActingDialog } from "@/components/ui/acting-dialog";
 import { CertificateDialog } from "@/components/ui/certificate-dialog";
@@ -10,14 +10,15 @@ import type { SiteContent } from "@/lib/content";
  * Wizytówka „jednej strony”: ramka (.frame) jest przypięta i nie przesuwa się — przewijanie tylko
  * podmienia sceny. Pod ramką leżą niewidzialne kroki (.story-steps), które nadają stronie wysokość
  * i niosą kotwice (#co-robie, #kontakt). Kolejność scen w .frame = kolejność kroków w .story-steps.
- * Komputer: 3 karty (jeden znacznik na scenę). Telefon: dodatkowe znaczniki .snap-phone, bo
- * „Co robię” i „Kto za tym stoi” dzielą się tam na dwie karty, żeby nic nie było ściśnięte.
+ * Komputer: 4 tablice (bohater, Co robię, opis osoby, kontakt). Telefon: „Co robię”
+ * ma dodatkowy znacznik, bo tam są dwie karty.
  */
 export function HomePage({ t }: { t: SiteContent }) {
   const steps: { id: string; phoneExtra: number }[] = [
     { id: "top", phoneExtra: 0 },
     { id: "co-robie", phoneExtra: 1 },
-    { id: "kontakt", phoneExtra: 1 },
+    { id: "o-mnie", phoneExtra: 0 },
+    { id: "kontakt", phoneExtra: 0 },
   ];
   return (
     <>
@@ -31,6 +32,7 @@ export function HomePage({ t }: { t: SiteContent }) {
           <div className="frame" data-tone="white">
             <Hero t={t} />
             <Zakres t={t} />
+            <Osoba t={t} />
             <Kontakt t={t} />
           </div>
         </div>

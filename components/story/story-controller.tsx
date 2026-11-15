@@ -189,7 +189,6 @@ export function StoryController() {
       "#jak-pracuje": "co-robie",
       "#wspolpraca": "co-robie",
       "#realizacje": "co-robie",
-      "#o-mnie": "kontakt",
       "#faq": "kontakt",
       "#koniec": "kontakt",
     };
