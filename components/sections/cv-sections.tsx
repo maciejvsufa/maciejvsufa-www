@@ -1,5 +1,5 @@
 import type { CSSProperties } from "react";
-import type { Card, SiteContent } from "@/lib/content";
+import type { SiteContent } from "@/lib/content";
 import { site } from "@/lib/site";
 import { Scene } from "@/components/fx/scene";
 import { ActingButton } from "@/components/ui/acting-dialog";
@@ -7,48 +7,16 @@ import { CertificateButton } from "@/components/ui/certificate-dialog";
 import { CopyEmail } from "@/components/ui/copy-email";
 import { Cta } from "@/components/ui/cta";
 import { Icon } from "@/components/viz/icon";
-import { VizBody } from "@/components/viz/viz";
+import { ReelRow } from "@/components/sections/reel-row";
 
 const i = (n: number) => ({ "--i": n }) as CSSProperties;
 
-/** Kafel bento: etykieta, nagłówek, zdanie i mały widżet, który rusza, gdy karta staje się aktywna. */
-function Bt({ c, k }: { c: Card; k: number }) {
-  return (
-    <article className={`bt${k === 1 ? " is-dark" : ""}`} style={i(k)}>
-      <span className="tag">
-        <Icon name={c.icon} />
-        {c.tag}
-      </span>
-      <h3 className="bt-h">{c.h}</h3>
-      <p className="bt-p">{c.p}</p>
-      <div className={`viz bt-viz viz-${c.viz.type}`} aria-hidden="true">
-        <VizBody v={c.viz} />
-      </div>
-    </article>
-  );
-}
-
-/** Linijka pod kaflami: proces (strzałki zapalają się po kolei) i jeden dowód z linkami. */
+/** Pod okładkami: skąd liczba i jedna linia współtwórcy. */
 function ZakresFoot({ t }: { t: SiteContent }) {
   const z = t.coRobie;
   return (
     <div className="zakres-foot">
-      <p className="zakres-proc">
-        {z.proces.map((s, k) => (
-          <span key={s} className="zp-step" style={i(k)}>
-            {k > 0 ? (
-              <i className="zp-arrow" aria-hidden="true">
-                →
-              </i>
-            ) : null}
-            {s}
-          </span>
-        ))}
-        <span className="zp-note" style={i(z.proces.length)}>
-          {z.procesNote}
-        </span>
-      </p>
-      <p className="zakres-proof" style={i(z.proces.length + 1)}>
+      <p className="zakres-proof">
         <Icon name="check" size={16} />
         {z.dowodLabel}{" "}
         {z.dowod.map((l, k) => (
@@ -65,13 +33,15 @@ function ZakresFoot({ t }: { t: SiteContent }) {
   );
 }
 
-/**
- * Karta 2 — Co robię: trzy kafle naraz (komputer), linijka procesu i dowód.
- * Na telefonie te same kafle w dwóch kartach: 1–2 / 3 + proces + dowód.
- */
+/** Tablica „Co robię”: trzy okładki rolek, nie lista kroków. */
 export function Zakres({ t }: { t: SiteContent }) {
   const z = t.coRobie;
-  const all = z.items.map((c, k) => <Bt key={c.h} c={c} k={k} />);
+  const Board = () => (
+    <div className="zakres">
+      <ReelRow reels={z.reels} viewsWord={z.viewsWord} />
+      <ZakresFoot t={t} />
+    </div>
+  );
   return (
     <Scene
       wide
@@ -79,22 +49,9 @@ export function Zakres({ t }: { t: SiteContent }) {
       title={z.title}
       intro={z.intro}
       tone="sky"
-      items={[
-        <div key="wide" className="zakres">
-          <div className="bento bento-3">{all}</div>
-          <ZakresFoot t={t} />
-        </div>,
-      ]}
+      items={[<Board key="wide" />]}
       itemsWideOnly
-      phoneItems={[
-        <div key="p1" className="zakres">
-          <div className="bento bento-3">{all.slice(0, 2)}</div>
-        </div>,
-        <div key="p2" className="zakres">
-          <div className="bento bento-3">{all.slice(2)}</div>
-          <ZakresFoot t={t} />
-        </div>,
-      ]}
+      phoneItems={[<Board key="phone" />]}
     />
   );
 }
