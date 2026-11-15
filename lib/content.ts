@@ -123,7 +123,8 @@ const pl = {
     sample: "Kalendarz: publikacje z Metricoola, stan na 15.11.2026. Liczba 9 460: rolka z 22.10, pomiar 1–3.11.2026.",
     nav: [
       { href: "#co-robie", label: "Co robię" },
-      { href: "#kontakt", label: "O mnie i kontakt" },
+      { href: "#o-mnie", label: "O mnie" },
+      { href: "#kontakt", label: "Kontakt" },
     ],
   },
   hero: {
@@ -224,6 +225,8 @@ const pl = {
     kicker: "02",
     title: "Kto za tym stoi",
     intro: "Pracujesz z człowiekiem, nie z formularzem.",
+    contactKicker: "03",
+    contactTitle: "Kontakt",
     contactLead: "Napisz, o co chodzi. Odpowiem i umówimy rozmowę.",
     about: [
       "Jestem właścicielem firmy LEV, Content Creatorem i aktorem.",
@@ -281,7 +284,8 @@ const en: typeof pl = {
     sample: "Calendar: posts from Metricool, as of 15.11.2026. The 9,460 is the reel of 22.10, measured 1–3.11.2026.",
     nav: [
       { href: "#co-robie", label: "What I do" },
-      { href: "#kontakt", label: "About and contact" },
+      { href: "#o-mnie", label: "About" },
+      { href: "#kontakt", label: "Contact" },
     ],
   },
   hero: {
@@ -382,6 +386,8 @@ const en: typeof pl = {
     kicker: "02",
     title: "Who's behind it",
     intro: "You work with a person, not a form.",
+    contactKicker: "03",
+    contactTitle: "Contact",
     contactLead: "Tell me what it is about. I will reply and we will book a call.",
     about: [
       "I own LEV and I am a content creator and an actor.",

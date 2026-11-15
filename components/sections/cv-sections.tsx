@@ -222,9 +222,8 @@ function Contact({ t }: { t: SiteContent }) {
   );
 }
 
-/** Komputer: trzy równe panele jak w „Co robię” — duże zdjęcie / o mnie i aktorstwo / kontakt. */
-function KtoWide({ t }: { t: SiteContent }) {
-  const k = t.kontakt;
+/** Komputer: zdjęcie i opis osoby, bez kontaktu. */
+function KtoAbout({ t }: { t: SiteContent }) {
   return (
     <div className="kto">
       <div className="kto-grid">
@@ -232,33 +231,42 @@ function KtoWide({ t }: { t: SiteContent }) {
         <div className="kto-panel kto-about">
           <AboutText t={t} />
         </div>
-        <div className="kto-panel kto-contact">
-          <p className="kto-lead">{k.contactLead}</p>
-          <span className="pcard-kicker">{k.emailLabel}</span>
-          <a className="cval" href={t.ui.ctaHref}>
-            {site.email}
-          </a>
-          <div className="contact-actions">
-            <Cta href={t.ui.ctaHref} label={t.ui.cta} />
-            <CopyEmail email={site.email} label={t.ui.copyEmail} copied={t.ui.emailCopied} />
+      </div>
+    </div>
+  );
+}
+
+/** Komputer: jedna karta kontaktu na własnej tablicy. */
+function ContactCard({ t }: { t: SiteContent }) {
+  const k = t.kontakt;
+  return (
+    <div className="kontakt-board">
+      <div className="kto-panel kto-contact kontakt-card">
+        <p className="kto-lead">{k.contactLead}</p>
+        <span className="pcard-kicker">{k.emailLabel}</span>
+        <a className="cval" href={t.ui.ctaHref}>
+          {site.email}
+        </a>
+        <div className="contact-actions">
+          <Cta href={t.ui.ctaHref} label={t.ui.cta} />
+          <CopyEmail email={site.email} label={t.ui.copyEmail} copied={t.ui.emailCopied} />
+        </div>
+        <div className="kto-links">
+          <div>
+            <p className="meta">{k.sitesLabel}</p>
+            {k.sites.map((s) => (
+              <a key={s.label} className="lnk" href={s.href} target="_blank" rel="noopener noreferrer">
+                {s.label}
+              </a>
+            ))}
           </div>
-          <div className="kto-links">
-            <div>
-              <p className="meta">{k.sitesLabel}</p>
-              {k.sites.map((s) => (
-                <a key={s.label} className="lnk" href={s.href} target="_blank" rel="noopener noreferrer">
-                  {s.label}
-                </a>
-              ))}
-            </div>
-            <div>
-              <p className="meta">{k.socialsLabel}</p>
-              {socials.map((s) => (
-                <a key={s.label} className="lnk" href={s.href} target="_blank" rel="noopener noreferrer">
-                  {s.label}
-                </a>
-              ))}
-            </div>
+          <div>
+            <p className="meta">{k.socialsLabel}</p>
+            {socials.map((s) => (
+              <a key={s.label} className="lnk" href={s.href} target="_blank" rel="noopener noreferrer">
+                {s.label}
+              </a>
+            ))}
           </div>
         </div>
       </div>
@@ -267,11 +275,8 @@ function KtoWide({ t }: { t: SiteContent }) {
   );
 }
 
-/**
- * Karta 3 — Kto za tym stoi. Komputer: trzy panele (zdjęcie / o mnie / kontakt).
- * Telefon: dwie karty — o mnie ze zdjęciem / kontakt.
- */
-export function Kontakt({ t }: { t: SiteContent }) {
+/** Tablica 02 — opis osoby. Telefon: zdjęcie i tekst na jednej karcie. */
+export function Osoba({ t }: { t: SiteContent }) {
   const k = t.kontakt;
   return (
     <Scene
@@ -280,9 +285,25 @@ export function Kontakt({ t }: { t: SiteContent }) {
       title={k.title}
       intro={k.intro}
       tone="white"
-      items={[<KtoWide key="wide" t={t} />]}
+      items={[<KtoAbout key="wide" t={t} />]}
       itemsWideOnly
-      phoneItems={[<About key="about" t={t} />, <Contact key="contact" t={t} />]}
+      phoneItems={[<About key="about" t={t} />]}
+    />
+  );
+}
+
+/** Tablica 03 — kontakt, dopiero po kolejnym przewinięciu. */
+export function Kontakt({ t }: { t: SiteContent }) {
+  const k = t.kontakt;
+  return (
+    <Scene
+      wide
+      num={k.contactKicker}
+      title={k.contactTitle}
+      tone="white"
+      items={[<ContactCard key="wide" t={t} />]}
+      itemsWideOnly
+      phoneItems={[<Contact key="contact" t={t} />]}
     />
   );
 }
