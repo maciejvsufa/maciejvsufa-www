@@ -28,6 +28,16 @@ export type IconName =
 
 export type Viz =
   | { type: "calendar"; title: string; days: string[]; items: [number, string][] }
+  | {
+      type: "planner";
+      title: string;
+      range: string;
+      days: string[];
+      start: number; // dzień miesiąca pierwszego poniedziałku
+      items: { day: number; img: string; label: string; state: "pub" | "plan"; meta: string; more?: number }[];
+      legend: [string, string];
+      source: string;
+    }
   | { type: "flow"; title: string; steps: string[]; status: string }
   | { type: "orbit"; title: string; center: string; sub: string; nodes: string[] }
   | { type: "line"; title: string; value: string; badge: string; points: number[]; axis: string[]; foot: [string, string][] }
@@ -103,7 +113,7 @@ const pl = {
     emailCopied: "Skopiowano ✓",
     langSwitchAria: "Zmień język / Change language",
     footerPrivacy: "Polityka prywatności",
-    sample: "Kalendarz i przepływ to widoki przykładowe. Lighthouse to prawdziwy pomiar tej strony.",
+    sample: "Kalendarz: moje publikacje z Metricoola, stan na 15.11.2026. Przepływ to widok przykładowy. Lighthouse to prawdziwy pomiar tej strony.",
     nav: [
       { href: "#co-robie", label: "Co robię" },
       { href: "#kontakt", label: "O mnie i kontakt" },
@@ -111,10 +121,13 @@ const pl = {
   },
   hero: {
     aria: "Wprowadzenie",
-    badge: "Content Creator · strony www · AI dla firm",
-    title: "Tworzę treści i wdrażam AI, które oszczędza firmom czas",
-    lead: "Prowadzę kanały od pomysłu do publikacji, buduję strony www i wdrażam automatyzacje oraz agentów AI, którzy zdejmują z zespołu powtarzalną robotę.",
-    facts: ["17 lat przed kamerą", "Certyfikat Google & SGH", "Współtwórca Asistel"],
+    badge: "Content creator · autor",
+    title: "Krótkie wideo od scenariusza po wyniki",
+    lead: "Sam piszę, występuję, montuję i sprawdzam, co działa. 17 lat przed kamerą — dziś w rolkach na Instagramie, TikToku i YouTube.",
+    cta: "Zobacz portfolio",
+    ctaHref: "/portfolio/",
+    ctaAlt: "albo napisz do mnie",
+    facts: ["17 lat przed kamerą", "Rolka z 22.10.2026: 9 460 wyświetleń", "„Obudzona” — premiera 14.02.2027"],
     photoAlt: "Uśmiechnięty Maciej V. Sufa w niebieskiej koszuli",
   },
   coRobie: {
@@ -129,17 +142,23 @@ const pl = {
         p: "Scenariusz, nagranie, montaż, miniatury i publikacja według kalendarza. YouTube, Reels, karuzele.",
         check: "Bez dziur w kalendarzu publikacji",
         viz: {
-          type: "calendar",
+          type: "planner",
           title: "Kalendarz treści",
+          range: "9–22 listopada 2026",
           days: ["Pn", "Wt", "Śr", "Cz", "Pt", "Sb", "Nd"],
+          start: 9,
           items: [
-            [0, "Reels"],
-            [1, "Karuzela"],
-            [2, "YouTube"],
-            [3, "Reels"],
-            [4, "Post"],
-            [5, "Stories"],
+            { day: 9, img: "/kalendarz/2026-11-09.webp", label: "Jest mi po prostu smutno", state: "pub", meta: "1517" },
+            { day: 11, img: "/kalendarz/2026-11-11.webp", label: "On miał zły dzień. Ona taka jest.", state: "pub", meta: "419" },
+            { day: 13, img: "/kalendarz/2026-11-13.webp", label: "Zostaniesz sama", state: "pub", meta: "385" },
+            { day: 15, img: "/kalendarz/2026-11-15.webp", label: "Kompot z ziół", state: "plan", meta: "20:15" },
+            { day: 16, img: "/kalendarz/2026-11-16.webp", label: "Dla kogo się tak starasz?", state: "plan", meta: "20:15", more: 1 },
+            { day: 18, img: "/kalendarz/2026-11-18.webp", label: "Przecież ty dasz radę", state: "plan", meta: "20:15" },
+            { day: 20, img: "/kalendarz/2026-11-20.webp", label: "Czyje jest twoje „muszę”?", state: "plan", meta: "20:15" },
+            { day: 22, img: "/kalendarz/2026-11-22.webp", label: "Nie mogę czy nie robię tego?", state: "plan", meta: "20:15" },
           ],
+          legend: ["opublikowane · wyświetlenia na IG", "zaplanowane · IG, FB, TikTok, YouTube"],
+          source: "Metricool, stan na 15.11.2026",
         },
       },
       {
@@ -239,7 +258,7 @@ const en: typeof pl = {
     emailCopied: "Copied ✓",
     langSwitchAria: "Zmień język / Change language",
     footerPrivacy: "Privacy policy",
-    sample: "The calendar and flow are example views. Lighthouse is a real measurement of this site.",
+    sample: "Calendar: my posts from Metricool, as of 15.11.2026. The flow is an example view. Lighthouse is a real measurement of this site.",
     nav: [
       { href: "#co-robie", label: "What I do" },
       { href: "#kontakt", label: "About and contact" },
@@ -247,10 +266,13 @@ const en: typeof pl = {
   },
   hero: {
     aria: "Introduction",
-    badge: "Content Creator · websites · AI for business",
-    title: "I create content and deploy AI that saves companies time",
-    lead: "I run channels from idea to publication, build websites and deploy automations and AI agents that take repetitive work off your team.",
-    facts: ["17 years on camera", "Google & SGH certificate", "Co-creator of Asistel"],
+    badge: "Content creator · author",
+    title: "Short-form video from script to results",
+    lead: "I write, perform, edit and check what works. 17 years on camera — today in reels on Instagram, TikTok and YouTube.",
+    cta: "See portfolio",
+    ctaHref: "/en/portfolio/",
+    ctaAlt: "or write to me",
+    facts: ["17 years on camera", "Reel of 22.10.2026: 9,460 views", "“Obudzona” — out 14.02.2027"],
     photoAlt: "Smiling Maciej V. Sufa in a blue shirt",
   },
   coRobie: {
@@ -265,17 +287,23 @@ const en: typeof pl = {
         p: "Script, recording, editing, thumbnails and publishing on a calendar. YouTube, Reels, carousels.",
         check: "No gaps in the publishing calendar",
         viz: {
-          type: "calendar",
+          type: "planner",
           title: "Content calendar",
+          range: "9–22 November 2026",
           days: ["Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"],
+          start: 9,
           items: [
-            [0, "Reels"],
-            [1, "Carousel"],
-            [2, "YouTube"],
-            [3, "Reels"],
-            [4, "Post"],
-            [5, "Stories"],
+            { day: 9, img: "/kalendarz/2026-11-09.webp", label: "Jest mi po prostu smutno", state: "pub", meta: "1517" },
+            { day: 11, img: "/kalendarz/2026-11-11.webp", label: "On miał zły dzień. Ona taka jest.", state: "pub", meta: "419" },
+            { day: 13, img: "/kalendarz/2026-11-13.webp", label: "Zostaniesz sama", state: "pub", meta: "385" },
+            { day: 15, img: "/kalendarz/2026-11-15.webp", label: "Kompot z ziół", state: "plan", meta: "20:15" },
+            { day: 16, img: "/kalendarz/2026-11-16.webp", label: "Dla kogo się tak starasz?", state: "plan", meta: "20:15", more: 1 },
+            { day: 18, img: "/kalendarz/2026-11-18.webp", label: "Przecież ty dasz radę", state: "plan", meta: "20:15" },
+            { day: 20, img: "/kalendarz/2026-11-20.webp", label: "Czyje jest twoje „muszę”?", state: "plan", meta: "20:15" },
+            { day: 22, img: "/kalendarz/2026-11-22.webp", label: "Nie mogę czy nie robię tego?", state: "plan", meta: "20:15" },
           ],
+          legend: ["published · Instagram views", "scheduled · IG, FB, TikTok, YouTube"],
+          source: "Metricool, as of 15.11.2026",
         },
       },
       {

@@ -34,7 +34,10 @@ export function Hero({ t }: { t: SiteContent }) {
           <SplitText as="h1" text={h.title} by="word" trigger="mount" start={0.45} stagger={0.06} className="hero-title" />
           <p className="hero-lead">{h.lead}</p>
           <div className="hero-actions">
-            <Cta href={t.ui.ctaHref} label={t.ui.cta} />
+            <Cta href={h.ctaHref} label={h.cta} />
+            <a className="hero-alt lnk" href={t.ui.ctaHref}>
+              {h.ctaAlt}
+            </a>
           </div>
           <ul className="hero-facts">
             {h.facts.map((f) => (

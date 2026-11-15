@@ -1,7 +1,7 @@
 /** Stałe witryny — jedno miejsce na URL, kontakt, social. */
 export const site = {
   name: "Maciej V. Sufa",
-  title: "Maciej V. Sufa: treści i AI dla firm",
+  title: "Maciej V. Sufa — content creator i autor",
   description:
     "Content Creator: tworzę treści na social media, buduję strony www i wdrażam automatyzacje oraz agentów AI, które oszczędzają firmom czas. Właściciel firmy LEV, aktor, współudziałowiec Tercet Labs, współtwórca Asistel. Zdalnie, PL/UE.",
   descriptionEn:
