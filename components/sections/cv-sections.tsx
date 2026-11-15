@@ -145,17 +145,38 @@ function About({ t }: { t: SiteContent }) {
   );
 }
 
-const socials = [
+/** Social w stopce i w kontakcie: kolejność z briefu 15.11.2026. GitHub tylko w kontakcie. */
+const socialsMain = [
   { href: site.socials.instagram, label: "Instagram" },
+  { href: site.socials.facebook, label: "Facebook" },
+  { href: site.socials.youtube, label: "YouTube" },
+  { href: site.socials.tiktok, label: "TikTok" },
   { href: site.socials.linkedin, label: "LinkedIn" },
-  { href: site.socials.github, label: "GitHub" },
 ];
+const socials = [...socialsMain, { href: site.socials.github, label: "GitHub" }];
 
-function Foot({ t }: { t: SiteContent }) {
+export function Foot({ t }: { t: SiteContent }) {
+  const en = t.lang === "en";
+  const base = en ? "/en" : "";
   return (
     <footer className="foot">
-      <span>© 2026 {site.name}</span>
-      <a href="/privacy/">{t.ui.footerPrivacy}</a>
+      <nav className="foot-nav" aria-label={en ? "Footer" : "Stopka"}>
+        <a href={`${base}/`}>{en ? "Home" : "Strona główna"}</a>
+        <a href={`${base}/portfolio/`}>Portfolio</a>
+        {en ? null : <a href="/cv/">CV</a>}
+        <a href={`${base}/#kontakt`}>{en ? "Contact" : "Kontakt"}</a>
+        <a href={`${base}/privacy/`}>{t.ui.footerPrivacy}</a>
+      </nav>
+      <p className="foot-social">
+        {socialsMain.map((s) => (
+          <a key={s.label} href={s.href} target="_blank" rel="noopener noreferrer">
+            {s.label}
+          </a>
+        ))}
+      </p>
+      <p className="foot-legal">
+        © 2026 {site.name} · {site.company.name} · NIP {site.company.nip} · {site.company.city}
+      </p>
     </footer>
   );
 }

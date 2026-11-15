@@ -124,10 +124,6 @@ function buildHtml(locale) {
         <a href="${esc(header.websiteUrl)}">${esc(header.website)}</a>
         ${header.github ? `<span class="label">GitHub</span>
         <a href="${esc(header.githubUrl)}">${esc(header.github)}</a>` : ""}
-        <span class="label">${esc(labels.born)}</span>
-        ${esc(header.born)}
-        <span class="label">${esc(labels.address || "Adres")}</span>
-        ${esc(header.address)}
         <p class="remote-note">${esc(labels.remote)}</p>
         ${labels.cooperation ? `<p class="cooperation-note">${esc(labels.cooperation)}</p>` : ""}
       </div>
@@ -164,6 +160,7 @@ function buildHtml(locale) {
         <p class="cert-name main-cert">${esc(certificate.name)} (${esc(certificate.year)})</p>
         <p class="cert-issuer main-cert">${esc(certificate.issuer)} — ${esc(certificate.desc)}</p>
       </div>
+      ${d.rodo ? `<p class="rodo">${esc(d.rodo)}</p>` : ""}
       </div>
 
       <div class="col-footer">${esc(footer)}</div>
@@ -239,7 +236,6 @@ async function buildDocx(locale, outPath) {
     bodyText(header.email, { color: "E8E2D4" }),
     bodyText(header.website, { color: "E8E2D4" }),
     ...(header.github ? [bodyText(header.github, { color: "E8E2D4" })] : []),
-    bodyText(`${labels.born} ${header.born}`, { color: "B8B5AD", size: 18 }),
     bodyText(header.address, { color: "B8B5AD", size: 18 }),
     bodyText(labels.remote, { color: "B8B5AD", size: 18, italics: true }),
     ...(labels.cooperation ? [bodyText(labels.cooperation, { color: "C9C0AD", size: 17, italics: true })] : []),
@@ -290,6 +286,7 @@ async function buildDocx(locale, outPath) {
       children: [new TextRun({ text: `${certificate.name} (${certificate.year})`, bold: true, size: 20 })],
     }),
     bodyText(`${certificate.issuer} — ${certificate.desc}`, { color: "6B6558", size: 18 }),
+    ...(d.rodo ? [bodyText(d.rodo, { color: "8A8578", size: 15, italics: true })] : []),
   ];
 
   const doc = new Document({
