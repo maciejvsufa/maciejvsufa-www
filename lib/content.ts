@@ -202,7 +202,7 @@ const pl = {
               views: 9460,
             },
             {
-              img: "/kalendarz/2026-10-30.webp",
+              img: "/kalendarz/2026-10-30-v2.webp",
               title: "Co słychać? „Dobrze”. I tyle.",
               date: "30.10.2026",
             },
@@ -229,7 +229,7 @@ const pl = {
         href: REEL_2210,
       },
       {
-        img: "/kalendarz/2026-10-30.webp",
+        img: "/kalendarz/2026-10-30-v2.webp",
         title: "Co słychać? „Dobrze”. I tyle.",
         date: "30.10.2026",
       },
@@ -385,7 +385,7 @@ const en: typeof pl = {
               views: 9460,
             },
             {
-              img: "/kalendarz/2026-10-30.webp",
+              img: "/kalendarz/2026-10-30-v2.webp",
               title: "Co słychać? „Dobrze”. I tyle.",
               date: "30.10.2026",
             },
@@ -412,7 +412,7 @@ const en: typeof pl = {
         href: REEL_2210,
       },
       {
-        img: "/kalendarz/2026-10-30.webp",
+        img: "/kalendarz/2026-10-30-v2.webp",
         title: "Co słychać? „Dobrze”. I tyle.",
         date: "30.10.2026",
       },
