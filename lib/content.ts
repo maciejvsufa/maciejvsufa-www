@@ -95,6 +95,7 @@ const acting = {
     ["2010", "Szekspir w fortach", "reż. Andrzej Domalik · Petruchio", "dir. Andrzej Domalik · Petruchio"],
   ] as [string, string, string, string, boolean?][],
   stage: [
+    ["2025", "Opera Narodowa – Teatr Wielki", "„Ariadna na Naxos”, reż. Mariusz Treliński", "“Ariadne auf Naxos”, dir. Mariusz Treliński"],
     ["2023", "Opera Narodowa – Teatr Wielki", "„Moc przeznaczenia”, reż. Mariusz Treliński", "“La forza del destino”, dir. Mariusz Treliński"],
     ["2013–2015", "Kabaret „Filip z Konopi” Filipa Borowskiego", "występy aktorskie i wokalne", "acting and singing"],
     ["2011", "Autorski stand-up", "scena „Sauny Marszałka”, Warszawa", "“Sauna Marszałka” stage, Warsaw"],

@@ -26,6 +26,7 @@ export default function Cv() {
         <p className="mt-6 flex flex-wrap gap-x-5 gap-y-2">
           <a className="lnk" href="/cv/Maciej_Sufa_CV.pdf">CV po polsku (PDF)</a>
           <a className="lnk" href="/cv/Maciej_Sufa_CV.docx">CV po polsku (DOCX)</a>
+          <a className="lnk" href="/cv/Maciej_Sufa_CV_aktorskie.pdf">CV aktorskie (PDF)</a>
           <a className="lnk" href="/portfolio/">Portfolio</a>
         </p>
         <Foot t={content.pl} />
