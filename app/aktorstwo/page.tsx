@@ -12,7 +12,10 @@ const DESC =
 export const metadata: Metadata = {
   title: TITLE,
   description: DESC,
-  alternates: { canonical: "/aktorstwo/" },
+  alternates: {
+    canonical: "/aktorstwo/",
+    languages: { pl: "/aktorstwo/", en: "/en/aktorstwo/", "x-default": "/aktorstwo/" },
+  },
   openGraph: { title: TITLE, description: DESC, url: `${site.url}/aktorstwo/`, siteName: site.name, locale: "pl_PL", type: "website" },
 };
 

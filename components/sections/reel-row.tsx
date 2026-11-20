@@ -1,21 +1,26 @@
 export type Reel = {
-  img: string;
+  img?: string;
   title: string;
   date: string;
   /** Tylko gdy jest pomiar. Bez liczby nie pokazujemy wyświetleń. */
   views?: number;
+  /** Gotowy podpis liczby, gdy sam format „n wyświetleń” nie wystarcza. */
+  viewsText?: string;
   /** Link do opublikowanej rolki. Bez linku okładka zostaje obrazem. */
   href?: string;
+  /** Napis w ramce, gdy nie ma pliku okładki. */
+  frameLabel?: string;
 };
 
-const nf = (n: number) => String(n).replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+const nf = (n: number, lang: "pl" | "en") =>
+  lang === "en" ? n.toLocaleString("en-US") : String(n).replace(/\B(?=(\d{3})+(?!\d))/g, " ");
 
-/** Trzy okładki wielkości telefonu. Klikalna jest tylko rolka, do której mamy adres. */
-export function ReelRow({ reels, viewsWord }: { reels: Reel[]; viewsWord: string }) {
+/** Trzy okładki wielkości telefonu. Każda z adresem jest linkiem. */
+export function ReelRow({ reels, viewsWord, lang = "pl" }: { reels: Reel[]; viewsWord: string; lang?: "pl" | "en" }) {
   return (
     <div className="reel-row">
       {reels.map((r) => {
-        const views = r.views ? `${nf(r.views)} ${viewsWord}` : null;
+        const views = r.viewsText ?? (r.views ? `${nf(r.views, lang)} ${viewsWord}` : null);
         const caption = (
           <span className="reel-cap">
             <b>{r.title}</b>
@@ -27,8 +32,12 @@ export function ReelRow({ reels, viewsWord }: { reels: Reel[]; viewsWord: string
         );
         const frame = (
           <span className="reel-frame">
-            {/* eslint-disable-next-line @next/next/no-img-element -- statyczny eksport, okładka 180×320 */}
-            <img src={r.img} alt="" width={180} height={320} />
+            {r.img ? (
+              // eslint-disable-next-line @next/next/no-img-element -- statyczny eksport, okładka 180×320
+              <img src={r.img} alt={r.title} width={180} height={320} />
+            ) : (
+              <span className="reel-fallback">{r.frameLabel}</span>
+            )}
             {r.href ? (
               <span className="reel-play" aria-hidden="true">
                 <i />
@@ -36,17 +45,19 @@ export function ReelRow({ reels, viewsWord }: { reels: Reel[]; viewsWord: string
             ) : null}
           </span>
         );
+        const key = r.href ?? r.title;
         if (r.href) {
-          const name = views ? `${r.title}. ${r.date}. ${views}.` : `${r.title}. ${r.date}.`;
+          const titled = r.title.replace(/[. ]+$/, "");
+          const name = views ? `${titled}. ${r.date}. ${views}.` : `${titled}. ${r.date}.`;
           return (
-            <a key={r.img} className="reel" href={r.href} target="_blank" rel="noopener noreferrer" aria-label={name}>
+            <a key={key} className="reel" href={r.href} target="_blank" rel="noopener noreferrer" aria-label={name}>
               {frame}
               {caption}
             </a>
           );
         }
         return (
-          <figure key={r.img} className="reel">
+          <figure key={key} className="reel">
             {frame}
             <figcaption className="reel-cap">
               <b>{r.title}</b>

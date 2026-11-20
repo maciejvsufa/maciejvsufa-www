@@ -38,7 +38,7 @@ export function Zakres({ t }: { t: SiteContent }) {
   const z = t.coRobie;
   const Board = () => (
     <div className="zakres">
-      <ReelRow reels={z.reels} viewsWord={z.viewsWord} />
+      <ReelRow reels={z.reels} viewsWord={z.viewsWord} lang={t.lang} />
       <ZakresFoot t={t} />
     </div>
   );
@@ -121,7 +121,7 @@ export function Foot({ t }: { t: SiteContent }) {
         <a href={`${base}/`}>{en ? "Home" : "Strona główna"}</a>
         <a href={`${base}/portfolio/`}>Portfolio</a>
         <a href={`${base}/cv/`}>CV</a>
-        {en ? null : <a href="/aktorstwo/">Aktorstwo</a>}
+        <a href={en ? "/en/aktorstwo/" : "/aktorstwo/"}>{en ? "Acting" : "Aktorstwo"}</a>
         <a href={`${base}/#kontakt`}>{en ? "Contact" : "Kontakt"}</a>
         <a href={`${base}/privacy/`}>{t.ui.footerPrivacy}</a>
       </nav>
