@@ -1,17 +1,10 @@
 import type { Metadata } from "next";
 import { SiteHeader } from "@/components/site-header";
 import { Foot } from "@/components/sections/cv-sections";
-import { ReelRow } from "@/components/sections/reel-row";
+import { RecordEmbed } from "@/components/sections/record-embed";
 import { site } from "@/lib/site";
 import { content } from "@/lib/content";
-
-/**
- * Portfolio v0 (15.11.2026). Zasady z briefu:
- * - liczby tylko z datą i źródłem, bez danych demo;
- * - bez iframe’ów Instagrama i TikToka (muzyka z biblioteki aplikacji) — osadzamy tylko YouTube albo dajemy link;
- * - bez rolek o kościele i polityce;
- * - czego jeszcze nie ma, ma status „w realizacji”, a nie pustą ramkę.
- */
+import { reelLinks } from "@/lib/reels";
 
 const TITLE = "Portfolio — Maciej V. Sufa, content creator";
 const DESC =
@@ -33,22 +26,59 @@ export const metadata: Metadata = {
     type: "website",
     images: [{ url: "/og-image.png", width: 1200, height: 630, alt: TITLE }],
   },
+  twitter: {
+    card: "summary_large_image",
+    title: TITLE,
+    description: DESC,
+    images: ["/og-image.png"],
+  },
 };
 
-type Case = { kicker: string; h: string; p: string; facts: string[]; status?: string; link?: { href: string; label: string } };
+const recordLinks = [
+  { href: reelLinks.recordFb, label: "Facebook · 237 414" },
+  { href: reelLinks.recordYt, label: "YouTube · 85 330" },
+  { href: reelLinks.recordTt, label: "TikTok · 66 956" },
+  { href: reelLinks.recordIg, label: "Instagram · 12 866" },
+];
 
-const cases: Case[] = [
+const cards = [
   {
-    kicker: "01 · Marka osobista",
-    h: "@maciejvsufa",
-    p: "Każdą rolkę robię od początku do końca: sam piszę scenariusz, występuję, montuję w DaVinci Resolve, publikuję i sprawdzam, które tematy działają.",
-    facts: [
-      "Rolka z 22.10.2026 na Instagramie: 9 460 wyświetleń, 7 456 osób zasięgu, 106 zapisów, 51 udostępnień (Metricool, pomiar 1–3.11.2026).",
-      "Instagram: 3 604 obserwujących (Metricool, 1–3.11.2026).",
-    ],
-    link: { href: "https://www.instagram.com/reel/Dezb4BlAZRD/", label: "Zobacz rolkę na Instagramie" },
-    status: "Opis całego projektu: w realizacji (stan na 15.11.2026).",
+    title: "Modlitwa, którą znasz od dziecka, brzmi inaczej, niż myślisz.",
+    meta: "18.11.2026 · hook i dystrybucja",
+    numbers:
+      "402 566 wyświetleń w 2 dni. Facebook 237 414 i 2 920 polubień. YouTube 85 330, 1 376 polubień, 157 komentarzy, 441 udostępnień. TikTok 66 956, 1 147 polubień, 319 komentarzy, 291 udostępnień. Instagram 12 866, 236 polubień, 54 komentarze, 112 udostępnień, 104 zapisy.",
+    shows:
+      "Jeden komentarz do sprawy, która już żyła w ludziach, ten sam materiał na czterech platformach, setki komentarzy.",
+    href: reelLinks.recordYt,
+    link: "YouTube",
   },
+  {
+    title: "Po tym jednym słowie widać, czy związek przetrwa",
+    meta: "22.10.2026 · Instagram · pomysł, który zostaje",
+    numbers: "10 198 wyświetleń, 120 zapisów, 53 udostępnienia.",
+    shows: "Dużo zapisów jak na ten zasięg. Ludzie wracają do rolki, nie tylko ją przesuwają.",
+    href: reelLinks.ig2210,
+    link: "Instagram",
+  },
+  {
+    title: "Idziesz jutro na groby?",
+    meta: "31.10.2026 · TikTok · społeczność",
+    numbers: "7 336 wyświetleń, 177 komentarzy.",
+    shows: "Dużo rozmowy przy mniejszym zasięgu. Liczy się udział, nie samo odtworzenie.",
+    href: reelLinks.groby,
+    link: "TikTok",
+  },
+  {
+    title: "Zostaniesz sama? Sama to nie samotna.",
+    meta: "13.11.2026 · YouTube · głos i temat",
+    numbers: "1 690 wyświetleń.",
+    shows: "Temat, który prowadzę na co dzień. Warsztat przed kamerą, nie tylko jeden wiral.",
+    href: reelLinks.samotna,
+    link: "YouTube",
+  },
+];
+
+const rest = [
   {
     kicker: "02 · Warsztat przed kamerą",
     h: "17 lat przed kamerą",
@@ -69,7 +99,7 @@ const cases: Case[] = [
   {
     kicker: "04 · Narzędzia i proces",
     h: "Od pomysłu do liczb",
-    p: "Pomysł → scenariusz z pomocą Claude → nagranie aparatem Canon → montaż w DaVinci Resolve Studio → publikacja → statystyki w Metricool i Arkuszach Google.",
+    p: "Pomysł → scenariusz z pomocą Claude → nagranie aparatem Canon → montaż w DaVinci Resolve Studio → publikacja → statystyki w Metricool i Arkuszach Google → społeczność (komentarze i odpowiedzi).",
     facts: ["Na co dzień także: CapCut, Canva."],
   },
 ];
@@ -89,36 +119,74 @@ export default function Portfolio() {
       <main id="main" className="page pad-x mx-auto max-w-[860px] pb-20 pt-[160px]">
         <h1 className="font-display text-[clamp(32px,5vw,52px)] font-bold uppercase text-text">Portfolio</h1>
         <p className="mt-4 max-w-[640px] text-[18px] leading-[1.6] text-text2">
-          Content creator i autor. Od 17 lat pracuję przed kamerą, dziś robię krótkie wideo od scenariusza
-          po wnioski z liczb.
+          Content creator i autor. Od 17 lat pracuję przed kamerą. Dziś robię krótkie wideo od scenariusza po wnioski z
+          liczb — w tym rolkę, która w dwa dni zebrała ponad 400 tys. wyświetleń.
         </p>
 
         <div className="mt-10 grid gap-5">
-          {cases.map((c) => (
+          <section className="pcard" aria-labelledby="h-01">
+            <p className="meta mb-2">01 · Marka osobista</p>
+            <h2 id="h-01" className="font-display text-[24px] font-semibold text-text">
+              400 tys. wyświetleń w 2 dni
+            </h2>
+            <p className="mt-2 leading-[1.6] text-text2">
+              18.11.2026 nagrałem rolkę o tym, że modlitwa, którą znasz od dziecka, brzmi inaczej, niż myślisz. W dwa dni
+              zebrała 402 566 wyświetleń na Facebooku, YouTube, TikToku i Instagramie. Od pomysłu po publikację i rozmowę
+              w komentarzach robię to sam.
+            </p>
+            <RecordEmbed title="Rolka z 18.11.2026: Papież poprawił „Ojcze nasz”" />
+            <p className="reel-links">
+              {recordLinks.map((l) => (
+                <a key={l.href} className="lnk" href={l.href} target="_blank" rel="noopener noreferrer">
+                  {l.label} ↗
+                </a>
+              ))}
+            </p>
+            <div className="results-strip">
+              <p className="font-semibold text-text">Wyniki kanałów @maciejvsufa</p>
+              <p className="mt-2 leading-[1.6] text-text2">
+                Facebook 4 963 obserwujących (stan na 19.11.2026) · Instagram 3 629 · YouTube 217 (15.11 było 65) ·
+                TikTok 76.
+              </p>
+              <p className="mt-2 font-mono text-[13px] text-text3">
+                Źródło: Metricool, stan na 20.11.2026, o ile nie podano inaczej.
+              </p>
+            </div>
+            <ul className="mt-2 divide-y divide-line">
+              {cards.map((c) => (
+                <li key={c.href} className="py-4">
+                  <p className="font-semibold leading-[1.4] text-text">{c.title}</p>
+                  <p className="mt-1 font-mono text-[13px] text-text3">{c.meta}</p>
+                  <p className="mt-2 leading-[1.6] text-text2">{c.numbers}</p>
+                  <p className="mt-2 leading-[1.6] text-text2">{c.shows}</p>
+                  <p className="mt-2">
+                    <a className="lnk" href={c.href} target="_blank" rel="noopener noreferrer">
+                      {c.link} ↗
+                    </a>
+                  </p>
+                </li>
+              ))}
+            </ul>
+            <p className="mt-2 leading-[1.6] text-text2">
+              Każdą rolkę prowadzę od początku do końca: pomysł, nagranie, montaż w DaVinci Resolve, publikacja i rozmowa
+              z ludźmi w komentarzach. Przy scenariuszu korzystam z Claude. Statystyki sprawdzam w Metricool i Arkuszach
+              Google.
+            </p>
+          </section>
+
+          {rest.map((c) => (
             <section key={c.kicker} className="pcard" aria-labelledby={`h-${c.kicker.slice(0, 2)}`}>
               <p className="meta mb-2">{c.kicker}</p>
               <h2 id={`h-${c.kicker.slice(0, 2)}`} className="font-display text-[24px] font-semibold text-text">
                 {c.h}
               </h2>
-              {c.kicker.startsWith("01") ? (
-                <div className="portfolio-reels">
-                  <ReelRow reels={content.pl.coRobie.reels} viewsWord={content.pl.coRobie.viewsWord} />
-                </div>
-              ) : null}
               <p className="mt-2 leading-[1.6] text-text2">{c.p}</p>
               <ul className="mt-3 list-disc space-y-1 pl-5 leading-[1.6] text-text2">
                 {c.facts.map((f) => (
                   <li key={f}>{f}</li>
                 ))}
               </ul>
-              {c.link ? (
-                <p className="mt-3">
-                  <a className="lnk" href={c.link.href} target="_blank" rel="noopener noreferrer">
-                    {c.link.label} ↗
-                  </a>
-                </p>
-              ) : null}
-              {c.status ? <p className="mt-3 font-mono text-[13px] text-text3">{c.status}</p> : null}
+              {"status" in c && c.status ? <p className="mt-3 font-mono text-[13px] text-text3">{c.status}</p> : null}
             </section>
           ))}
         </div>

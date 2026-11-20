@@ -2110,6 +2110,48 @@ a.reel:hover .reel-frame {
   aspect-ratio: 9 / 16;
   height: min(420px, 62vw);
 }
+.reel-fallback {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 100%;
+  padding: 12px;
+  background: #1c2430;
+  color: var(--lime);
+  font-family: var(--font-display);
+  font-size: clamp(18px, 4vw, 32px);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  text-align: center;
+}
+.yt-frame {
+  position: relative;
+  width: 100%;
+  margin-top: 16px;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-radius: 16px;
+  background: #1c2430;
+}
+.yt-frame iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+.reel-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 18px;
+  margin-top: 12px;
+}
+.results-strip {
+  margin-top: 18px;
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+}
 :is(.scene[data-state="active"] .scene-item[data-state="active"], html:not(.story-on) .scene-item) :is(.zakres .bt, .zp-step, .zp-note, .zakres-proof) {
   opacity: 1;
   transform: none;

@@ -2,8 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Nie znaleziono — Maciej V. Sufa",
-  robots: { index: false, follow: true },
+  title: "Nie znaleziono / Not found — Maciej V. Sufa",
+  robots: { index: false, follow: false },
+  alternates: { canonical: null },
 };
 
 export default function NotFound() {
@@ -14,6 +15,7 @@ export default function NotFound() {
         Tej strony nie ma
       </h1>
       <p className="mt-4 text-text2">Zajrzyj do portfolio albo wróć na stronę główną.</p>
+      <p className="mt-2 text-text2">This page does not exist. Open the portfolio or go back home.</p>
       <div className="mt-8 flex flex-wrap justify-center gap-3">
         <Link
           href="/portfolio/"
@@ -23,6 +25,9 @@ export default function NotFound() {
         </Link>
         <Link href="/" className="rounded-xl border border-line px-6 py-3.5 font-medium text-text no-underline">
           ← Strona główna
+        </Link>
+        <Link href="/en/" className="rounded-xl border border-line px-6 py-3.5 font-medium text-text no-underline">
+          English home
         </Link>
       </div>
       <p className="mt-6 text-[14px] text-text3">

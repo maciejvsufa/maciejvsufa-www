@@ -199,10 +199,10 @@ function Planner({ v }: { v: Extract<VizData, { type: "planner" }> }) {
               {it ? (
                 <span className="w-plan-post" title={it.label}>
                   {/* eslint-disable-next-line @next/next/no-img-element -- statyczny eksport, okładka 180×320 */}
-                  <img src={it.img} alt="" width={180} height={320} loading="lazy" decoding="async" />
+                  <img src={it.img} alt={it.label} width={180} height={320} loading="lazy" decoding="async" />
                   {it.more ? <b className="w-plan-more">+{it.more}</b> : null}
                   <em className="w-plan-meta">
-                    {it.state === "pub" ? (
+                    {it.state === "pub" && it.meta && Number.isFinite(Number(it.meta)) ? (
                       <>
                         <svg width="7" height="8" viewBox="0 0 7 8" aria-hidden="true">
                           <path d="M0 0l7 4-7 4z" fill="currentColor" />
@@ -247,7 +247,7 @@ function Rank({ v }: { v: Extract<VizData, { type: "rank" }> }) {
         {v.rows.map((r, k) => (
           <li key={r.img} style={i(k)}>
             {/* eslint-disable-next-line @next/next/no-img-element -- statyczny eksport, okładka 180×320 */}
-            <img src={r.img} alt="" width={180} height={320} />
+            <img src={r.img} alt={r.title} width={180} height={320} />
             <span className="w-rank-t">
               <span className="w-rank-title">{r.title}</span>
               <small>{r.date}</small>

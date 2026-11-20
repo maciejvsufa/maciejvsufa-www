@@ -8,10 +8,8 @@
  * maciejvsufa.pl z 30.10.2026 (93/100/100) — prawdziwy pomiar z datą.
  */
 
+import { reelLinks } from "@/lib/reels";
 import { site } from "@/lib/site";
-
-/** Jedyna rolka, do której mamy sprawdzony adres. Pozostałe okładki bez linku. */
-const REEL_2210 = "https://www.instagram.com/reel/Dezb4BlAZRD/";
 
 export type Lang = "pl" | "en";
 
@@ -123,7 +121,7 @@ const pl = {
     emailCopied: "Skopiowano ✓",
     langSwitchAria: "Zmień język / Change language",
     footerPrivacy: "Polityka prywatności",
-    sample: "9 460: rolka z 22.10, pomiar 1–3.11. 1 517: rolka z 9.11. Metricool, stan na 15.11.2026.",
+    sample: "402 tys.: rolka z 18.11 łącznie na FB, YT, TikTok i IG (dokładnie 402 566). 10 198: rolka z 22.10 na IG. Metricool, stan na 20.11.2026.",
     nav: [
       { href: "#co-robie", label: "Co robię" },
       { href: "#o-mnie", label: "O mnie" },
@@ -136,9 +134,9 @@ const pl = {
     title: "Krótkie wideo od scenariusza po wyniki",
     lead: "Sam piszę, występuję, montuję i sprawdzam, co działa. 17 lat przed kamerą — dziś w rolkach na Instagramie, TikToku i YouTube.",
     cta: "Zobacz rolkę",
-    ctaHref: REEL_2210,
+    ctaHref: reelLinks.recordYt,
     ctaAlt: "albo napisz do mnie",
-    facts: ["17 lat przed kamerą", "9 460 wyświetleń, rolka z 22.10.2026", "3 604 obserwujących na Instagramie"],
+    facts: ["17 lat przed kamerą", "402 tys. wyświetleń w 2 dni, rolka z 18.11.2026", "4,9 tys. obserwujących na Facebooku"],
     photoAlt: "Uśmiechnięty Maciej V. Sufa w niebieskiej koszuli",
   },
   coRobie: {
@@ -159,17 +157,17 @@ const pl = {
           days: ["Pn", "Wt", "Śr", "Cz", "Pt", "Sb", "Nd"],
           start: 9,
           items: [
-            { day: 9, img: "/kalendarz/2026-11-09.webp", label: "Jest mi po prostu smutno", state: "pub", meta: "1517" },
-            { day: 11, img: "/kalendarz/2026-11-11.webp", label: "On miał zły dzień. Ona taka jest.", state: "pub", meta: "419" },
-            { day: 13, img: "/kalendarz/2026-11-13.webp", label: "Zostaniesz sama", state: "pub", meta: "385" },
+            { day: 9, img: "/kalendarz/2026-11-09.webp", label: "Jest mi po prostu smutno", state: "pub", meta: "" },
+            { day: 11, img: "/kalendarz/2026-11-11.webp", label: "On miał zły dzień. Ona taka jest.", state: "pub", meta: "" },
+            { day: 13, img: "/kalendarz/2026-11-13.webp", label: "Zostaniesz sama", state: "pub", meta: "" },
             { day: 15, img: "/kalendarz/2026-11-15.webp", label: "Kompot z ziół", state: "plan", meta: "20:15" },
             { day: 16, img: "/kalendarz/2026-11-16.webp", label: "Dla kogo się tak starasz?", state: "plan", meta: "20:15", more: 1 },
             { day: 18, img: "/kalendarz/2026-11-18.webp", label: "Przecież ty dasz radę", state: "plan", meta: "20:15" },
             { day: 20, img: "/kalendarz/2026-11-20.webp", label: "Czyje jest twoje „muszę”?", state: "plan", meta: "20:15" },
             { day: 22, img: "/kalendarz/2026-11-22.webp", label: "Nie mogę czy nie robię tego?", state: "plan", meta: "20:15" },
           ],
-          legend: ["opublikowane · wyświetlenia na IG", "zaplanowane · IG, FB, TikTok, YouTube"],
-          source: "Metricool, stan na 15.11.2026",
+          legend: ["opublikowane", "zaplanowane · IG, FB, TikTok, YouTube"],
+          source: "Kalendarz z listopada 2026. Bez liczb wyświetleń.",
         },
       },
       {
@@ -189,8 +187,8 @@ const pl = {
         icon: "chart",
         tag: "Wynik",
         h: "Rolka, którą widać w liczbach",
-        p: "22.10.2026 na Instagramie: 9 460 wyświetleń przy 3 604 obserwujących.",
-        check: "Metricool, pomiar 1–3.11.2026",
+        p: "18.11.2026, cztery platformy: 402 566 wyświetleń w dwa dni.",
+        check: "Metricool, stan na 20.11.2026",
         viz: {
           type: "rank",
           title: "Październik",
@@ -199,7 +197,7 @@ const pl = {
               img: "/kalendarz/2026-10-22.webp",
               title: "Po tym jednym słowie widać, czy związek przetrwa",
               date: "22.10.2026",
-              views: 9460,
+              views: 10198,
             },
             {
               img: "/kalendarz/2026-10-30-v2.webp",
@@ -207,13 +205,13 @@ const pl = {
               date: "30.10.2026",
             },
             {
-              img: "/kalendarz/2026-11-09.webp",
-              title: "Jest mi po prostu smutno",
-              date: "9.11.2026",
-              views: 1517,
+              img: "/kalendarz/2026-11-13.webp",
+              title: "Zostaniesz sama? Sama to nie samotna.",
+              date: "13.11.2026",
+              views: 1690,
             },
           ],
-          source: "9 460: rolka 22.10, pomiar 1–3.11. 1 517: rolka 9.11, Metricool, stan na 15.11.2026.",
+          source: "10 198: rolka 22.10 na IG. 1 690: rolka 13.11 na YouTube. Metricool, stan na 20.11.2026.",
         },
       },
     ] as Card[],
@@ -222,22 +220,26 @@ const pl = {
     viewsWord: "wyświetleń",
     reels: [
       {
+        title: "Modlitwa, którą znasz od dziecka, brzmi inaczej, niż myślisz.",
+        date: "18.11.2026",
+        views: 402566,
+        viewsText: "402 566 wyświetleń łącznie",
+        href: reelLinks.recordYt,
+        frameLabel: "402 tys.",
+      },
+      {
         img: "/kalendarz/2026-10-22.webp",
         title: "Po tym jednym słowie widać, czy związek przetrwa",
         date: "22.10.2026",
-        views: 9460,
-        href: REEL_2210,
+        views: 10198,
+        href: reelLinks.ig2210,
       },
       {
-        img: "/kalendarz/2026-10-30-v2.webp",
-        title: "Co słychać? „Dobrze”. I tyle.",
-        date: "30.10.2026",
-      },
-      {
-        img: "/kalendarz/2026-11-09.webp",
-        title: "Jest mi po prostu smutno",
-        date: "9.11.2026",
-        views: 1517,
+        img: "/kalendarz/2026-11-13.webp",
+        title: "Zostaniesz sama? Sama to nie samotna.",
+        date: "13.11.2026",
+        views: 1690,
+        href: reelLinks.samotna,
       },
     ],
     dowodLabel: "Współtwórca",
@@ -306,7 +308,7 @@ const en: typeof pl = {
     emailCopied: "Copied ✓",
     langSwitchAria: "Zmień język / Change language",
     footerPrivacy: "Privacy policy",
-    sample: "9,460: reel of 22.10, measured 1–3.11. 1,517: reel of 9.11. Metricool, as of 15.11.2026.",
+    sample: "402k: 18.11 reel across FB, YouTube, TikTok and Instagram (exactly 402,566). 10,198: 22.10 reel on Instagram. Metricool, as of 20.11.2026.",
     nav: [
       { href: "#co-robie", label: "What I do" },
       { href: "#o-mnie", label: "About" },
@@ -319,9 +321,9 @@ const en: typeof pl = {
     title: "Short-form video from script to results",
     lead: "I write, perform, edit and check what works. 17 years on camera — today in reels on Instagram, TikTok and YouTube.",
     cta: "Watch the reel",
-    ctaHref: REEL_2210,
+    ctaHref: reelLinks.recordYt,
     ctaAlt: "or write to me",
-    facts: ["17 years on camera", "9,460 views, reel of 22.10.2026", "3,604 Instagram followers"],
+    facts: ["17 years on camera", "402k views in 2 days, reel of 18.11.2026", "4.9k Facebook followers"],
     photoAlt: "Smiling Maciej V. Sufa in a blue shirt",
   },
   coRobie: {
@@ -342,17 +344,17 @@ const en: typeof pl = {
           days: ["Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"],
           start: 9,
           items: [
-            { day: 9, img: "/kalendarz/2026-11-09.webp", label: "Jest mi po prostu smutno", state: "pub", meta: "1517" },
-            { day: 11, img: "/kalendarz/2026-11-11.webp", label: "On miał zły dzień. Ona taka jest.", state: "pub", meta: "419" },
-            { day: 13, img: "/kalendarz/2026-11-13.webp", label: "Zostaniesz sama", state: "pub", meta: "385" },
+            { day: 9, img: "/kalendarz/2026-11-09.webp", label: "Jest mi po prostu smutno", state: "pub", meta: "" },
+            { day: 11, img: "/kalendarz/2026-11-11.webp", label: "On miał zły dzień. Ona taka jest.", state: "pub", meta: "" },
+            { day: 13, img: "/kalendarz/2026-11-13.webp", label: "Zostaniesz sama", state: "pub", meta: "" },
             { day: 15, img: "/kalendarz/2026-11-15.webp", label: "Kompot z ziół", state: "plan", meta: "20:15" },
             { day: 16, img: "/kalendarz/2026-11-16.webp", label: "Dla kogo się tak starasz?", state: "plan", meta: "20:15", more: 1 },
             { day: 18, img: "/kalendarz/2026-11-18.webp", label: "Przecież ty dasz radę", state: "plan", meta: "20:15" },
             { day: 20, img: "/kalendarz/2026-11-20.webp", label: "Czyje jest twoje „muszę”?", state: "plan", meta: "20:15" },
             { day: 22, img: "/kalendarz/2026-11-22.webp", label: "Nie mogę czy nie robię tego?", state: "plan", meta: "20:15" },
           ],
-          legend: ["published · Instagram views", "scheduled · IG, FB, TikTok, YouTube"],
-          source: "Metricool, as of 15.11.2026",
+          legend: ["published", "scheduled · IG, FB, TikTok, YouTube"],
+          source: "November 2026 calendar. No view counts.",
         },
       },
       {
@@ -372,8 +374,8 @@ const en: typeof pl = {
         icon: "chart",
         tag: "Result",
         h: "A reel you can see in the numbers",
-        p: "On 22.10.2026, on Instagram: 9,460 views, with 3,604 followers.",
-        check: "Metricool, measured 1–3.11.2026",
+        p: "18.11.2026, four platforms: 402,566 views in two days.",
+        check: "Metricool, as of 20.11.2026",
         viz: {
           type: "rank",
           title: "October",
@@ -382,7 +384,7 @@ const en: typeof pl = {
               img: "/kalendarz/2026-10-22.webp",
               title: "Po tym jednym słowie widać, czy związek przetrwa",
               date: "22.10.2026",
-              views: 9460,
+              views: 10198,
             },
             {
               img: "/kalendarz/2026-10-30-v2.webp",
@@ -390,13 +392,13 @@ const en: typeof pl = {
               date: "30.10.2026",
             },
             {
-              img: "/kalendarz/2026-11-09.webp",
-              title: "Jest mi po prostu smutno",
-              date: "9.11.2026",
-              views: 1517,
+              img: "/kalendarz/2026-11-13.webp",
+              title: "Zostaniesz sama? Sama to nie samotna.",
+              date: "13.11.2026",
+              views: 1690,
             },
           ],
-          source: "9,460: reel of 22.10, measured 1–3.11. 1,517: reel of 9.11, Metricool, as of 15.11.2026.",
+          source: "10,198: 22.10 reel on Instagram. 1,690: 13.11 reel on YouTube. Metricool, as of 20.11.2026.",
         },
       },
     ],
@@ -405,22 +407,26 @@ const en: typeof pl = {
     viewsWord: "views",
     reels: [
       {
+        title: "Modlitwa, którą znasz od dziecka, brzmi inaczej, niż myślisz.",
+        date: "18.11.2026",
+        views: 402566,
+        viewsText: "402,566 views in total",
+        href: reelLinks.recordYt,
+        frameLabel: "402k",
+      },
+      {
         img: "/kalendarz/2026-10-22.webp",
         title: "Po tym jednym słowie widać, czy związek przetrwa",
         date: "22.10.2026",
-        views: 9460,
-        href: REEL_2210,
+        views: 10198,
+        href: reelLinks.ig2210,
       },
       {
-        img: "/kalendarz/2026-10-30-v2.webp",
-        title: "Co słychać? „Dobrze”. I tyle.",
-        date: "30.10.2026",
-      },
-      {
-        img: "/kalendarz/2026-11-09.webp",
-        title: "Jest mi po prostu smutno",
-        date: "9.11.2026",
-        views: 1517,
+        img: "/kalendarz/2026-11-13.webp",
+        title: "Zostaniesz sama? Sama to nie samotna.",
+        date: "13.11.2026",
+        views: 1690,
+        href: reelLinks.samotna,
       },
     ],
     dowodLabel: "Co-creator of",
