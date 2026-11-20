@@ -16,7 +16,21 @@ export const metadata: Metadata = {
     canonical: "/aktorstwo/",
     languages: { pl: "/aktorstwo/", en: "/en/aktorstwo/", "x-default": "/aktorstwo/" },
   },
-  openGraph: { title: TITLE, description: DESC, url: `${site.url}/aktorstwo/`, siteName: site.name, locale: "pl_PL", type: "website" },
+  openGraph: {
+    title: TITLE,
+    description: DESC,
+    url: `${site.url}/aktorstwo/`,
+    siteName: site.name,
+    locale: "pl_PL",
+    type: "website",
+    images: [{ url: "/og-image.png", width: 1200, height: 630, alt: TITLE }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: TITLE,
+    description: DESC,
+    images: ["/og-image.png"],
+  },
 };
 
 export default function Aktorstwo() {

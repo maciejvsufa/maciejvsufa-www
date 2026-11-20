@@ -45,6 +45,7 @@ const recordLinks = [
 const cards = [
   {
     title: "Modlitwa, którą znasz od dziecka, brzmi inaczej, niż myślisz.",
+    en: "The prayer you’ve known since childhood doesn’t say what you think it says.",
     meta: "18.11.2026 · hook and distribution",
     numbers:
       "402,566 views in 2 days. Facebook 237,414 and 2,920 likes. YouTube 85,330, 1,376 likes, 157 comments, 441 shares. TikTok 66,956, 1,147 likes, 319 comments, 291 shares. Instagram 12,866, 236 likes, 54 comments, 112 shares, 104 saves.",
@@ -54,6 +55,7 @@ const cards = [
   },
   {
     title: "Po tym jednym słowie widać, czy związek przetrwa",
+    en: "One word tells you whether a relationship will last.",
     meta: "22.10.2026 · Instagram · an idea people save",
     numbers: "10,198 views, 120 saves, 53 shares.",
     shows: "People save this reel and come back to it.",
@@ -62,6 +64,7 @@ const cards = [
   },
   {
     title: "Idziesz jutro na groby?",
+    en: "Are you going to the graves tomorrow?",
     meta: "31.10.2026 · TikTok · community",
     numbers: "7,336 views, 177 comments.",
     shows: "A lot of conversation for a smaller reach. People join in, it is not only views.",
@@ -70,6 +73,7 @@ const cards = [
   },
   {
     title: "Zostaniesz sama? Sama to nie samotna.",
+    en: "You’ll end up alone? Alone is not lonely.",
     meta: "13.11.2026 · YouTube · voice and theme",
     numbers: "1,690 views.",
     shows: "A subject I stay with. Camera craft, not only one viral spike.",
@@ -100,7 +104,7 @@ export default function PortfolioEn() {
             think it says. In two days it reached 402,566 views on Facebook, YouTube, TikTok and Instagram. I do this
             myself, from the idea through publishing to the conversation in the comments.
           </p>
-          <RecordEmbed title="YouTube reel of 18.11.2026: Papież poprawił „Ojcze nasz”" />
+          <RecordEmbed title="YouTube reel of 18.11.2026: Papież poprawił „Ojcze nasz”. The prayer you’ve known since childhood doesn’t say what you think it says." />
           <p className="reel-links">
             {recordLinks.map((l) => (
               <a key={l.href} className="lnk" href={l.href} target="_blank" rel="noopener noreferrer">
@@ -121,6 +125,7 @@ export default function PortfolioEn() {
             {cards.map((c) => (
               <li key={c.href} className="py-4">
                 <p className="font-semibold leading-[1.4] text-text">{c.title}</p>
+                <p className="mt-1 leading-[1.45] text-text2">{c.en}</p>
                 <p className="mt-1 font-mono text-[13px] text-text3">{c.meta}</p>
                 <p className="mt-2 leading-[1.6] text-text2">{c.numbers}</p>
                 <p className="mt-2 leading-[1.6] text-text2">{c.shows}</p>

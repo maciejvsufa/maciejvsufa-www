@@ -57,6 +57,24 @@ export type Viz =
   | { type: "photo"; src: string; alt: string; contain?: boolean };
 
 type Link = { href: string; label: string };
+
+/** Okładki na stronie głównej. titleEn tylko w wersji angielskiej. */
+type HomeReel = {
+  img?: string;
+  title: string;
+  titleEn?: string;
+  date: string;
+  views?: number;
+  viewsText?: string;
+  href?: string;
+  frameLabel?: string;
+};
+
+/** Tytuły, które nie są tytułami dzieł — tłumaczenie tylko w mapowaniu EN. */
+const stageTitleEn: Record<string, string> = {
+  "Autorski stand-up": "Original stand-up",
+  "Warsztaty z Luisem Gallim": "Workshops with Luis Galli",
+};
 export type Card = { icon: IconName; tag: string; h: string; p: string; check?: string; links?: Link[]; viz: Viz };
 
 /**
@@ -242,7 +260,7 @@ const pl = {
         views: 1690,
         href: reelLinks.samotna,
       },
-    ],
+    ] as HomeReel[],
     dowodLabel: "Współtwórca",
     dowod: [
       { href: site.socials.asistel, label: "Asistel" },
@@ -409,6 +427,7 @@ const en: typeof pl = {
     reels: [
       {
         title: "Modlitwa, którą znasz od dziecka, brzmi inaczej, niż myślisz.",
+        titleEn: "The prayer you’ve known since childhood doesn’t say what you think it says.",
         date: "18.11.2026",
         views: 402566,
         viewsText: "402,566 views in total",
@@ -418,6 +437,7 @@ const en: typeof pl = {
       {
         img: "/kalendarz/2026-10-22.webp",
         title: "Po tym jednym słowie widać, czy związek przetrwa",
+        titleEn: "One word tells you whether a relationship will last.",
         date: "22.10.2026",
         views: 10198,
         href: reelLinks.ig2210,
@@ -425,6 +445,7 @@ const en: typeof pl = {
       {
         img: "/kalendarz/2026-11-13.webp",
         title: "Zostaniesz sama? Sama to nie samotna.",
+        titleEn: "You’ll end up alone? Alone is not lonely.",
         date: "13.11.2026",
         views: 1690,
         href: reelLinks.samotna,
@@ -467,7 +488,7 @@ const en: typeof pl = {
     linksLabel: "Profiles",
     close: "Close",
     film: acting.film.map(([y, t, , rEn, main]) => ({ y, t, r: rEn, main: Boolean(main) })),
-    stage: acting.stage.map(([y, t, , rEn]) => ({ y, t, r: rEn })),
+    stage: acting.stage.map(([y, t, , rEn]) => ({ y, t: stageTitleEn[t] ?? t, r: rEn })),
     links: acting.links,
   },
   certyfikat: {
