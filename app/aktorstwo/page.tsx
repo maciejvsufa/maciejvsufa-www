@@ -7,7 +7,7 @@ import { content } from "@/lib/content";
 /** Pełna filmografia pod własnym adresem (do linku w CV). Dane: content.pl.aktorstwo — to samo źródło co okno na stronie głównej. */
 const TITLE = "Aktorstwo — Maciej V. Sufa: film, telewizja, teatr";
 const DESC =
-  "Pełna lista ról: 24 pozycje w filmie i telewizji (2010–2021), m.in. główna rola w „Gliniarzach” (Polsat), Opera Narodowa 2023, Teatr Kamienica.";
+  "Pełna lista ról: 24 pozycje w filmie i telewizji (2010–2021), m.in. główna rola w „Gliniarzach” (Polsat), Opera Narodowa (2023 i 2025), Teatr Kamienica.";
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -27,6 +27,9 @@ export default function Aktorstwo() {
       <main id="main" className="page pad-x mx-auto max-w-[760px] pb-20 pt-[160px]">
         <h1 className="font-display text-[clamp(32px,5vw,52px)] font-bold uppercase text-text">Aktorstwo</h1>
         <p className="mt-4 text-[18px] leading-[1.6] text-text2">{a.lead}</p>
+        <p className="mt-6">
+          <a className="lnk" href="/cv/Maciej_Sufa_CV_aktorskie.pdf">CV aktorskie (PDF)</a>
+        </p>
 
         <h2 className="mt-10 font-display text-[22px] font-semibold text-text">{a.filmLabel}</h2>
         <ul className="mt-3 divide-y divide-line">

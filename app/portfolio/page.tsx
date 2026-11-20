@@ -86,7 +86,7 @@ const rest = [
     facts: [
       "Główna rola: detektyw Robert Barcz w serialu „Gliniarze” (Polsat, 2016–2017).",
       "„Kobiety mafii”, reż. Patryk Vega (2018).",
-      "Teatr Wielki – Opera Narodowa (2023).",
+      "Teatr Wielki – Opera Narodowa (2023, 2025).",
     ],
     status: "Showreel 60–90 s: w realizacji.",
   },

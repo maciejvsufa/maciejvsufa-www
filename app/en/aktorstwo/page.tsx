@@ -7,7 +7,7 @@ import { content } from "@/lib/content";
 
 const TITLE = "Acting — Maciej V. Sufa: film, television, theatre";
 const DESC =
-  "Full credit list: 24 film and television roles (2010–2021), including the lead in “Gliniarze” (Polsat), Polish National Opera (2023), Teatr Kamienica.";
+  "Full credit list: 24 film and television roles (2010–2021), including the lead in “Gliniarze” (Polsat), Polish National Opera (2023 and 2025), Teatr Kamienica.";
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -36,6 +36,11 @@ export default function AktorstwoEn() {
       <main id="main" className="page pad-x mx-auto max-w-[760px] pb-20 pt-[160px]">
         <h1 className="font-display text-[clamp(32px,5vw,52px)] font-bold uppercase text-text">Acting</h1>
         <p className="mt-4 text-[18px] leading-[1.6] text-text2">{a.lead}</p>
+        <p className="mt-6">
+          <a className="lnk" href="/cv/Maciej_Sufa_CV_aktorskie.pdf">
+            Acting CV (PDF)
+          </a>
+        </p>
 
         <h2 className="mt-10 font-display text-[22px] font-semibold text-text">{a.filmLabel}</h2>
         <ul className="mt-3 divide-y divide-line">
