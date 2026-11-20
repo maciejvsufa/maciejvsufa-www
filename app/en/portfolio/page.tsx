@@ -111,7 +111,7 @@ export default function PortfolioEn() {
           <div className="results-strip">
             <p className="font-semibold text-text">Channel results @maciejvsufa</p>
             <p className="mt-2 leading-[1.6] text-text2">
-              Facebook 4,963 followers (as of 19.11.2026) · Instagram 3,629 · YouTube 217 (65 on 15.11) · TikTok 76.
+              Facebook 5k followers · Instagram 3,629 · YouTube 217 (65 on 15.11) · TikTok 76.
             </p>
             <p className="mt-2 font-mono text-[13px] text-text3">
               Source: Metricool, as of 20.11.2026 unless noted otherwise.

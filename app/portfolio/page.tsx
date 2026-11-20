@@ -145,7 +145,7 @@ export default function Portfolio() {
             <div className="results-strip">
               <p className="font-semibold text-text">Wyniki kanałów @maciejvsufa</p>
               <p className="mt-2 leading-[1.6] text-text2">
-                Facebook 4 963 obserwujących (stan na 19.11.2026) · Instagram 3 629 · YouTube 217 (15.11 było 65) ·
+                Facebook 5 tys. obserwujących · Instagram 3 629 · YouTube 217 (15.11 było 65) ·
                 TikTok 76.
               </p>
               <p className="mt-2 font-mono text-[13px] text-text3">

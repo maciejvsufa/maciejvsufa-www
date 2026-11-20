@@ -137,7 +137,7 @@ const pl = {
     cta: "Zobacz rolkę",
     ctaHref: reelLinks.recordYt,
     ctaAlt: "albo napisz do mnie",
-    facts: ["17 lat przed kamerą", "402 tys. wyświetleń w 2 dni, rolka z 18.11.2026", "4,9 tys. obserwujących na Facebooku"],
+    facts: ["17 lat przed kamerą", "402 tys. wyświetleń w 2 dni, rolka z 18.11.2026", "5 tys. obserwujących na Facebooku"],
     photoAlt: "Uśmiechnięty Maciej V. Sufa w niebieskiej koszuli",
   },
   coRobie: {
@@ -324,7 +324,7 @@ const en: typeof pl = {
     cta: "Watch the reel",
     ctaHref: reelLinks.recordYt,
     ctaAlt: "or write to me",
-    facts: ["17 years on camera", "402k views in 2 days, reel of 18.11.2026", "4.9k Facebook followers"],
+    facts: ["17 years on camera", "402k views in 2 days, reel of 18.11.2026", "5k Facebook followers"],
     photoAlt: "Smiling Maciej V. Sufa in a blue shirt",
   },
   coRobie: {
