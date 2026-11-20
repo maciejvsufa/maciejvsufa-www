@@ -3,9 +3,9 @@
 import { useEffect } from "react";
 
 /**
- * Ustawia atrybut lang na <html> po stronie klienta.
- * Root layout renderuje <html lang="pl"> — na "/en/" nadpisujemy na "en"
- * (static export: jeden root layout, brak per-route <html>).
+ * Ustawia lang na <html> po hydracji, gdy ktoś przechodzi między PL i EN bez pełnego przeładowania.
+ * Sam plik z eksportu statycznego poprawia scripts/fix-en-html.mjs — root layout ma jedno <html lang="pl">,
+ * a useEffect nie zmienia tego, co widać w view-source.
  */
 export function HtmlLang({ lang }: { lang: string }) {
   useEffect(() => {

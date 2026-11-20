@@ -1,6 +1,8 @@
 export type Reel = {
   img?: string;
   title: string;
+  /** Angielski podpis haka. Tylko EN — bez tego pola podpis zostaje po polsku. */
+  titleEn?: string;
   date: string;
   /** Tylko gdy jest pomiar. Bez liczby nie pokazujemy wyświetleń. */
   views?: number;
@@ -21,20 +23,22 @@ export function ReelRow({ reels, viewsWord, lang = "pl" }: { reels: Reel[]; view
     <div className="reel-row">
       {reels.map((r) => {
         const views = r.viewsText ?? (r.views ? `${nf(r.views, lang)} ${viewsWord}` : null);
-        const caption = (
-          <span className="reel-cap">
+        const alt = r.titleEn ? `${r.title} ${r.titleEn}` : r.title;
+        const captionBody = (
+          <>
             <b>{r.title}</b>
+            {r.titleEn ? <span className="reel-en">{r.titleEn}</span> : null}
             <small>
               {r.date}
               {views ? ` · ${views}` : ""}
             </small>
-          </span>
+          </>
         );
         const frame = (
           <span className="reel-frame">
             {r.img ? (
               // eslint-disable-next-line @next/next/no-img-element -- statyczny eksport, okładka 180×320
-              <img src={r.img} alt={r.title} width={180} height={320} />
+              <img src={r.img} alt={alt} width={180} height={320} />
             ) : (
               <span className="reel-fallback">{r.frameLabel}</span>
             )}
@@ -48,24 +52,19 @@ export function ReelRow({ reels, viewsWord, lang = "pl" }: { reels: Reel[]; view
         const key = r.href ?? r.title;
         if (r.href) {
           const titled = r.title.replace(/[. ]+$/, "");
-          const name = views ? `${titled}. ${r.date}. ${views}.` : `${titled}. ${r.date}.`;
+          const gloss = r.titleEn ? ` ${r.titleEn}` : "";
+          const name = views ? `${titled}.${gloss} ${r.date}. ${views}.` : `${titled}.${gloss} ${r.date}.`;
           return (
             <a key={key} className="reel" href={r.href} target="_blank" rel="noopener noreferrer" aria-label={name}>
               {frame}
-              {caption}
+              <span className="reel-cap">{captionBody}</span>
             </a>
           );
         }
         return (
           <figure key={key} className="reel">
             {frame}
-            <figcaption className="reel-cap">
-              <b>{r.title}</b>
-              <small>
-                {r.date}
-                {views ? ` · ${views}` : ""}
-              </small>
-            </figcaption>
+            <figcaption className="reel-cap">{captionBody}</figcaption>
           </figure>
         );
       })}

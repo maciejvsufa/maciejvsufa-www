@@ -33,15 +33,11 @@ function ZakresFoot({ t }: { t: SiteContent }) {
   );
 }
 
-/** Tablica „Co robię”: trzy okładki rolek, nie lista kroków. */
+/** Tablica „Co robię”: trzy okładki rolek, nie lista kroków.
+ *  Rząd rolek jest dwa razy (szeroki ekran i telefon — jak dotąd).
+ *  Stopka Metricool jest raz, poza only-wide / only-phone, więc widać ją na obu. */
 export function Zakres({ t }: { t: SiteContent }) {
   const z = t.coRobie;
-  const Board = () => (
-    <div className="zakres">
-      <ReelRow reels={z.reels} viewsWord={z.viewsWord} lang={t.lang} />
-      <ZakresFoot t={t} />
-    </div>
-  );
   return (
     <Scene
       wide
@@ -49,9 +45,17 @@ export function Zakres({ t }: { t: SiteContent }) {
       title={z.title}
       intro={z.intro}
       tone="sky"
-      items={[<Board key="wide" />]}
-      itemsWideOnly
-      phoneItems={[<Board key="phone" />]}
+      items={[
+        <div key="board" className="zakres">
+          <div className="only-wide">
+            <ReelRow reels={z.reels} viewsWord={z.viewsWord} lang={t.lang} />
+          </div>
+          <div className="only-phone">
+            <ReelRow reels={z.reels} viewsWord={z.viewsWord} lang={t.lang} />
+          </div>
+          <ZakresFoot t={t} />
+        </div>,
+      ]}
     />
   );
 }

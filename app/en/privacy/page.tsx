@@ -15,7 +15,21 @@ export const metadata: Metadata = {
     canonical: "/en/privacy/",
     languages: { pl: "/privacy/", en: "/en/privacy/", "x-default": "/privacy/" },
   },
-  openGraph: { title: TITLE, description: DESC, url: `${site.url}/en/privacy/`, siteName: site.name, locale: "en_US", type: "website" },
+  openGraph: {
+    title: TITLE,
+    description: DESC,
+    url: `${site.url}/en/privacy/`,
+    siteName: site.name,
+    locale: "en_US",
+    type: "website",
+    images: [{ url: "/og-image.png", width: 1200, height: 630, alt: TITLE }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: TITLE,
+    description: DESC,
+    images: ["/og-image.png"],
+  },
   robots: { index: false, follow: true },
 };
 
