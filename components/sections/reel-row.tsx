@@ -10,6 +10,10 @@ export type Reel = {
   href?: string;
   /** Napis w ramce, gdy nie ma pliku okładki. */
   frameLabel?: string;
+  /** Druga linia w ramce, pod liczbą. Np. „udostępnień”. */
+  frameNote?: string;
+  /** Kadr okładki, gdy domyślne przycięcie ucina twarz. */
+  imgPos?: string;
 };
 
 const nf = (n: number, lang: "pl" | "en") =>
@@ -34,9 +38,12 @@ export function ReelRow({ reels, viewsWord, lang = "pl" }: { reels: Reel[]; view
           <span className="reel-frame">
             {r.img ? (
               // eslint-disable-next-line @next/next/no-img-element -- statyczny eksport, okładka 180×320
-              <img src={r.img} alt={r.title} width={180} height={320} />
+              <img src={r.img} alt={r.title} width={180} height={320} style={r.imgPos ? { objectPosition: r.imgPos } : undefined} />
             ) : (
-              <span className="reel-fallback">{r.frameLabel}</span>
+              <span className="reel-fallback">
+                {r.frameLabel}
+                {r.frameNote ? <small>{r.frameNote}</small> : null}
+              </span>
             )}
             {r.href ? (
               <span className="reel-play" aria-hidden="true">

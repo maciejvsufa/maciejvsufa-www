@@ -122,7 +122,7 @@ const pl = {
     emailCopied: "Skopiowano ✓",
     langSwitchAria: "Zmień język / Change language",
     footerPrivacy: "Polityka prywatności",
-    sample: "518 tys.: rolka z 18.11 łącznie na FB, YT, TikTok i IG (dokładnie 518 258, w 5 dni; w dwa dni, do 20.11, było 402 566). 1 136: udostępnienia tej samej rolki na IG, TikToku i YouTube. 10 317: rolka z 22.10 na IG. Metricool, stan na 23.11.2026.",
+    sample: "518 tys.: rolka z 18.11 łącznie na FB, YT, TikTok i IG (dokładnie 518 258, w 5 dni; w dwa dni, do 20.11, było 402 566). 290 351: ta sama rolka na Facebooku. 1 136: udostępnienia tej samej rolki na IG, TikToku i YouTube. Metricool, stan na 23.11.2026.",
     nav: [
       { href: "#co-robie", label: "Co robię" },
       { href: "#o-mnie", label: "O mnie" },
@@ -192,7 +192,7 @@ const pl = {
         check: "Metricool, stan na 23.11.2026",
         viz: {
           type: "rank",
-          title: "Trzy rolki",
+          title: "Jedna rolka",
           rows: [
             {
               frameLabel: "518 tys.",
@@ -201,10 +201,11 @@ const pl = {
               views: 518258,
             },
             {
-              img: "/kalendarz/2026-10-22.webp",
-              title: "Po tym jednym słowie widać, czy związek przetrwa",
-              date: "22.10.2026",
-              views: 10317,
+              img: "/portfolio/rekord-18-11.webp",
+              title: "Ta sama rolka na Facebooku",
+              date: "18.11.2026",
+              views: 290351,
+              viewsText: "290 351",
             },
             {
               frameLabel: "1 136",
@@ -212,7 +213,7 @@ const pl = {
               date: "18.11.2026",
             },
           ],
-          source: "518 258 wyświetleń i 1 136 udostępnień: rolka z 18.11 (udostępnienia na IG, TikToku i YouTube). 10 317: rolka z 22.10 na IG. Metricool, stan na 23.11.2026.",
+          source: "518 258 wyświetleń łącznie i 290 351 na Facebooku: rolka z 18.11. 1 136 udostępnień: IG, TikTok i YouTube. Metricool, stan na 23.11.2026.",
         },
       },
     ] as Card[],
@@ -229,14 +230,16 @@ const pl = {
         frameLabel: "518 tys.",
       },
       {
-        img: "/kalendarz/2026-10-22.webp",
-        title: "Po tym jednym słowie widać, czy związek przetrwa",
-        date: "22.10.2026",
-        views: 10317,
-        href: reelLinks.ig2210,
+        img: "/portfolio/rekord-18-11.webp",
+        imgPos: "center 62%",
+        title: "Ta sama rolka na Facebooku",
+        date: "18.11.2026",
+        viewsText: "290 351 wyświetleń",
+        href: reelLinks.recordFb,
       },
       {
         frameLabel: "1 136",
+        frameNote: "udostępnień",
         title: "Ta sama rolka. Ludzie ją wysłali dalej.",
         date: "18.11.2026",
         viewsText: "1 136 udostępnień",
@@ -309,7 +312,7 @@ const en: typeof pl = {
     emailCopied: "Copied ✓",
     langSwitchAria: "Zmień język / Change language",
     footerPrivacy: "Privacy policy",
-    sample: "518k: 18.11 reel across FB, YouTube, TikTok and Instagram (exactly 518,258, in 5 days; in two days, as of 20.11, it was 402,566). 1,136: shares of that same reel on Instagram, TikTok and YouTube. 10,317: 22.10 reel on Instagram. Metricool, as of 23.11.2026.",
+    sample: "518k: 18.11 reel across FB, YouTube, TikTok and Instagram (exactly 518,258, in 5 days; in two days, as of 20.11, it was 402,566). 290,351: that same reel on Facebook. 1,136: shares of that same reel on Instagram, TikTok and YouTube. Metricool, as of 23.11.2026.",
     nav: [
       { href: "#co-robie", label: "What I do" },
       { href: "#o-mnie", label: "About" },
@@ -379,7 +382,7 @@ const en: typeof pl = {
         check: "Metricool, as of 23.11.2026",
         viz: {
           type: "rank",
-          title: "Three reels",
+          title: "One reel",
           rows: [
             {
               frameLabel: "518k",
@@ -389,11 +392,11 @@ const en: typeof pl = {
               viewsText: "518,258",
             },
             {
-              img: "/kalendarz/2026-10-22.webp",
-              title: "Po tym jednym słowie widać, czy związek przetrwa",
-              date: "22.10.2026",
-              views: 10317,
-              viewsText: "10,317",
+              img: "/portfolio/rekord-18-11.webp",
+              title: "The same reel on Facebook",
+              date: "18.11.2026",
+              views: 290351,
+              viewsText: "290,351",
             },
             {
               frameLabel: "1,136",
@@ -401,7 +404,7 @@ const en: typeof pl = {
               date: "18.11.2026",
             },
           ],
-          source: "518,258 views and 1,136 shares: 18.11 reel (shares on Instagram, TikTok and YouTube). 10,317: 22.10 reel on Instagram. Metricool, as of 23.11.2026.",
+          source: "518,258 views in total and 290,351 on Facebook: 18.11 reel. 1,136 shares: Instagram, TikTok and YouTube. Metricool, as of 23.11.2026.",
         },
       },
     ],
@@ -418,14 +421,16 @@ const en: typeof pl = {
         frameLabel: "518k",
       },
       {
-        img: "/kalendarz/2026-10-22.webp",
-        title: "Po tym jednym słowie widać, czy związek przetrwa",
-        date: "22.10.2026",
-        views: 10317,
-        href: reelLinks.ig2210,
+        img: "/portfolio/rekord-18-11.webp",
+        imgPos: "center 62%",
+        title: "The same reel on Facebook",
+        date: "18.11.2026",
+        viewsText: "290,351 views",
+        href: reelLinks.recordFb,
       },
       {
         frameLabel: "1,136",
+        frameNote: "shares",
         title: "The same reel. People sent it on.",
         date: "18.11.2026",
         viewsText: "1,136 shares",
