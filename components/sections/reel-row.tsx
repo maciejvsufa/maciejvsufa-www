@@ -45,7 +45,7 @@ export function ReelRow({ reels, viewsWord, lang = "pl" }: { reels: Reel[]; view
             ) : null}
           </span>
         );
-        const key = r.href ?? r.title;
+        const key = `${r.href ?? ""}-${r.frameLabel ?? r.title}`;
         if (r.href) {
           const titled = r.title.replace(/[. ]+$/, "");
           const name = views ? `${titled}. ${r.date}. ${views}.` : `${titled}. ${r.date}.`;
