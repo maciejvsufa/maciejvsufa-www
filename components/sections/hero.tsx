@@ -1,5 +1,6 @@
 import type { SiteContent } from "@/lib/content";
 import { SplitText } from "@/components/fx/split-text";
+import { ChannelRow } from "@/components/ui/channel-row";
 import { Cta } from "@/components/ui/cta";
 
 /**
@@ -39,6 +40,7 @@ export function Hero({ t }: { t: SiteContent }) {
               {h.ctaAlt}
             </a>
           </div>
+          <ChannelRow />
           <ul className="hero-facts">
             {h.facts.map((f) => (
               <li key={f}>{f}</li>

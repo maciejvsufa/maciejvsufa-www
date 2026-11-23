@@ -11,6 +11,7 @@
       "address": "Adres",
       "remote": "Etat lub B2B · zdalnie PL / EU",
       "cooperation": "Własna działalność gospodarcza — mogę pracować na B2B",
+      "social": "Social media",
       "rodo": "Zgoda RODO"
     },
     "header": {
@@ -22,7 +23,14 @@
       "websiteUrl": "https://maciejvsufa.pl",
       "github": "github.com/maciejvsufa",
       "githubUrl": "https://github.com/maciejvsufa",
-      "address": "Łódź · zdalnie PL / UE"
+      "address": "Łódź · zdalnie PL / UE",
+      "social": [
+        { "name": "TikTok", "handle": "@maciejvsufa", "url": "https://www.tiktok.com/@maciejvsufa" },
+        { "name": "Instagram", "handle": "@maciejvsufa", "url": "https://www.instagram.com/maciejvsufa/" },
+        { "name": "YouTube", "handle": "@maciejvsufa", "url": "https://www.youtube.com/@MaciejVSufa" },
+        { "name": "Facebook", "handle": "@maciejvsufa", "url": "https://www.facebook.com/maciejvsufa" },
+        { "name": "LinkedIn", "handle": "maciej-sufa", "url": "https://www.linkedin.com/in/maciej-sufa" }
+      ]
     },
     "summary": "Robię krótkie wideo od pomysłu po wnioski z liczb: scenariusz, nagranie, montaż w DaVinci Resolve, publikacja i analiza. Od 17 lat pracuję przed kamerą, m.in. w głównej roli w serialu „Gliniarze” (Polsat). Moja rolka z 18.11.2026 zebrała w pięć dni 518 258 wyświetleń na Facebooku, YouTube, TikToku i Instagramie (w dwa dni, do 20.11, było 402 566). Metricool, stan na 23.11.2026. Piszę książki, prowadzę firmę LEV i mam udziały w Tercet Labs. Szukam etatu albo współpracy B2B, zdalnie w Polsce i UE.",
     "skills": [
@@ -176,6 +184,7 @@
       "address": "Address",
       "remote": "Employment or B2B · remote PL / EU",
       "cooperation": "Registered sole proprietorship — B2B-ready",
+      "social": "Social media",
       "rodo": "GDPR consent"
     },
     "header": {
@@ -187,7 +196,14 @@
       "websiteUrl": "https://maciejvsufa.pl",
       "github": "github.com/maciejvsufa",
       "githubUrl": "https://github.com/maciejvsufa",
-      "address": "Łódź · remote PL / EU"
+      "address": "Łódź · remote PL / EU",
+      "social": [
+        { "name": "TikTok", "handle": "@maciejvsufa", "url": "https://www.tiktok.com/@maciejvsufa" },
+        { "name": "Instagram", "handle": "@maciejvsufa", "url": "https://www.instagram.com/maciejvsufa/" },
+        { "name": "YouTube", "handle": "@maciejvsufa", "url": "https://www.youtube.com/@MaciejVSufa" },
+        { "name": "Facebook", "handle": "@maciejvsufa", "url": "https://www.facebook.com/maciejvsufa" },
+        { "name": "LinkedIn", "handle": "maciej-sufa", "url": "https://www.linkedin.com/in/maciej-sufa" }
+      ]
     },
     "summary": "I make short-form video from idea to data-driven takeaways: script, shooting, editing in DaVinci Resolve, publishing and analysis. I have worked on camera for 17 years, including a lead role in the Polsat series “Gliniarze”. My reel of 18.11.2026 reached 518,258 views in five days on Facebook, YouTube, TikTok and Instagram (402,566 in the first two days, as of 20.11). Metricool, as of 23.11.2026. I write books, run my company LEV and hold shares in Tercet Labs. I am looking for a full-time or B2B role, remote in Poland and the EU.",
     "skills": [

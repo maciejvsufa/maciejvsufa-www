@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { SiteHeader } from "@/components/site-header";
 import { Foot } from "@/components/sections/cv-sections";
+import { ChannelRow } from "@/components/ui/channel-row";
 import { site } from "@/lib/site";
 import { content } from "@/lib/content";
 
@@ -29,6 +30,7 @@ export default function Cv() {
           <a className="lnk" href="/cv/Maciej_Sufa_CV_aktorskie.pdf">CV aktorskie (PDF)</a>
           <a className="lnk" href="/portfolio/">Portfolio</a>
         </p>
+        <ChannelRow />
         <Foot t={content.pl} />
       </main>
     </>

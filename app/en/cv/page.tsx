@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { SiteHeader } from "@/components/site-header";
 import { HtmlLang } from "@/components/html-lang";
 import { Foot } from "@/components/sections/cv-sections";
+import { ChannelRow } from "@/components/ui/channel-row";
 import { site } from "@/lib/site";
 import { content } from "@/lib/content";
 
@@ -30,6 +31,7 @@ export default function CvEn() {
           <a className="lnk" href="/cv/Maciej_Sufa_CV_EN.docx">CV in English (DOCX)</a>
           <a className="lnk" href="/en/portfolio/">Portfolio</a>
         </p>
+        <ChannelRow />
         <Foot t={content.en} />
       </main>
     </>

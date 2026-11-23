@@ -22,6 +22,8 @@ import {
   WidthType,
   VerticalAlign,
   ImageRun,
+  ExternalHyperlink,
+  UnderlineType,
 } from "docx";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -90,6 +92,14 @@ function renderProjects(projects) {
     .join("");
 }
 
+function renderSocial(header, labels) {
+  if (!header.social?.length || !labels.social) return "";
+  return `<span class="label">${esc(labels.social)}</span>
+        ${header.social
+          .map((s) => `<a class="social-link" href="${esc(s.url)}">${esc(s.name)} · ${esc(s.handle)}</a>`)
+          .join("\n        ")}`;
+}
+
 function buildHtml(locale) {
   const d = content[locale];
   const { header, labels, education, certificate } = d;
@@ -122,6 +132,7 @@ function buildHtml(locale) {
         <a href="mailto:${esc(header.email)}">${esc(header.email)}</a>
         <span class="label">WWW</span>
         <a href="${esc(header.websiteUrl)}">${esc(header.website)}</a>
+        ${renderSocial(header, labels)}
         ${header.github ? `<span class="label">GitHub</span>
         <a href="${esc(header.githubUrl)}">${esc(header.github)}</a>` : ""}
         <p class="remote-note">${esc(labels.remote)}</p>
@@ -175,6 +186,16 @@ async function htmlToPdf(html, outPath) {
   try {
     const page = await browser.newPage();
     await page.setContent(html, { waitUntil: "networkidle0" });
+    const fit = await page.evaluate(() => {
+      const overflow = (sel) => {
+        const el = document.querySelector(sel);
+        return el.scrollHeight - el.clientHeight;
+      };
+      return { sidebar: overflow(".sidebar"), main: overflow(".main") };
+    });
+    if (fit.sidebar > 2 || fit.main > 2) {
+      throw new Error(`CV nie mieści się na jednej stronie: ${JSON.stringify(fit)}`);
+    }
     await page.pdf({
       path: outPath,
       format: "A4",
@@ -199,6 +220,35 @@ function heading(text, level = HeadingLevel.HEADING_2) {
     spacing: { before: 240, after: 120 },
     children: [new TextRun({ text, bold: true, size: 22, color: "5C5648" })],
   });
+}
+
+function socialParagraphs(header, labels) {
+  if (!header.social?.length || !labels.social) return [];
+  return [
+    new Paragraph({
+      spacing: { before: 80, after: 40 },
+      children: [new TextRun({ text: labels.social.toUpperCase(), bold: true, size: 15, color: "7C7A74" })],
+    }),
+    ...header.social.map(
+      (s) =>
+        new Paragraph({
+          spacing: { after: 20 },
+          children: [
+            new ExternalHyperlink({
+              link: s.url,
+              children: [
+                new TextRun({
+                  text: `${s.name} · ${s.handle}`,
+                  size: 16,
+                  color: "E8E2D4",
+                  underline: { type: UnderlineType.SINGLE, color: "C9C0AD" },
+                }),
+              ],
+            }),
+          ],
+        })
+    ),
+  ];
 }
 
 function bodyText(text, opts = {}) {
@@ -235,6 +285,7 @@ async function buildDocx(locale, outPath) {
     bodyText(`${header.phone}`, { color: "E8E2D4" }),
     bodyText(header.email, { color: "E8E2D4" }),
     bodyText(header.website, { color: "E8E2D4" }),
+    ...socialParagraphs(header, labels),
     ...(header.github ? [bodyText(header.github, { color: "E8E2D4" })] : []),
     bodyText(header.address, { color: "B8B5AD", size: 18 }),
     bodyText(labels.remote, { color: "B8B5AD", size: 18, italics: true }),

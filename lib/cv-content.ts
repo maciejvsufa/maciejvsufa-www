@@ -35,6 +35,7 @@ export type CvLocale = {
     address?: string;
     remote: string;
     cooperation?: string;
+    social?: string;
     rodo?: string;
   };
   header: {
@@ -47,6 +48,7 @@ export type CvLocale = {
     github?: string;
     githubUrl?: string;
     address: string;
+    social?: { name: string; handle: string; url: string }[];
   };
   summary: string;
   skills: CvSkillGroup[];

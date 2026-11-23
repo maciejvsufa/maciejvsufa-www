@@ -1378,11 +1378,20 @@ html:not(.story-on) .scene {
   margin-top: 34px;
   animation: fadeUp10 0.6s var(--ease-spring) 1.3s both;
 }
+.channel-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 18px;
+  margin: 18px 0 0;
+}
+.hero .channel-row {
+  animation: fadeUp10 0.6s var(--ease-spring) 1.45s both;
+}
 .hero-facts {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
-  margin-top: 40px;
+  margin-top: 28px;
   animation: fadeIn 1s var(--ease-spring) 1.6s both;
 }
 .hero-facts li {
