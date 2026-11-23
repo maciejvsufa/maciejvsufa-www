@@ -7,5 +7,6 @@ export const reelLinks = {
   recordIg: "https://www.instagram.com/reel/Df3-bHrgolF/",
   ig2210: "https://www.instagram.com/reel/Dezb4BlAZRD/",
   groby: "https://www.tiktok.com/@maciejvsufa/video/7702925687908289814",
+  finowie: "https://www.facebook.com/reel/4534264810119646/",
   samotna: "https://www.youtube.com/watch?v=hoXUt6wrTCw",
 } as const;

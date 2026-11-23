@@ -8,7 +8,7 @@ import { reelLinks } from "@/lib/reels";
 
 const TITLE = "Portfolio — Maciej V. Sufa, content creator";
 const DESC =
-  "Krótkie wideo od scenariusza po wnioski z liczb. 17 lat przed kamerą. Marka @maciejvsufa, warsztat aktorski, strony www, narzędzia.";
+  "Content creator i autor. Od 17 lat przed kamerą. Krótkie wideo od scenariusza po liczby — 518 tys. wyświetleń jednej rolki w 5 dni.";
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -35,10 +35,10 @@ export const metadata: Metadata = {
 };
 
 const recordLinks = [
-  { href: reelLinks.recordFb, label: "Facebook · 237 414" },
-  { href: reelLinks.recordYt, label: "YouTube · 85 330" },
-  { href: reelLinks.recordTt, label: "TikTok · 66 956" },
-  { href: reelLinks.recordIg, label: "Instagram · 12 866" },
+  { href: reelLinks.recordFb, label: "Facebook · 290 351" },
+  { href: reelLinks.recordYt, label: "YouTube · 138 290" },
+  { href: reelLinks.recordTt, label: "TikTok · 75 407" },
+  { href: reelLinks.recordIg, label: "Instagram · 14 210" },
 ];
 
 const cards = [
@@ -46,7 +46,7 @@ const cards = [
     title: "Modlitwa, którą znasz od dziecka, brzmi inaczej, niż myślisz.",
     meta: "18.11.2026 · hook i dystrybucja",
     numbers:
-      "402 566 wyświetleń w 2 dni. Facebook 237 414 i 2 920 polubień. YouTube 85 330, 1 376 polubień, 157 komentarzy, 441 udostępnień. TikTok 66 956, 1 147 polubień, 319 komentarzy, 291 udostępnień. Instagram 12 866, 236 polubień, 54 komentarze, 112 udostępnień, 104 zapisy.",
+      "518 258 wyświetleń w 5 dni. Facebook 290 351 i 3 686 polubień. YouTube 138 290, 1 998 polubień, 238 komentarzy, 691 udostępnień. TikTok 75 407, 1 281 polubień, 347 komentarzy, 325 udostępnień. Instagram 14 210, 273 polubienia, 64 komentarze, 120 udostępnień, 119 zapisy.",
     shows:
       "Jeden komentarz do sprawy, która już żyła w ludziach, ten sam materiał na czterech platformach, setki komentarzy.",
     href: reelLinks.recordYt,
@@ -55,7 +55,7 @@ const cards = [
   {
     title: "Po tym jednym słowie widać, czy związek przetrwa",
     meta: "22.10.2026 · Instagram · pomysł, który zostaje",
-    numbers: "10 198 wyświetleń, 120 zapisów, 53 udostępnienia.",
+    numbers: "10 317 wyświetleń, 120 zapisów, 53 udostępnienia.",
     shows: "Dużo zapisów jak na ten zasięg. Ludzie wracają do rolki, nie tylko ją przesuwają.",
     href: reelLinks.ig2210,
     link: "Instagram",
@@ -63,18 +63,18 @@ const cards = [
   {
     title: "Idziesz jutro na groby?",
     meta: "31.10.2026 · TikTok · społeczność",
-    numbers: "7 336 wyświetleń, 177 komentarzy.",
+    numbers: "7 369 wyświetleń, 177 komentarzy.",
     shows: "Dużo rozmowy przy mniejszym zasięgu. Liczy się udział, nie samo odtworzenie.",
     href: reelLinks.groby,
     link: "TikTok",
   },
   {
-    title: "Zostaniesz sama? Sama to nie samotna.",
-    meta: "13.11.2026 · YouTube · głos i temat",
-    numbers: "1 690 wyświetleń.",
-    shows: "Temat, który prowadzę na co dzień. Warsztat przed kamerą, nie tylko jeden wiral.",
-    href: reelLinks.samotna,
-    link: "YouTube",
+    title: "Finowie zaczynają później…",
+    meta: "19.11.2026 · Facebook / YouTube · fakt, który niesie się dalej",
+    numbers: "Facebook 4 107 wyświetleń, YouTube 1 816, Instagram 1 389 (śr. oglądanie na IG 12,5 s, skip 32%).",
+    shows: "Konkretny fakt na początku. Ludzie zostają dłużej niż przy samym pytaniu.",
+    href: reelLinks.finowie,
+    link: "Facebook",
   },
 ];
 
@@ -120,19 +120,19 @@ export default function Portfolio() {
         <h1 className="font-display text-[clamp(32px,5vw,52px)] font-bold uppercase text-text">Portfolio</h1>
         <p className="mt-4 max-w-[640px] text-[18px] leading-[1.6] text-text2">
           Content creator i autor. Od 17 lat pracuję przed kamerą. Dziś robię krótkie wideo od scenariusza po wnioski z
-          liczb — w tym rolkę, która w dwa dni zebrała ponad 400 tys. wyświetleń.
+          liczb — w tym rolkę, która w pięć dni zebrała 518 258 wyświetleń (w dwa dni, do 20.11, było już 402 566).
         </p>
 
         <div className="mt-10 grid gap-5">
           <section className="pcard" aria-labelledby="h-01">
             <p className="meta mb-2">01 · Marka osobista</p>
             <h2 id="h-01" className="font-display text-[24px] font-semibold text-text">
-              400 tys. wyświetleń w 2 dni
+              518 tys. wyświetleń w 5 dni
             </h2>
             <p className="mt-2 leading-[1.6] text-text2">
-              18.11.2026 nagrałem rolkę o tym, że modlitwa, którą znasz od dziecka, brzmi inaczej, niż myślisz. W dwa dni
-              zebrała 402 566 wyświetleń na Facebooku, YouTube, TikToku i Instagramie. Od pomysłu po publikację i rozmowę
-              w komentarzach robię to sam.
+              18.11.2026 nagrałem rolkę o tym, że modlitwa, którą znasz od dziecka, brzmi inaczej, niż myślisz. W pięć dni
+              zebrała 518 258 wyświetleń na Facebooku, YouTube, TikToku i Instagramie. Do 20.11, w dwa dni, było już 402 566.
+              Od pomysłu po publikację i rozmowę w komentarzach robię to sam.
             </p>
             <RecordEmbed title="Rolka z 18.11.2026: Papież poprawił „Ojcze nasz”" />
             <p className="reel-links">
@@ -145,12 +145,12 @@ export default function Portfolio() {
             <div className="results-strip">
               <p className="font-semibold text-text">Wyniki kanałów @maciejvsufa</p>
               <p className="mt-2 leading-[1.6] text-text2">
-                Facebook 5 tys. obserwujących · Instagram 3 629 · YouTube 217 (15.11 było 65) ·
-                TikTok 76.
+                Wynik rolki z 18.11.2026: 518 258 wyświetleń w 5 dni. 649 komentarzy i 1 136 udostępnień na Instagramie,
+                TikToku i YouTube (Facebook: 3 686 polubień; komentarzy FB ta miara nie obejmuje). Na świeżych kontach
+                YouTube i TikTok — pierwsze materiały 22.10.2026 — ta sama rolka: 213 697 wyświetleń, 585 komentarzy, 1 016
+                udostępnień.
               </p>
-              <p className="mt-2 font-mono text-[13px] text-text3">
-                Źródło: Metricool, stan na 20.11.2026, o ile nie podano inaczej.
-              </p>
+              <p className="mt-2 font-mono text-[13px] text-text3">Źródło: Metricool, stan na 23.11.2026.</p>
             </div>
             <ul className="mt-2 divide-y divide-line">
               {cards.map((c) => (

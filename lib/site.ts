@@ -3,9 +3,9 @@ export const site = {
   name: "Maciej V. Sufa",
   title: "Maciej V. Sufa — content creator i autor",
   description:
-    "Content creator i autor. Krótkie wideo od scenariusza po wyniki — m.in. 402 tys. wyświetleń w 2 dni. 17 lat przed kamerą. Szukam etatu albo B2B, zdalnie w PL i UE.",
+    "Content creator i autor. Krótkie wideo od scenariusza po wyniki — m.in. 518 tys. wyświetleń jednej rolki w 5 dni. 17 lat przed kamerą. Szukam etatu albo B2B, zdalnie w PL i UE.",
   descriptionEn:
-    "Content creator and author. Short-form video from script to results — including 402k views in 2 days. 17 years on camera. Open to a full-time or B2B role, remote in Poland and the EU.",
+    "Content creator and author. Short-form video from script to results — including 518k views on one reel in 5 days. 17 years on camera. Open to a full-time or B2B role, remote in Poland and the EU.",
   url: "https://maciejvsufa.pl",
   jobTitle: "Content Creator, aktor, właściciel firmy LEV",
   email: "sufamaciej@gmail.com",

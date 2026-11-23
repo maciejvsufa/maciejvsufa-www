@@ -9,7 +9,7 @@ import { reelLinks } from "@/lib/reels";
 
 const TITLE = "Portfolio — Maciej V. Sufa, content creator";
 const DESC =
-  "Content creator and author. 17 years on camera. Short-form video from script to results — including a reel that reached 402,566 views in two days.";
+  "Content creator and author. 17 years on camera. Short-form video from script to results — 518k views on one reel in 5 days.";
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -36,10 +36,10 @@ export const metadata: Metadata = {
 };
 
 const recordLinks = [
-  { href: reelLinks.recordFb, label: "Facebook · 237,414" },
-  { href: reelLinks.recordYt, label: "YouTube · 85,330" },
-  { href: reelLinks.recordTt, label: "TikTok · 66,956" },
-  { href: reelLinks.recordIg, label: "Instagram · 12,866" },
+  { href: reelLinks.recordFb, label: "Facebook · 290,351" },
+  { href: reelLinks.recordYt, label: "YouTube · 138,290" },
+  { href: reelLinks.recordTt, label: "TikTok · 75,407" },
+  { href: reelLinks.recordIg, label: "Instagram · 14,210" },
 ];
 
 const cards = [
@@ -47,7 +47,7 @@ const cards = [
     title: "Modlitwa, którą znasz od dziecka, brzmi inaczej, niż myślisz.",
     meta: "18.11.2026 · hook and distribution",
     numbers:
-      "402,566 views in 2 days. Facebook 237,414 and 2,920 likes. YouTube 85,330, 1,376 likes, 157 comments, 441 shares. TikTok 66,956, 1,147 likes, 319 comments, 291 shares. Instagram 12,866, 236 likes, 54 comments, 112 shares, 104 saves.",
+      "518,258 views in 5 days. Facebook 290,351 and 3,686 likes. YouTube 138,290, 1,998 likes, 238 comments, 691 shares. TikTok 75,407, 1,281 likes, 347 comments, 325 shares. Instagram 14,210, 273 likes, 64 comments, 120 shares, 119 saves.",
     shows: "One comment on something people were already thinking about. The same video on four platforms, hundreds of comments.",
     href: reelLinks.recordYt,
     link: "YouTube",
@@ -55,7 +55,7 @@ const cards = [
   {
     title: "Po tym jednym słowie widać, czy związek przetrwa",
     meta: "22.10.2026 · Instagram · an idea people save",
-    numbers: "10,198 views, 120 saves, 53 shares.",
+    numbers: "10,317 views, 120 saves, 53 shares.",
     shows: "People save this reel and come back to it.",
     href: reelLinks.ig2210,
     link: "Instagram",
@@ -63,18 +63,18 @@ const cards = [
   {
     title: "Idziesz jutro na groby?",
     meta: "31.10.2026 · TikTok · community",
-    numbers: "7,336 views, 177 comments.",
+    numbers: "7,369 views, 177 comments.",
     shows: "A lot of conversation for a smaller reach. People join in, it is not only views.",
     href: reelLinks.groby,
     link: "TikTok",
   },
   {
-    title: "Zostaniesz sama? Sama to nie samotna.",
-    meta: "13.11.2026 · YouTube · voice and theme",
-    numbers: "1,690 views.",
-    shows: "A subject I stay with. Camera craft, not only one viral spike.",
-    href: reelLinks.samotna,
-    link: "YouTube",
+    title: "Finowie zaczynają później…",
+    meta: "19.11.2026 · Facebook / YouTube · a fact that travels",
+    numbers: "Facebook 4,107 views, YouTube 1,816, Instagram 1,389 (average watch on Instagram 12.5 s, skip 32%).",
+    shows: "A concrete fact in the first line. People stay longer than they do with a question alone.",
+    href: reelLinks.finowie,
+    link: "Facebook",
   },
 ];
 
@@ -86,19 +86,20 @@ export default function PortfolioEn() {
       <main id="main" className="page pad-x mx-auto max-w-[860px] pb-20 pt-[160px]">
         <h1 className="font-display text-[clamp(32px,5vw,52px)] font-bold uppercase text-text">Portfolio</h1>
         <p className="mt-4 max-w-[640px] text-[18px] leading-[1.6] text-text2">
-          Content creator and author. 17 years on camera. Short-form video from script to results — including a reel
-          that reached 402,566 views in two days.
+          Content creator and author. 17 years on camera. Short-form video from script to results — including a reel that
+          reached 518,258 views in five days (402,566 in the first two days, as of 20.11).
         </p>
 
         <section className="pcard mt-10" aria-labelledby="h-01">
           <p className="meta mb-2">01 · Personal brand</p>
           <h2 id="h-01" className="font-display text-[24px] font-semibold text-text">
-            402k views in 2 days
+            518k views in 5 days
           </h2>
           <p className="mt-2 leading-[1.6] text-text2">
             On 18.11.2026 I recorded a reel about a prayer you have known since childhood: it does not say what you
-            think it says. In two days it reached 402,566 views on Facebook, YouTube, TikTok and Instagram. I do this
-            myself, from the idea through publishing to the conversation in the comments.
+            think it says. In five days it reached 518,258 views on Facebook, YouTube, TikTok and Instagram. By 20.11, in
+            two days, it was already at 402,566. I do this myself, from the idea through publishing to the conversation in
+            the comments.
           </p>
           <RecordEmbed title="YouTube reel of 18.11.2026: Papież poprawił „Ojcze nasz”" />
           <p className="reel-links">
@@ -111,11 +112,11 @@ export default function PortfolioEn() {
           <div className="results-strip">
             <p className="font-semibold text-text">Channel results @maciejvsufa</p>
             <p className="mt-2 leading-[1.6] text-text2">
-              Facebook 5k followers · Instagram 3,629 · YouTube 217 (65 on 15.11) · TikTok 76.
+              Reel of 18.11.2026: 518,258 views in 5 days. 649 comments and 1,136 shares on Instagram, TikTok and YouTube
+              (Facebook: 3,686 likes; this measure does not include Facebook comments). On then-new YouTube and TikTok
+              accounts — first videos 22.10.2026 — the same reel: 213,697 views, 585 comments, 1,016 shares.
             </p>
-            <p className="mt-2 font-mono text-[13px] text-text3">
-              Source: Metricool, as of 20.11.2026 unless noted otherwise.
-            </p>
+            <p className="mt-2 font-mono text-[13px] text-text3">Source: Metricool, as of 23.11.2026.</p>
           </div>
           <ul className="mt-2 divide-y divide-line">
             {cards.map((c) => (

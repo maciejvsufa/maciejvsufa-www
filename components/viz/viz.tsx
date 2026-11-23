@@ -245,9 +245,13 @@ function Rank({ v }: { v: Extract<VizData, { type: "rank" }> }) {
       <Head title={v.title} />
       <ul className="w-rank">
         {v.rows.map((r, k) => (
-          <li key={r.img} style={i(k)}>
-            {/* eslint-disable-next-line @next/next/no-img-element -- statyczny eksport, okładka 180×320 */}
-            <img src={r.img} alt={r.title} width={180} height={320} />
+          <li key={r.img ?? r.title} style={i(k)}>
+            {r.img ? (
+              // eslint-disable-next-line @next/next/no-img-element -- statyczny eksport, okładka 180×320
+              <img src={r.img} alt={r.title} width={180} height={320} />
+            ) : (
+              <span className="w-rank-frame">{r.frameLabel}</span>
+            )}
             <span className="w-rank-t">
               <span className="w-rank-title">{r.title}</span>
               <small>{r.date}</small>
@@ -257,7 +261,7 @@ function Rank({ v }: { v: Extract<VizData, { type: "rank" }> }) {
                 </span>
               ) : null}
             </span>
-            {r.views ? <b className="w-rank-n">{nf(r.views)}</b> : null}
+            {r.views ? <b className="w-rank-n">{r.viewsText ?? nf(r.views)}</b> : null}
           </li>
         ))}
       </ul>
