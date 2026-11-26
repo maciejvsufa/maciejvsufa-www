@@ -10,7 +10,7 @@ import { MobileMenu, ScrollLabel } from "@/components/header-bits";
 export function SiteHeader({ t, showScroll = true }: { t: SiteContent; showScroll?: boolean }) {
   const isEn = t.lang === "en";
   return (
-    <header className="site-header">
+    <header className={showScroll ? "site-header" : "site-header site-header--page"}>
       <div className="hdr-top">
         <div className="hdr-logo">
           <Link href={isEn ? "/en/" : "/"} className="hdr-name">

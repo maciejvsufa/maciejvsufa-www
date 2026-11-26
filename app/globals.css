@@ -1455,6 +1455,11 @@ html:not(.story-on) .scene {
   font-weight: 500;
   animation: fadeIn 1s var(--ease-spring) 0.8s both;
 }
+.site-header--page {
+  position: absolute;
+  bottom: auto;
+  height: 100px;
+}
 .site-header a,
 .site-header button {
   pointer-events: auto;
