@@ -103,7 +103,7 @@ const rest = [
   },
   {
     kicker: "05 · Mój sprzęt",
-    h: "Nie potrzebuję ekipy",
+    h: "Własne studio, gotowe do nagrań",
     p: "Kręcę na Canonie EOS R6 Mark II z gimbalem DJI Ronin RS 4, na DJI Pocket 3 i Samsungu S24 przy własnym oświetleniu studyjnym, głos nagrywam na DJI Mic 3 i przez Focusrite Scarlett, a montuję na własnym laptopie z RTX 5080.",
     facts: [] as string[],
   },

@@ -143,7 +143,7 @@ export default function PortfolioEn() {
         <section className="pcard mt-5" aria-labelledby="h-02">
           <p className="meta mb-2">02 · My gear</p>
           <h2 id="h-02" className="font-display text-[24px] font-semibold text-text">
-            No crew needed
+            My own studio, ready to shoot
           </h2>
           <p className="mt-2 leading-[1.6] text-text2">
             I shoot on a Canon EOS R6 Mark II with a DJI Ronin RS 4 gimbal, a DJI Pocket 3 and a Samsung S24 under my own studio lighting, record voice on a DJI Mic 3 and through a Focusrite Scarlett,
