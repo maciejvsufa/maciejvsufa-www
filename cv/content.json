@@ -79,17 +79,18 @@
         ]
       },
       {
-        "group": "Nagrywanie",
+        "group": "Własny sprzęt",
         "items": [
-          "Aparat Canon",
-          "Interfejs audio Focusrite Scarlett"
+          "Canon EOS R6 II · gimbal DJI RS 4",
+          "DJI Pocket 3 · DJI Mic 3 · Samsung S24",
+          "Focusrite Scarlett · laptop z RTX 5080",
+          "oświetlenie studyjne"
         ]
       },
       {
         "group": "Technika",
         "items": [
-          "Python · ffmpeg · Next.js",
-          "Cursor"
+          "Python · ffmpeg · Next.js · Cursor"
         ]
       },
       {
@@ -253,17 +254,17 @@
         ]
       },
       {
-        "group": "Recording",
+        "group": "Own gear",
         "items": [
-          "Canon camera",
-          "Focusrite Scarlett audio interface"
+          "Canon EOS R6 II · DJI RS 4 gimbal",
+          "DJI Pocket 3 · DJI Mic 3 · Samsung S24",
+          "Scarlett · RTX 5080 · studio lights"
         ]
       },
       {
         "group": "Tech",
         "items": [
-          "Python · ffmpeg · Next.js",
-          "Cursor"
+          "Python · ffmpeg · Next.js · Cursor"
         ]
       },
       {

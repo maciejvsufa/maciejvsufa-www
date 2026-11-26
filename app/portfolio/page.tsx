@@ -101,6 +101,12 @@ const rest = [
     p: "Pomysł → scenariusz z pomocą Claude → nagranie aparatem Canon → montaż w DaVinci Resolve Studio → publikacja → statystyki w Metricool i Arkuszach Google → społeczność (komentarze i odpowiedzi).",
     facts: ["Na co dzień także: CapCut, Canva."],
   },
+  {
+    kicker: "05 · Mój sprzęt",
+    h: "Nie potrzebuję ekipy",
+    p: "Kręcę na Canonie EOS R6 Mark II z gimbalem DJI Ronin RS 4, na DJI Pocket 3 i Samsungu S24 przy własnym oświetleniu studyjnym, głos nagrywam na DJI Mic 3 i przez Focusrite Scarlett, a montuję na własnym laptopie z RTX 5080.",
+    facts: [] as string[],
+  },
 ];
 
 const channels = [
@@ -180,11 +186,13 @@ export default function Portfolio() {
                 {c.h}
               </h2>
               <p className="mt-2 leading-[1.6] text-text2">{c.p}</p>
-              <ul className="mt-3 list-disc space-y-1 pl-5 leading-[1.6] text-text2">
-                {c.facts.map((f) => (
-                  <li key={f}>{f}</li>
-                ))}
-              </ul>
+              {c.facts.length > 0 ? (
+                <ul className="mt-3 list-disc space-y-1 pl-5 leading-[1.6] text-text2">
+                  {c.facts.map((f) => (
+                    <li key={f}>{f}</li>
+                  ))}
+                </ul>
+              ) : null}
               {"status" in c && c.status ? <p className="mt-3 font-mono text-[13px] text-text3">{c.status}</p> : null}
             </section>
           ))}
