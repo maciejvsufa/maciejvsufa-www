@@ -9,7 +9,7 @@ import { reelLinks } from "@/lib/reels";
 
 const TITLE = "Portfolio — Maciej V. Sufa, content creator";
 const DESC =
-  "Content creator and author. 17 years on camera. Short-form video from script to results — 518k views on one reel in 5 days.";
+  "Content creator and author. 17 years on camera. Short-form video from script to results — 581k views on one reel in 7 days.";
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -36,10 +36,10 @@ export const metadata: Metadata = {
 };
 
 const recordLinks = [
-  { href: reelLinks.recordFb, label: "Facebook · 290,351" },
-  { href: reelLinks.recordYt, label: "YouTube · 138,290" },
-  { href: reelLinks.recordTt, label: "TikTok · 75,407" },
-  { href: reelLinks.recordIg, label: "Instagram · 14,210" },
+  { href: reelLinks.recordFb, label: "Facebook · 324,722" },
+  { href: reelLinks.recordYt, label: "YouTube · 165,528" },
+  { href: reelLinks.recordTt, label: "TikTok · 75,864" },
+  { href: reelLinks.recordIg, label: "Instagram · 14,812" },
 ];
 
 const cards = [
@@ -47,15 +47,15 @@ const cards = [
     title: "Modlitwa, którą znasz od dziecka, brzmi inaczej, niż myślisz.",
     meta: "18.11.2026 · hook and distribution",
     numbers:
-      "518,258 views in 5 days. Facebook 290,351 and 3,686 likes. YouTube 138,290, 1,998 likes, 238 comments, 691 shares. TikTok 75,407, 1,281 likes, 347 comments, 325 shares. Instagram 14,210, 273 likes, 64 comments, 120 shares, 119 saves.",
-    shows: "One comment on something people were already thinking about. The same video on four platforms, hundreds of comments.",
+      "580,926 views in 7 days. Facebook 324,722 and 4,082 likes. YouTube 165,528, 2,226 likes, 261 comments, 795 shares. TikTok 75,864, 1,287 likes, 348 comments, 329 shares. Instagram 14,812 (reach 11,591), 288 likes, 72 comments, 124 shares, 124 saves, 608 interactions.",
+    shows: "One hook in the first line, the same video on four platforms, hundreds of comments.",
     href: reelLinks.recordYt,
     link: "YouTube",
   },
   {
     title: "Po tym jednym słowie widać, czy związek przetrwa",
     meta: "22.10.2026 · Instagram · an idea people save",
-    numbers: "10,317 views, 120 saves, 53 shares.",
+    numbers: "10,334 views, 120 saves, 53 shares.",
     shows: "People save this reel and come back to it.",
     href: reelLinks.ig2210,
     link: "Instagram",
@@ -63,7 +63,7 @@ const cards = [
   {
     title: "Idziesz jutro na groby?",
     meta: "31.10.2026 · TikTok · community",
-    numbers: "7,369 views, 177 comments.",
+    numbers: "7,379 views, 177 comments.",
     shows: "A lot of conversation for a smaller reach. People join in, it is not only views.",
     href: reelLinks.groby,
     link: "TikTok",
@@ -71,7 +71,7 @@ const cards = [
   {
     title: "Finowie zaczynają później…",
     meta: "19.11.2026 · Facebook / YouTube · a fact that travels",
-    numbers: "Facebook 4,107 views, YouTube 1,816, Instagram 1,389 (average watch on Instagram 12.5 s, skip 32%).",
+    numbers: "Facebook 4,137 views, YouTube 2,240, Instagram 1,414 (average watch on Instagram 12.4 s, skip 32.4%).",
     shows: "A concrete fact in the first line. People stay longer than they do with a question alone.",
     href: reelLinks.finowie,
     link: "Facebook",
@@ -86,19 +86,19 @@ export default function PortfolioEn() {
       <main id="main" className="page pad-x mx-auto max-w-[860px] pb-20 pt-[160px]">
         <h1 className="font-display text-[clamp(32px,5vw,52px)] font-bold uppercase text-text">Portfolio</h1>
         <p className="mt-4 max-w-[640px] text-[18px] leading-[1.6] text-text2">
-          Content creator and author. 17 years on camera. Short-form video from script to results — including a reel that
-          reached 518,258 views in five days (402,566 in the first two days, as of 20.11).
+          Content creator and author. 17 years on camera. Short-form video from script to results — including a reel
+          whose first-line hook reached 580,926 views on 4 platforms in 7 days (518,258 in 5 days, as of 23.11; 402,566 in the first two days, as of 20.11).
         </p>
 
         <section className="pcard mt-10" aria-labelledby="h-01">
           <p className="meta mb-2">01 · Personal brand</p>
           <h2 id="h-01" className="font-display text-[24px] font-semibold text-text">
-            518k views in 5 days
+            581k views in 7 days
           </h2>
           <p className="mt-2 leading-[1.6] text-text2">
-            On 18.11.2026 I recorded a reel about a prayer you have known since childhood: it does not say what you
-            think it says. In five days it reached 518,258 views on Facebook, YouTube, TikTok and Instagram. By 20.11, in
-            two days, it was already at 402,566. I do this myself, from the idea through publishing to the conversation in
+            On 18.11.2026 I recorded one reel with a hook in the first line and published it on Facebook, YouTube, TikTok
+            and Instagram. In 7 days it reached 580,926 views. In 5 days, as of 23.11, it was 518,258; in two days, as of
+            20.11, it was already at 402,566. I do this myself, from the idea through publishing to the conversation in
             the comments.
           </p>
           <RecordEmbed title="YouTube reel of 18.11.2026: Papież poprawił „Ojcze nasz”" />
@@ -112,11 +112,12 @@ export default function PortfolioEn() {
           <div className="results-strip">
             <p className="font-semibold text-text">Channel results @maciejvsufa</p>
             <p className="mt-2 leading-[1.6] text-text2">
-              Reel of 18.11.2026: 518,258 views in 5 days. 649 comments and 1,136 shares on Instagram, TikTok and YouTube
-              (Facebook: 3,686 likes; this measure does not include Facebook comments). On then-new YouTube and TikTok
-              accounts — first videos 22.10.2026 — the same reel: 213,697 views, 585 comments, 1,016 shares.
+              Reel of 18.11.2026: 580,926 views in 7 days. 681 comments and 1,248 shares on Instagram, TikTok and YouTube
+              (Facebook: 4,082 likes; this measure does not include Facebook comments). On then-new YouTube and TikTok
+              accounts — first videos 22.10.2026 — the same reel: 241,392 views, 609 comments, 1,124 shares. In 14 days
+              (12–25.11) Facebook followers grew from 4,489 to 5,169 (+680, about +15%).
             </p>
-            <p className="mt-2 font-mono text-[13px] text-text3">Source: Metricool, as of 23.11.2026.</p>
+            <p className="mt-2 font-mono text-[13px] text-text3">Source: Metricool, as of 25.11.2026.</p>
           </div>
           <ul className="mt-2 divide-y divide-line">
             {cards.map((c) => (

@@ -50,7 +50,7 @@ body {
 
 .main {
   background: #faf9f7;
-  padding: 11mm 10mm 9mm 9mm;
+  padding: 8mm 10mm 6mm 9mm;
   display: flex;
   flex-direction: column;
   height: 297mm;
@@ -77,7 +77,7 @@ body {
   min-height: 0;
   display: flex;
   flex-direction: column;
-  gap: 2.2mm;
+  gap: 1.4mm;
 }
 
 .main .col-footer {
@@ -280,7 +280,7 @@ body {
 }
 
 .job {
-  margin-bottom: 2mm;
+  margin-bottom: 1mm;
   break-inside: avoid;
   page-break-inside: avoid;
 }
@@ -348,6 +348,13 @@ body {
   line-height: 1.35;
 }
 
+.edu-extra {
+  font-size: 8.5pt;
+  color: #3a3a3e;
+  margin: 1.5mm 0 0;
+  line-height: 1.35;
+}
+
 .project-link {
   font-weight: 700;
   color: #1a1a1e;
@@ -385,7 +392,7 @@ body {
 }
 
 .rodo {
-  margin-top: 14px;
+  margin-top: 4px;
   font-size: 8pt;
   line-height: 1.35;
   color: #8a8578;

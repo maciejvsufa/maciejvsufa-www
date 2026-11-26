@@ -170,6 +170,7 @@ function buildHtml(locale) {
         <p class="edu-line">${esc(education.line)}</p>
         <p class="cert-name main-cert">${esc(certificate.name)} (${esc(certificate.year)})</p>
         <p class="cert-issuer main-cert">${esc(certificate.issuer)} — ${esc(certificate.desc)}</p>
+        ${education.extra ? `<p class="edu-extra">${esc(education.extra)}</p>` : ""}
       </div>
       ${d.rodo ? `<p class="rodo">${esc(d.rodo)}</p>` : ""}
       </div>
@@ -191,9 +192,16 @@ async function htmlToPdf(html, outPath) {
         const el = document.querySelector(sel);
         return el.scrollHeight - el.clientHeight;
       };
-      return { sidebar: overflow(".sidebar"), main: overflow(".main") };
+      const rodo = document.querySelector(".rodo").getBoundingClientRect();
+      const footer = document.querySelector(".main .col-footer").getBoundingClientRect();
+      return {
+        sidebar: overflow(".sidebar"),
+        main: overflow(".main"),
+        body: overflow(".main-body"),
+        footerOverlap: Math.round(rodo.bottom - footer.top),
+      };
     });
-    if (fit.sidebar > 2 || fit.main > 2) {
+    if (fit.sidebar > 2 || fit.main > 2 || fit.body > 2 || fit.footerOverlap > 0) {
       throw new Error(`CV nie mieści się na jednej stronie: ${JSON.stringify(fit)}`);
     }
     await page.pdf({
@@ -337,6 +345,7 @@ async function buildDocx(locale, outPath) {
       children: [new TextRun({ text: `${certificate.name} (${certificate.year})`, bold: true, size: 20 })],
     }),
     bodyText(`${certificate.issuer} — ${certificate.desc}`, { color: "6B6558", size: 18 }),
+    ...(education.extra ? [bodyText(education.extra, { size: 19 })] : []),
     ...(d.rodo ? [bodyText(d.rodo, { color: "8A8578", size: 15, italics: true })] : []),
   ];
 
